@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом FormAlchemy</title>
+  <id>http://uralbash.ru/blog/tag/formalchemy/atom.xml</id>
+  <updated>2012-07-04T11:51:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/formalchemy/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/formalchemy/atom.xml">
+    <title type="text">pyramid_formalchemy</title>
+    <id>http://uralbash.ru/articles/2012/pyramid_formalchemy/</id>
+    <updated>2012-07-04T11:51:00Z</updated>
+    <published>2012-07-04T11:51:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/pyramid_formalchemy/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid-formalchemy&quot;&gt;
+
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/FormAlchemy&quot;&gt;FormAlchemy&lt;/a&gt; это &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; для &lt;a class=&quot;reference external&quot; href=&quot;http://sqlalchemy.org/&quot;&gt;SQLAlchemy&lt;/a&gt;. Для &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt;
+существовало расширение прямо в самом модуле в разделе ext. Для Pyramid создали
+отдельный пакет &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/pyramid_formalchemy&quot;&gt;pyramid_formalchemy&lt;/a&gt;. Посмотрим как это работает:&lt;/p&gt;
+&lt;p&gt;Создаем проект:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pcreate -s alchemy -s pyramid_fa myapp
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;добавляем в проект файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;forms.py&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id2&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;forms.py&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;formalchemy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FieldSet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Grid&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;структура файлов должна выглядеть так:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;+static/
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;+templates/
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;-__init__.py
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;-faforms.py
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;-fainit.py
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;-faroutes.py
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;-forms.py
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;-models.py
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;-tests.py
+&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;-views.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;изменяем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__init__.py&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id3&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;__init__.py&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.config&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configurator&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sqlalchemy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;engine_from_config&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;.models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DBSession&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;global_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot; This function returns a Pyramid WSGI application.&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;engine_from_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;sqlalchemy.&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;DBSession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;configure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configurator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_static_view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;static&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;static&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cache_max_age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3600&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scan&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# pyramid_formalchemy&amp;#39;s configuration&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;pyramid_fanstatic&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;pyramid_formalchemy&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;fa.jquery&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# register an admin UI&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;formalchemy_admin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/admin&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;package&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;youAppName&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;fa.jquery.pyramid.ModelView&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+ &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;make_wsgi_app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Заходим в &lt;a class=&quot;reference external&quot; href=&quot;http://0.0.0.0:6543/admin/&quot;&gt;http://0.0.0.0:6543/admin/&lt;/a&gt; и радуемся.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/pyramid_formalchemy.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/pyramid_formalchemy.png&quot; /&gt;
+&lt;p&gt;Online демо находится &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/demo/admin/&quot;&gt;здесь&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/formalchemy/atom.xml">
+    <title type="text">FormAlchemy KeyError: &quot;Key not found: &quot;</title>
+    <id>http://uralbash.ru/articles/2011/fa_keyerror/</id>
+    <updated>2011-12-18T22:51:00Z</updated>
+    <published>2011-12-18T22:51:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/fa_keyerror/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;formalchemy-keyerror-key-not-found&quot;&gt;
+
+&lt;p&gt;Ошибка в &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; типа &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;KeyError:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;&amp;quot;Key&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;found:&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;u'Task--super_task_id'&amp;quot;&lt;/span&gt;&lt;/code&gt; лечится обновлением:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install formalchemy --upgrade
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;При этом новая версия подтянет бетта версию &lt;a class=&quot;reference external&quot; href=&quot;http://docs.webob.org/en/latest/&quot;&gt;webob&lt;/a&gt; 1.2 с которым
+&lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;pylons&lt;/a&gt; 1 еще не работает из-за:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DeprecationWarning:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;decode_param_names&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;deprecated&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;supported&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;starting&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;WebOb&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;1.2&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Откатимся:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install &lt;span class=&quot;nv&quot;&gt;webob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;.1.1
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Ошибка должна исчезнуть, вот обсуждение &lt;a class=&quot;reference external&quot; href=&quot;http://groups.google.com/group/formalchemy/browse_thread/thread/19348cc5faae8711/3aaf49efffd9f160?lnk=gst&amp;amp;q=key+not+found#3aaf49efffd9f160&quot;&gt;google groups&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/formalchemy/atom.xml">
+    <title type="text">Pylons + FormAlchemy REST Controller</title>
+    <id>http://uralbash.ru/articles/2011/fa_rest_controller/</id>
+    <updated>2011-11-13T21:10:00Z</updated>
+    <published>2011-11-13T21:10:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/fa_rest_controller/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;pylons-formalchemy-rest-controller&quot;&gt;
+
+&lt;p&gt;Для своих &lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/REST&quot;&gt;REST&lt;/a&gt; контроллеров можно использовать, формы &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Создаем контроллер:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/path/to/youproj$ paster restcontroller comment comments
+Creating yourproj/yourproj/controllers/comments.py
+Creating yourproj/yourproj/tests/functional/test_comments.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Или если нужно в отдельной директории:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;/path/to/yourproj$ paster restcontroller admin/tracback admin/trackbacks
+Creating yourproj/controllers/admin
+Creating yourproj/yourproj/controllers/admin/trackbacks.py
+Creating yourproj/yourproj/tests/functional/test_admin_trackbacks.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В файле нашего &lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/REST&quot;&gt;REST&lt;/a&gt; контроллера добавим:&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;formalchemy.ext.pylons.controller&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RESTController&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;И в конце файла обернем его так:&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# wrap with formalchemy RESTController&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CommentsController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RESTController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CommentsController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;comment&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;comments&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь если закомментировать какой-нибудь из стандартных методов в
+контроллере (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;index&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;new&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;update&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;delete&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;show&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;edit&lt;/span&gt;&lt;/code&gt;) он
+будет браться из контроллера &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; со стандартными формами. Довольно
+удобно в разработке.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

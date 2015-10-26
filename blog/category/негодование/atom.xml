@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщений в Негодование</title>
+  <id>http://uralbash.ru/blog/category/негодование/atom.xml</id>
+  <updated>2012-12-19T15:27:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/category/негодование/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/category/негодование/atom.xml">
+    <title type="text">Срань...</title>
+    <id>http://uralbash.ru/articles/2012/sran/</id>
+    <updated>2012-12-19T15:27:00Z</updated>
+    <published>2012-12-19T15:27:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/sran/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+
+&lt;p&gt;В последнее время мне кажется что я пользователь &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Интернета&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Северной&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;Корее&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/sran1.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sran1.png&quot; /&gt;
+&lt;p&gt;UPD:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/sran2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sran2.png&quot; /&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

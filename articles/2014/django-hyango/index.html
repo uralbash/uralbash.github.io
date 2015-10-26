@@ -1,0 +1,569 @@
+
+
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Django - кот в мешке. &mdash; Ural penguins</title>
+    
+
+    
+        <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    
+
+    
+        
+    
+            <link rel="index" title="Алфавитный указатель" href="../../../genindex/"/>
+            <link rel="search" title="Поиск" href="../../../search/"/>
+
+        <link rel="top" title="Ural penguins" href="../../../"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300&subset=latin,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <link href="../../../_static/css/badge_only.css" type="text/css" rel="stylesheet" />
+    <link href="../../../_static/css/__theme.css" type="text/css" rel="stylesheet" />
+
+    
+            <script type="text/javascript" src="../../../_static/jquery.js"></script>
+            <script type="text/javascript" src="../../../_static/underscore.js"></script>
+            <script type="text/javascript" src="../../../_static/doctools.js"></script>
+            <script type="text/javascript" src="../../../_static/metrika.js"></script>
+            <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+  
+  <style type="text/css">
+    html, body {
+      background: #545d5c !important;
+    }
+    .page__left .menu {
+        width: 0px;
+    }
+    .page__right {
+      background-color: #e7e7e7;
+      margin: 0 0 0 30px;
+    }
+    .rst-content {
+      padding: 13px;
+    }
+    .footer {
+      padding: 13px;
+    }
+    /* unvisited link */
+    ul.postlist-style-none a:link, .head a:link {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* visited link */
+    ul.postlist-style-none a:visited, .head a:visited {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* mouse over link */
+    ul.postlist-style-none a:hover, .head a:hover {
+        color: #222;
+        text-decoration: none;
+    }
+
+    ul.postlist-style-none a:active, .head a:active {
+        color: #222;
+        text-decoration: none;
+    }
+    ul.postlist-style-none li {
+        list-style-type: none;
+    }
+    ul.postlist-style-none li p.first {
+      color: red !important;
+      font: 1.8em "Open Sans",Arial,sans-serif !important;
+    }
+    .first a {
+      font-weight: bold;
+    }
+    .first em {
+      font-style: normal !important;
+    }
+    .wrapper__inner {
+      padding: 0px 30px 0 0 !important;
+    }
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
+
+  
+  
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.post-list-style-disc {list-style-type: disc;}
+    ul.post-list-style-none {list-style-type: none;}
+    ul.post-list-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper__inner">
+            <div class="page
+                ">
+                <div class="page__left">
+                  
+                    <nav class="menu" id="menu" data-state="expand">
+                        <div class="menu-inner">
+                            
+                                <div class="menu-project">
+                                    <a href="../../../" class="menu-project__link">Ural penguins</a>
+                                </div>
+                            
+                            <div class="tree">
+                                
+                                
+                                    <ul>
+<li><a class="reference internal" href="#">Django - кот в мешке.</a><ul>
+<li><a class="reference internal" href="#id1">Админка</a></li>
+<li><a class="reference internal" href="#id2">Аппликашины</a></li>
+<li><a class="reference internal" href="#id3">Шаблоны</a></li>
+<li><a class="reference internal" href="#orm">ORM</a></li>
+<li><a class="reference internal" href="#debug">Debug</a></li>
+<li><a class="reference internal" href="#id5">Квик старт</a></li>
+<li><a class="reference internal" href="#pages">Pages</a></li>
+</ul>
+</li>
+</ul>
+
+                                
+                            </div>
+                            <div class="menu-search search">
+                                <div class="search-title">Quick search</div>
+                                <form id="search-form" class="search-form" action="../../../search/" method="GET">
+                                    <input type="text" name="q" placeholder="Search docs" />
+                                    <input type="hidden" name="check_keywords" value="yes" />
+                                    <input type="hidden" name="area" value="default" />
+                                </form>
+                                <div class="search-desc">Enter search terms or a module, class or function name.</div>
+                            </div>
+                            <nav class="wy-nav-side">&nbsp;</nav>
+                        </div>
+                        <div class="menu-switch">
+                            <div class="menu-switch__arrow">«</div>
+                        </div>
+                    </nav>
+                  
+                </div>
+
+                <section class="page__right">
+                    
+  <div class="head" style="background-image: url('/_static/bg.jpg');
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  height: 200px">
+    <a href="/">
+      <div style="width:100%; height: 75%">
+        <h1 style="padding-top:15px;padding-left:15px;font-size:60px">Ural penguins</h1>
+      </div>
+    </a>
+    <table style="
+        border-collapse: unset !important;
+        border-spacing: 1 !important;">
+        <tr>
+            <td style="padding-right: 2px">
+                <a href="/pages/pyramid/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        Pyramid
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="/pages/nixos/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        NixOS
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </table>
+  </div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <div class="badge" style="width:100%;height:80px">
+    <!-- uralbash.ru -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2884502571619359"
+         data-ad-slot="9876011339"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+
+                    <div class="badge">
+                        
+                        
+                    </div>
+
+                    <div class="rst-content">
+                        
+  <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+  <table>
+    <tr>
+      <td>
+        <div class="yashare-auto-init" data-yashareL10n="ru"
+          data-yashareType="medium"
+          data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"
+          data-yashareTheme="counter"></div>
+      </td>
+      <td>
+        
+  
+  
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+        Feb 02, 2014
+      </div>
+    
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+      
+        
+          <i class="fa-fw fa fa-tags"></i>
+        
+        
+      
+        
+        <a href="../../../blog/tag/python/">Python</a>,
+        
+      
+        
+        <a href="../../../blog/tag/django/">Django</a>,
+        
+      
+        
+        <a href="../../../blog/tag/trololo/">trololo</a>,
+        
+      
+        
+        <a href="../../../blog/tag/ненависть/">ненависть</a>,
+        
+      
+        
+        <a href="../../../blog/tag/ненормальное/">ненормальное</a>,
+        
+      
+        
+        <a href="../../../blog/tag/программирование/">программирование</a>
+        
+      
+      </div>
+    
+
+      </td>
+    </tr>
+  </table>
+  <div class="section" id="django">
+<h1>Django - кот в мешке.<a class="headerlink" href="#django" title="Ссылка на этот заголовок">¶</a></h1>
+<a class="reference internal image-reference" href="../../../_images/wat.jpg"><img alt="../../../_images/wat.jpg" class="align-right" src="../../../_images/wat.jpg" style="width: 420px;" /></a>
+<p><a class="reference external" href="https://www.djangoproject.com/">Django</a> это фреймворк, при помощи которого быстро пишутся сайты. Так ли это?</p>
+<p>Фичи джанги:</p>
+<ul class="simple">
+<li>Админка</li>
+<li>куча аппликэйшинов</li>
+<li>Шаблоны</li>
+<li>ORM</li>
+<li>DebugToolbar</li>
+</ul>
+<br clear="both"/><div class="section" id="id1">
+<h2>Админка<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Из коробки у вас есть админка. Для простых сайтов её нужно кастомайзить долго и
+упорно, правда, обычно, это делается один раз. В сайте среднего уровня
+жангоадминка уже не прокатит. Вывод админка даёт профит в простых сайтах.</p>
+</div>
+<div class="section" id="id2">
+<h2>Аппликашины<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Обычно очень посредственного качества и не совместимы друг с другом, поэтому
+танцы с бубном и велосипеды наше всё + <code class="docutils literal"><span class="pre">djangosnippets</span></code>.</p>
+</div>
+<div class="section" id="id3">
+<h2>Шаблоны<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<ul>
+<li><p class="first">нету break, continue
+<code class="docutils literal"><span class="pre">jinja2.ext.loopcontrols</span> <span class="pre">This</span> <span class="pre">extension</span> <span class="pre">adds</span> <span class="pre">support</span> <span class="pre">for</span> <span class="pre">break</span> <span class="pre">and</span> <span class="pre">continue</span> <span class="pre">in</span> <span class="pre">loops.</span></code></p>
+</li>
+<li><p class="first">рекурсия Jinja</p>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;sitemap&quot;</span><span class="p">&gt;</span>
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">item</span> <span class="k">in</span> <span class="nv">sitemap</span> <span class="k">recursive</span> <span class="cp">%}</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">item.href</span><span class="o">|</span><span class="nf">e</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="p">&gt;</span><span class="cp">{{</span> <span class="nv">item.title</span> <span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">item.children</span> -<span class="cp">%}</span>
+        <span class="p">&lt;</span><span class="nt">ul</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;submenu&quot;</span><span class="p">&gt;</span><span class="cp">{{</span> <span class="nb">loop</span><span class="o">(</span><span class="nv">item.children</span><span class="o">)</span> <span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>а в джанге это видимо не нужно</p>
+</li>
+<li><p class="first">не работает вызов функций типа <code class="docutils literal"><span class="pre">item()</span></code> (лолшто?)</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">[:-1]</span></code> не работает, нужно писать <code class="docutils literal"><span class="pre">|latest</span></code></p>
+</li>
+<li><p class="first"><span class="strike">для js выражение типа:</span></p>
+<p><span class="strike">var foo = [{% for item in items %}{{ item.paren }}{% endfor %}]</span>
+<span class="strike">не работает, потому что js выполняется до рендеринга таких {%%} конструкций.</span></p>
+</li>
+<li><p class="first">коменты <code class="docutils literal"><span class="pre">{#</span> <span class="pre">#}</span></code> неработают в несколько строк</p>
+</li>
+<li><p class="first">вместо <code class="docutils literal"><span class="pre">{{</span> <span class="pre">list[5]</span> <span class="pre">}}</span></code> -&gt; <code class="docutils literal"><span class="pre">{{</span> <span class="pre">arr.5</span> <span class="pre">}}</span></code></p>
+</li>
+<li><p class="first">для словарей <code class="docutils literal"><span class="pre">{{</span> <span class="pre">dict.foo</span> <span class="pre">}}</span></code> не работает, да здравствует <code class="docutils literal"><span class="pre">template</span> <span class="pre">tag</span></code></p>
+</li>
+<li><p class="first">для <code class="xref py py-mod docutils literal"><span class="pre">itertools.chain</span></code> можно сосать лапу с таким фокусом <code class="docutils literal"><span class="pre">{{</span> <span class="pre">list[5]</span> <span class="pre">}}</span></code></p>
+</li>
+<li><p class="first">о джанга ты прекрасна <code class="docutils literal"><span class="pre">{{</span> <span class="pre">myval|add:&quot;-5&quot;</span> <span class="pre">}}</span></code> вместо уродского <code class="docutils literal"><span class="pre">{{</span> <span class="pre">myval</span> <span class="pre">-</span> <span class="pre">5</span> <span class="pre">}}</span></code></p>
+</li>
+<li><p class="first">нельзя сделать так <code class="docutils literal"><span class="pre">{{</span> <span class="pre">dir(foo)</span> <span class="pre">}}</span></code></p>
+</li>
+<li><p class="first">как узнать длину <a class="reference external" href="https://docs.python.org/3/library/itertools.html#module-itertools" title="(в Python v3.6)"><code class="xref py py-mod docutils literal"><span class="pre">itertools</span></code></a>? в <a class="reference external" href="http://jinja.pocoo.org/">jinja</a> делается так <code class="docutils literal"><span class="pre">{{</span> <span class="pre">list(foo).length</span> <span class="pre">}}</span></code></p>
+</li>
+</ul>
+</div>
+<div class="section" id="orm">
+<h2>ORM<a class="headerlink" href="#orm" title="Ссылка на этот заголовок">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Page.objects.filter(parent__in=objects)</span></code> вместо <code class="docutils literal"><span class="pre">DBSession.query(Page).filter(parent</span> <span class="pre">in</span> <span class="pre">objects)</span></code></li>
+<li>великолепный <code class="docutils literal"><span class="pre">foomodel_set__barmodel__name</span></code> лолшто?!</li>
+<li><code class="docutils literal"><span class="pre">Entry.objects.all()[:1].get()</span></code> вместо <code class="docutils literal"><span class="pre">DBSession.query(Entry).first()</span></code> или <code class="docutils literal"><span class="pre">one()</span></code></li>
+<li>добавляем в модель: <code class="docutils literal"><span class="pre">class</span> <span class="pre">Meta:</span> <span class="pre">app_label</span> <span class="pre">=</span> <span class="pre">'asdasda'</span></code> и переходим к разделу дебаг!</li>
+</ul>
+</div>
+<div class="section" id="debug">
+<h2>Debug<a class="headerlink" href="#debug" title="Ссылка на этот заголовок">¶</a></h2>
+<style>
+ .red {
+    color: red;
+    font-weight: bold;
+ }
+ .red-white {
+    background-color: red;
+    font-weight: bold;
+    color: white;
+</style><p><span class="red-white">Дебаг джанго кормит вас!</span> Потому что вы <a class="reference external" href="https://www.djangoproject.com/">Django</a> программист и
+половину рабочего времени пытаетесь понять что за !&#64;#$% произошла, получая за
+это зарплату.</p>
+<p><code class="docutils literal"><span class="pre">class</span> <span class="pre">Meta:</span> <span class="pre">app_label</span> <span class="pre">=</span> <span class="pre">'asdasda'</span></code> генерит трейс:</p>
+<p><span class="red">django.core.management.base.CommandError: One or more models did not validate:
+gallery.galleryimage: &#8216;gallery&#8217; has a relation with model &lt;class
+&#8216;gallery.models.Gallery&#8217;&gt;, which has either not been installed or is abstract.</span></p>
+<p>Шыкарные красные ошибки джанги. Очень информативно, ищется аникейством и
+вспоминанием чё правил.</p>
+<p>Я запилил <a class="reference external" href="https://github.com/uralbash/django-hyango">небольшой пример</a> что
+бы вы могли поднять его и посмотреть на эту магию.</p>
+</div>
+<div class="section" id="id5">
+<h2>Квик старт<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Установка по <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code></p>
+</li>
+<li><p class="first">Далее введим <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">syncdb</span></code> и видим <span class="red">ImportError: cannot import name SEOModel</span> Супер информативный вывод, все сразу стало понятно.</p>
+<blockquote>
+<div><p>2.1 Прошел все модели в проекте, <code class="docutils literal"><span class="pre">SEOModel</span></code> не нашел, при учете что у меня <code class="docutils literal"><span class="pre">gallery</span></code> стоит в <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv</a></p>
+<p>2.2 может во вью? Во вью то же нету</p>
+<p>2.3 ищем по проекту тупо по всем файлам, нету.</p>
+<p>2.4 идем в <code class="docutils literal"><span class="pre">settings/apps.py</span></code> и смотрим какое г может это содержать (так на угад), смотрим <code class="docutils literal"><span class="pre">common</span></code> опа вот он в моделях, осталось найти где он импортируется неправильно.</p>
+<p>2.5 ради интереса запускаю сервер <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">runserver</span></code> и получаю:</p>
+<blockquote>
+<div><p><span class="red">File &#8221;.../local/lib/python2.7/site-packages/gallery/models.py&#8221;, line 12, in &lt;module&gt; from website.models import SEOModel, VisibleModel ImportError: cannot import name SEOModel</span></p>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ol>
+<p>т.е. в некоторых случаях джангу надо дебажить runserver&#8217;ом</p>
+</div>
+<div class="section" id="pages">
+<h2>Pages<a class="headerlink" href="#pages" title="Ссылка на этот заголовок">¶</a></h2>
+<ul class="simple">
+<li>захожу в pages в админке</li>
+<li>добавляю дерево</li>
+<li>тыкаю по дереву (вложенность 2го уровня) что бы развернуть список и получаю:</li>
+</ul>
+<p><code class="docutils literal"><span class="pre">Error</span> <span class="pre">while</span> <span class="pre">loading</span> <span class="pre">the</span> <span class="pre">data</span> <span class="pre">from</span> <span class="pre">the</span> <span class="pre">server.</span></code></p>
+<img alt="../../../_images/pages_tree.png" src="../../../_images/pages_tree.png" />
+<p>и трэйс:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>Internal Server Error: /admin/pages/page/tree_json/
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">&quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django/core/handlers/base.py&quot;</span>, line <span class="m">115</span>, in get_response
+    <span class="nv">response</span> <span class="o">=</span> callback<span class="o">(</span>request, *callback_args, **callback_kwargs<span class="o">)</span>
+  File <span class="s2">&quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django_mptt_admin/admin.py&quot;</span>, line <span class="m">50</span>, in wrapper
+    <span class="k">return</span> self.admin_site.admin_view<span class="o">(</span>view<span class="o">)(</span>*args, **kwargs<span class="o">)</span>
+  File <span class="s2">&quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django/utils/decorators.py&quot;</span>, line <span class="m">91</span>, in _wrapped_view
+    <span class="nv">response</span> <span class="o">=</span> view_func<span class="o">(</span>request, *args, **kwargs<span class="o">)</span>
+  File <span class="s2">&quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django/views/decorators/cache.py&quot;</span>, line <span class="m">89</span>, in _wrapped_view_func
+    <span class="nv">response</span> <span class="o">=</span> view_func<span class="o">(</span>request, *args, **kwargs<span class="o">)</span>
+  File <span class="s2">&quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django/contrib/admin/sites.py&quot;</span>, line <span class="m">202</span>, in inner
+    <span class="k">return</span> view<span class="o">(</span>request, *args, **kwargs<span class="o">)</span>
+  File <span class="s2">&quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django_mptt_admin/admin.py&quot;</span>, line <span class="m">157</span>, in tree_json_view
+    <span class="nv">node</span> <span class="o">=</span> self.model.objects.get<span class="o">(</span><span class="nv">id</span><span class="o">=</span>node_id<span class="o">)</span>
+  File <span class="s2">&quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django/db/models/manager.py&quot;</span>, line <span class="m">143</span>, in get
+    <span class="k">return</span> self.get_query_set<span class="o">()</span>.get<span class="o">(</span>*args, **kwargs<span class="o">)</span>
+  File <span class="s2">&quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django/db/models/query.py&quot;</span>, line <span class="m">404</span>, in get
+    self.model._meta.object_name<span class="o">)</span>
+DoesNotExist: Page matching query does not exist.
+<span class="o">[</span><span class="m">16</span>/Dec/2013 <span class="m">23</span>:42:28<span class="o">]</span> <span class="s2">&quot;GET /admin/pages/page/tree_json/?node=5&amp;_=1387215746550 HTTP/1.1&quot;</span> <span class="m">500</span> <span class="m">22668</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">бесполезный трейс и непонятная ошибка КРУТО!</div>
+<div class="line">Если я зайду на адрес <code class="docutils literal"><span class="pre">/admin/pages/page/tree_json/?node=5&amp;_=1387215746550</span></code></div>
+</div>
+<p>то получу статический trace и хер знает куда bp вставить что бы хоть за че-то
+зацепиться.</p>
+<p>Ставлю <a class="reference external" href="https://pypi.python.org/pypi/django-extensions">django-extensions</a> через <a class="reference external" href="https://pypi.python.org/pypi/pip">pip</a> и <a class="reference external" href="https://pypi.python.org/pypi/Werkzeug">Werkzeug</a> что бы
+получить хоть какой то интерактив на том же трэйсе.</p>
+<p>Запускаю командой <code class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">runserver_plus</span></code>, отваливается
+<code class="docutils literal"><span class="pre">debug_toolbar</span></code>. Но и интерактивный трейс мало чем помогает в этом случае.
+Джанга каким то чудом обходит то место которое все ломает, ГРЕБАННЫЙ СТЫД!
+Ошибка ищется тупым эникейством. Предполагая что <a class="reference external" href="https://www.djangoproject.com/">django</a> идеальна и в ней
+нет ошибок, <a class="reference external" href="https://pypi.python.org/pypi/django_mptt_admin">django_mptt_admin</a> на <code class="docutils literal"><span class="pre">example</span></code> работает хорошо, может
+быть что то в Pages??? Ад же какойто?</p>
+</div>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../../2013/reason_names_of/">
+    <i class="fa fa-arrow-circle-left"></i>
+    Причины названий python, django и pyramid
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../alembic_pyramid/">
+    миграции в Pyramid
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <br />
+    <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="medium" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yashareTheme="counter"></div>
+    <h2>Comments</h2>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'uralbash'; // required: replace example with your forum shortname
+        var disqus_identifier = '/articles/2014/django-hyango/';
+        var disqus_title = 'Django - кот в мешке.';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+                    </div>
+                    <footer class="footer">
+                      
+  
+                        
+    <div class="footer__copyright">
+            
+                &copy; Copyright 2015, uralbash.
+            
+    </div>
+<div class="footer__theme">
+    <a href="https://github.com/ITCase/itcase_sphinx_theme" class="footer__theme-link">
+      ITCase Sphinx Theme
+    </a>
+      <span class="footer__theme-text">
+          | version: 0.2.0
+      </span>
+</div>
+                      
+  <div class="footer__theme">
+      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+        Ablog powered.
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="http://uralbash.ru/blog/atom.xml" class="footer__theme-link">
+        RSS/Atom
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="https://uralbash.blogspot.com" class="footer__theme-link">
+        Старый блог
+      </a>
+  </div>
+
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+            var STICKY_MENU = true;
+        
+    </script>
+
+    <script type="text/javascript" src="../../../_static/js/__theme.js"></script>
+
+    
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT: '../../../',
+                    VERSION: '',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '',
+                    HAS_SOURCE: true
+            };
+        </script>
+    
+
+    
+</body>
+</html>

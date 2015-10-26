@@ -1,0 +1,726 @@
+
+
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Структура Pyramid приложений как в Django &mdash; Ural penguins</title>
+    
+
+    
+        <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    
+
+    
+        
+    
+            <link rel="index" title="Алфавитный указатель" href="../../../genindex/"/>
+            <link rel="search" title="Поиск" href="../../../search/"/>
+
+        <link rel="top" title="Ural penguins" href="../../../"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300&subset=latin,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <link href="../../../_static/css/badge_only.css" type="text/css" rel="stylesheet" />
+    <link href="../../../_static/css/__theme.css" type="text/css" rel="stylesheet" />
+
+    
+            <script type="text/javascript" src="../../../_static/jquery.js"></script>
+            <script type="text/javascript" src="../../../_static/underscore.js"></script>
+            <script type="text/javascript" src="../../../_static/doctools.js"></script>
+            <script type="text/javascript" src="../../../_static/metrika.js"></script>
+            <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+  
+  <style type="text/css">
+    html, body {
+      background: #545d5c !important;
+    }
+    .page__left .menu {
+        width: 0px;
+    }
+    .page__right {
+      background-color: #e7e7e7;
+      margin: 0 0 0 30px;
+    }
+    .rst-content {
+      padding: 13px;
+    }
+    .footer {
+      padding: 13px;
+    }
+    /* unvisited link */
+    ul.postlist-style-none a:link, .head a:link {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* visited link */
+    ul.postlist-style-none a:visited, .head a:visited {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* mouse over link */
+    ul.postlist-style-none a:hover, .head a:hover {
+        color: #222;
+        text-decoration: none;
+    }
+
+    ul.postlist-style-none a:active, .head a:active {
+        color: #222;
+        text-decoration: none;
+    }
+    ul.postlist-style-none li {
+        list-style-type: none;
+    }
+    ul.postlist-style-none li p.first {
+      color: red !important;
+      font: 1.8em "Open Sans",Arial,sans-serif !important;
+    }
+    .first a {
+      font-weight: bold;
+    }
+    .first em {
+      font-style: normal !important;
+    }
+    .wrapper__inner {
+      padding: 0px 30px 0 0 !important;
+    }
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
+
+  
+  
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.post-list-style-disc {list-style-type: disc;}
+    ul.post-list-style-none {list-style-type: none;}
+    ul.post-list-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper__inner">
+            <div class="page
+                ">
+                <div class="page__left">
+                  
+                    <nav class="menu" id="menu" data-state="expand">
+                        <div class="menu-inner">
+                            
+                                <div class="menu-project">
+                                    <a href="../../../" class="menu-project__link">Ural penguins</a>
+                                </div>
+                            
+                            <div class="tree">
+                                
+                                
+                                    <ul>
+<li><a class="reference internal" href="#">Структура Pyramid приложений как в Django</a></li>
+</ul>
+
+                                
+                            </div>
+                            <div class="menu-search search">
+                                <div class="search-title">Quick search</div>
+                                <form id="search-form" class="search-form" action="../../../search/" method="GET">
+                                    <input type="text" name="q" placeholder="Search docs" />
+                                    <input type="hidden" name="check_keywords" value="yes" />
+                                    <input type="hidden" name="area" value="default" />
+                                </form>
+                                <div class="search-desc">Enter search terms or a module, class or function name.</div>
+                            </div>
+                            <nav class="wy-nav-side">&nbsp;</nav>
+                        </div>
+                        <div class="menu-switch">
+                            <div class="menu-switch__arrow">«</div>
+                        </div>
+                    </nav>
+                  
+                </div>
+
+                <section class="page__right">
+                    
+  <div class="head" style="background-image: url('/_static/bg.jpg');
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  height: 200px">
+    <a href="/">
+      <div style="width:100%; height: 75%">
+        <h1 style="padding-top:15px;padding-left:15px;font-size:60px">Ural penguins</h1>
+      </div>
+    </a>
+    <table style="
+        border-collapse: unset !important;
+        border-spacing: 1 !important;">
+        <tr>
+            <td style="padding-right: 2px">
+                <a href="/pages/pyramid/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        Pyramid
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="/pages/nixos/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        NixOS
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </table>
+  </div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <div class="badge" style="width:100%;height:80px">
+    <!-- uralbash.ru -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2884502571619359"
+         data-ad-slot="9876011339"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+
+                    <div class="badge">
+                        
+                        
+                    </div>
+
+                    <div class="rst-content">
+                        
+  <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+  <table>
+    <tr>
+      <td>
+        <div class="yashare-auto-init" data-yashareL10n="ru"
+          data-yashareType="medium"
+          data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"
+          data-yashareTheme="counter"></div>
+      </td>
+      <td>
+        
+  
+  
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+        Jul 05, 2012
+      </div>
+    
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+      
+        
+          <i class="fa-fw fa fa-tags"></i>
+        
+        
+      
+        
+        <a href="../../../blog/tag/python/">Python</a>,
+        
+      
+        
+        <a href="../../../blog/tag/pyramid/">Pyramid</a>,
+        
+      
+        
+        <a href="../../../blog/tag/django/">Django</a>
+        
+      
+      </div>
+    
+
+      </td>
+    </tr>
+  </table>
+  <div class="section" id="pyramid-django">
+<h1>Структура Pyramid приложений как в Django<a class="headerlink" href="#pyramid-django" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Одной из причин отказа развивать ветку <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a> стала его архитектура
+проекта.  Все контроллеры хранятся в директории <code class="docutils literal"><span class="pre">controllers</span></code>, модели в
+<code class="docutils literal"><span class="pre">models</span></code>, шаблоны в <code class="docutils literal"><span class="pre">templates</span></code>. Это очень удобно когда у вас маленький
+проект, но если он разрастается до десятков и сотен сущностей, то становится
+крайне сложно скакать по этим папкам выискивая нужный файл, относящийся именно
+к этой сущности. В <a class="reference external" href="https://www.djangoproject.com/">Django</a> сделано по другому, в проекте хранятся
+приложения (<code class="docutils literal"><span class="pre">application</span></code>) - это такие маленькие подпрограммы которые
+отвечают за конкретный функционал проекта (например фотогалерея
+<a class="reference external" href="https://pypi.python.org/pypi/django-photologue">django-photologue</a> или дерево сайта <a class="reference external" href="https://pypi.python.org/pypi/django-sitetree">django-sitetree</a> и прочее).
+Каждое такое приложение имеет свою папку и уже в ней хранятся контроллеры
+(<code class="docutils literal"><span class="pre">views</span></code> в данном случае) и модели (<code class="docutils literal"><span class="pre">models</span></code>). Т.е. вместо такой
+архитектуры <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>Project/
+    controllers/
+        controllers1.py
+        controllers2.py
+    model/
+        models1.py
+        models2.py
+    templates/
+        templates1/
+        templates2/
+    routes.py
+</pre></div>
+</div>
+<p>мы получаем:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>Project/
+    app1/
+        models.py
+        routes.py
+        views.py
+    app2/
+        models.py
+        routes.py
+        views.py
+    templates/
+        templates1/
+        templates2/
+</pre></div>
+</div>
+<p>Разработчики не стали менять архитектуру <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a> и создавать Pylons 2.0, а
+начали развивать новый проект <a class="reference external" href="http://www.pylonsproject.org/">Pyramid</a> с похожей на <a class="reference external" href="https://www.djangoproject.com/">Django</a> структурой
+проекта. При этом <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a> не считается устаревшим, а просто имеет немного
+другой подход к разработке.</p>
+<p>Стоит ли сейчас выбирать <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a>? Да, если вы его хорошо знаете и не
+планируете создавать слишком масштабное приложение, иначе лучше все таки
+выбрать <a class="reference external" href="http://www.pylonsproject.org/">Pyramid</a>.</p>
+<p>Посмотрим как в нем организовать структуру проекта:</p>
+<p>После создания проект выглядит так:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>MyProject/
+├── CHANGES.txt
+├── development.ini
+├── MANIFEST.in
+├── myproject
+│   ├── __init__.py
+│   ├── models.py
+│   ├── scripts/
+│   ├── static/
+│   ├── templates/
+│   ├── tests.py
+│   └── views.py
+├── production.ini
+├── README.txt
+├── setup.cfg
+└── setup.py
+</pre></div>
+</div>
+<p>Наша задача перенести <code class="docutils literal"><span class="pre">models.py</span></code>, <code class="docutils literal"><span class="pre">views.py</span></code>, <code class="docutils literal"><span class="pre">tests.py</span></code> в <code class="docutils literal"><span class="pre">app1</span></code>.
+Создаем папку <code class="docutils literal"><span class="pre">app1</span></code> и переносим файлы.</p>
+<p>Должно получится так:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>MyProject/
+.
+├── CHANGES.txt
+├── development.ini
+├── MANIFEST.in
+├── myproject
+│   ├── app1
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── __init__.py
+│   ├── scripts
+│   │   ├── initializedb.py
+│   │   └── __init__.py
+│   ├── static
+│   │   ├── favicon.ico
+│   │   ├── footerbg.png
+│   │   ├── headerbg.png
+│   │   ├── ie6.css
+│   │   ├── middlebg.png
+│   │   ├── pylons.css
+│   │   ├── pyramid.png
+│   │   ├── pyramid-small.png
+│   │   └── transparent.gif
+│   └── templates
+│       └── mytemplate.pt
+├── production.ini
+├── README.txt
+├── setup.cfg
+└── setup.py
+</pre></div>
+</div>
+<p>Меняем <code class="docutils literal"><span class="pre">__init__.py</span></code> в проекте:</p>
+<p>Вместо</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyramid.config</span> <span class="kn">import</span> <span class="n">Configurator</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">engine_from_config</span>
+
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">DBSession</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; This function returns a Pyramid WSGI application.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
+    <span class="n">DBSession</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">Configurator</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_static_view</span><span class="p">(</span><span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="n">cache_max_age</span><span class="o">=</span><span class="mi">3600</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">make_wsgi_app</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Делаем</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyramid.config</span> <span class="kn">import</span> <span class="n">Configurator</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">engine_from_config</span>
+
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">DBSession</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">global_config</span><span class="p">,</span> <span class="o">**</span><span class="n">settings</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; This function returns a Pyramid WSGI application.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
+    <span class="n">DBSession</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">Configurator</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_static_view</span><span class="p">(</span><span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="s1">&#39;static&#39;</span><span class="p">,</span> <span class="n">cache_max_age</span><span class="o">=</span><span class="mi">3600</span><span class="p">)</span>
+
+    <span class="c1"># add config for each of your subapps</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;myproject.app1&#39;</span><span class="p">)</span>
+
+    <span class="c1"># pyramid_jinja2 configuration</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">include</span><span class="p">(</span><span class="s1">&#39;pyramid_jinja2&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_jinja2_search_path</span><span class="p">(</span><span class="s2">&quot;myproject:templates&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">config</span><span class="o">.</span><span class="n">make_wsgi_app</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Теперь в этом <code class="docutils literal"><span class="pre">__init__.py</span></code> мы будем хранить глобальные настройки, а в инитах
+апликайшинах настройки самих апликайшинов.</p>
+<p>Добавляем <code class="docutils literal"><span class="pre">models.py</span></code> в основной проект:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>MyProject/
+.
+├── CHANGES.txt
+├── development.ini
+├── MANIFEST.in
+├── myproject
+│   ├── app1
+│   │   ├── __init__.py
+│   │   ├── models.py
+│   │   ├── tests.py
+│   │   └── views.py
+│   ├── __init__.py
+│   ├── scripts
+│   │   ├── initializedb.py
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── static
+│   │   ├── favicon.ico
+│   │   ├── footerbg.png
+│   │   ├── headerbg.png
+│   │   ├── ie6.css
+│   │   ├── middlebg.png
+│   │   ├── pylons.css
+│   │   ├── pyramid.png
+│   │   ├── pyramid-small.png
+│   │   └── transparent.gif
+│   └── templates
+│       └── mytemplate.pt
+├── production.ini
+├── README.txt
+├── setup.cfg
+└── setup.py
+</pre></div>
+</div>
+<p>В нем будет хранится сессия <a class="reference external" href="http://sqlalchemy.org/">SQLAlchemy</a> общая для всех проектов:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.sqlalchemy</span> <span class="kn">import</span> <span class="n">ZopeTransactionExtension</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">scoped_session</span><span class="p">,</span>
+    <span class="n">sessionmaker</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="n">DBSession</span> <span class="o">=</span> <span class="n">scoped_session</span><span class="p">(</span><span class="n">sessionmaker</span><span class="p">(</span><span class="n">extension</span><span class="o">=</span><span class="n">ZopeTransactionExtension</span><span class="p">()))</span>
+<span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Меняем <code class="docutils literal"><span class="pre">__init__.py</span></code> в <code class="docutils literal"><span class="pre">app1</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">includeme</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Меняем <code class="docutils literal"><span class="pre">models.py</span></code> в <code class="docutils literal"><span class="pre">app1</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Column</span><span class="p">,</span>
+    <span class="n">Integer</span><span class="p">,</span>
+    <span class="n">Text</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="kn">import</span> <span class="n">declarative_base</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">scoped_session</span><span class="p">,</span>
+    <span class="n">sessionmaker</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DBSession</span><span class="p">,</span>
+    <span class="n">Base</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;models&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Text</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+</pre></div>
+</div>
+<p>Меняем <code class="docutils literal"><span class="pre">tests.py</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
+<span class="kn">import</span> <span class="nn">transaction</span>
+
+<span class="kn">from</span> <span class="nn">pyramid</span> <span class="kn">import</span> <span class="n">testing</span>
+
+<span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">DBSession</span>
+
+<span class="k">class</span> <span class="nc">TestMyView</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">setUp</span><span class="p">()</span>
+        <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+        <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite://&#39;</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="p">(</span>
+            <span class="n">Base</span><span class="p">,</span>
+            <span class="n">MyModel</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="n">DBSession</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+        <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">transaction</span><span class="o">.</span><span class="n">manager</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">55</span><span class="p">)</span>
+            <span class="n">DBSession</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">DBSession</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+        <span class="n">testing</span><span class="o">.</span><span class="n">tearDown</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">test_it</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">.views</span> <span class="kn">import</span> <span class="n">my_view</span>
+        <span class="n">request</span> <span class="o">=</span> <span class="n">testing</span><span class="o">.</span><span class="n">DummyRequest</span><span class="p">()</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="n">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s1">&#39;project&#39;</span><span class="p">],</span> <span class="s1">&#39;MyProject&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Меняем <code class="docutils literal"><span class="pre">views.py</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy.exc</span> <span class="kn">import</span> <span class="n">DBAPIError</span>
+
+<span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">DBSession</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">MyModel</span>
+
+<span class="nd">@view_config</span><span class="p">(</span><span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;home&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;../templates/mytemplate.pt&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_view</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">one</span> <span class="o">=</span> <span class="n">DBSession</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">MyModel</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">MyModel</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;one&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="k">except</span> <span class="n">DBAPIError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">conn_err_msg</span><span class="p">,</span> <span class="n">content_type</span><span class="o">=</span><span class="s1">&#39;text/plain&#39;</span><span class="p">,</span> <span class="n">status_int</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span><span class="n">one</span><span class="p">,</span> <span class="s1">&#39;project&#39;</span><span class="p">:</span><span class="s1">&#39;MyProject&#39;</span><span class="p">}</span>
+
+<span class="n">conn_err_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
+<span class="s2">Pyramid is having a problem using your SQL database.  The problem</span>
+<span class="s2">might be caused by one of the following things:</span>
+
+<span class="s2">A.  You may need to run the &quot;initialize_MyProject_db&quot; script</span>
+<span class="s2">    to initialize your database tables.  Check your virtual</span>
+<span class="s2">    environment&#39;s &quot;bin&quot; directory for this script and try to run it.</span>
+
+<span class="s2">B.  Your database server may not be running.  Check that the</span>
+<span class="s2">    database server referred to by the &quot;sqlalchemy.url&quot; setting in</span>
+<span class="s2">    your &quot;development.ini&quot; file is running.</span>
+
+<span class="s2">After you fix the problem, please restart the Pyramid application to</span>
+<span class="s2">try it again.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Меняем <code class="docutils literal"><span class="pre">initializedb.py</span></code> в <code class="docutils literal"><span class="pre">scripts</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">transaction</span>
+
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">engine_from_config</span>
+
+<span class="kn">from</span> <span class="nn">pyramid.paster</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">get_appsettings</span><span class="p">,</span>
+    <span class="n">setup_logging</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DBSession</span><span class="p">,</span>
+    <span class="n">Base</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">..app1.models</span> <span class="kn">import</span> <span class="n">MyModel</span>
+
+<span class="k">def</span> <span class="nf">usage</span><span class="p">(</span><span class="n">argv</span><span class="p">):</span>
+    <span class="n">cmd</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;usage: </span><span class="si">%s</span><span class="s1"> &lt;config_uri&gt;</span><span class="se">\n</span><span class="s1">&#39;</span>
+          <span class="s1">&#39;(example: &quot;</span><span class="si">%s</span><span class="s1"> development.ini&quot;)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">cmd</span><span class="p">))</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">usage</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">config_uri</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">setup_logging</span><span class="p">(</span><span class="n">config_uri</span><span class="p">)</span>
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">get_appsettings</span><span class="p">(</span><span class="n">config_uri</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">engine_from_config</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="s1">&#39;sqlalchemy.&#39;</span><span class="p">)</span>
+    <span class="n">DBSession</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+    <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">transaction</span><span class="o">.</span><span class="n">manager</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">MyModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">DBSession</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Выполняем <code class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></code>, запускаем проект, профит!</div>
+<div class="line">Остальные апликайшины добавляются по аналогии.</div>
+<div class="line">Навеянно этим <a class="reference external" href="http://stackoverflow.com/questions/6012991/pyramid-project-structure">http://stackoverflow.com/questions/6012991/pyramid-project-structure</a></div>
+</div>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../pyramid_formalchemy/">
+    <i class="fa fa-arrow-circle-left"></i>
+    pyramid_formalchemy
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../pyramid_blog/">
+    Простой блог на фреймворке Pyramid
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <br />
+    <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="medium" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yashareTheme="counter"></div>
+    <h2>Comments</h2>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'uralbash'; // required: replace example with your forum shortname
+        var disqus_identifier = '/articles/2012/pyramid_as_django/';
+        var disqus_title = 'Структура Pyramid приложений как в Django';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+                    </div>
+                    <footer class="footer">
+                      
+  
+                        
+    <div class="footer__copyright">
+            
+                &copy; Copyright 2015, uralbash.
+            
+    </div>
+<div class="footer__theme">
+    <a href="https://github.com/ITCase/itcase_sphinx_theme" class="footer__theme-link">
+      ITCase Sphinx Theme
+    </a>
+      <span class="footer__theme-text">
+          | version: 0.2.0
+      </span>
+</div>
+                      
+  <div class="footer__theme">
+      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+        Ablog powered.
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="http://uralbash.ru/blog/atom.xml" class="footer__theme-link">
+        RSS/Atom
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="https://uralbash.blogspot.com" class="footer__theme-link">
+        Старый блог
+      </a>
+  </div>
+
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+            var STICKY_MENU = true;
+        
+    </script>
+
+    <script type="text/javascript" src="../../../_static/js/__theme.js"></script>
+
+    
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT: '../../../',
+                    VERSION: '',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '',
+                    HAS_SOURCE: true
+            };
+        </script>
+    
+
+    
+</body>
+</html>

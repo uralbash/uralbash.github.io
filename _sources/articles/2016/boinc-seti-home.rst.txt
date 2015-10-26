@@ -1,0 +1,94 @@
+.. post:: 31 Oct, 2016 20:04
+   :tags: boinc
+   :category: Alients
+   :author: Uralbash
+   :language: ru
+
+`SETI@home` в Docker
+====================
+
+`BOINC` - платформа, которая позволяет выполнять `добровольные вычисления
+<https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B2%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5_%D0%B2%D1%8B%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F>`_
+для различных проектов. Изначально создавался для проекта `SETI@home
+<https://ru.wikipedia.org/wiki/SETI@home>`_.
+
+.. note::
+
+    * https://boinc.berkeley.edu/
+    * https://ru.wikipedia.org/wiki/BOINC
+    * https://ru.wikipedia.org/wiki/SETI@home
+
+Идея заключается в том, что можно задействовать часть ресурсов своей машины для
+распределенных вычислений некого проекта, например `SETI@home` обрабатывает
+сигналы с радиотелескопа (`Аресибо
+<https://ru.wikipedia.org/wiki/Обсерватория_Аресибо>`_) в поисках внеземной
+цивилизации, `Rosetta@home` вычисляет структуру белков и таких проектов
+огромное множество в самых разных
+областях. Обычно домашний/рабочий компьютер не загружен на 100% и какую то
+часть, к примеру 20% одного ядра можно спокойно отвести на эту задачу.
+
+.. note::
+
+    * https://github.com/laurent-malvert/docker-boinc
+    * https://github.com/laurent-malvert/docker-boinccmd
+
+Что-бы не захламлять систему я ставлю `boinc` в виде `Docker` контейнеров.
+Вначале установим клиента-демона, который умеет принимать внешние команды:
+
+.. note::
+
+    При помощи флагов `Docker` можно ограничить контейнер на использование только
+    одного ядра на 50% загрузки ``--cpu-period=50000``, ``--cpu-quota=25000``,
+    ``--cpuset-cpus="0,1"``. По умолчанию `Boinc` забирает все ресурсы.
+
+.. code-block:: bash
+
+    $ docker run                \
+           --name boinc         \
+           -d                   \
+           --cpu-period=50000   \
+           --cpu-quota=25000    \
+           --cpuset-cpus="0,1"  \
+           laurentmalvert/docker-boinc --allow_remote_gui_rpc
+
+После этого можно останавливать/запускать `Boinc`, как обычный `Docker`
+контейнер по его имени:
+
+.. code-block:: bash
+
+    $ docker stop boinc
+    $ docker start boinc
+
+Теперь нужно подключиться к проекту указав свой ключ, в моем случае это
+``13e79a77503e10517358c18698717413``:
+
+.. code-block:: bash
+
+    $ docker run --rm --link boinc:boinc laurentmalvert/docker-boinccmd \
+        --host boinc \
+        --project_attach http://setiathome.berkeley.edu/ \
+        13e79a77503e10517358c18698717413
+
+Что бы получить ключ, нужно сначала зарегистрироваться на сайте проекта
+http://setiathome.berkeley.edu, а затем выполнить команду:
+
+.. code-block:: bash
+
+    $ docker run --rm --link boinc:boinc laurentmalvert/docker-boinccmd \
+        --host boinc --lookup_account http://setiathome.berkeley.edu \
+        <email-address> <password>
+
+Отключиться от проекта можно командой ``detach``:
+
+.. code-block:: bash
+
+    $ docker run --rm --link boinc:boinc laurentmalvert/docker-boinccmd \
+        --host boinc --project http://setiathome.berkeley.edu/ detach
+
+Посмотреть статус вашего профиля:
+
+.. code-block:: bash
+
+    $ docker run --rm --link boinc:boinc laurentmalvert/docker-boinccmd \
+        --host boinc \
+        --get_project_status

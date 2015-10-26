@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщений в ThinkPad</title>
+  <id>http://uralbash.ru/blog/category/thinkpad/atom.xml</id>
+  <updated>2012-11-12T00:23:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/category/thinkpad/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/category/thinkpad/atom.xml">
+    <title type="text">x220 tablet и доп кнопки в Linux</title>
+    <id>http://uralbash.ru/articles/2012/x220t_buttons/</id>
+    <updated>2012-11-12T00:23:00Z</updated>
+    <published>2012-11-12T00:23:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/x220t_buttons/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;x220-tablet-linux&quot;&gt;
+
+&lt;img alt=&quot;../../../_images/x220t.jpg&quot; class=&quot;align-left&quot; src=&quot;../../../_images/x220t.jpg&quot; /&gt;
+&lt;p&gt;В принципе мой &lt;a class=&quot;reference external&quot; href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; Wheezy определил почти все системные клавиши кроме 2х
+справа на картинке (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctr+Alt+Del&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;поворот&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;экрана&lt;/span&gt;&lt;/code&gt;), микрофон и zoom по
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Fn+пробел&lt;/span&gt;&lt;/code&gt;. &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctr+Alt+Del&lt;/span&gt;&lt;/code&gt; не нужен, микрофон и зум это повод написать
+отдельную тему, а про поворот экрана я напишу подробно.&lt;/p&gt;
+&lt;br clear=&quot;both&quot;/&gt;&lt;p&gt;Вначале определим код кнопки:&lt;/p&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;1 - запускаем команду &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;xev&lt;/span&gt;&lt;/code&gt; и нажимаем кнопку если появляется код то гуд иначе &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;п.2&lt;/span&gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;2 - можно посмотреть код этой кнопки в файле &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/lib/udev/keymaps/lenovo-thinkpad_x200_tablet&lt;/span&gt;&lt;/code&gt; называется &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;rotate&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;screen&amp;quot;&lt;/span&gt;&lt;/code&gt; код &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;0x6c&lt;/span&gt;&lt;/code&gt;, или можно погуглить например &lt;a class=&quot;reference external&quot; href=&quot;http://www.thinkwiki.org/wiki/Tablet_Hardware_Buttons&quot;&gt;http://www.thinkwiki.org/wiki/Tablet_Hardware_Buttons&lt;/a&gt; или если не Ъ то запускаем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;dmesg&lt;/span&gt;&lt;/code&gt; нажимаем кнопку и видим:&lt;/div&gt;
+&lt;/div&gt;
+&lt;br/&gt;&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3650&lt;/span&gt;.281439&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; atkbd serio0: Unknown key released &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;translated &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;, code 0x6c on isa0060/serio0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;3650&lt;/span&gt;.281443&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; atkbd serio0: Use &lt;span class=&quot;s1&quot;&gt;&amp;#39;setkeycodes 6c &amp;lt;keycode&amp;gt;&amp;#39;&lt;/span&gt; to make it known.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Тут же нам подсказывают что надо задать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;keycode&lt;/span&gt;&lt;/code&gt; этой кнопке.&lt;/p&gt;
+&lt;p&gt;3 - ищем свободный код командой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;getkeycodes|grep&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;&amp;lt;код&amp;gt;&lt;/span&gt;&lt;/code&gt;, например: &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;getkeycodes|grep&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;220&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Если вывода не последовало то код свободен&lt;/p&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;4 - назначаем код кнопке, в файле &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/etc/rc.local&lt;/span&gt;&lt;/code&gt; пишем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;exec&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;setkeycodes&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;6c&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;220&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;&amp;amp;&lt;/span&gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;5 - рестартимся или выполняем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;setkeycodes&lt;/span&gt;&lt;/code&gt; вручную, запускаем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;xev&lt;/span&gt;&lt;/code&gt; и нажимаем кнопку поворота, должны появится надписи&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Дальше я привязал кнопку к действию при помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;xbindkeys&lt;/span&gt;&lt;/code&gt; (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;apt-get&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;install&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;xbindkeys&lt;/span&gt;&lt;/code&gt;):&lt;/p&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;1 - создаем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;~/.xbindkeysrc&lt;/span&gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;2 - вызываем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;xbindkeys&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-k&lt;/span&gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;3 - нажимаем кнопку и копируем вывод&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;4 - записываем в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;xbindkeysrc&lt;/span&gt;&lt;/code&gt;:&lt;/div&gt;
+&lt;/div&gt;
+&lt;br/&gt;&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;think-rotate&amp;quot;&lt;/span&gt;
+m:0x10 + c:224
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Выполняем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;xbindkeys&lt;/span&gt;&lt;/code&gt; и вуаля!&lt;/p&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;think-rotate&lt;/span&gt;&lt;/code&gt; это скрипт поворота экрана из директории &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/usr/bin/&lt;/span&gt;&lt;/code&gt;.&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Сам скрипт я скачал с github&amp;#8217;a: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/martin-ueding/think-rotate&quot;&gt;https://github.com/martin-ueding/think-rotate&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br/&gt;&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;P.S.: Если вдруг у Вас не завелись другие кнопки то можно по аналогии привязать к ним скрипты от сюда:&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;1 - &lt;a class=&quot;reference external&quot; href=&quot;http://www.debian-fr.org/x220-install-configuration-t36152.html#p364748&quot;&gt;http://www.debian-fr.org/x220-install-configuration-t36152.html#p364748&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;2 - &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/aconbere/thinkpad-x201-acpi-scripts&quot;&gt;https://github.com/aconbere/thinkpad-x201-acpi-scripts&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;br/&gt;&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;UPD: вот еще нашел хорошую инструкцию &lt;a class=&quot;reference external&quot; href=&quot;http://kubuntu.ru/book/export/html/3491&quot;&gt;http://kubuntu.ru/book/export/html/3491&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;UPDUPD: Если кому то нужна кнопка посередине на экране то код &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;0x67&lt;/span&gt;&lt;/code&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;UPDUPDUPD: Кнопка может быть привязана через &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;acpi&lt;/span&gt;&lt;/code&gt; поэтому неплохо бы еще вначале проверить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;acpi_listen&lt;/span&gt;&lt;/code&gt; и если гут, то все таки сделать через &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;acpi&lt;/span&gt;&lt;/code&gt;.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/category/thinkpad/atom.xml">
+    <title type="text">ThinkPad TrackPoint настройка в Linux</title>
+    <id>http://uralbash.ru/articles/2011/thinkpad_trackpoint/</id>
+    <updated>2011-10-17T23:22:00Z</updated>
+    <published>2011-10-17T23:22:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/thinkpad_trackpoint/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;thinkpad-trackpoint-linux&quot;&gt;
+
+&lt;p&gt;Вообще всю информацию по настройке &lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/Тензометрический_джойстик&quot;&gt;trackpoint&lt;/a&gt; можно взять здесь: &lt;a class=&quot;reference external&quot; href=&quot;http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint&quot;&gt;How to
+configure the TrackPoint&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Но для ленивых ниже скрипт для автозагрузки:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#!/bin/sh&lt;/span&gt;
+xinput list &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sed -ne &lt;span class=&quot;s1&quot;&gt;&amp;#39;s/^[^ ][^V].*id=\([0-9]*\).*/\1/p&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; id
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;xinput list-props &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; in
+        *&lt;span class=&quot;s2&quot;&gt;&amp;quot;Middle Button Emulation&amp;quot;&lt;/span&gt;*&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                xinput set-int-prop &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Evdev Wheel Emulation&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+                xinput set-int-prop &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Evdev Wheel Emulation Button&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+                xinput set-int-prop &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Evdev Wheel Emulation Timeout&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200&lt;/span&gt;
+                xinput set-int-prop &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Evdev Wheel Emulation Axes&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;
+                xinput set-int-prop &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Evdev Middle Button Emulation&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+                xinput set-int-prop &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Evdev Middle Button Timeout&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# disable middle button&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#xmodmap -e &amp;quot;pointer = 1 9 3 4 5 6 7 8 2&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

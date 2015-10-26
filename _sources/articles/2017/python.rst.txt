@@ -1,0 +1,18 @@
+.. post:: 19 Sep, 2017 21:41
+   :tags: Python, Pyramid, TensorFlow, SciPy
+   :category: Python
+   :author: Uralbash
+   :language: ru
+
+##################
+Python инфографика
+##################
+
+Последнее время крупные компании всё чаще выбирают Python для разных проектов.
+И правда, для многих задач Python имеет замечательные решения.
+
+.. image:: /_static/2017/get-the-job-done-faster-with-python.jpg
+    :alt: Python инфографика
+
+
+Источник https://pythontips.com/2017/09/19/13-python-libraries-to-keep-you-busy/

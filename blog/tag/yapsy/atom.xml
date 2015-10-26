@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом yapsy</title>
+  <id>http://uralbash.ru/blog/tag/yapsy/atom.xml</id>
+  <updated>2012-02-27T14:30:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/yapsy/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/yapsy/atom.xml">
+    <title type="text">Pylons система плагинов для своего проекта (yapsy)</title>
+    <id>http://uralbash.ru/articles/2012/pylons_yapsy/</id>
+    <updated>2012-02-27T14:30:00Z</updated>
+    <published>2012-02-27T14:30:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/pylons_yapsy/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;pylons-yapsy&quot;&gt;
+
+&lt;p&gt;При проектировании любого проекта, через определенное время, встает проблема
+маштабируемости, конечно если вы не пишите сайт-визитку или что то подобное.
+Проект может состоять из одного большого монолитного ядра с множеством
+контроллеров, сотнями или даже тысячами таблиц и бессчетным количеством разных
+шаблонов, библиотек итд итп. Под ядром подразумевается та часть проекта
+(&lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;pylons&lt;/a&gt;), которую либо нельзя изменить совсем, либо это потребует очень
+больших усилий. Для того что бы создать гибкий и легко масштабируемый веб (и не
+только) проект, необходимо иметь небольшое ядро, которое будет выполнять
+минимальный функционал соответствующий логически завершенной программе.
+Остальные функции, пусть даже улучшающие программу, нужно выносить за пределы
+ядра. Вообще я знаю только два способа решения этой проблемы:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;это создание API;&lt;/li&gt;
+&lt;li&gt;создание подключаемых модулей(плагинов).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;В этой статье рассмотрим систему плагинов. Для работы понадобится очень
+неплохая библиотека &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/yapsy&quot;&gt;yapsy&lt;/a&gt; и любой проект на &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;pylons&lt;/a&gt; (по аналогии
+можно реализовать это например в &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; или &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/web.py&quot;&gt;web.py&lt;/a&gt; или ... bla bla bla).&lt;/p&gt;
+&lt;p&gt;Добавим в проект папку откуда будут браться плагины:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+   ├── config
+   ├── controllers
+   ├── forms
+   ├── lib
+   ├── model
+   ├── plugins
+   ├── public
+   ├── tasks
+   ├── templates
+   └── tests
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Добавим пару плагинов в папку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;plugins&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├── autoloads
+│   ├── inline
+│   │   └── osmMap
+│   │   ├── osm_map.py
+│   │   └── osm_map.yapsy-plugin
+│   └── menu
+│   └── about
+│   ├── about.py
+│   └── about.yapsy-plugin
+├── categories
+│   ├── __init__.py
+│   ├── inline.py
+│   └── menu.py
+└── __init__.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Из директорий видно что мы создали два типа плагинов &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;inline&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;menu&lt;/span&gt;&lt;/code&gt;.
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Inline&lt;/span&gt;&lt;/code&gt; это плагины встраиваемые на страницу, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;menu&lt;/span&gt;&lt;/code&gt; это дополнительные
+пункты в меню. Папки и категории можно формировать как угодно и в любой
+вложенности. Сами плагины должны иметь ОБЯЗАТЕЛЬНО файл с таким же именем и
+расширением &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;yapsy-plugin&lt;/span&gt;&lt;/code&gt;. В нашем случае &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;osm-map&lt;/span&gt;&lt;/code&gt; выводит
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt; карту, а &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;about&lt;/span&gt;&lt;/code&gt; добавляет в меню новый пункт. Дальше я
+бегло опишу то что у меня получилось, а посмотреть код можно здесь
+&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/pylons_yapsy_plugin&quot;&gt;https://github.com/uralbash/pylons_yapsy_plugin&lt;/a&gt;. Думаю не имеет смысла
+описывать все подробно, т.к. в коде много комментариев.&lt;/p&gt;
+&lt;p&gt;После старта проекта Вы увидите окно с картой и меню &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;about&amp;quot;&lt;/span&gt;&lt;/code&gt;. Наши плагины
+автоматически подгрузились.&lt;/p&gt;
+&lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
+&lt;img alt=&quot;../../../_images/osm_yapsy.png&quot; src=&quot;../../../_images/osm_yapsy.png&quot; /&gt;
+&lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;yapsy plugin example&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь перейдем на вкладку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;plugin&amp;quot;&lt;/span&gt;&lt;/code&gt; и отключим &lt;a class=&quot;reference external&quot; href=&quot;http://www.openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
+&lt;img alt=&quot;../../../_images/osm_yapsy2.png&quot; src=&quot;../../../_images/osm_yapsy2.png&quot; /&gt;
+&lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;yapsy plugin deactivate&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Заходим во вкладку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;home&amp;quot;&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;figure align-center&quot; id=&quot;id3&quot;&gt;
+&lt;img alt=&quot;../../../_images/osm_yapsy3.png&quot; src=&quot;../../../_images/osm_yapsy3.png&quot; /&gt;
+&lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;yapsy plugin deactivated&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;И &amp;#8220;О черт Дэвид Блэйн! Верни ее на место!!!&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;То же самое с меню при отключении оно пропадет. Отключенные плагины хранятся в
+БД в таблице &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DeactivatedPlugins&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;P.S.: Для чего это нужно еще раз? Для того например если руководство решило
+убрать из программы карту &lt;a class=&quot;reference external&quot; href=&quot;http://www.openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt; немедленно. Вы тут же бросились
+это все выпиливать... да? А через неделю руководство вдруг решило что нужна
+карта! Вы начинаете ее запиливать обратно итд итп. Мне например проще нажать
+одну кнопку, чем переписывать MVC. В этом и есть гибкость. Пользуйтесь.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

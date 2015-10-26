@@ -1,0 +1,1541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом Sphinx</title>
+  <id>http://uralbash.ru/blog/tag/sphinx/atom.xml</id>
+  <updated>2015-08-13T17:24:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/sphinx/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/sphinx/atom.xml">
+    <title type="text">Vim (и не только) для reStructuredText</title>
+    <id>http://uralbash.ru/articles/2015/rstcheck/</id>
+    <updated>2015-08-13T17:24:00Z</updated>
+    <published>2015-08-13T17:24:00Z</published>
+    <link href="http://uralbash.ru/articles/2015/rstcheck/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;vim-restructuredtext&quot;&gt;
+
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docutils.sourceforge.net/rst.html&quot;&gt;reStructuredText&lt;/a&gt; - очень удобная разметка, которая используется при
+написании документации (&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sphinx&quot;&gt;sphinx&lt;/a&gt;), README для гитхаба, битбакета, PyPi и
+всего прочего вплоть до научных статей (&lt;a class=&quot;reference external&quot; href=&quot;http://hplgit.github.io/teamods/writing_reports/_static/report_solarized2_dark.html&quot;&gt;пример&lt;/a&gt;)
+или же статей для &lt;a class=&quot;reference internal&quot; href=&quot;../../../articles/2015/ablog/#ablog&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;блога&lt;/span&gt;&lt;/a&gt; :)&lt;/p&gt;
+&lt;p&gt;Так-как документация отымает бОльшую часть времени от разработки, то хорошо бы
+настроить окружение под нее. В конечном счете это сэкономит кучу времени.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;tagbar&quot;&gt;
+&lt;h2&gt;TagBar&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/majutsushi/tagbar&quot;&gt;majutsushi/tagbar&lt;/a&gt; - это плагин который показывает тэги документа в
+отдельном окне. Для настройки нам понадобится добавить его в &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt; и
+установить клавишу вызова (например &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;F8&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id7&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;.vimrc добавляем tagbar&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Plug &lt;span class=&quot;s1&quot;&gt;&amp;#39;majutsushi/tagbar&amp;#39;&lt;/span&gt;
+nmap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F8&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; :TagbarToggle&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Все что &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;tagbar&lt;/span&gt;&lt;/code&gt; не умеет делать &amp;#8220;из коробки&amp;#8221; можно подключить в виде
+отдельных расширений (&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/majutsushi/tagbar/wiki&quot;&gt;полный список тут&lt;/a&gt;) или написать свое.&lt;/p&gt;
+&lt;p&gt;Для &lt;a class=&quot;reference external&quot; href=&quot;http://docutils.sourceforge.net/rst.html&quot;&gt;reStructuredText&lt;/a&gt; есть &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/jszakmeister/rst2ctags&quot;&gt;jszakmeister/rst2ctags&lt;/a&gt;. Подключается
+он довольно просто:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;клонируем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;git&lt;/span&gt;&lt;/code&gt; репу в локальную папку&lt;/li&gt;
+&lt;li&gt;и указываем путь до нее в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.vimrc&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id8&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;.vimrc конфиг rst2ctags&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:tagbar_type_rst &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; {
+    \ &lt;span class=&quot;s1&quot;&gt;&amp;#39;ctagstype&amp;#39;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&amp;#39;rst&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;    \ &lt;span class=&quot;s1&quot;&gt;&amp;#39;ctagsbin&amp;#39;&lt;/span&gt; : &lt;span class=&quot;s1&quot;&gt;&amp;#39;/home/uralbash/.vim/config/common/rst2ctags/rst2ctags.py&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;    \ &lt;span class=&quot;s1&quot;&gt;&amp;#39;ctagsargs&amp;#39;&lt;/span&gt; : &lt;span class=&quot;s1&quot;&gt;&amp;#39;-f - --sort=yes&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    \ &lt;span class=&quot;s1&quot;&gt;&amp;#39;kinds&amp;#39;&lt;/span&gt; : [
+        \ &lt;span class=&quot;s1&quot;&gt;&amp;#39;s:sections&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        \ &lt;span class=&quot;s1&quot;&gt;&amp;#39;i:images&amp;#39;&lt;/span&gt;
+    \ ]&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    \ &lt;span class=&quot;s1&quot;&gt;&amp;#39;sro&amp;#39;&lt;/span&gt; : &lt;span class=&quot;s1&quot;&gt;&amp;#39;|&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    \ &lt;span class=&quot;s1&quot;&gt;&amp;#39;kind2scope&amp;#39;&lt;/span&gt; : {
+        \ &lt;span class=&quot;s1&quot;&gt;&amp;#39;s&amp;#39;&lt;/span&gt; : &lt;span class=&quot;s1&quot;&gt;&amp;#39;section&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    \ }&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    \ &lt;span class=&quot;s1&quot;&gt;&amp;#39;sort&amp;#39;&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+\ }
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После этого по нажатию &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;F8&lt;/span&gt;&lt;/code&gt; будет открываться &amp;#8220;содержание&amp;#8221; вашего
+документа, как показано на рисунках ниже.&lt;/p&gt;
+&lt;div class=&quot;figure align-center&quot; id=&quot;id9&quot;&gt;
+&lt;img alt=&quot;../../../_images/rst2ctags.png&quot; src=&quot;../../../_images/rst2ctags.png&quot; /&gt;
+&lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Пример &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/jszakmeister/rst2ctags&quot;&gt;jszakmeister/rst2ctags&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;figure align-center&quot; id=&quot;id10&quot;&gt;
+&lt;img alt=&quot;../../../_images/rst2ctags2.png&quot; src=&quot;../../../_images/rst2ctags2.png&quot; /&gt;
+&lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Пример &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/jszakmeister/rst2ctags&quot;&gt;jszakmeister/rst2ctags&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt; с более простой структурой
+разделов&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Таким образом упрощается навигация по документу и структурирование разделов.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;riv-vim&quot;&gt;
+&lt;h2&gt;Riv.vim&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Rykka/riv.vim&quot;&gt;Rykka/riv.vim&lt;/a&gt; - это что то на подобии &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;python-mode&lt;/span&gt;&lt;/code&gt; для
+&lt;a class=&quot;reference external&quot; href=&quot;http://docutils.sourceforge.net/rst.html&quot;&gt;reStructuredText&lt;/a&gt;. Всякие ништяки для rST.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id11&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Добавляем &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Rykka/riv.vim&quot;&gt;Rykka/riv.vim&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Plug &lt;span class=&quot;s1&quot;&gt;&amp;#39;Rykka/riv.vim&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; { &lt;span class=&quot;s1&quot;&gt;&amp;#39;for&amp;#39;&lt;/span&gt;: &lt;span class=&quot;s1&quot;&gt;&amp;#39;rst&amp;#39;&lt;/span&gt; }
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В командном режиме появятся следующие функции:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Riv2BuildPath           RivCreateHyperLink      RivHelpTodo
+RivListType2            RivShiftRight           RivTitle2
+Riv2HtmlAndBrowse       RivCreateInterpreted    RivInstruction
+RivListType3            RivSpecification        RivTitle3
+Riv2HtmlFile            RivCreateLink           RivIntro
+RivListType4            RivSuperCEnter          RivTitle4
+Riv2HtmlProject         RivCreateLiteralBlock   RivItemClick
+RivNormEqual            RivSuperEnter           RivTitle5
+Riv2Latex               RivCreateLiteralInline  RivItemToggle
+RivNormLeft             RivSuperMEnter          RivTitle6
+Riv2Odt                 RivCreateStrong         RivLinkNext
+RivNormRight            RivSuperSEnter          RivTodoAsk
+Riv2Pdf                 RivCreateTime           RivLinkOpen
+RivPrimer               RivTableCreate          RivTodoDate
+Riv2S5                  RivCreateTransition     RivLinkPrev
+RivProjectHtmlIndex     RivTableFormat          RivTodoDel
+Riv2Xml                 RivDeleteFile           RivLinkShow
+RivProjectIndex         RivTableNextCell        RivTodoPrior
+RivCheatSheet           RivDirectives           RivListDelete
+RivProjectList          RivTablePrevCell        RivTodoToggle
+RivCreateContent        RivFoldAll              RivListNew
+RivQuickStart           RivTestFold0            RivTodoType1
+RivCreateDate           RivFoldToggle           RivListSub
+RivReload               RivTestFold1            RivTodoType2
+RivCreateEmphasis       RivFoldUpdate           RivListSup
+RivScratchCreate        RivTestObj              RivTodoType3
+RivCreateExplicitMark   RivGetLatest            RivListToggle
+RivScratchView          RivTestTest             RivTodoType4
+RivCreateFoot           RivHelpFile             RivListType0
+RivShiftEqual           RivTitle0               RivTodoUpdateCache
+RivCreateGitLink        RivHelpSection          RivListType1
+RivShiftLeft            RivTitle1               RivVimTest
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Плагин имеет множество разных функций которые лучше
+изучить при помощи команды &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;:RivQuickStart&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Например команда &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;:Riv2HtmlAndBrowse&lt;/span&gt;&lt;/code&gt; рендерит текущий документ и открывает
+его в браузере. А сочетание клавиш &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctrl+e&lt;/span&gt;&lt;/code&gt; &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;s&lt;/span&gt;&lt;/code&gt; &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;1&lt;/span&gt;&lt;/code&gt; делает
+текущую строку заголовком 1-го уровня, т.е. выполняет функцию &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;RivTitle1&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;rstcheck&quot;&gt;
+&lt;h2&gt;rstcheck&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/myint/rstcheck&quot;&gt;myint/rstcheck&lt;/a&gt; - это отличный линтер для разметки
+&lt;a class=&quot;reference external&quot; href=&quot;http://docutils.sourceforge.net/rst.html&quot;&gt;reStructuredText&lt;/a&gt;, также помимо &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;docutils&lt;/span&gt;&lt;/code&gt; он понимает &lt;a class=&quot;reference external&quot; href=&quot;http://sphinx-doc.org/&quot;&gt;sphinx-doc&lt;/a&gt;
+директивы и роли.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h3&gt;Установка&lt;/h3&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install --upgrade rstcheck
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;code-block&quot;&gt;
+&lt;h3&gt;Проверка синтаксиса в директиве &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;code-block&lt;/span&gt;&lt;/code&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rstcheck&lt;/span&gt;&lt;/code&gt; умеет проверять синтаксис следующих языков в директиве &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;..&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;code-block::&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;Bash&lt;/li&gt;
+&lt;li&gt;Doctest&lt;/li&gt;
+&lt;li&gt;C (C99)&lt;/li&gt;
+&lt;li&gt;C++ (C++11)&lt;/li&gt;
+&lt;li&gt;JSON&lt;/li&gt;
+&lt;li&gt;Python&lt;/li&gt;
+&lt;li&gt;reStructuredText&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Например я допустил ошибку в коде на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-rst&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;gh&quot;&gt;====&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;Test&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;====&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; python
+
+    print(
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В этом случае линтер ее обнаружит:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rstcheck bad_python.rst
+bad_python.rst:7: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ERROR/3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;python&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; unexpected EOF &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; parsing
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Еще пример с &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C++&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-rst&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;gh&quot;&gt;====&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;Test&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;====&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;cpp&lt;/span&gt;
+
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rstcheck bad_cpp.rst
+bad_cpp.rst:9: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;ERROR/3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;cpp&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; error: &lt;span class=&quot;s1&quot;&gt;&amp;#39;x&amp;#39;&lt;/span&gt; was not declared in this scope
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;И пример с опечаткой в rST:&lt;/p&gt;
+&lt;div class=&quot;highlight-rst&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;====
+&lt;span class=&quot;gh&quot;&gt;Test&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;===&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rstcheck bad_rst.rst
+bad_rst.rst:1: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SEVERE/4&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; Title overline &lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt; underline mismatch.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Я добавляю &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rstcheck&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;travis-ci&lt;/span&gt;&lt;/code&gt; и после каждого коммита проверяю
+документацию на наличие ошибок. Пример можно посмотреть &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/ustu/lectures.www/blob/master/test.sh&quot;&gt;здесь&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id5&quot;&gt;
+&lt;h3&gt;Конфиг&lt;/h3&gt;
+&lt;p&gt;Про некоторые кастомные роли и директивы &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rstcheck&lt;/span&gt;&lt;/code&gt; ничего не знает, что бы
+они не попадали в поток ошибок их можно заигнорировать при помощи конфига. Файл
+конфига с именем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.rstcheck.cfg&lt;/span&gt;&lt;/code&gt; должен располагаться в текущей директории,
+например так:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docs
+├── foo
+│   └── bar.rst
+├── index.rst
+└── .rstcheck.cfg
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Можно указать какие игнорировать директивы или роли, например для блога я
+использую некоторые кастомные вещи из модуля расширения
+&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/ITCase/sphinx-links&quot;&gt;ITCase/sphinx-links&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/abakan/ablog&quot;&gt;ABlog&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-ini&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;[rstcheck]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;ignore_directives&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;post,postlist&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;ignore_roles&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;github,l,man,pypi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
+&lt;h3&gt;Модуль для Python&lt;/h3&gt;
+&lt;p&gt;Т.к. &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/rstcheck&quot;&gt;rstcheck&lt;/a&gt; это &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt; модуль, его можно использовать в своих
+скриптах:&lt;/p&gt;
+&lt;div class=&quot;highlight-ipython&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; import rstcheck
+&amp;gt;&amp;gt;&amp;gt; list(rstcheck.check(&amp;#39;Example\n===&amp;#39;))
+[(2, &amp;#39;(INFO/1) Possible title underline, too short for the title.&amp;#39;)]
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;vim&quot;&gt;
+&lt;h3&gt;Vim&lt;/h3&gt;
+&lt;p&gt;Для вима используйте &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/scrooloose/syntastic&quot;&gt;scrooloose/syntastic&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:syntastic_rst_checkers &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; [&lt;span class=&quot;s1&quot;&gt;&amp;#39;rstcheck&amp;#39;&lt;/span&gt;]
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;img alt=&quot;../../../_images/rstcheck_vim.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/rstcheck_vim.png&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id6&quot;&gt;
+&lt;h2&gt;Итог&lt;/h2&gt;
+&lt;p&gt;Пишите документацию в целом и пишите больше в &lt;a class=&quot;reference external&quot; href=&quot;http://docutils.sourceforge.net/rst.html&quot;&gt;reStructuredText&lt;/a&gt; он
+прекрасен.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/sphinx/atom.xml">
+    <title type="text">Блог в reStructuredText разметке</title>
+    <id>http://uralbash.ru/articles/2015/ablog/</id>
+    <updated>2015-08-12T12:06:00Z</updated>
+    <published>2015-08-12T12:06:00Z</published>
+    <link href="http://uralbash.ru/articles/2015/ablog/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;restructuredtext&quot;&gt;
+&lt;span id=&quot;ablog&quot;&gt;&lt;/span&gt;
+&lt;img alt=&quot;../../../_images/uralbash.ru.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/uralbash.ru.png&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;p&gt;Перевел тут блог с &lt;a class=&quot;reference external&quot; href=&quot;https://www.blogger.com/&quot;&gt;https://www.blogger.com/&lt;/a&gt; на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/abakan/ablog&quot;&gt;abakan/ablog&lt;/a&gt;. Блоггер
+это конечно хорошо, но у него крайне ограниченный WYSIWYG, тем более только из
+браузера. &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/abakan/ablog&quot;&gt;Ablog&lt;/a&gt; по сути это &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sphinx&quot;&gt;sphinx&lt;/a&gt; движок заточенный на блог со
+всеми плюшками, rST разметкой, RSS и disqus комментами.&lt;/p&gt;
+&lt;br clear=&quot;both&quot;/&gt;
+&lt;test/&gt;&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;Профит&lt;/h2&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/Sphinx&quot;&gt;Sphinx&lt;/a&gt; позволяет автоматизировать многие вещи&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;reStructuredText&lt;/span&gt;&lt;/code&gt; позволяет точно и красиво оформлять статьи, это как
+писать &amp;#8220;курсач&amp;#8221; в LaTeX заместо MS Office&lt;/li&gt;
+&lt;li&gt;писать в &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt; :)&lt;/li&gt;
+&lt;li&gt;хоститься где угодно и хранить информацию у себя локально&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;Установка&lt;/h2&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id10&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Стабильная версия с PyPi&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install ablog
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id11&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Свежая версия из мастера&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install git+https://github.com/abakan/ablog
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h2&gt;Инициализация нового проекта&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://ablog.readthedocs.org/manual/ablog-quick-start/&quot;&gt;http://ablog.readthedocs.org/manual/ablog-quick-start/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Можно добавить настройки в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;conf.py&lt;/span&gt;&lt;/code&gt; уже существующего проекта:&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# 1. Add &amp;#39;ablog&amp;#39; to list of extensions&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;extensions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;...&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;ablog&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 2. Add ablog templates path&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ablog&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 2a. if `templates_path` is not defined&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;templates_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ablog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_html_templates_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 2b. if `templates_path` is defined&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;templates_path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ablog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_html_templates_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Или создать новый проект:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ablog start
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id4&quot;&gt;
+&lt;h2&gt;Сборка и запуск&lt;/h2&gt;
+&lt;p&gt;Что бы собрать блог нужно выполнить:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ablog build
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;HTML страницы создаются в папке &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;_website&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Что запустить блог достаточно выполнить:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ablog serve
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;теперь он доступен по адресу &lt;a class=&quot;reference external&quot; href=&quot;http://127:0.0.1:8000/&quot;&gt;http://127:0.0.1:8000/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id5&quot;&gt;
+&lt;h2&gt;Статьи&lt;/h2&gt;
+&lt;p&gt;Главная страница блога это &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;index.rst&lt;/span&gt;&lt;/code&gt;. У меня она выглядит так:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id12&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;index.rst&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-rst&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;postlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; 100500
+   &lt;span class=&quot;nc&quot;&gt;:excerpts:&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:date:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;%d-%m-%Y&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:format:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;{date} | {title}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Статьи могут находится в любом месте проекта, &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/abakan/ablog&quot;&gt;Ablog&lt;/a&gt; их находит
+автоматически. Я отвожу для этого отдельную папку:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;articles/
+├── &lt;span class=&quot;m&quot;&gt;2011&lt;/span&gt;
+│   ├── breadcrumbs.rst
+│   ├── capslock.rst
+│   ├── content_assigment.rst
+│   ├── couchdb.rst
+│   ├── demo.rst
+│   ├── fa_keyerror.rst
+│   ├── fa_rest_controller.rst
+│   ├── formalchemy.rst
+│   ├── java_iceweasel.rst
+│   ├── js_rrd.rst
+│   ├── peyote.rst
+│   ├── psycopg2.rst
+│   ├── pylons_backslash.rst
+│   ├── pylons_jscss_minificator.rst
+│   ├── repoze.what.rst
+│   ├── rrd_cut2.rst
+│   ├── rrd_cut.rst
+│   ├── rrdtool_ds18b20.rst
+│   ├── snmp.rst
+│   ├── sqlalchemy_mixin.rst
+│   ├── sqlalchemy_trigger.rst
+│   ├── sqlalchemy_uml.rst
+│   ├── sqlalchemy_why_postgres.rst
+│   ├── thinkpad_trackpoint.rst
+│   ├── wtforms.rst
+│   ├── wtform_validation.rst
+│   ├── xfce_button.rst
+│   └── xfce_display.rst
+├── &lt;span class=&quot;m&quot;&gt;2012&lt;/span&gt;
+│   ├── 3com.rst
+│   ├── ajax_triple_select.rst
+│   ├── arch_book.rst
+│   ├── boyan.rst
+│   ├── cms_pyramid2.rst
+│   ├── cms_pyramid.rst
+│   ├── debian_bc.rst
+│   ├── fortune.rst
+│   ├── http_header_pyramid.rst
+│   ├── jinja_pylons_i18n.rst
+│   ├── jinja_pyramid_i18n.rst
+│   ├── jinja_silent_none.rst
+│   ├── lisp_book.rst
+│   ├── lisp.rst
+│   ├── matplotlib_numpy_and_virtualenv.rst
+│   ├── osm_example.rst
+│   ├── osm_geotagging.rst
+│   ├── paramiko.rst
+│   ├── penguin_troll.rst
+│   ├── penguin_vs_leo.rst
+│   ├── pg_book.rst
+│   ├── proxmox.rst
+│   ├── proxy_apt.rst
+│   ├── pycrypto_virtualenv.rst
+│   ├── pylons_console.rst
+│   ├── pylons_csv.rst
+│   ├── pylons_yapsy.rst
+│   ├── pypi.rst
+│   ├── pyramid_as_django.rst
+│   ├── pyramid_blog.rst
+│   ├── pyramid_formalchemy.rst
+│   ├── python_labirint.rst
+│   ├── python_snmp.rst
+│   ├── pyyandexmap.rst
+│   ├── qtile.rst
+│   ├── redactor-js.rst
+│   ├── rrd_faketime.rst
+│   ├── rrdtool.rst
+│   ├── sa_big_table.rst
+│   ├── shared_net.rst
+│   ├── sphinx_github.rst
+│   ├── sran.rst
+│   ├── vi_book.rst
+│   └── x220t_buttons.rst
+├── &lt;span class=&quot;m&quot;&gt;2013&lt;/span&gt;
+│   ├── car_differ.rst
+│   ├── dbsession_includeme.rst
+│   ├── flag_jinja2.rst
+│   ├── hdaps_music.rst
+│   ├── hstore_plpython.rst
+│   ├── jinja2_lorem_ipsum.rst
+│   ├── linux_attack.rst
+│   ├── matrix.rst
+│   ├── penguin.rst
+│   ├── python_vim.rst
+│   ├── reason_names_of.rst
+│   ├── sacrud_alfa_0_1_0.rst
+│   ├── sacrud_demo.rst
+│   ├── sacrud_howto.rst
+│   ├── sacrud_release_0_0_3.rst
+│   ├── sacrud_release_0_1_0.rst
+│   ├── sacrud.rst
+│   ├── vi_book.rst
+│   ├── vim_book.rst
+│   ├── wat.rst
+│   └── where_to_start.rst
+├── &lt;span class=&quot;m&quot;&gt;2014&lt;/span&gt;
+│   ├── alembic_pyramid.rst
+│   ├── chameleon_deform.rst
+│   ├── ci.rst
+│   ├── cornice.rst
+│   ├── django-hyango.rst
+│   ├── go.rst
+│   ├── ia32-libs-multiarch:i386.rst
+│   ├── king_penguin.rst
+│   ├── man_month_book.rst
+│   ├── panel_pyramid_dt.rst
+│   ├── sacrud_release_0.1.1.rst
+│   ├── sacrud_release_0.1.2.rst
+│   ├── scrum.rst
+│   ├── sphinx.rst
+│   ├── sqlalchemy_mptt_0_0_5.rst
+│   ├── sqlalchemy_mptt.rst
+│   └── sqlite_to_pg.rst
+└── &lt;span class=&quot;m&quot;&gt;2015&lt;/span&gt;
+    └── ablog.rst
+
+&lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; directories, &lt;span class=&quot;m&quot;&gt;111&lt;/span&gt; files
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Что бы файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;*.rst&lt;/span&gt;&lt;/code&gt; стал статьей в нем должна находится директива &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;post&lt;/span&gt;&lt;/code&gt;.
+Например:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id13&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;foo.rst&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-rst&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; 15 Apr, 2013
+   &lt;span class=&quot;nc&quot;&gt;:tags:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;tips, ablog, directive&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:category:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Example, How To&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:author:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Ahmet, Durden&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:location:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Pittsburgh, SF&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:redirect:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;blog/old-page-name-for-the-post&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:excerpt:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;2&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:image:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://ablog.readthedocs.org/manual/posting-and-listing/#directive-post&quot;&gt;http://ablog.readthedocs.org/manual/posting-and-listing/#directive-post&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Пример кода этой статьи:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id14&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;articles/2015/ablog.rst&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-rst&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; 12 Aug, 2015 12:06
+   &lt;span class=&quot;nc&quot;&gt;:tags:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Python, reStructuredText, Sphinx&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:category:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Python&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:author:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Uralbash&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:language:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ru&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;_ablog:&lt;/span&gt;
+
+&lt;span class=&quot;gh&quot;&gt;Блог в reStructuredText разметке&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;================================&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; /_static/2015/uralbash.ru.png
+   &lt;span class=&quot;nc&quot;&gt;:align:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;left&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:width:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;500px&lt;/span&gt;
+
+Перевел тут блог с https://www.blogger.com/ на &lt;span class=&quot;na&quot;&gt;:github:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`abakan/ablog`&lt;/span&gt;. Блоггер
+это конечно хорошо, но у него крайне ограниченный WYSIWYG, тем более только из
+браузера. &lt;span class=&quot;na&quot;&gt;:l:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`Ablog`&lt;/span&gt; по сути это &lt;span class=&quot;na&quot;&gt;:pypi:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`sphinx`&lt;/span&gt; движок заточенный на блог со
+всеми плюшками, rST разметкой, RSS и disqus комментами.
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;raw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; html
+
+   &amp;lt;br clear=&amp;quot;both&amp;quot;/&amp;gt;
+   &amp;lt;test/&amp;gt;
+
+&lt;span class=&quot;gh&quot;&gt;Профит&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;------&lt;/span&gt;
+
+&lt;span class=&quot;m&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:pypi:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`Sphinx`&lt;/span&gt; позволяет автоматизировать многие вещи
+&lt;span class=&quot;m&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;``reStructuredText``&lt;/span&gt; позволяет точно и красиво оформлять статьи, это как
+  писать &amp;quot;курсач&amp;quot; в LaTeX заместо MS Office
+&lt;span class=&quot;m&quot;&gt;*&lt;/span&gt; писать в &lt;span class=&quot;na&quot;&gt;:l:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`Vim`&lt;/span&gt; :)
+&lt;span class=&quot;m&quot;&gt;*&lt;/span&gt; хоститься где угодно и хранить информацию у себя локально
+
+&lt;span class=&quot;gh&quot;&gt;Установка&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;---------&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; bash
+   &lt;span class=&quot;nc&quot;&gt;:caption:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Стабильная версия с PyPi&lt;/span&gt;
+
+   $ pip install ablog
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; bash
+   &lt;span class=&quot;nc&quot;&gt;:caption:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Свежая версия из мастера&lt;/span&gt;
+
+   $ pip install git+https://github.com/abakan/ablog
+
+&lt;span class=&quot;gh&quot;&gt;Инициализация нового проекта&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;----------------------------&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;seealso&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;
+
+   http://ablog.readthedocs.org/manual/ablog-quick-start/
+
+Можно добавить настройки в &lt;span class=&quot;s&quot;&gt;``conf.py``&lt;/span&gt; уже существующего проекта:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;python&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# 1. Add &amp;#39;ablog&amp;#39; to list of extensions&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;extensions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+       &lt;span class=&quot;s1&quot;&gt;&amp;#39;...&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;s1&quot;&gt;&amp;#39;ablog&amp;#39;&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# 2. Add ablog templates path&lt;/span&gt;
+   &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ablog&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# 2a. if `templates_path` is not defined&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;templates_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ablog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_html_templates_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# 2b. if `templates_path` is defined&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;templates_path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ablog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_html_templates_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+Или создать новый проект:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;bash&lt;/span&gt;
+
+   $ ablog start
+
+&lt;span class=&quot;gh&quot;&gt;Сборка и запуск&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;---------------&lt;/span&gt;
+
+Что бы собрать блог нужно выполнить:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;bash&lt;/span&gt;
+
+   $ ablog build
+
+HTML страницы создаются в папке &lt;span class=&quot;s&quot;&gt;``_website``&lt;/span&gt;
+
+Что запустить блог достаточно выполнить:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;bash&lt;/span&gt;
+
+   $ ablog serve
+
+теперь он доступен по адресу http://127:0.0.1:8000/
+
+&lt;span class=&quot;gh&quot;&gt;Статьи&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;------&lt;/span&gt;
+
+Главная страница блога это &lt;span class=&quot;s&quot;&gt;``index.rst``&lt;/span&gt;. У меня она выглядит так:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; rst
+   &lt;span class=&quot;nc&quot;&gt;:caption:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;index.rst&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;   ..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;postlist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; 100500
+      &lt;span class=&quot;nc&quot;&gt;:excerpts:&lt;/span&gt;
+      &lt;span class=&quot;nc&quot;&gt;:date:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;%d-%m-%Y&lt;/span&gt;
+      &lt;span class=&quot;nc&quot;&gt;:format:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;{date} | {title}&lt;/span&gt;
+
+Статьи могут находится в любом месте проекта, &lt;span class=&quot;na&quot;&gt;:l:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`Ablog`&lt;/span&gt; их находит
+автоматически. Я отвожу для этого отдельную папку:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;bash&lt;/span&gt;
+
+   articles/
+   ├── &lt;span class=&quot;m&quot;&gt;2011&lt;/span&gt;
+   │   ├── breadcrumbs.rst
+   │   ├── capslock.rst
+   │   ├── content_assigment.rst
+   │   ├── couchdb.rst
+   │   ├── demo.rst
+   │   ├── fa_keyerror.rst
+   │   ├── fa_rest_controller.rst
+   │   ├── formalchemy.rst
+   │   ├── java_iceweasel.rst
+   │   ├── js_rrd.rst
+   │   ├── peyote.rst
+   │   ├── psycopg2.rst
+   │   ├── pylons_backslash.rst
+   │   ├── pylons_jscss_minificator.rst
+   │   ├── repoze.what.rst
+   │   ├── rrd_cut2.rst
+   │   ├── rrd_cut.rst
+   │   ├── rrdtool_ds18b20.rst
+   │   ├── snmp.rst
+   │   ├── sqlalchemy_mixin.rst
+   │   ├── sqlalchemy_trigger.rst
+   │   ├── sqlalchemy_uml.rst
+   │   ├── sqlalchemy_why_postgres.rst
+   │   ├── thinkpad_trackpoint.rst
+   │   ├── wtforms.rst
+   │   ├── wtform_validation.rst
+   │   ├── xfce_button.rst
+   │   └── xfce_display.rst
+   ├── &lt;span class=&quot;m&quot;&gt;2012&lt;/span&gt;
+   │   ├── 3com.rst
+   │   ├── ajax_triple_select.rst
+   │   ├── arch_book.rst
+   │   ├── boyan.rst
+   │   ├── cms_pyramid2.rst
+   │   ├── cms_pyramid.rst
+   │   ├── debian_bc.rst
+   │   ├── fortune.rst
+   │   ├── http_header_pyramid.rst
+   │   ├── jinja_pylons_i18n.rst
+   │   ├── jinja_pyramid_i18n.rst
+   │   ├── jinja_silent_none.rst
+   │   ├── lisp_book.rst
+   │   ├── lisp.rst
+   │   ├── matplotlib_numpy_and_virtualenv.rst
+   │   ├── osm_example.rst
+   │   ├── osm_geotagging.rst
+   │   ├── paramiko.rst
+   │   ├── penguin_troll.rst
+   │   ├── penguin_vs_leo.rst
+   │   ├── pg_book.rst
+   │   ├── proxmox.rst
+   │   ├── proxy_apt.rst
+   │   ├── pycrypto_virtualenv.rst
+   │   ├── pylons_console.rst
+   │   ├── pylons_csv.rst
+   │   ├── pylons_yapsy.rst
+   │   ├── pypi.rst
+   │   ├── pyramid_as_django.rst
+   │   ├── pyramid_blog.rst
+   │   ├── pyramid_formalchemy.rst
+   │   ├── python_labirint.rst
+   │   ├── python_snmp.rst
+   │   ├── pyyandexmap.rst
+   │   ├── qtile.rst
+   │   ├── redactor-js.rst
+   │   ├── rrd_faketime.rst
+   │   ├── rrdtool.rst
+   │   ├── sa_big_table.rst
+   │   ├── shared_net.rst
+   │   ├── sphinx_github.rst
+   │   ├── sran.rst
+   │   ├── vi_book.rst
+   │   └── x220t_buttons.rst
+   ├── &lt;span class=&quot;m&quot;&gt;2013&lt;/span&gt;
+   │   ├── car_differ.rst
+   │   ├── dbsession_includeme.rst
+   │   ├── flag_jinja2.rst
+   │   ├── hdaps_music.rst
+   │   ├── hstore_plpython.rst
+   │   ├── jinja2_lorem_ipsum.rst
+   │   ├── linux_attack.rst
+   │   ├── matrix.rst
+   │   ├── penguin.rst
+   │   ├── python_vim.rst
+   │   ├── reason_names_of.rst
+   │   ├── sacrud_alfa_0_1_0.rst
+   │   ├── sacrud_demo.rst
+   │   ├── sacrud_howto.rst
+   │   ├── sacrud_release_0_0_3.rst
+   │   ├── sacrud_release_0_1_0.rst
+   │   ├── sacrud.rst
+   │   ├── vi_book.rst
+   │   ├── vim_book.rst
+   │   ├── wat.rst
+   │   └── where_to_start.rst
+   ├── &lt;span class=&quot;m&quot;&gt;2014&lt;/span&gt;
+   │   ├── alembic_pyramid.rst
+   │   ├── chameleon_deform.rst
+   │   ├── ci.rst
+   │   ├── cornice.rst
+   │   ├── django-hyango.rst
+   │   ├── go.rst
+   │   ├── ia32-libs-multiarch:i386.rst
+   │   ├── king_penguin.rst
+   │   ├── man_month_book.rst
+   │   ├── panel_pyramid_dt.rst
+   │   ├── sacrud_release_0.1.1.rst
+   │   ├── sacrud_release_0.1.2.rst
+   │   ├── scrum.rst
+   │   ├── sphinx.rst
+   │   ├── sqlalchemy_mptt_0_0_5.rst
+   │   ├── sqlalchemy_mptt.rst
+   │   └── sqlite_to_pg.rst
+   └── &lt;span class=&quot;m&quot;&gt;2015&lt;/span&gt;
+       └── ablog.rst
+
+   &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; directories, &lt;span class=&quot;m&quot;&gt;111&lt;/span&gt; files
+
+Что бы файл &lt;span class=&quot;s&quot;&gt;``*.rst``&lt;/span&gt; стал статьей в нем должна находится директива &lt;span class=&quot;s&quot;&gt;``post``&lt;/span&gt;.
+Например:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; rst
+   &lt;span class=&quot;nc&quot;&gt;:caption:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;foo.rst&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;   ..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; 15 Apr, 2013
+      &lt;span class=&quot;nc&quot;&gt;:tags:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;tips, ablog, directive&lt;/span&gt;
+      &lt;span class=&quot;nc&quot;&gt;:category:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Example, How To&lt;/span&gt;
+      &lt;span class=&quot;nc&quot;&gt;:author:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Ahmet, Durden&lt;/span&gt;
+      &lt;span class=&quot;nc&quot;&gt;:location:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Pittsburgh, SF&lt;/span&gt;
+      &lt;span class=&quot;nc&quot;&gt;:redirect:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;blog/old-page-name-for-the-post&lt;/span&gt;
+      &lt;span class=&quot;nc&quot;&gt;:excerpt:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;2&lt;/span&gt;
+      &lt;span class=&quot;nc&quot;&gt;:image:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;1&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;seealso&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;
+
+   http://ablog.readthedocs.org/manual/posting-and-listing/#directive-post
+
+Пример кода этой статьи:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;literalinclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; /articles/2015/ablog.rst
+   &lt;span class=&quot;nc&quot;&gt;:language:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;rst&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:caption:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;articles/2015/ablog.rst&lt;/span&gt;
+
+&lt;span class=&quot;gh&quot;&gt;Тема&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;----&lt;/span&gt;
+
+Тема по умолчанию &lt;span class=&quot;s&quot;&gt;`Alabaster &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;&amp;lt;https://github.com/bitprophet/alabaster&amp;gt;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;`_&lt;/span&gt;, но
+можно поменять стандартными способами в &lt;span class=&quot;s&quot;&gt;``conf.py``&lt;/span&gt;:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;no-code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; python
+   &lt;span class=&quot;nc&quot;&gt;:caption:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;conf.py установка темы&lt;/span&gt;
+
+   import itcase_sphinx_theme
+
+&lt;span class=&quot;cp&quot;&gt;   ...&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;   # -- Options for HTML output ----------------------------------------------&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;   # The theme to use for HTML and HTML Help pages.  See the documentation for&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;   # a list of builtin themes.&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;   html_theme = &amp;#39;itcase&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;   # Theme options are theme-specific and customize the look and feel of a theme&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;   # further.  For a list of options available for each theme, see the&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;   # documentation.&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;   html_theme_options = {&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;       &amp;#39;github_button&amp;#39;: False,&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;   }&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;   # Add any paths that contain custom themes here, relative to this directory.&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;   html_theme_path = [itcase_sphinx_theme.get_html_themes_path()]&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;   # The name for this set of Sphinx documents.  If None, it defaults to&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;   # &amp;quot;&amp;lt;project&amp;gt; v&amp;lt;release&amp;gt; documentation&amp;quot;.&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;   html_title = &amp;quot;Ural penguins&amp;quot;&lt;/span&gt;
+
+Я использую &lt;span class=&quot;na&quot;&gt;:github:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`ITCase/itcase_sphinx_theme`&lt;/span&gt; с переопределенными шаблонами.
+Для этого нужно указать где искать шаблоны и в каком порядке:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; python
+   &lt;span class=&quot;nc&quot;&gt;:caption:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;conf.py указание пути по шаблонов темы&lt;/span&gt;
+
+   # Add any paths that contain templates here, relative to this directory.
+   templates_path = [&amp;#39;_templates&amp;#39;, ablog.get_html_templates_path()]
+
+Добавляем в папку &lt;span class=&quot;s&quot;&gt;``_templates``&lt;/span&gt; нашего проекта шаблон &lt;span class=&quot;s&quot;&gt;``layout.html``&lt;/span&gt;:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;literalinclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; /_templates/layout.html
+   &lt;span class=&quot;nc&quot;&gt;:language:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;html+jinja&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:caption:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_templates/layout.html&lt;/span&gt;
+
+&lt;span class=&quot;gh&quot;&gt;Комменты&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;--------&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;seealso&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;
+
+   http://ablog.readthedocs.org/manual/ablog-configuration-options/#disqus-integration
+
+DISQUS ставится просто:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; python
+   &lt;span class=&quot;nc&quot;&gt;:caption:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;настройки DISQUS&lt;/span&gt;
+
+   # -- disqus integration -------------------------------------------------------
+
+   # you can enable disqus_ by setting &lt;span class=&quot;s&quot;&gt;``disqus_shortname``&lt;/span&gt; variable.
+   # disqus_ short name for the blog.
+   disqus_shortname = &amp;quot;uralbash&amp;quot;
+
+Правда у меня завелось только после переопределения шаблона &lt;span class=&quot;s&quot;&gt;``page.html``&lt;/span&gt;:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;literalinclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; /_templates/page.html
+   &lt;span class=&quot;nc&quot;&gt;:language:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;html+jinja&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:caption:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_templates/page.html&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:emphasize-lines:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;37&lt;/span&gt;
+
+&lt;span class=&quot;gh&quot;&gt;Деплой&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;------&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;note&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;
+
+   http://ablog.readthedocs.org/manual/deploy-to-github-pages/
+
+&lt;span class=&quot;m&quot;&gt;#.&lt;/span&gt; Создать репу с именем &lt;span class=&quot;s&quot;&gt;``&amp;lt;username&amp;gt;.github.io``&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;#.&lt;/span&gt; Добавить имя в настройки, например:
+
+&lt;span class=&quot;p&quot;&gt;   ..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; python
+      &lt;span class=&quot;nc&quot;&gt;:caption:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;conf.py настройки github pages&lt;/span&gt;
+
+      github_pages = &amp;quot;uralbash&amp;quot;
+
+&lt;span class=&quot;m&quot;&gt;#.&lt;/span&gt; Сбилдить проект:
+
+&lt;span class=&quot;p&quot;&gt;   ..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; bash
+
+      $ ablog build
+
+&lt;span class=&quot;m&quot;&gt;#.&lt;/span&gt; Выложить на гитхаб:
+
+&lt;span class=&quot;p&quot;&gt;   ..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; bash
+
+      $ ablog deploy
+
+&lt;span class=&quot;gh&quot;&gt;Итог&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;----&lt;/span&gt;
+
+На мой взгляд лучшее решения для &lt;span class=&quot;s&quot;&gt;``reStructuredText``&lt;/span&gt; блога, местами сырой, но
+активно развивается.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id6&quot;&gt;
+&lt;h2&gt;Тема&lt;/h2&gt;
+&lt;p&gt;Тема по умолчанию &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/bitprophet/alabaster&quot;&gt;Alabaster&lt;/a&gt;, но
+можно поменять стандартными способами в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;conf.py&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id15&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;conf.py установка темы&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;itcase_sphinx_theme&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# -- Options for HTML output ----------------------------------------------&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# The theme to use for HTML and HTML Help pages.  See the documentation for&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# a list of builtin themes.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;html_theme&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;itcase&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Theme options are theme-specific and customize the look and feel of a theme&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# further.  For a list of options available for each theme, see the&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# documentation.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;html_theme_options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;github_button&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Add any paths that contain custom themes here, relative to this directory.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;html_theme_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;itcase_sphinx_theme&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_html_themes_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# The name for this set of Sphinx documents.  If None, it defaults to&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# &amp;quot;&amp;lt;project&amp;gt; v&amp;lt;release&amp;gt; documentation&amp;quot;.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;html_title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ural penguins&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Я использую &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/ITCase/itcase_sphinx_theme&quot;&gt;ITCase/itcase_sphinx_theme&lt;/a&gt; с переопределенными шаблонами.
+Для этого нужно указать где искать шаблоны и в каком порядке:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id16&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;conf.py указание пути по шаблонов темы&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Add any paths that contain templates here, relative to this directory.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;templates_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;_templates&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ablog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_html_templates_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Добавляем в папку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;_templates&lt;/span&gt;&lt;/code&gt; нашего проекта шаблон &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;layout.html&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id17&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;_templates/layout.html&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-html+jinja&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;base.html&amp;quot;&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;block&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;breadcrumbs&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;head&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;background-image: url(&amp;#39;/_static/bg.jpg&amp;#39;);&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;                  background-size: 100%;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;                  background-repeat: no-repeat;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;                  height: 200px&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;width:100%; height: 75%&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;padding-top:15px;padding-left:15px;font-size:60px&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;Ural penguins&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;        border-collapse: unset !important;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;        border-spacing: 1 !important;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;tr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;td&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;padding-right: 2px&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/pages/pyramid/index.html&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;background: white;width:100px;height:50px;line-height:50px;text-align:center;&amp;quot;&lt;/span&gt;
+                        &lt;span class=&quot;na&quot;&gt;onmouseover&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;this.style.background=&amp;#39;lightgrey&amp;#39;;&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;onmouseout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;this.style.background=&amp;#39;white&amp;#39;;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+                        Pyramid
+                    &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;/pages/nixos/index.html&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;background: white;width:100px;height:50px;line-height:50px;text-align:center;&amp;quot;&lt;/span&gt;
+                        &lt;span class=&quot;na&quot;&gt;onmouseover&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;this.style.background=&amp;#39;lightgrey&amp;#39;;&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;onmouseout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;this.style.background=&amp;#39;white&amp;#39;;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+                        NixOS
+                    &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;tr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;badge&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;width:100%;height:80px&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- uralbash.ru --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ins&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;adsbygoogle&amp;quot;&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;display:block&amp;quot;&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;data-ad-client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ca-pub-2884502571619359&amp;quot;&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;data-ad-slot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;9876011339&amp;quot;&lt;/span&gt;
+         &lt;span class=&quot;na&quot;&gt;data-ad-format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;auto&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;adsbygoogle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;adsbygoogle&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endblock&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;block&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;extrahead&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/css&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#545d5c&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;!important&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;page__left&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;menu&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;page__right&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#e7e7e7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;rst-content&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;footer&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;/* unvisited link */&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;postlist-style-none&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;link&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#222&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;text-decoration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;/* visited link */&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;postlist-style-none&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;visited&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#222&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;text-decoration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;/* mouse over link */&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;postlist-style-none&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;hover&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;hover&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#222&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;text-decoration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;postlist-style-none&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;active&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;active&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#222&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;text-decoration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;postlist-style-none&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;list-style-type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;postlist-style-none&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;red&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;!important&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;font&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.8&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;em&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Open Sans&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Arial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;sans-serif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;!important&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;first&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;em&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;font-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;normal&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;!important&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;wrapper__inner&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;!important&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;strike&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;text-decoration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;line-through&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endblock&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;block&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;footer&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://github.com/abakan/ablog&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme-link&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        Ablog powered.
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://uralbash.ru/blog/atom.xml&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme-link&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        RSS/Atom
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://uralbash.blogspot.com&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme-link&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        Старый блог
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endblock&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id7&quot;&gt;
+&lt;h2&gt;Комменты&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://ablog.readthedocs.org/manual/ablog-configuration-options/#disqus-integration&quot;&gt;http://ablog.readthedocs.org/manual/ablog-configuration-options/#disqus-integration&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;DISQUS ставится просто:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id18&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;настройки DISQUS&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# -- disqus integration -------------------------------------------------------&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# you can enable disqus_ by setting ``disqus_shortname`` variable.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# disqus_ short name for the blog.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;disqus_shortname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;uralbash&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Правда у меня завелось только после переопределения шаблона &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;page.html&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id19&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;_templates/page.html&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-html+jinja&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt;- &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;layout.html&amp;quot;&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;fa&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ablog.fontawesome&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt;- &lt;span class=&quot;k&quot;&gt;block&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;extrahead&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;atom_feed&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;alternate&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;application/atom+xml&amp;quot;&lt;/span&gt;  &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pathto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;feed_path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;/atom.xml&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ablog.blog_title&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ablog.fontawesome_link_cdn&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ablog.fontawesome_css_file&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;link&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;stylesheet&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pathto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;_static/&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ablog.fontawesome_css_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/css&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/css&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ablog-archive&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;list-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;overflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;margin-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ablog-archive&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;li&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;margin-right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;post-list-style-disc&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;list-style-type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;disc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;post-list-style-none&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;list-style-type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;}&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;post-list-style-circle&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;list-style-type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;circle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endblock&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;block&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;//yastatic.net/share/share.js&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;utf-8&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;tr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;yashare-auto-init&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-yashareL10n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ru&amp;quot;&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;data-yashareType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;medium&amp;quot;&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;data-yashareQuickServices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;vkontakte,facebook,twitter,odnoklassniki,moimir,gplus&amp;quot;&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;data-yashareTheme&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;counter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;my_postcard.html&amp;quot;&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;td&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;tr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;  &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;
+&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;section&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;pagename&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ablog&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;postnavy.html&amp;quot;&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+ &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt;- &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;internal_build&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pagename&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;index&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;{# {% if ablog.disqus_shortname and ablog.blog_baseurl and ((pagename in ablog and (ablog[pagename].published or ablog.disqus_drafts)) or (not pagename in ablog and ablog.disqus_pages)) %} #}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;section&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;br&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;//yastatic.net/share/share.js&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;utf-8&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;yashare-auto-init&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-yashareL10n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;ru&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-yashareType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;medium&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-yashareQuickServices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;vkontakte,facebook,twitter,odnoklassniki,moimir,gplus&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;data-yashareTheme&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;counter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;h2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;Comments&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;h2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;disqus_thread&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;cm&quot;&gt;/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;disqus_shortname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ablog.disqus_shortname&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// required: replace example with your forum shortname&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;disqus_identifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ablog.page_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pagename&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;disqus_title&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;{# var disqus_url = &amp;#39;{{ablog.page_url(pagename)}}&amp;#39;; #}&lt;/span&gt;
+        &lt;span class=&quot;cm&quot;&gt;/* * * DON&amp;#39;T EDIT BELOW THIS LINE * * */&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dsq&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;script&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dsq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;text/javascript&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dsq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;dsq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;//&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;disqus_shortname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;.disqus.com/embed.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementsByTagName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;head&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementsByTagName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;body&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dsq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;noscript&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;Please enable JavaScript to view the &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://disqus.com/?ref_noscript&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;comments powered by Disqus.&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;noscript&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;http://disqus.com&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;dsq-brlink&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;comments powered by &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;logo-disqus&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;Disqus&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;span&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endblock&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id8&quot;&gt;
+&lt;h2&gt;Деплой&lt;/h2&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://ablog.readthedocs.org/manual/deploy-to-github-pages/&quot;&gt;http://ablog.readthedocs.org/manual/deploy-to-github-pages/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Создать репу с именем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;username&amp;gt;.github.io&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Добавить имя в настройки, например:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id20&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;conf.py настройки github pages&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;github_pages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;uralbash&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Сбилдить проект:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ablog build
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Выложить на гитхаб:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ablog deploy
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id9&quot;&gt;
+&lt;h2&gt;Итог&lt;/h2&gt;
+&lt;p&gt;На мой взгляд лучшее решения для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;reStructuredText&lt;/span&gt;&lt;/code&gt; блога, местами сырой, но
+активно развивается.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/sphinx/atom.xml">
+    <title type="text">Документация python проекта на практике</title>
+    <id>http://uralbash.ru/articles/2014/sphinx/</id>
+    <updated>2014-09-22T15:15:00Z</updated>
+    <published>2014-09-22T15:15:00Z</published>
+    <link href="http://uralbash.ru/articles/2014/sphinx/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
+
+&lt;p&gt;Документация в &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt; проектах пишется при помощи &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sphinx&quot;&gt;sphinx&lt;/a&gt;, он умеет
+используя расширение &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;automodule&lt;/span&gt;&lt;/code&gt; читать докстринги и формировать
+документацию из кода.&lt;/p&gt;
+&lt;p&gt;Создать проект можно ответив на вопросы через &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sphinx-quickstart&lt;/span&gt;&lt;/code&gt; или
+использовать уже подготовленный шаблон который генерит дополнительно API
+пакета:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sphinx-apidoc -F -o docs sacrud
+
+Creating file docs/sacrud_deform.rst.
+Creating file docs/sacrud_deform.tests.rst.
+Creating file docs/conf.py.
+Creating file docs/index.rst.
+Creating file docs/Makefile.
+Creating file docs/make.bat.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Автогенератор API обычно создает много лишнего и далеко не идеально генерит
+названия, поэтому удалим API тестов и попереимеуем все остальное.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/sphinx.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sphinx.png&quot; /&gt;
+&lt;p&gt;Для сборки доков  нужно в папке docs выполнить make html. Ниже структура
+получившихся файлов:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
+├── _build
+│   ├── doctrees
+│   │   ├── environment.pickle
+│   │   ├── index.doctree
+│   │   ├── readme.doctree
+│   │   ├── sacrud_deform.doctree
+│   │   └── sacrud_deform.tests.doctree
+│   └── html
+│       ├── genindex.html
+│       ├── index.html
+│       ├── _modules
+│       │   ├── index.html
+│       │   ├── sacrud_deform
+│       │   │   ├── tests
+│       │   │   │   └── test_form.html
+│       │   │   └── widgets.html
+│       │   └── sacrud_deform.html
+│       ├── objects.inv
+│       ├── py-modindex.html
+│       ├── readme.html
+│       ├── sacrud_deform.html
+│       ├── sacrud_deform.tests.html
+│       ├── search.html
+│       ├── searchindex.js
+│       ├── _sources
+│       │   ├── index.txt
+│       │   ├── readme.txt
+│       │   ├── sacrud_deform.tests.txt
+│       │   └── sacrud_deform.txt
+│       └── _static
+│           ├── ajax-loader.gif
+│           ├── basic.css
+│           ├── comment-bright.png
+│           ├── comment-close.png
+│           ├── comment.png
+│           ├── default.css
+│           ├── doctools.js
+│           ├── down.png
+│           ├── down-pressed.png
+│           ├── file.png
+│           ├── jquery.js
+│           ├── minus.png
+│           ├── plus.png
+│           ├── pygments.css
+│           ├── searchtools.js
+│           ├── sidebar.js
+│           ├── underscore.js
+│           ├── up.png
+│           ├── up-pressed.png
+│           └── websupport.js
+├── conf.py
+├── index.rst
+├── make.bat
+├── Makefile
+├── readme.rst
+├── sacrud_deform.rst
+├── _static
+└── _templates
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В директории &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;build/html&lt;/span&gt;&lt;/code&gt; находится наша готовая документация в формате html.
+Добавим описание проекта на основную страницу. Для этого создаем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;readme.rst&lt;/span&gt;&lt;/code&gt;
+в директории &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;docs&lt;/span&gt;&lt;/code&gt; и включаем его в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;index.rst&lt;/span&gt;&lt;/code&gt;, а в дальнейшем этот же
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;readme.rst&lt;/span&gt;&lt;/code&gt; будет использоваться в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;README.rst&lt;/span&gt;&lt;/code&gt; в корне проекта для
+&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/&quot;&gt;PyPi&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;readme.rst&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-rst&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;|Build Status| |Coverage Status| |Stories in Progress| |PyPI|
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;|Build Status|&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; https://travis-ci.org/ITCase/sacrud_deform.svg?branch=master
+   &lt;span class=&quot;nc&quot;&gt;:target:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;https://travis-ci.org/ITCase/sacrud_deform&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;|Coverage Status|&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; https://coveralls.io/repos/ITCase/sacrud_deform/badge.png?branch=master
+   &lt;span class=&quot;nc&quot;&gt;:target:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;https://coveralls.io/r/ITCase/sacrud_deform?branch=master&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;|Stories in Progress|&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; https://badge.waffle.io/ITCase/sacrud_deform.png?label=in%20progress&amp;amp;title=In%20Progress
+   &lt;span class=&quot;nc&quot;&gt;:target:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;http://waffle.io/ITCase/sacrud_defrom&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;|PyPI|&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; http://img.shields.io/pypi/dm/sacrud_deform.svg
+   &lt;span class=&quot;nc&quot;&gt;:target:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;https://pypi.python.org/pypi/sacrud_deform/&lt;/span&gt;
+
+&lt;span class=&quot;gh&quot;&gt;sacrud_deform&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;==============&lt;/span&gt;
+
+Form generotor for SQLAlchemy models.
+
+&lt;span class=&quot;gh&quot;&gt;Install&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;=======&lt;/span&gt;
+
+develop version from source
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;bash&lt;/span&gt;
+
+  pip install git+git://github.com/ITCase/sacrud_deform@develop
+
+from pypi
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;bash&lt;/span&gt;
+
+  pip install sacrud_deform
+
+&lt;span class=&quot;gh&quot;&gt;Use&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;===&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;code-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;python&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;form_generator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dbsession&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DBSession&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                   &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;obj_of_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;MyModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                   &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columns_of_model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;js_list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Здесь вроде все понятно, но есть нюансы, если например в директиве &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;..&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;code-block&lt;/span&gt;&lt;/code&gt; не указать язык или не дописывать &amp;#8220;=&amp;#8221; в заголовках то документация
+будет нормально генериться, но &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/&quot;&gt;PyPi&lt;/a&gt; её не поймет и выведет что-то типа
+этого:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/sphinx2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sphinx2.png&quot; /&gt;
+&lt;p&gt;Нужно быть внимательным и проверять как &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/&quot;&gt;PyPi&lt;/a&gt; подхватил &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;README.rst&lt;/span&gt;&lt;/code&gt;.
+Дальше в наш &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;index.rst&lt;/span&gt;&lt;/code&gt; добавим &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;readme.rst&lt;/span&gt;&lt;/code&gt; что бы он был по презентабельнее.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id2&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;index.rst&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-rst&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;gh&quot;&gt;Welcome to sacrud_deform&amp;#39;s documentation!&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;=========================================&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; readme.rst
+
+Contents:
+
+&lt;span class=&quot;p&quot;&gt;..&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;toctree&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;:maxdepth:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;4&lt;/span&gt;
+
+   sacrud_deform
+
+
+&lt;span class=&quot;gh&quot;&gt;Indices and tables&lt;/span&gt;
+&lt;span class=&quot;gh&quot;&gt;==================&lt;/span&gt;
+
+&lt;span class=&quot;m&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:ref:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`genindex`&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:ref:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`modindex`&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:ref:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`search`&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь главная страница документации выглядит так:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/sphinx3.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sphinx3.png&quot; /&gt;
+&lt;p&gt;В принципе уже хорошо, добавим это описание ещё для &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/&quot;&gt;PyPi&lt;/a&gt;.
+Они по умолчанию берут файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;README.rst&lt;/span&gt;&lt;/code&gt; из корня проекта и ничего про папку
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;docs&lt;/span&gt;&lt;/code&gt; не знают. Можно было бы заинклудить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;readme.rst&lt;/span&gt;&lt;/code&gt; в корневой
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;README.rst&lt;/span&gt;&lt;/code&gt; (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;..include::&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;docs/readme.rst&lt;/span&gt;&lt;/code&gt;), но &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/&quot;&gt;PyPi&lt;/a&gt;
+инклуды не понимают, поэтому придется писать свой велосипед для копирования.
+Либо тупо делать это вручную. Я написал на коленке простой скрипт который это
+делает и заменяет директивы &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;include&lt;/span&gt;&lt;/code&gt; содержанием их файлов.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id3&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;make_README.py&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;fileinput&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;shutil&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;copyfile&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;readme.rst&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;src_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;realpath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;dst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;../README.rst&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;copyfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;read_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fileinput&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;splitted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rstrip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;.. include:: &amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;splitted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;read_file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;src_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;splitted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rstrip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь если запустить из папки &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;docs&lt;/span&gt;&lt;/code&gt; команду &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;make_README.py&lt;/span&gt;&lt;/code&gt;, то в
+корне проекта появится или перезапишется файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;README.rst&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Что бы это делалось автоматически при каждой сборке документации добавим в
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Makefile&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;...
+
+readme:
+ python make_README.py
+
+readme_html: html readme
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;При вызове &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;make&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;readme_html&lt;/span&gt;&lt;/code&gt; у нас будет собираться документация html и
+копипаститься &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;readme&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Конфиг для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sphinx&lt;/span&gt;&lt;/code&gt; лежит в папке документации с названием &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;conf.py&lt;/span&gt;&lt;/code&gt;. В нем
+можно настраивать документацию как угодно, к примеру оформим тему как у проекта
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Добавим в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;conf.py&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id4&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;conf.py&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Add and use Pylons theme&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;sphinx-build&amp;#39;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# protect against dumb importers&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Popen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PIPE&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Popen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;which git&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PIPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stdout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;cwd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getcwd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_themes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cwd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;_themes&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_themes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;clone&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;git://github.com/Pylons/pylons_sphinx_theme.git&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;s1&quot;&gt;&amp;#39;_themes&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_themes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;checkout&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;master&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;pull&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cwd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abspath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;_themes&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;vm&quot;&gt;__file__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;abspath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;wd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getcwd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;listdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endswith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;.egg&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Этот код я скопировал из проекта &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;, он просто выкачивает их тему с
+&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt; в директорию &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;_themes&lt;/span&gt;&lt;/code&gt;. Далее укажем в конфиге название темы и где их искать.&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# -- Options for HTML output ----------------------------------------------&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# The theme to use for HTML and HTML Help pages.  See the documentation for&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# a list of builtin themes.&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;html_theme&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;pyramid&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Add any paths that contain custom themes here, relative to this directory.&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;html_theme_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;_themes&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После сборки проект будет выглядеть так:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/sphinx4.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sphinx4.png&quot; /&gt;
+&lt;p&gt;Вообщем конфиг умеет много чего, есть еще много разных расширений, можно писать
+свои, либо переопределять/добавлять директивы итд. Вот например как вставлять
+ссылки на сторонние проекты:&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Add any Sphinx extension module names here, as strings. They can be&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# extensions coming with Sphinx (named &amp;#39;sphinx.ext.*&amp;#39;) or your custom&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# ones.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;extensions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;sphinx.ext.intersphinx&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;intersphinx_mapping&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&amp;#39;sacrud&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;http://sacrud.readthedocs.org/en/latest/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь можно писать так:&lt;/p&gt;
+&lt;div class=&quot;highlight-rst&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Use &lt;span class=&quot;na&quot;&gt;:py:class:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;`sacrud.common.TableProperty`&lt;/span&gt; decorator.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;И наверно последний этап это добавление документации на readthedocs. Сложностей
+там особо нету, регаешься, добавляешь гитхаб профиль, синхронизируешь репы и
+выбираешь нужные. Хук на коммиты в таком случае вешается автоматически,
+единственное что нужно отметить что если в документации используется automodule
+нужно ставить галку virtualenv (в настройках readthedocs) иначе он просто будет
+пустым.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/sphinx5.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sphinx5.png&quot; /&gt;
+&lt;p&gt;Готовый пример можно посмотреть здесь
+&lt;a class=&quot;reference external&quot; href=&quot;http://sacrud-deform.readthedocs.org/en/develop/&quot;&gt;http://sacrud-deform.readthedocs.org/en/develop/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/sphinx/atom.xml">
+    <title type="text">Хостим документацию Sphinx на github</title>
+    <id>http://uralbash.ru/articles/2012/sphinx_github/</id>
+    <updated>2012-04-12T18:55:00Z</updated>
+    <published>2012-04-12T18:55:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/sphinx_github/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;sphinx-github&quot;&gt;
+
+&lt;p&gt;Немного допиленная версия этого
+&lt;a class=&quot;reference external&quot; href=&quot;http://djangonaut.blogspot.com/2009/05/sphinx-documentation-github-pages-3.html&quot;&gt;http://djangonaut.blogspot.com/2009/05/sphinx-documentation-github-pages-3.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;По порядку:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;создать репозитарий на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;добавить туда свой локальный репозитарий с проектом &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Sphinx&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;захостить репозитарий через сервис &lt;a class=&quot;reference external&quot; href=&quot;https://pages.github.com/&quot;&gt;Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;поправить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Makefile&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Sphinx&lt;/span&gt;&lt;/code&gt; проекте&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;highlight-make&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;docs_dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; doc
+&lt;span class=&quot;nf&quot;&gt;ghdocs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+ rm -rf &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docs_dir&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;MAKE&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; clean
+ &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;MAKE&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; html
+ cp -r build/html &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docs_dir&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+ mv &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docs_dir&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/_static &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docs_dir&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/static
+ mv &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docs_dir&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/_sources &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docs_dir&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/sources
+ perl -pi -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;s/_sources/sources/g;&amp;quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docs_dir&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/*.html
+ perl -pi -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;s/_static/static/g;&amp;quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docs_dir&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/*.html
+ git add .
+ git commit -a -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;Updates &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;project&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.&amp;quot;&lt;/span&gt;
+ git checkout gh-pages
+ cp -rf &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docs_dir&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;/* .
+ git add .
+ git commit -a -m &lt;span class=&quot;s1&quot;&gt;&amp;#39;Updates $(project) documentation.&amp;#39;&lt;/span&gt;
+ git checkout master
+ rm -rf &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docs_dir&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+ git push origin gh-pages
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь при запуске &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;make&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;ghdocs&lt;/span&gt;&lt;/code&gt; будет автоматом генерироваться новая
+документация и пушаться на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Пример здесь &lt;a class=&quot;reference external&quot; href=&quot;http://uralbash.github.com/python-web-lectures/&quot;&gt;http://uralbash.github.com/python-web-lectures/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Для автоматической замены директорий &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;_static&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;_sources&lt;/span&gt;&lt;/code&gt;, можно
+установить модуль &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sphinxtogithub&quot;&gt;sphinxtogithub&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install sphinxtogithub
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;И добавить в проекте в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;config.py&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;config.py&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extensions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;sphinxtogithub&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В этом случае нужно закомментировать в скрипте строчки:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;mv&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;$(docs_dir)/_static&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;$(docs_dir)/static&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;и&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;mv&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;$(docs_dir)/_sources&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;$(docs_dir)/sources&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Это необходимо делать потому-что &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt; не понимает директории начинающиеся
+с подчеркивания.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

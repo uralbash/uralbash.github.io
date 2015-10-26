@@ -1,0 +1,44 @@
+.. post:: 05 Jun, 2016 23:45
+   :tags: Linux, centos, C++
+   :category: C++
+   :author: Uralbash
+   :language: ru
+
+gcc для C++11 из реп в CentOS6
+==============================
+
+C++11 в :man:`gcc` появился, начиная с версии 4.7, но в CentOS6 естественно
+более старая версия без С++11. Как вариант, можно собрать из исходников, но я
+опишу способ установки из дополнительных реп.
+
+.. seealso::
+
+    https://gcc.gnu.org/projects/cxx-status.html#cxx11
+
+Добавляем репу:
+
+.. code-block:: bash
+
+   $ sudo yum install centos-release-scl
+
+Устанавливаем ``devtoolset-3-toolchain``, который включает в себя :man:`gcc`,
+:man:`gdb`, :man:`binutils`, :man:`elfutils`, :man:`dwz`, :man:`memstomp`,
+:man:`strace`, :man:`ltrace`:
+
+.. code-block:: bash
+
+    $ sudo yum install devtoolset-3-toolchain
+
+Прописываем :man:`gcc` в окружение пользователя:
+
+.. code-block:: bash
+
+   $ scl enable devtoolset-3 bash
+
+   или
+
+.. code-block:: bash
+
+   $ echo "source /opt/rh/devtoolset-3/enable" >> ~/.bashrc
+
+Профит!

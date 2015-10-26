@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом pylons</title>
+  <id>http://uralbash.ru/blog/tag/pylons/atom.xml</id>
+  <updated>2012-02-10T12:32:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/pylons/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/pylons/atom.xml">
+    <title type="text">Скрипты работающие в окружении проекта на Pylons</title>
+    <id>http://uralbash.ru/articles/2012/pylons_console/</id>
+    <updated>2012-02-10T12:32:00Z</updated>
+    <published>2012-02-10T12:32:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/pylons_console/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;pylons&quot;&gt;
+
+&lt;p&gt;Иногда необходимо написать скрипт который выполняется из консоли и использует
+окружение проекта на Pylons. Копипастю простой пример с &lt;a class=&quot;reference external&quot; href=&quot;http://pylonshq.com/snippets/running_commands_with_the_app_environment&quot;&gt;pylonshq&lt;/a&gt;.
+Так-как там есть привычка периодически удалять информацию.&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;optparse&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pylons&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;paste.deploy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;appconfig&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;YOURAPP.config.environment&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_environment&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vm&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;option_parser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;optparse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OptionParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;option_parser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;--ini&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;INI file to use for pylons settings&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;str&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;development.ini&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;option_parser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Initialize the Pylons app&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;appconfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;config:&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ini&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;relative_to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;load_environment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;global_conf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;local_conf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# Now code can be run, the SQLalchemy Session can be used, etc.&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;....&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/pylons/atom.xml">
+    <title type="text">Как поднять demo версию проекта на paster + virtualenv в Debian</title>
+    <id>http://uralbash.ru/articles/2011/demo/</id>
+    <updated>2011-12-19T11:48:00Z</updated>
+    <published>2011-12-19T11:48:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/demo/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;demo-paster-virtualenv-debian&quot;&gt;
+
+&lt;p&gt;Иногда необходимо поднять демо версию своего проекта для тестов. Склонируем
+наш &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;git&lt;/span&gt;&lt;/code&gt; проект на сервер где будет демо:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone --bare ~/myproject ssh://uralbash@myserver/~/my_project.git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Проект склонируется в домашнюю директорию сервера &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;myserver&lt;/span&gt;&lt;/code&gt;. Ключ &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--bare&lt;/span&gt;&lt;/code&gt;
+означает что клон предназначен только для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;push&lt;/span&gt;&lt;/code&gt; или &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pull&lt;/span&gt;&lt;/code&gt; т.е. все
+коммиты мы будем делать у себя локально а потом пушить на сервак. Далее напишем
+скрипт который будет из нашего bare репозитария создавать проект для запуска демки:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rm -r /home/uralbash/my_project
+$ git clone /home/uralbash/my_project.git /home/uralbash/my_project
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После этого создаем &lt;a class=&quot;reference external&quot; href=&quot;https://virtualenv.pypa.io/en/latest&quot;&gt;virtualenv&lt;/a&gt; окружение (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/home/uralbash/mypythonenv/&lt;/span&gt;&lt;/code&gt;)
+и добавляем скрипт запуска в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/etc/init.d/my_project.sh&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#! /bin/sh&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;### BEGIN INIT INFO&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Required-Start:    $all&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Default-Start:     2 3 4 5&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Default-Stop:      0 1 6&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Short-Description: starts the paster server&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Description:       starts paster&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;### END INIT INFO&lt;/span&gt;
+
+
+&lt;span class=&quot;nv&quot;&gt;PROJECT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/uralbash/my_project
+&lt;span class=&quot;nv&quot;&gt;PID_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/var/run/my_project/
+&lt;span class=&quot;nv&quot;&gt;PID_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/var/run/my_project/paster.pid
+&lt;span class=&quot;nv&quot;&gt;LOG_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/uralbash/logs/my_project/paster.log
+&lt;span class=&quot;nv&quot;&gt;USER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;root
+&lt;span class=&quot;nv&quot;&gt;GROUP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;root
+&lt;span class=&quot;nv&quot;&gt;PROD_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/uralbash/demo.ini
+&lt;span class=&quot;nv&quot;&gt;RET_VAL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PROJECT&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; in
+start&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+../mypythonenv/bin/paster  serve &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--daemon &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--pid-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--log-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--user&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--group&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$GROUP&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$PROD_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+start
+
+&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+stop&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+../mypythonenv/bin/paster  serve &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--daemon &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--pid-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--log-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--user&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--group&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$GROUP&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$PROD_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+stop
+
+&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+restart&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+../mypythonenv/bin/paster  serve &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--daemon &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--pid-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--log-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--user&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--group&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$GROUP&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$PROD_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+restart
+
+
+&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+*&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; $&lt;span class=&quot;s2&quot;&gt;&amp;quot;Usage: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; {start|stop|restart}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Для того что бы не хранить пароли в репозитарии файл с настройками вынесен
+отдельно &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/home/uralbash/demo.ini&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;И добавляем в крон перезапуск:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# выполнять каждый четный час в 00 мин&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; */2 * * *       /etc/init.d/my_project.sh stop &amp;gt; /dev/null
+&lt;span class=&quot;c1&quot;&gt;# выполнять каждый четный час в 01 мин&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; */2 * * *       /etc/init.d/my_project.sh start &amp;gt; /dev/null
+&lt;span class=&quot;c1&quot;&gt;# выполнять в 9:00&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;9&lt;/span&gt; * * *       /home/uralbash/demo_update.sh &amp;gt; /dev/null
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После этого каждый день в 9:00 будет обновляться код и каждые 2 часа
+перезапускаться сервер (на случай если он полег по какойто причине). Останется
+только периодически отправлять коммиты.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

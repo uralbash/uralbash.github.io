@@ -1,0 +1,228 @@
+.. post:: 10 Aug, 2017 19:50
+   :tags: C++, mingw, Windows, protobuf
+   :category: C++
+   :author: Uralbash
+   :language: ru
+
+##############################
+Сборка libprotobuf под Windows
+##############################
+
+Сборка сей библиотеки из исходников под Windows не такая уж простая задача, как
+может показаться на первый взгляд. Ее можно осуществлять при помощи Visual
+Studio (cl.exe) или компилятора mingw.
+
+.. seealso::
+
+    `Protobuf <https://developers.google.com/protocol-buffers/>`_
+
+
+Вариант с mingw мне показался более родной и простой, поэтому начнем с установки MSYS2.
+
+.. note::
+
+    Скачать MSYS2 можно по адресу http://msys2.org
+
+После установки в открывшейся консоле устанавливаем все необходимое. Protobuf
+из пакетов нужен потому, что при сборке из исходных кодов будет использоваться
+утилита ``protoc.exe``.
+
+.. code-block:: bash
+
+    $ pacman -S vim binutils base-devel unzip
+    $ pacman -S mingw-w64-i686-toolchain mingw-w64-i686-protobuf
+
+Пропишем компилятор в окружение и симлинк на ``protoc.exe``.
+
+.. code-block:: bash
+
+    $ PATH=/mingw32/bin/:$PATH
+    $ ln -s /mingw32/bin/protoc.exe /usr/bin/protoc.exe
+
+Готовый пакет для pacman'а позаимствуем у ArchLinux из AUR
+(https://aur.archlinux.org/packages/mingw-w64-protobuf/).
+
+.. code-block:: bash
+
+    $ wget https://aur.archlinux.org/cgit/aur.git/snapshot/mingw-w64-protobuf.tar.gz
+    $ tar -zxf mingw-w64-protobuf.tar.gz
+    $ cd mingw-w64-protobuf
+    $ vim PKGBUILD
+
+Закомментим зависимости из файла сборки PKGBUILD и переименуем
+``${_arch}-strip`` в ``strip``.
+
+.. code-block:: bash
+    :caption: PKGBUILD
+    :emphasize-lines: 11-12, 35-36
+
+    # Contributor: Benoit Favre <benoit.favre@gmail.com>
+
+    pkgname=('mingw-w64-protobuf')
+    _pkgname=protobuf
+    pkgver=3.3.1
+    pkgrel=1
+    pkgdesc="Protocol Buffers - Google's data interchange format (mingw-w64)"
+    arch=('any')
+    url='https://developers.google.com/protocol-buffers/'
+    license=('BSD')
+    #depends=('mingw-w64-crt' 'mingw-w64-zlib')
+    #makedepends=('mingw-w64-configure' 'protobuf')
+    options=(!strip !buildflags staticlibs)
+    source=("https://github.com/google/protobuf/archive/v${pkgver}.tar.gz")
+    md5sums=('20c685147753b515ce380421442044b5')
+
+    _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+    build() {
+      cd ${srcdir}/${_pkgname}-${pkgver}
+      ./autogen.sh
+      for _arch in ${_architectures}; do
+        mkdir -p build-${_arch} && pushd build-${_arch}
+        ${_arch}-configure --with-protoc=/usr/bin/protoc ..
+        make
+        popd
+      done
+    }
+
+    package() {
+      for _arch in ${_architectures}; do
+        cd "${srcdir}"/${_pkgname}-${pkgver}/build-${_arch}
+        make DESTDIR="$pkgdir" install
+        rm "${pkgdir}"/usr/${_arch}/bin/*.exe
+        strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
+        strip -g "$pkgdir"/usr/${_arch}/lib/*.a
+      done
+    }
+
+Собираем пакет утилитой `makepkg <https://www.archlinux.org/pacman/makepkg.8.html>`_.
+
+.. code-block:: bash
+
+    $ CARCH=i686 makepkg -Acs
+    ==> Сборка пакета mingw-w64-protobuf 3.3.1-1 (10 авг 2017 г. 19:03:34)
+    ==> Проверка зависимостей для запуска...
+    ==> Проверка зависимостей для сборки...
+    ==> Получение исходных файлов...
+      -> Найден v3.3.1.tar.gz
+    ==> Проверка файлов source с использованием md5sums...
+        v3.3.1.tar.gz ... Готово
+    ==> Распаковка исходных файлов...
+      -> Распаковка 'v3.3.1.tar.gz' с помощью bsdtar
+    ==> Удаление директории '$pkgdir/'...
+    ==> Запускается build()...
+    Google Mock not present.  Fetching gmock-1.7.0 from the web...
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100   129    0   129    0     0    153      0 --:--:-- --:--:-- --:--:--   163
+    100  362k  100  362k    0     0   160k      0  0:00:02  0:00:02 --:--:--  603k
+      % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                     Dload  Upload   Total   Spent    Left  Speed
+    100   129    0   129    0     0    145      0 --:--:-- --:--:-- --:--:--   145
+    100  618k  100  618k    0     0   195k      0  0:00:03  0:00:03 --:--:--  355k
+    + autoreconf -f -i -Wall,no-obsolete
+    libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'build-aux'.
+    libtoolize: copying file 'build-aux/ltmain.sh'
+    libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+    libtoolize: copying file 'm4/libtool.m4'
+    libtoolize: copying file 'm4/ltoptions.m4'
+    libtoolize: copying file 'm4/ltsugar.m4'
+    libtoolize: copying file 'm4/ltversion.m4'
+    libtoolize: copying file 'm4/lt~obsolete.m4'
+    configure.ac:27: installing 'build-aux/compile'
+    configure.ac:30: installing 'build-aux/config.guess'
+    configure.ac:30: installing 'build-aux/config.sub'
+    configure.ac:24: installing 'build-aux/install-sh'
+    configure.ac:24: installing 'build-aux/missing'
+    Makefile.am: installing 'build-aux/depcomp'
+    parallel-tests: installing 'build-aux/test-driver'
+    libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'build-aux'.
+    libtoolize: copying file 'build-aux/ltmain.sh'
+    libtoolize: Consider adding 'AC_CONFIG_MACRO_DIRS([m4])' to configure.ac,
+    libtoolize: and rerunning libtoolize and aclocal.
+    libtoolize: Consider adding '-I m4' to ACLOCAL_AMFLAGS in Makefile.am.
+    configure.ac:22: installing 'build-aux/compile'
+    configure.ac:25: installing 'build-aux/config.guess'
+    configure.ac:25: installing 'build-aux/config.sub'
+    configure.ac:19: installing 'build-aux/install-sh'
+    configure.ac:19: installing 'build-aux/missing'
+    Makefile.am: installing 'build-aux/depcomp'
+    parallel-tests: installing 'build-aux/test-driver'
+    libtoolize: putting auxiliary files in '.'.
+    libtoolize: copying file './ltmain.sh'
+    libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+    libtoolize: copying file 'm4/libtool.m4'
+    libtoolize: copying file 'm4/ltoptions.m4'
+    libtoolize: copying file 'm4/ltsugar.m4'
+    libtoolize: copying file 'm4/ltversion.m4'
+    libtoolize: copying file 'm4/lt~obsolete.m4'
+    configure.ac:66: installing './ar-lib'
+    configure.ac:61: installing './compile'
+    configure.ac:46: installing './config.guess'
+    configure.ac:46: installing './config.sub'
+    configure.ac:48: installing './install-sh'
+    configure.ac:48: installing './missing'
+    benchmarks/Makefile.am: installing './depcomp'
+    parallel-tests: installing './test-driver'
+    + rm -rf autom4te.cache config.h.in~
+    + exit 0
+    ~/mingw-w64-protobuf/src/protobuf-3.3.1/build-i686-w64-mingw32 ~/mingw-w64-protobuf/src/protobuf-3.3.1
+    /home/user/mingw-w64-protobuf/PKGBUILD: line 24: i686-w64-mingw32-configure: команда не найдена
+    ==> ОШИБКА: Произошел сбой в build().
+        Прерывание...
+
+Для сборки требуется скрипт ``configure`` как его поставить в MinGW из оф. реп
+я не знаю, поэтому ставим по тому же принципу из исходников (https://aur.archlinux.org/packages/mingw-w64-configure/).
+
+Перед сборкой также важно закомментировать зависимости:
+
+.. code-block:: bash
+    :caption: PKGBUILD
+
+    pkgname=mingw-w64-configure
+    pkgver=0.1
+    pkgrel=1
+    arch=(any)
+    pkgdesc="configure wrapper for MinGW (mingw-w64)"
+    #depends=('mingw-w64-gcc' 'mingw-w64-pkg-config')
+    license=("GPL")
+    url="http://fedoraproject.org/wiki/MinGW"
+    source=("mingw-configure.sh")
+    md5sums=('SKIP')
+
+    _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+    build() {
+      for _arch in ${_architectures}; do
+        sed "s|@TRIPLE@|${_arch}|g" mingw-configure.sh > ${_arch}-configure
+      done
+    }
+
+    package() {
+      install -d "${pkgdir}"/usr/bin
+      for _arch in ${_architectures}; do
+        install -m 755 ${_arch}-configure "${pkgdir}"/usr/bin/
+      done
+    }
+
+Сборка ``configure``:
+
+.. code-block:: bash
+
+    $ cd ../
+    $ wget https://aur.archlinux.org/cgit/aur.git/snapshot/mingw-w64-configure.tar.gz
+    $ tar -zxf mingw-w64-configure.tar.gz
+    $ cd mingw-w64-configure/
+    $ CARCH=i686 makepkg -Acs
+    $ pacman -U mingw-w64-configure-0.1-1-any.pkg.tar.xz
+
+Теперь все готово для сборки Protobuf:
+
+.. code-block:: bash
+
+    $ cd ../mingw-w64-protobuf/
+    $ CARCH=i686 makepkg -Acs
+
+В результате получим архив с dll-ками и заголовочными файлами. Вот так просто и
+лаконично, хотя лучше поставить ArchLinux в виртуалку и собрать там тоже самое
+без лишних хлопот.

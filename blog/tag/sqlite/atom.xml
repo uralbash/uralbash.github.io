@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом sqlite</title>
+  <id>http://uralbash.ru/blog/tag/sqlite/atom.xml</id>
+  <updated>2014-03-15T17:53:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/sqlite/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/sqlite/atom.xml">
+    <title type="text">Перенос БД с sqlite на postgres</title>
+    <id>http://uralbash.ru/articles/2014/sqlite_to_pg/</id>
+    <updated>2014-03-15T17:53:00Z</updated>
+    <published>2014-03-15T17:53:00Z</published>
+    <link href="http://uralbash.ru/articles/2014/sqlite_to_pg/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;sqlite-postgres&quot;&gt;
+
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ORM&lt;/span&gt;&lt;/code&gt; позволяет быстро переключатся между БД не учитывая их диалект
+(практически).  Но данные хранятся физически в разных местах и естественно их
+надо переносить, например при переключении с &lt;a class=&quot;reference external&quot; href=&quot;http://sqlite.org/&quot;&gt;sqlite&lt;/a&gt; на &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;PostgreSQL&lt;/a&gt;. В
+&lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; есть встроенный функционал в виде:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Выгрузка в JSON&lt;/span&gt;
+$ python manage.py dumpdata myapp.A &amp;gt; a.json
+
+&lt;span class=&quot;c1&quot;&gt;# Загрузка из JSON&lt;/span&gt;
+$ python manage.py loaddata a.json
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Т.е. мы выгружаем данные из &lt;a class=&quot;reference external&quot; href=&quot;http://sqlite.org/&quot;&gt;sqlite&lt;/a&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;JSON&lt;/span&gt;&lt;/code&gt; формат, затем меняем строку
+подключения на &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;postgres&lt;/a&gt; и выполняем загрузку из &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;JSON&lt;/span&gt;&lt;/code&gt;. Очень удобно, но
+почему то этот метод не работает, либо работает только при переносе из &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sqlite&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;sqlite&lt;/span&gt;&lt;/code&gt;, что в принципе не очень интересно, точнее бессмысленно. Есть какие
+то решений с бубном как это вот:&lt;/p&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://macrotoma.blogspot.ru/2012/10/solved-move-django-from-sqlite-to-mysql.html&quot;&gt;http://macrotoma.blogspot.ru/2012/10/solved-move-django-from-sqlite-to-mysql.html&lt;/a&gt;,&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://blog.abourget.net/2009/7/7/exporting-sql-schemas-from-sqlalchemy-table-definitions/&quot;&gt;http://blog.abourget.net/2009/7/7/exporting-sql-schemas-from-sqlalchemy-table-definitions/&lt;/a&gt;.&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Эти методы не универсальны, потому что имеют привязку к моделям (ORM), требуют
+для переноса проект на &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; и ручные действия вроде создания схемы и
+выполнения миграций (далеко не всегда миграции созданы правильно).&lt;/p&gt;
+&lt;p&gt;Я написал небольшой пример как можно перевести данные не имея фреймворков, не
+привязываясь к моделям, указав только две строки подключения откуда переносить
+и куда (вроде было что то похожее на руби). За основы взят пример из этой статьи
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.tylerlesmann.com/2009/apr/27/copying-databases-across-platforms-sqlalchemy/&quot;&gt;http://www.tylerlesmann.com/2009/apr/27/copying-databases-across-platforms-sqlalchemy/&lt;/a&gt;.
+Где предлагается указать дополнительно названия таблиц.&lt;/p&gt;
+&lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;http://sqlalchemy.org/&quot;&gt;sqlalchemy&lt;/a&gt; с весии 9.1 появилась встроенная возможность автоматического
+определения схемы БД
+&lt;a class=&quot;reference external&quot; href=&quot;http://docs.sqlalchemy.org/en/rel_0_9/orm/extensions/automap.html&quot;&gt;http://docs.sqlalchemy.org/en/rel_0_9/orm/extensions/automap.html&lt;/a&gt;. Правда
+намного раньше появились сторонние решения:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://turbogears.org/2.1/docs/main/Utilities/sqlautocode.html&quot;&gt;http://turbogears.org/2.1/docs/main/Utilities/sqlautocode.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://sqlsoup.readthedocs.org/en/latest/&quot;&gt;https://sqlsoup.readthedocs.org/en/latest/&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Первое что мы сделаем, это получим схему БД:&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sqlalchemy.ext.automap&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;automap_base&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_metadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;# produce our own MetaData object&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;metadata&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MetaData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# we can reflect it ourselves from a database, using options&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;# such as &amp;#39;only&amp;#39; to limit what tables we look at...&lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;# only = [&amp;#39;news_news&amp;#39;, &amp;#39;pages_page&amp;#39;]&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;only&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reflect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;only&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;only&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reflect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# we can then produce a set of mappings from this MetaData.&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Base&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;automap_base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;# calling prepare() just sets up mapped classes and relationships.&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prepare&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Base&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Дальше получаем все таблицы:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;tables&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Base.classes&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Создаем такую же структуру БД в &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;postgres&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;metadata.create_all(self.engine_dst)&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;По очереди проходим каждую таблицу и переносим из нее данные в новую БД:&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tables&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__table__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Transferring records to &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__table__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;record&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;getattr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;record&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;column&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;NewRecord&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;quick_mapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__table__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session_dst&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewRecord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;session_dst&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Если возникли конфликты можно их решить переопределением типов полей. Например
+при переносе из &lt;a class=&quot;reference external&quot; href=&quot;http://sqlite.org/&quot;&gt;sqlite&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;postgres&lt;/a&gt; тип полей &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DATETIME&lt;/span&gt;&lt;/code&gt; нужно
+заменить на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DateTime&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dialect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dialect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;dialect_dst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;engine_dst&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dialect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dialect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dialect_dst&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tables&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__table__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;column&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dialect_dst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;postgresql&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;# DATETIME-&amp;gt;DateTime&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isinstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DATETIME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DateTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Пример запуска:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ python convertdbdata.py -f &lt;span class=&quot;s2&quot;&gt;&amp;quot;sqlite:///fromMydb.sqlite&amp;quot;&lt;/span&gt; -t &lt;span class=&quot;s2&quot;&gt;&amp;quot;postgresql://postgres:postgres@localhost/toMydb&amp;quot;&lt;/span&gt; -i &lt;span class=&quot;s2&quot;&gt;&amp;quot;auth_user,news_news&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;-i&lt;/span&gt;&lt;/code&gt; параметр указывает какие таблицы нужно запускать первыми, например в такой ситуации:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;DETAIL:  Ключ &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;user_id&lt;span class=&quot;o&quot;&gt;)=(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; отсутствует в таблице &lt;span class=&quot;s2&quot;&gt;&amp;quot;auth_user&amp;quot;&lt;/span&gt;.
+ &lt;span class=&quot;s1&quot;&gt;&amp;#39;INSERT INTO django_admin_log (id, action_time, user_id, content_type_id, object_id, object_repr, action_flag,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt; change_message) VALUES (%(id)s, %(action_time)s, %(user_id)s, %(content_type_id)s, %(object_id)s, %(object_repr)s,&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt; %(action_flag)s, %(change_message)s)&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;action_flag&amp;#39;&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&amp;#39;action_time&amp;#39;&lt;/span&gt;: datetime.datetime&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2014&lt;/span&gt;, &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;, &lt;span class=&quot;m&quot;&gt;15&lt;/span&gt;, &lt;span class=&quot;m&quot;&gt;27&lt;/span&gt;, &lt;span class=&quot;m&quot;&gt;948000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;,
+ &lt;span class=&quot;s1&quot;&gt;&amp;#39;user_id&amp;#39;&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&amp;#39;content_type_id&amp;#39;&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;39&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&amp;#39;object_repr&amp;#39;&lt;/span&gt;: u&lt;span class=&quot;s1&quot;&gt;&amp;#39;dfgsdfg&amp;#39;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&amp;#39;object_id&amp;#39;&lt;/span&gt;: u&lt;span class=&quot;s1&quot;&gt;&amp;#39;1&amp;#39;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&amp;#39;change_message&amp;#39;&lt;/span&gt;: u&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&amp;#39;id&amp;#39;&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Код полностью &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/ITCase/convertdbdata&quot;&gt;https://github.com/ITCase/convertdbdata&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Сейчас скрипт не рассчитан на большие объемы данных и учитывает только разницу
+в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DateTime&lt;/span&gt;&lt;/code&gt; поле, но думаю это легко исправить по мере поступления задач.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

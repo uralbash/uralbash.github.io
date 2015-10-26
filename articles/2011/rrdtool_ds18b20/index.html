@@ -1,0 +1,598 @@
+
+
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Python + Tornado + RRDTool: температура на улице и в серверной &mdash; Ural penguins</title>
+    
+
+    
+        <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    
+
+    
+        
+    
+            <link rel="index" title="Алфавитный указатель" href="../../../genindex/"/>
+            <link rel="search" title="Поиск" href="../../../search/"/>
+
+        <link rel="top" title="Ural penguins" href="../../../"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300&subset=latin,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <link href="../../../_static/css/badge_only.css" type="text/css" rel="stylesheet" />
+    <link href="../../../_static/css/__theme.css" type="text/css" rel="stylesheet" />
+
+    
+            <script type="text/javascript" src="../../../_static/jquery.js"></script>
+            <script type="text/javascript" src="../../../_static/underscore.js"></script>
+            <script type="text/javascript" src="../../../_static/doctools.js"></script>
+            <script type="text/javascript" src="../../../_static/metrika.js"></script>
+            <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+  
+  <style type="text/css">
+    html, body {
+      background: #545d5c !important;
+    }
+    .page__left .menu {
+        width: 0px;
+    }
+    .page__right {
+      background-color: #e7e7e7;
+      margin: 0 0 0 30px;
+    }
+    .rst-content {
+      padding: 13px;
+    }
+    .footer {
+      padding: 13px;
+    }
+    /* unvisited link */
+    ul.postlist-style-none a:link, .head a:link {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* visited link */
+    ul.postlist-style-none a:visited, .head a:visited {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* mouse over link */
+    ul.postlist-style-none a:hover, .head a:hover {
+        color: #222;
+        text-decoration: none;
+    }
+
+    ul.postlist-style-none a:active, .head a:active {
+        color: #222;
+        text-decoration: none;
+    }
+    ul.postlist-style-none li {
+        list-style-type: none;
+    }
+    ul.postlist-style-none li p.first {
+      color: red !important;
+      font: 1.8em "Open Sans",Arial,sans-serif !important;
+    }
+    .first a {
+      font-weight: bold;
+    }
+    .first em {
+      font-style: normal !important;
+    }
+    .wrapper__inner {
+      padding: 0px 30px 0 0 !important;
+    }
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
+
+  
+  
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.post-list-style-disc {list-style-type: disc;}
+    ul.post-list-style-none {list-style-type: none;}
+    ul.post-list-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper__inner">
+            <div class="page
+                ">
+                <div class="page__left">
+                  
+                    <nav class="menu" id="menu" data-state="expand">
+                        <div class="menu-inner">
+                            
+                                <div class="menu-project">
+                                    <a href="../../../" class="menu-project__link">Ural penguins</a>
+                                </div>
+                            
+                            <div class="tree">
+                                
+                                
+                                    <ul>
+<li><a class="reference internal" href="#">Python + Tornado + RRDTool: температура на улице и в серверной</a></li>
+</ul>
+
+                                
+                            </div>
+                            <div class="menu-search search">
+                                <div class="search-title">Quick search</div>
+                                <form id="search-form" class="search-form" action="../../../search/" method="GET">
+                                    <input type="text" name="q" placeholder="Search docs" />
+                                    <input type="hidden" name="check_keywords" value="yes" />
+                                    <input type="hidden" name="area" value="default" />
+                                </form>
+                                <div class="search-desc">Enter search terms or a module, class or function name.</div>
+                            </div>
+                            <nav class="wy-nav-side">&nbsp;</nav>
+                        </div>
+                        <div class="menu-switch">
+                            <div class="menu-switch__arrow">«</div>
+                        </div>
+                    </nav>
+                  
+                </div>
+
+                <section class="page__right">
+                    
+  <div class="head" style="background-image: url('/_static/bg.jpg');
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  height: 200px">
+    <a href="/">
+      <div style="width:100%; height: 75%">
+        <h1 style="padding-top:15px;padding-left:15px;font-size:60px">Ural penguins</h1>
+      </div>
+    </a>
+    <table style="
+        border-collapse: unset !important;
+        border-spacing: 1 !important;">
+        <tr>
+            <td style="padding-right: 2px">
+                <a href="/pages/pyramid/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        Pyramid
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="/pages/nixos/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        NixOS
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </table>
+  </div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <div class="badge" style="width:100%;height:80px">
+    <!-- uralbash.ru -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2884502571619359"
+         data-ad-slot="9876011339"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+
+                    <div class="badge">
+                        
+                        
+                    </div>
+
+                    <div class="rst-content">
+                        
+  <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+  <table>
+    <tr>
+      <td>
+        <div class="yashare-auto-init" data-yashareL10n="ru"
+          data-yashareType="medium"
+          data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"
+          data-yashareTheme="counter"></div>
+      </td>
+      <td>
+        
+  
+  
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+        Nov 13, 2011
+      </div>
+    
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+      
+        
+          <i class="fa-fw fa fa-tags"></i>
+        
+        
+      
+        
+        <a href="../../../blog/tag/ds19b20/">ds19B20</a>,
+        
+      
+        
+        <a href="../../../blog/tag/python/">python</a>,
+        
+      
+        
+        <a href="../../../blog/tag/rrdtool/">rrdtool</a>,
+        
+      
+        
+        <a href="../../../blog/tag/tornado/">tornado</a>
+        
+      
+      </div>
+    
+
+      </td>
+    </tr>
+  </table>
+  <div class="section" id="python-tornado-rrdtool">
+<span id="py-rrdtool-temp"></span><h1>Python + Tornado + RRDTool: температура на улице и в серверной<a class="headerlink" href="#python-tornado-rrdtool" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Рассмотрим как можно мониторить температуру при помощи сервера. Алгоритм
+довольно простой: подключаем датчик температуры к компу, пишем скрипт который
+снимает данные с датчика, записываем данные и отдаем по запросу пользователю.
+Результат будет выглядеть так:</p>
+<img alt="../../../_images/rrdtool_example.png" class="align-center" src="../../../_images/rrdtool_example.png" />
+<p>Датчик температуры можно выбрать любой. Я сделал для COM порта по схеме
+<a class="reference external" href="http://msevm.com/main/therm/ds18b20t.htm">&#8220;Электронный термометр на DS-18B20&#8221;</a>. Стоимось вышла около 450р., без
+кожуха и разъемов раза в 2 дешевле.</p>
+<img alt="../../../_images/rs232.png" class="align-center" src="../../../_images/rs232.png" />
+<p>Сам датчик температуры (<a class="reference external" href="http://www.maximintegrated.com/en/products/analog/sensors-and-sensor-interface/DS18B20.html">DS-18B20</a>) можно соединять параллельно с другими (до
+100шт.) и он будет нормально работать на одной шине длиной до 300м. После
+подключения скорей всего он определится на последовательном порту <code class="docutils literal"><span class="pre">/dev/ttyS0</span></code>.
+Для снятия показателей нужна программа <a class="reference external" href="https://www.digitemp.com/">digitemp</a>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install digitemp
+</pre></div>
+</div>
+<p>Чтобы получить данные введем:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ /usr/bin/digitemp_DS9097 -t <span class="m">0</span> -s /dev/ttyS0 -q -o <span class="s2">&quot;%.2C&quot;</span>
+-7.62
+</pre></div>
+</div>
+<p>При обращении к датчику он блокируется и если в этот момент запустить еще раз
+команду <a class="reference external" href="https://www.digitemp.com/">digitemp</a> то она вернет пустое значение. Для избежания этой ситуации
+напишем скрипт который по крону каждую минуту будет снимать данные и записывать
+в файл:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="sb">`</span>/usr/bin/digitemp_DS9097 -t <span class="m">0</span> -s /dev/ttyS0 -q -o <span class="s2">&quot;%.2C&quot;</span><span class="sb">`</span> &gt; /projects/scripts/temp.cashe
+</pre></div>
+</div>
+<p>Сейчас напишем скрипт который будет формировать rrd базу и добавлять в нее
+данные из temp.cashe каждую минуту.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rrdcontroller</span> <span class="kn">import</span> <span class="n">RRDController</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">update_rrd</span><span class="p">(</span><span class="n">rrd</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;temp.cashe&#39;</span><span class="p">)</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">temperature</span><span class="o">=</span><span class="n">temp</span><span class="p">)</span>
+
+    <span class="n">rrd</span><span class="o">.</span><span class="n">graph</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;day&#39;</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">graph</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;week&#39;</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">graph</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;month&#39;</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">graph</span><span class="p">(</span><span class="n">period</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">rrdfile</span> <span class="o">=</span> <span class="s1">&#39;media/temperature.rrd&#39;</span>
+    <span class="n">imgdir</span> <span class="o">=</span> <span class="s1">&#39;media&#39;</span>
+    <span class="n">rrd</span> <span class="o">=</span> <span class="n">RRDController</span><span class="p">(</span><span class="n">rrdfile</span><span class="o">=</span><span class="n">rrdfile</span><span class="p">,</span> <span class="n">static_path</span> <span class="o">=</span> <span class="n">imgdir</span><span class="p">)</span>
+    <span class="n">rrd</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">update_rrd</span><span class="p">(</span><span class="n">rrd</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>И файл rrdcontroller.py</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">rrdcontroller.py</span><a class="headerlink" href="#id3" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyrrd.rrd</span> <span class="kn">import</span> <span class="n">RRD</span><span class="p">,</span> <span class="n">RRA</span><span class="p">,</span> <span class="n">DS</span>
+<span class="kn">from</span> <span class="nn">pyrrd.graph</span> <span class="kn">import</span> <span class="n">DEF</span><span class="p">,</span> <span class="n">CDEF</span><span class="p">,</span> <span class="n">VDEF</span>
+<span class="kn">from</span> <span class="nn">pyrrd.graph</span> <span class="kn">import</span> <span class="n">LINE</span><span class="p">,</span> <span class="n">AREA</span><span class="p">,</span> <span class="n">GPRINT</span>
+<span class="kn">from</span> <span class="nn">pyrrd.graph</span> <span class="kn">import</span> <span class="n">ColorAttributes</span><span class="p">,</span> <span class="n">Graph</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">logging</span><span class="o">,</span> <span class="nn">time</span>
+
+<span class="k">class</span> <span class="nc">RRDController</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rrdfile</span><span class="p">,</span> <span class="n">static_path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rrdfile</span> <span class="o">=</span> <span class="n">rrdfile</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">static_path</span> <span class="o">=</span> <span class="n">static_path</span>
+
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rrdfile</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">create</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rrdfile</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rrd</span> <span class="o">=</span> <span class="n">RRD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rrdfile</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">dss</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">ds1</span> <span class="o">=</span> <span class="n">DS</span><span class="p">(</span><span class="n">dsName</span><span class="o">=</span><span class="s2">&quot;temperature&quot;</span><span class="p">,</span> <span class="n">dsType</span><span class="o">=</span><span class="s2">&quot;GAUGE&quot;</span><span class="p">,</span> <span class="n">heartbeat</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>
+                 <span class="n">minval</span><span class="o">=-</span><span class="mf">10000000.0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="mf">100000000.0</span><span class="p">)</span>
+        <span class="n">dss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds1</span><span class="p">)</span>
+
+        <span class="n">day</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span>
+        <span class="n">week</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">*</span> <span class="n">day</span>
+        <span class="n">month</span> <span class="o">=</span> <span class="n">day</span> <span class="o">*</span> <span class="mi">30</span>
+        <span class="n">quarter</span> <span class="o">=</span> <span class="n">month</span> <span class="o">*</span> <span class="mi">3</span>
+        <span class="n">half</span> <span class="o">=</span> <span class="mi">365</span> <span class="o">*</span> <span class="n">day</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="mi">365</span> <span class="o">*</span> <span class="n">day</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="mi">60</span>
+
+        <span class="n">rras</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">rra1</span> <span class="o">=</span> <span class="n">RRA</span><span class="p">(</span><span class="n">cf</span><span class="o">=</span><span class="s2">&quot;AVERAGE&quot;</span><span class="p">,</span> <span class="n">xff</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="n">day</span><span class="o">/</span><span class="n">step</span><span class="p">)</span>
+        <span class="n">rra2</span> <span class="o">=</span> <span class="n">RRA</span><span class="p">(</span><span class="n">cf</span><span class="o">=</span><span class="s2">&quot;AVERAGE&quot;</span><span class="p">,</span> <span class="n">xff</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="n">week</span><span class="o">/</span><span class="p">(</span><span class="mi">30</span><span class="o">*</span><span class="n">step</span><span class="p">))</span>
+        <span class="n">rra3</span> <span class="o">=</span> <span class="n">RRA</span><span class="p">(</span><span class="n">cf</span><span class="o">=</span><span class="s2">&quot;AVERAGE&quot;</span><span class="p">,</span> <span class="n">xff</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="n">month</span><span class="o">/</span><span class="p">(</span><span class="mi">120</span><span class="o">*</span><span class="n">step</span><span class="p">))</span>
+        <span class="n">rra4</span> <span class="o">=</span> <span class="n">RRA</span><span class="p">(</span><span class="n">cf</span><span class="o">=</span><span class="s2">&quot;AVERAGE&quot;</span><span class="p">,</span> <span class="n">xff</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">720</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="n">year</span><span class="o">/</span><span class="p">(</span><span class="mi">720</span><span class="o">*</span><span class="n">step</span><span class="p">))</span>
+        <span class="n">rras</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">rra1</span><span class="p">,</span> <span class="n">rra2</span><span class="p">,</span> <span class="n">rra3</span><span class="p">,</span> <span class="n">rra4</span><span class="p">])</span>
+        <span class="n">rras</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rra1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">rrd</span> <span class="o">=</span> <span class="n">RRD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rrdfile</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">step</span><span class="p">,</span> <span class="n">ds</span><span class="o">=</span><span class="n">dss</span><span class="p">,</span> <span class="n">rra</span><span class="o">=</span><span class="n">rras</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rrd</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temperature</span><span class="p">):</span>
+        <span class="k">print</span> <span class="n">temperature</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rrd</span><span class="o">.</span><span class="n">bufferValue</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span> <span class="n">temperature</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rrd</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">graph_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s1">&#39;day&#39;</span><span class="p">):</span>
+        <span class="n">def1</span> <span class="o">=</span> <span class="n">DEF</span><span class="p">(</span><span class="n">rrdfile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rrdfile</span><span class="p">,</span> <span class="n">vname</span><span class="o">=</span><span class="s1">&#39;temp&#39;</span><span class="p">,</span> <span class="n">dsName</span><span class="o">=</span><span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+                   <span class="n">cdef</span><span class="o">=</span><span class="s2">&quot;AVERAGE&quot;</span><span class="p">)</span>
+
+        <span class="c1"># TOTAL</span>
+        <span class="n">vdef1</span> <span class="o">=</span> <span class="n">VDEF</span><span class="p">(</span><span class="n">vname</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">rpn</span><span class="o">=</span><span class="s1">&#39;temp,MAXIMUM&#39;</span><span class="p">)</span>
+        <span class="n">vdef2</span> <span class="o">=</span> <span class="n">VDEF</span><span class="p">(</span><span class="n">vname</span><span class="o">=</span><span class="s1">&#39;avg&#39;</span><span class="p">,</span> <span class="n">rpn</span><span class="o">=</span><span class="s1">&#39;temp,AVERAGE&#39;</span><span class="p">)</span>
+        <span class="n">vdef3</span> <span class="o">=</span> <span class="n">VDEF</span><span class="p">(</span><span class="n">vname</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">,</span> <span class="n">rpn</span><span class="o">=</span><span class="s1">&#39;temp,LAST&#39;</span><span class="p">)</span>
+        <span class="n">vdef4</span> <span class="o">=</span> <span class="n">VDEF</span><span class="p">(</span><span class="n">vname</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="n">rpn</span><span class="o">=</span><span class="s1">&#39;temp,MINIMUM&#39;</span><span class="p">)</span>
+
+        <span class="n">line1</span> <span class="o">=</span> <span class="n">LINE</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">defObj</span><span class="o">=</span><span class="n">def1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#FF2222&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="s1">&#39;Total&#39;</span><span class="p">)</span>
+        <span class="n">gprint1</span> <span class="o">=</span> <span class="n">GPRINT</span><span class="p">(</span><span class="n">vdef1</span><span class="p">,</span> <span class="s2">&quot;Max</span><span class="se">\\</span><span class="s2">: </span><span class="si">%5.1lf</span><span class="s2"> %S&quot;</span><span class="p">)</span>
+        <span class="n">gprint2</span> <span class="o">=</span> <span class="n">GPRINT</span><span class="p">(</span><span class="n">vdef2</span><span class="p">,</span> <span class="s2">&quot;Avg</span><span class="se">\\</span><span class="s2">: </span><span class="si">%5.1lf</span><span class="s2"> %S&quot;</span><span class="p">)</span>
+        <span class="n">gprint3</span> <span class="o">=</span> <span class="n">GPRINT</span><span class="p">(</span><span class="n">vdef3</span><span class="p">,</span> <span class="s2">&quot;Current</span><span class="se">\\</span><span class="s2">: </span><span class="si">%5.1lf</span><span class="s2"> %S&quot;</span><span class="p">)</span>
+        <span class="n">gprint4</span> <span class="o">=</span> <span class="n">GPRINT</span><span class="p">(</span><span class="n">vdef4</span><span class="p">,</span> <span class="s2">&quot;Min</span><span class="se">\\</span><span class="s2">: </span><span class="si">%5.1lf</span><span class="s2"> %S</span><span class="se">\\</span><span class="s2">n&quot;</span><span class="p">)</span>
+
+        <span class="n">ca</span> <span class="o">=</span> <span class="n">ColorAttributes</span><span class="p">()</span>
+        <span class="n">ca</span><span class="o">.</span><span class="n">back</span> <span class="o">=</span> <span class="s1">&#39;#FFFFFF&#39;</span>
+        <span class="n">ca</span><span class="o">.</span><span class="n">canvas</span> <span class="o">=</span> <span class="s1">&#39;#FFFFFF&#39;</span>
+        <span class="n">ca</span><span class="o">.</span><span class="n">shadea</span> <span class="o">=</span> <span class="s1">&#39;#000000&#39;</span>
+        <span class="n">ca</span><span class="o">.</span><span class="n">shadeb</span> <span class="o">=</span> <span class="s1">&#39;#111111&#39;</span>
+        <span class="n">ca</span><span class="o">.</span><span class="n">mgrid</span> <span class="o">=</span> <span class="s1">&#39;#CCCCCC&#39;</span>
+        <span class="n">ca</span><span class="o">.</span><span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;#333333&#39;</span>
+        <span class="n">ca</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="s1">&#39;#AAAAAA&#39;</span>
+        <span class="n">ca</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="s1">&#39;#333333&#39;</span>
+        <span class="n">ca</span><span class="o">.</span><span class="n">arrow</span> <span class="o">=</span> <span class="s1">&#39;#333333&#39;</span>
+
+        <span class="n">img</span> <span class="o">=</span> <span class="s2">&quot;temperature-</span><span class="si">%s</span><span class="s2">.png&quot;</span> <span class="o">%</span> <span class="n">period</span>
+        <span class="n">imgname</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_path</span> <span class="o">+</span><span class="s2">&quot;/&quot;</span><span class="o">+</span> <span class="n">img</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="s1">&#39;-1&#39;</span><span class="o">+</span><span class="n">period</span>
+
+        <span class="n">g</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">(</span><span class="n">imgname</span><span class="p">,</span> <span class="n">imgformat</span><span class="o">=</span><span class="s1">&#39;PNG&#39;</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+                  <span class="n">vertical_label</span><span class="o">=</span><span class="s1">&#39;temperature&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">ca</span><span class="p">,</span>
+                  <span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">150</span>
+                  <span class="p">)</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">def1</span><span class="p">,</span> <span class="n">vdef1</span><span class="p">,</span> <span class="n">vdef2</span><span class="p">,</span> <span class="n">vdef3</span><span class="p">,</span> <span class="n">vdef4</span><span class="p">,</span> <span class="n">line1</span><span class="p">,</span> <span class="n">gprint1</span><span class="p">,</span>
+                       <span class="n">gprint2</span><span class="p">,</span> <span class="n">gprint3</span><span class="p">,</span> <span class="n">gprint4</span><span class="p">])</span>
+        <span class="n">g</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="s1">&#39;day&#39;</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">graph_temperature</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>После запуска скрипта он создаст <a class="reference external" href="http://oss.oetiker.ch/rrdtool/">RRD</a> базу если ее еще нет, начнет каждые 60 сек
+добавлять значения и отрисовывать графики. Осталось только отдать эти графики
+по запросу. Для этого используем фреймворк <a class="reference external" href="www.tornadoweb.org/">Tornado</a>.</p>
+<p>Создадим файл <code class="docutils literal"><span class="pre">weather_srv.py</span></code> в той же директории где папка <code class="docutils literal"><span class="pre">media</span></code> с нашими графиками:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">weather_srv.py</span><a class="headerlink" href="#id4" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#coding: utf-8</span>
+<span class="kn">import</span> <span class="nn">tornado.ioloop</span>
+<span class="kn">import</span> <span class="nn">tornado.web</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">class</span> <span class="nc">MainHandler</span><span class="p">(</span><span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">RequestHandler</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;temp.cashe&#39;</span><span class="p">)</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+ <span class="bp">self</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">&quot;index.html&quot;</span><span class="p">,</span> <span class="n">temp</span><span class="o">=</span><span class="n">temp</span><span class="p">)</span>
+
+<span class="n">application</span> <span class="o">=</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">Application</span><span class="p">([</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="n">MainHandler</span><span class="p">),</span>
+    <span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/media/(.*)&quot;</span><span class="p">,</span> <span class="n">tornado</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">StaticFileHandler</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;path&quot;</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;media&quot;</span><span class="p">)}),</span>
+<span class="p">])</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">application</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">8009</span><span class="p">)</span>
+    <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Шаблон index.html</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">index.html</span><a class="headerlink" href="#id5" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Температура на улице<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span> <span class="na">bgcolor</span><span class="o">=</span><span class="s">&quot;white&quot;</span> <span class="na">text</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">center</span><span class="p">&gt;&lt;</span><span class="nt">font</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;5&quot;</span><span class="p">&gt;</span><span class="cp">{{</span> <span class="nv">escape</span><span class="o">(</span><span class="nv">temp</span><span class="o">)</span> <span class="cp">}}</span><span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span>C°<span class="p">&lt;/</span><span class="nt">font</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;media/temperature-day.png&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;температура за день&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">center</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Запускаем <code class="docutils literal"><span class="pre">weather_srv.py</span></code> и радуемся графикам.</div>
+<div class="line">Описание по измерению температуры <a class="reference external" href="http://termal.me">http://termal.me</a></div>
+</div>
+<p>Дополнительно для прочтения:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://bozza.ru/art-105.html">Перевод документации RRDTool</a></li>
+<li><a class="reference external" href="http://habrahabr.ru/blogs/python/30655/">Пример с хабра</a></li>
+<li><a class="reference external" href="https://github.com/marcelnicolay/nginx-monitor/blob/master/nmonitor/util/rrdcontroller.py">nginx-monitor похожий пример для nginx</a></li>
+</ul>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../content_assigment/">
+    <i class="fa fa-arrow-circle-left"></i>
+    The Content Assignment
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../fa_rest_controller/">
+    Pylons + FormAlchemy REST Controller
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <br />
+    <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="medium" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yashareTheme="counter"></div>
+    <h2>Comments</h2>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'uralbash'; // required: replace example with your forum shortname
+        var disqus_identifier = '/articles/2011/rrdtool_ds18b20/';
+        var disqus_title = 'Python + Tornado + RRDTool: температура на улице и в серверной';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+                    </div>
+                    <footer class="footer">
+                      
+  
+                        
+    <div class="footer__copyright">
+            
+                &copy; Copyright 2015, uralbash.
+            
+    </div>
+<div class="footer__theme">
+    <a href="https://github.com/ITCase/itcase_sphinx_theme" class="footer__theme-link">
+      ITCase Sphinx Theme
+    </a>
+      <span class="footer__theme-text">
+          | version: 0.2.0
+      </span>
+</div>
+                      
+  <div class="footer__theme">
+      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+        Ablog powered.
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="http://uralbash.ru/blog/atom.xml" class="footer__theme-link">
+        RSS/Atom
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="https://uralbash.blogspot.com" class="footer__theme-link">
+        Старый блог
+      </a>
+  </div>
+
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+            var STICKY_MENU = true;
+        
+    </script>
+
+    <script type="text/javascript" src="../../../_static/js/__theme.js"></script>
+
+    
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT: '../../../',
+                    VERSION: '',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '',
+                    HAS_SOURCE: true
+            };
+        </script>
+    
+
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщений в KeyBoard</title>
+  <id>http://uralbash.ru/blog/category/keyboard/atom.xml</id>
+  <updated>2011-10-17T23:13:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/category/keyboard/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/category/keyboard/atom.xml">
+    <title type="text">Отключить CapsLock</title>
+    <id>http://uralbash.ru/articles/2011/capslock/</id>
+    <updated>2011-10-17T23:13:00Z</updated>
+    <published>2011-10-17T23:13:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/capslock/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;capslock&quot;&gt;
+
+&lt;p&gt;Отключение:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;xmodmap -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;clear Lock&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Включение:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;xmodmap -e &lt;span class=&quot;s2&quot;&gt;&amp;quot;add Lock = Caps_Lock&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;или в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/usr/share/X11/xkb/keycodes/xfree86&lt;/span&gt;&lt;/code&gt; заменить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CAPS&lt;/span&gt;&lt;/code&gt; код 66 на 100500&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

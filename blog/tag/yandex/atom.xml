@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом Yandex</title>
+  <id>http://uralbash.ru/blog/tag/yandex/atom.xml</id>
+  <updated>2012-02-10T15:14:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/yandex/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/yandex/atom.xml">
+    <title type="text">pyandexmap работа с Яндекс Карты API используя Python</title>
+    <id>http://uralbash.ru/articles/2012/pyyandexmap/</id>
+    <updated>2012-02-10T15:14:00Z</updated>
+    <published>2012-02-10T15:14:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/pyyandexmap/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyandexmap-api-python&quot;&gt;
+
+&lt;p&gt;У Яндекс Карт хороший геокодинг и есть API, но нет автодополнение поисковой
+строки (как в гугле). У гугла плохой геокодинг (для России) но есть
+автодополнение. Более подробно можно прочитать например &lt;a class=&quot;reference external&quot; href=&quot;http://clubs.ya.ru/mapsapi/replies.xml?item_no=17733&quot;&gt;здесь&lt;/a&gt;. Парадокс какой-то. Я
+написал простой модуль для вычленения данных через API при помощи
+питона. Это очень удобно использовать в AJAX запросах. Пример использования
+здесь (&lt;a class=&quot;reference internal&quot; href=&quot;../../../articles/2012/osm_geotagging/#osm_geotagging&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;OpenStreetMap, Геокодирование и автодополнение адреса в строке поиска (как у гугла) с помощью Яндекс API :)&lt;/span&gt;&lt;/a&gt;). Код для изучения/исправления здесь
+&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/pyandexmap&quot;&gt;https://github.com/uralbash/pyandexmap&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

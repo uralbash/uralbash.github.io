@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом WebOb</title>
+  <id>http://uralbash.ru/blog/tag/webob/atom.xml</id>
+  <updated>2011-12-18T22:51:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/webob/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/webob/atom.xml">
+    <title type="text">FormAlchemy KeyError: &quot;Key not found: &quot;</title>
+    <id>http://uralbash.ru/articles/2011/fa_keyerror/</id>
+    <updated>2011-12-18T22:51:00Z</updated>
+    <published>2011-12-18T22:51:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/fa_keyerror/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;formalchemy-keyerror-key-not-found&quot;&gt;
+
+&lt;p&gt;Ошибка в &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; типа &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;KeyError:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;&amp;quot;Key&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;found:&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;u'Task--super_task_id'&amp;quot;&lt;/span&gt;&lt;/code&gt; лечится обновлением:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install formalchemy --upgrade
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;При этом новая версия подтянет бетта версию &lt;a class=&quot;reference external&quot; href=&quot;http://docs.webob.org/en/latest/&quot;&gt;webob&lt;/a&gt; 1.2 с которым
+&lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;pylons&lt;/a&gt; 1 еще не работает из-за:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DeprecationWarning:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;decode_param_names&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;deprecated&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;supported&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;starting&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;WebOb&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;1.2&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Откатимся:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install &lt;span class=&quot;nv&quot;&gt;webob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;.1.1
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Ошибка должна исчезнуть, вот обсуждение &lt;a class=&quot;reference external&quot; href=&quot;http://groups.google.com/group/formalchemy/browse_thread/thread/19348cc5faae8711/3aaf49efffd9f160?lnk=gst&amp;amp;q=key+not+found#3aaf49efffd9f160&quot;&gt;google groups&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом C++</title>
+  <id>http://uralbash.ru/blog/tag/c/atom.xml</id>
+  <updated>2017-08-16T17:11:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/c/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/c/atom.xml">
+    <title type="text">C++: Приведение Enum структур к общему виду в шаблонах</title>
+    <id>http://uralbash.ru/articles/2017/cpp-enum/</id>
+    <updated>2017-08-16T17:11:00Z</updated>
+    <published>2017-08-16T17:11:00Z</published>
+    <link href="http://uralbash.ru/articles/2017/cpp-enum/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;c-enum&quot;&gt;
+
+&lt;p&gt;Задача - создать шаблонную функцию, в которой в зависимости от типа
+перечисления выбирается нужный индекс в контейнере &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vector&lt;/span&gt;&lt;/code&gt;. Попробуем решить
+задачу в лоб, создадим 3 перечисления и выберем нужный индекс в шаблоне.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Использование enum в шаблоне напрямую&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-cpp&quot;&gt;&lt;table class=&quot;highlighttable&quot;&gt;&lt;tr&gt;&lt;td class=&quot;linenos&quot;&gt;&lt;div class=&quot;linenodiv&quot;&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;#include&lt;/span&gt; &lt;span class=&quot;cpf&quot;&gt;&amp;lt;vector&amp;gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#include&lt;/span&gt; &lt;span class=&quot;cpf&quot;&gt;&amp;lt;iostream&amp;gt; // cout&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PEOPLE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;PEOPLE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;FIRSTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;LASTNAME&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// 2&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;STUDENT&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;LASTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// 0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;FIRSTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SALARY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// 2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// 3&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;LASTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// 0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// 1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;FIRSTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SALARY&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// 3&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t_item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;printHuman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_item&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;0.00 $&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;-1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isStudent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_same&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;STUDENT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEmploye&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_same&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// PEOPLE&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_same&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PEOPLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PEOPLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PEOPLE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// STUDENT || EMPLOYE&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isStudent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEmploye&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Выбираем поле в зависимости от типа структуры&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SALARY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Отобажаем на экране&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRSTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LASTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Создаем людей разных типов&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;t_item&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vasya&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Vasya&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Vasnetsov&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;                    &lt;span class=&quot;c1&quot;&gt;// PEOPLE&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;t_item&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;petya&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Иванов&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Petr&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;10.00 $&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;13&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;// STUDENT&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;t_item&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bjarne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Бьёрн&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;66&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Straustrup&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;100 000.00 $&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// EMPLOYE&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Выводим информацию о людях&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;printHuman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vasya&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;PEOPLE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;printHuman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;petya&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;STUDENT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;printHuman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bjarne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Скомпилируем пример с добавлением &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C++11&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id2&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Попытка компиляции enum в шаблоне&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ g++ -std&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;c++11 main.cpp -o enum-example
+main-bad.cpp: In instantiation of ‘void printHuman&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;t_item, T&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;with &lt;span class=&quot;nv&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; PEOPLE&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;t_item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; std::vector&amp;lt;std::__cxx11::basic_string&amp;lt;char&amp;gt; &amp;gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;’:
+main-bad.cpp:78:30:   required from here
+main-bad.cpp:55:14: error: ‘SALARY’ is not a member of ‘PEOPLE’
+     &lt;span class=&quot;nv&quot;&gt;salary&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; item.at&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;T::SALARY&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+              ^
+main-bad.cpp:56:14: error: ‘_ID’ is not a member of ‘PEOPLE’
+     &lt;span class=&quot;nv&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; item.at&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;T::_ID&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+              ^
+Makefile:7: recipe &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; target &lt;span class=&quot;s1&quot;&gt;&amp;#39;bad&amp;#39;&lt;/span&gt; failed
+make: *** &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;bad&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Error &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Получаем ошибку, т.к. подстановка типа перечисления &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PEOPLE&lt;/span&gt;&lt;/code&gt; не имеет
+атрибутов &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;_ID&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;SALARY&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Что бы обойти эту проблему выведем тип с помощью &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;std::conditional&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id3&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Использование enum в шаблоне через выведение типа енума&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-cpp&quot;&gt;&lt;table class=&quot;highlighttable&quot;&gt;&lt;tr&gt;&lt;td class=&quot;linenos&quot;&gt;&lt;div class=&quot;linenodiv&quot;&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;printHuman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_item&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;0.00 $&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;-1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isStudent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_same&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;STUDENT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEmploye&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_same&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// PEOPLE&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_same&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PEOPLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PEOPLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PEOPLE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// STUDENT || EMPLOYE&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isStudent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEmploye&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Выбираем поле в зависимости от типа структуры&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conditional&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isStudent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;STUDENT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cond&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cond&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SALARY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cond&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Отобажаем на экране&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRSTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LASTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В результате программа скомпилируется без ошибок. Это происходит потому, что
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;conditional&lt;/span&gt;&lt;/code&gt; реализует свой шаблон на базе только двух нужных нам enum&amp;#8217;ов
+(&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;STUDENT&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;EMPLOY&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id4&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Компиляция и запуск&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ g++ -std&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;c++11 main.cpp -o enum-example
+$ ./enum-example
+&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;               Vasya           Vasnetsov               &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;.00 $
+&lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;              Petr            Иванов          &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;.00 $
+&lt;span class=&quot;m&quot;&gt;66&lt;/span&gt;              Straustrup              Бьёрн           &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;000&lt;/span&gt;.00 $
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/c/atom.xml">
+    <title type="text">Сборка libprotobuf под Windows</title>
+    <id>http://uralbash.ru/articles/2017/protobuf-mingw/</id>
+    <updated>2017-08-10T19:50:00Z</updated>
+    <published>2017-08-10T19:50:00Z</published>
+    <link href="http://uralbash.ru/articles/2017/protobuf-mingw/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;libprotobuf-windows&quot;&gt;
+
+&lt;p&gt;Сборка сей библиотеки из исходников под Windows не такая уж простая задача, как
+может показаться на первый взгляд. Ее можно осуществлять при помощи Visual
+Studio (cl.exe) или компилятора mingw.&lt;/p&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://developers.google.com/protocol-buffers/&quot;&gt;Protobuf&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Вариант с mingw мне показался более родной и простой, поэтому начнем с установки MSYS2.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Скачать MSYS2 можно по адресу &lt;a class=&quot;reference external&quot; href=&quot;http://msys2.org&quot;&gt;http://msys2.org&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;После установки в открывшейся консоле устанавливаем все необходимое. Protobuf
+из пакетов нужен потому, что при сборке из исходных кодов будет использоваться
+утилита &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;protoc.exe&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pacman -S vim binutils base-devel unzip
+$ pacman -S mingw-w64-i686-toolchain mingw-w64-i686-protobuf
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Пропишем компилятор в окружение и симлинк на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;protoc.exe&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/mingw32/bin/:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+$ ln -s /mingw32/bin/protoc.exe /usr/bin/protoc.exe
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Готовый пакет для pacman&amp;#8217;а позаимствуем у ArchLinux из AUR
+(&lt;a class=&quot;reference external&quot; href=&quot;https://aur.archlinux.org/packages/mingw-w64-protobuf/&quot;&gt;https://aur.archlinux.org/packages/mingw-w64-protobuf/&lt;/a&gt;).&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ wget https://aur.archlinux.org/cgit/aur.git/snapshot/mingw-w64-protobuf.tar.gz
+$ tar -zxf mingw-w64-protobuf.tar.gz
+$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; mingw-w64-protobuf
+$ vim PKGBUILD
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Закомментим зависимости из файла сборки PKGBUILD и переименуем
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;${_arch}-strip&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;strip&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;PKGBUILD&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Contributor: Benoit Favre &amp;lt;benoit.favre@gmail.com&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;pkgname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;mingw-w64-protobuf&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;_pkgname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;protobuf
+&lt;span class=&quot;nv&quot;&gt;pkgver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;.3.1
+&lt;span class=&quot;nv&quot;&gt;pkgrel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;pkgdesc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Protocol Buffers - Google&amp;#39;s data interchange format (mingw-w64)&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;arch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;any&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;https://developers.google.com/protocol-buffers/&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;BSD&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#depends=(&amp;#39;mingw-w64-crt&amp;#39; &amp;#39;mingw-w64-zlib&amp;#39;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#makedepends=(&amp;#39;mingw-w64-configure&amp;#39; &amp;#39;protobuf&amp;#39;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;!strip !buildflags staticlibs&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://github.com/google/protobuf/archive/v&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgver&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.tar.gz&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;md5sums&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;20c685147753b515ce380421442044b5&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;_architectures&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;i686-w64-mingw32 x86_64-w64-mingw32&amp;quot;&lt;/span&gt;
+
+build&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;srcdir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_pkgname&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;-&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgver&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+  ./autogen.sh
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; _arch in &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_architectures&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    mkdir -p build-&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pushd&lt;/span&gt; build-&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;-configure --with-protoc&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/bin/protoc ..
+    make
+    &lt;span class=&quot;nb&quot;&gt;popd&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+package&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; _arch in &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_architectures&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;srcdir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;/&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_pkgname&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;-&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgver&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/build-&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+    make &lt;span class=&quot;nv&quot;&gt;DESTDIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$pkgdir&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; install
+    rm &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgdir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;/usr/&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/bin/*.exe
+&lt;span class=&quot;hll&quot;&gt;    strip --strip-unneeded &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$pkgdir&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;/usr/&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/bin/*.dll
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;    strip -g &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$pkgdir&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;/usr/&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/lib/*.a
+&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Собираем пакет утилитой &lt;a class=&quot;reference external&quot; href=&quot;https://www.archlinux.org/pacman/makepkg.8.html&quot;&gt;makepkg&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nv&quot;&gt;CARCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;i686 makepkg -Acs
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Сборка пакета mingw-w64-protobuf &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;.3.1-1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; авг &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; г. &lt;span class=&quot;m&quot;&gt;19&lt;/span&gt;:03:34&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Проверка зависимостей для запуска...
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Проверка зависимостей для сборки...
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Получение исходных файлов...
+  -&amp;gt; Найден v3.3.1.tar.gz
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Проверка файлов &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; с использованием md5sums...
+    v3.3.1.tar.gz ... &lt;span class=&quot;nv&quot;&gt;Готово&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Распаковка исходных файлов...
+  -&amp;gt; Распаковка &lt;span class=&quot;s1&quot;&gt;&amp;#39;v3.3.1.tar.gz&amp;#39;&lt;/span&gt; с помощью &lt;span class=&quot;nv&quot;&gt;bsdtar&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Удаление директории &lt;span class=&quot;s1&quot;&gt;&amp;#39;$pkgdir/&amp;#39;&lt;/span&gt;...
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Запускается build&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;...
+Google Mock not present.  Fetching gmock-1.7.0 from the web...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;129&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;129&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;     &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;153&lt;/span&gt;      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; --:--:-- --:--:-- --:--:--   &lt;span class=&quot;m&quot;&gt;163&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;  362k  &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;  362k    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;     &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   160k      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;:00:02  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;:00:02 --:--:--  603k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;129&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;129&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;     &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;145&lt;/span&gt;      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; --:--:-- --:--:-- --:--:--   &lt;span class=&quot;m&quot;&gt;145&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;  618k  &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;  618k    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;     &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   195k      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;:00:03  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;:00:03 --:--:--  355k
++ autoreconf -f -i -Wall,no-obsolete
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux&amp;#39;&lt;/span&gt;.
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/ltmain.sh&amp;#39;&lt;/span&gt;
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4&amp;#39;&lt;/span&gt;.
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/libtool.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/ltoptions.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/ltsugar.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/ltversion.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/lt~obsolete.m4&amp;#39;&lt;/span&gt;
+configure.ac:27: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/compile&amp;#39;&lt;/span&gt;
+configure.ac:30: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/config.guess&amp;#39;&lt;/span&gt;
+configure.ac:30: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/config.sub&amp;#39;&lt;/span&gt;
+configure.ac:24: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/install-sh&amp;#39;&lt;/span&gt;
+configure.ac:24: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/missing&amp;#39;&lt;/span&gt;
+Makefile.am: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/depcomp&amp;#39;&lt;/span&gt;
+parallel-tests: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/test-driver&amp;#39;&lt;/span&gt;
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux&amp;#39;&lt;/span&gt;.
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/ltmain.sh&amp;#39;&lt;/span&gt;
+libtoolize: Consider adding &lt;span class=&quot;s1&quot;&gt;&amp;#39;AC_CONFIG_MACRO_DIRS([m4])&amp;#39;&lt;/span&gt; to configure.ac,
+libtoolize: and rerunning libtoolize and aclocal.
+libtoolize: Consider adding &lt;span class=&quot;s1&quot;&gt;&amp;#39;-I m4&amp;#39;&lt;/span&gt; to ACLOCAL_AMFLAGS in Makefile.am.
+configure.ac:22: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/compile&amp;#39;&lt;/span&gt;
+configure.ac:25: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/config.guess&amp;#39;&lt;/span&gt;
+configure.ac:25: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/config.sub&amp;#39;&lt;/span&gt;
+configure.ac:19: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/install-sh&amp;#39;&lt;/span&gt;
+configure.ac:19: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/missing&amp;#39;&lt;/span&gt;
+Makefile.am: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/depcomp&amp;#39;&lt;/span&gt;
+parallel-tests: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/test-driver&amp;#39;&lt;/span&gt;
+libtoolize: putting auxiliary files in &lt;span class=&quot;s1&quot;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;.
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;./ltmain.sh&amp;#39;&lt;/span&gt;
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4&amp;#39;&lt;/span&gt;.
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/libtool.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/ltoptions.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/ltsugar.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/ltversion.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/lt~obsolete.m4&amp;#39;&lt;/span&gt;
+configure.ac:66: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./ar-lib&amp;#39;&lt;/span&gt;
+configure.ac:61: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./compile&amp;#39;&lt;/span&gt;
+configure.ac:46: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./config.guess&amp;#39;&lt;/span&gt;
+configure.ac:46: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./config.sub&amp;#39;&lt;/span&gt;
+configure.ac:48: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./install-sh&amp;#39;&lt;/span&gt;
+configure.ac:48: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./missing&amp;#39;&lt;/span&gt;
+benchmarks/Makefile.am: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./depcomp&amp;#39;&lt;/span&gt;
+parallel-tests: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./test-driver&amp;#39;&lt;/span&gt;
++ rm -rf autom4te.cache config.h.in~
++ &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+~/mingw-w64-protobuf/src/protobuf-3.3.1/build-i686-w64-mingw32 ~/mingw-w64-protobuf/src/protobuf-3.3.1
+/home/user/mingw-w64-protobuf/PKGBUILD: line &lt;span class=&quot;m&quot;&gt;24&lt;/span&gt;: i686-w64-mingw32-configure: команда не &lt;span class=&quot;nv&quot;&gt;найдена&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; ОШИБКА: Произошел сбой в build&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;.
+    Прерывание...
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Для сборки требуется скрипт &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;configure&lt;/span&gt;&lt;/code&gt; как его поставить в MinGW из оф. реп
+я не знаю, поэтому ставим по тому же принципу из исходников (&lt;a class=&quot;reference external&quot; href=&quot;https://aur.archlinux.org/packages/mingw-w64-configure/&quot;&gt;https://aur.archlinux.org/packages/mingw-w64-configure/&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Перед сборкой также важно закомментировать зависимости:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id2&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;PKGBUILD&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;mingw-w64-configure
+&lt;span class=&quot;nv&quot;&gt;pkgver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;.1
+&lt;span class=&quot;nv&quot;&gt;pkgrel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;arch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;any&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;pkgdesc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;configure wrapper for MinGW (mingw-w64)&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#depends=(&amp;#39;mingw-w64-gcc&amp;#39; &amp;#39;mingw-w64-pkg-config&amp;#39;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;GPL&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;http://fedoraproject.org/wiki/MinGW&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;mingw-configure.sh&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;md5sums&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;SKIP&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;_architectures&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;i686-w64-mingw32 x86_64-w64-mingw32&amp;quot;&lt;/span&gt;
+
+build&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; _arch in &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_architectures&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    sed &lt;span class=&quot;s2&quot;&gt;&amp;quot;s|@TRIPLE@|&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;|g&amp;quot;&lt;/span&gt; mingw-configure.sh &amp;gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;-configure
+  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+package&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  install -d &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgdir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;/usr/bin
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; _arch in &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_architectures&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    install -m &lt;span class=&quot;m&quot;&gt;755&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;-configure &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgdir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;/usr/bin/
+  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Сборка &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;configure&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ../
+$ wget https://aur.archlinux.org/cgit/aur.git/snapshot/mingw-w64-configure.tar.gz
+$ tar -zxf mingw-w64-configure.tar.gz
+$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; mingw-w64-configure/
+$ &lt;span class=&quot;nv&quot;&gt;CARCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;i686 makepkg -Acs
+$ pacman -U mingw-w64-configure-0.1-1-any.pkg.tar.xz
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь все готово для сборки Protobuf:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ../mingw-w64-protobuf/
+$ &lt;span class=&quot;nv&quot;&gt;CARCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;i686 makepkg -Acs
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В результате получим архив с dll-ками и заголовочными файлами. Вот так просто и
+лаконично, хотя лучше поставить ArchLinux в виртуалку и собрать там тоже самое
+без лишних хлопот.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/c/atom.xml">
+    <title type="text">gcc для C++11 из реп в CentOS6</title>
+    <id>http://uralbash.ru/articles/2016/centos6-gcc-cpp11/</id>
+    <updated>2016-06-05T23:45:00Z</updated>
+    <published>2016-06-05T23:45:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/centos6-gcc-cpp11/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;gcc-c-11-centos6&quot;&gt;
+
+&lt;p&gt;C++11 в &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=gcc&quot;&gt;gcc&lt;/a&gt; появился, начиная с версии 4.7, но в CentOS6 естественно
+более старая версия без С++11. Как вариант, можно собрать из исходников, но я
+опишу способ установки из дополнительных реп.&lt;/p&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://gcc.gnu.org/projects/cxx-status.html#cxx11&quot;&gt;https://gcc.gnu.org/projects/cxx-status.html#cxx11&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Добавляем репу:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo yum install centos-release-scl
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Устанавливаем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;devtoolset-3-toolchain&lt;/span&gt;&lt;/code&gt;, который включает в себя &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=gcc&quot;&gt;gcc&lt;/a&gt;,
+&lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=gdb&quot;&gt;gdb&lt;/a&gt;, &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=binutils&quot;&gt;binutils&lt;/a&gt;, &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=elfutils&quot;&gt;elfutils&lt;/a&gt;, &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=dwz&quot;&gt;dwz&lt;/a&gt;, &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=memstomp&quot;&gt;memstomp&lt;/a&gt;,
+&lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=strace&quot;&gt;strace&lt;/a&gt;, &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=ltrace&quot;&gt;ltrace&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo yum install devtoolset-3-toolchain
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Прописываем &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=gcc&quot;&gt;gcc&lt;/a&gt; в окружение пользователя:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ scl &lt;span class=&quot;nb&quot;&gt;enable&lt;/span&gt; devtoolset-3 bash
+
+или
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;source /opt/rh/devtoolset-3/enable&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; ~/.bashrc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Профит!&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

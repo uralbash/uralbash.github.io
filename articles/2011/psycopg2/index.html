@@ -1,0 +1,468 @@
+
+
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Установка psycopg2 в virtualenv для Postgres 9.1 &mdash; Ural penguins</title>
+    
+
+    
+        <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    
+
+    
+        
+    
+            <link rel="index" title="Алфавитный указатель" href="../../../genindex/"/>
+            <link rel="search" title="Поиск" href="../../../search/"/>
+
+        <link rel="top" title="Ural penguins" href="../../../"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300&subset=latin,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <link href="../../../_static/css/badge_only.css" type="text/css" rel="stylesheet" />
+    <link href="../../../_static/css/__theme.css" type="text/css" rel="stylesheet" />
+
+    
+            <script type="text/javascript" src="../../../_static/jquery.js"></script>
+            <script type="text/javascript" src="../../../_static/underscore.js"></script>
+            <script type="text/javascript" src="../../../_static/doctools.js"></script>
+            <script type="text/javascript" src="../../../_static/metrika.js"></script>
+            <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+  
+  <style type="text/css">
+    html, body {
+      background: #545d5c !important;
+    }
+    .page__left .menu {
+        width: 0px;
+    }
+    .page__right {
+      background-color: #e7e7e7;
+      margin: 0 0 0 30px;
+    }
+    .rst-content {
+      padding: 13px;
+    }
+    .footer {
+      padding: 13px;
+    }
+    /* unvisited link */
+    ul.postlist-style-none a:link, .head a:link {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* visited link */
+    ul.postlist-style-none a:visited, .head a:visited {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* mouse over link */
+    ul.postlist-style-none a:hover, .head a:hover {
+        color: #222;
+        text-decoration: none;
+    }
+
+    ul.postlist-style-none a:active, .head a:active {
+        color: #222;
+        text-decoration: none;
+    }
+    ul.postlist-style-none li {
+        list-style-type: none;
+    }
+    ul.postlist-style-none li p.first {
+      color: red !important;
+      font: 1.8em "Open Sans",Arial,sans-serif !important;
+    }
+    .first a {
+      font-weight: bold;
+    }
+    .first em {
+      font-style: normal !important;
+    }
+    .wrapper__inner {
+      padding: 0px 30px 0 0 !important;
+    }
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
+
+  
+  
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.post-list-style-disc {list-style-type: disc;}
+    ul.post-list-style-none {list-style-type: none;}
+    ul.post-list-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper__inner">
+            <div class="page
+                ">
+                <div class="page__left">
+                  
+                    <nav class="menu" id="menu" data-state="expand">
+                        <div class="menu-inner">
+                            
+                                <div class="menu-project">
+                                    <a href="../../../" class="menu-project__link">Ural penguins</a>
+                                </div>
+                            
+                            <div class="tree">
+                                
+                                
+                                    <ul>
+<li><a class="reference internal" href="#">Установка psycopg2 в virtualenv для Postgres 9.1</a></li>
+</ul>
+
+                                
+                            </div>
+                            <div class="menu-search search">
+                                <div class="search-title">Quick search</div>
+                                <form id="search-form" class="search-form" action="../../../search/" method="GET">
+                                    <input type="text" name="q" placeholder="Search docs" />
+                                    <input type="hidden" name="check_keywords" value="yes" />
+                                    <input type="hidden" name="area" value="default" />
+                                </form>
+                                <div class="search-desc">Enter search terms or a module, class or function name.</div>
+                            </div>
+                            <nav class="wy-nav-side">&nbsp;</nav>
+                        </div>
+                        <div class="menu-switch">
+                            <div class="menu-switch__arrow">«</div>
+                        </div>
+                    </nav>
+                  
+                </div>
+
+                <section class="page__right">
+                    
+  <div class="head" style="background-image: url('/_static/bg.jpg');
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  height: 200px">
+    <a href="/">
+      <div style="width:100%; height: 75%">
+        <h1 style="padding-top:15px;padding-left:15px;font-size:60px">Ural penguins</h1>
+      </div>
+    </a>
+    <table style="
+        border-collapse: unset !important;
+        border-spacing: 1 !important;">
+        <tr>
+            <td style="padding-right: 2px">
+                <a href="/pages/pyramid/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        Pyramid
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="/pages/nixos/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        NixOS
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </table>
+  </div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <div class="badge" style="width:100%;height:80px">
+    <!-- uralbash.ru -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2884502571619359"
+         data-ad-slot="9876011339"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+
+                    <div class="badge">
+                        
+                        
+                    </div>
+
+                    <div class="rst-content">
+                        
+  <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+  <table>
+    <tr>
+      <td>
+        <div class="yashare-auto-init" data-yashareL10n="ru"
+          data-yashareType="medium"
+          data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"
+          data-yashareTheme="counter"></div>
+      </td>
+      <td>
+        
+  
+  
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+        Dec 16, 2011
+      </div>
+    
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+      
+        
+          <i class="fa-fw fa fa-tags"></i>
+        
+        
+      
+        
+        <a href="../../../blog/tag/python/">python</a>,
+        
+      
+        
+        <a href="../../../blog/tag/virtualenv/">virtualenv</a>,
+        
+      
+        
+        <a href="../../../blog/tag/psycopg2/">psycopg2</a>,
+        
+      
+        
+        <a href="../../../blog/tag/postgresql/">PostgreSQL</a>
+        
+      
+      </div>
+    
+
+      </td>
+    </tr>
+  </table>
+  <div class="section" id="psycopg2-virtualenv-postgres-9-1">
+<h1>Установка psycopg2 в virtualenv для Postgres 9.1<a class="headerlink" href="#psycopg2-virtualenv-postgres-9-1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>При установке <a class="reference external" href="http://initd.org/psycopg/">psycopg</a> в <a class="reference external" href="https://virtualenv.pypa.io/en/latest">virtualenv</a> может возникнуть ошибка:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">(</span>mypythonenv<span class="o">)</span>uralbash@server:~$ pip install psycopg
+Downloading/unpacking psycopg
+  Downloading psycopg2-2.4.3.tar.gz <span class="o">(</span>687Kb<span class="o">)</span>: 687Kb downloaded
+  Running setup.py egg_info <span class="k">for</span> package psycopg
+    Error: You need to install postgresql-server-dev-X.Y <span class="k">for</span> building a server-side extension or libpq-dev <span class="k">for</span> building a client-side application.
+
+    Complete output from <span class="nb">command</span> python setup.py egg_info:
+    running egg_info
+
+creating pip-egg-info/psycopg2.egg-info
+
+writing pip-egg-info/psycopg2.egg-info/PKG-INFO
+
+writing top-level names to pip-egg-info/psycopg2.egg-info/top_level.txt
+
+writing dependency_links to pip-egg-info/psycopg2.egg-info/dependency_links.txt
+
+writing manifest file <span class="s1">&#39;pip-egg-info/psycopg2.egg-info/SOURCES.txt&#39;</span>
+
+warning: manifest_maker: standard file <span class="s1">&#39;-c&#39;</span> not found
+
+Error: You need to install postgresql-server-dev-X.Y <span class="k">for</span> building a server-side extension or libpq-dev <span class="k">for</span> building a client-side application.
+
+
+
+----------------------------------------
+Command python setup.py egg_info failed with error code <span class="m">1</span>
+Storing <span class="nb">complete</span> log in /home/uralbash/.pip/pip.log
+</pre></div>
+</div>
+<p>Это возникает из-за утилиты <code class="docutils literal"><span class="pre">pg_config</span></code> которая требуется для установки <a class="reference external" href="http://initd.org/psycopg/">psycopg</a>.
+В случае если у Вас <a class="reference external" href="http://www.postgresql.org/">Postgres</a> 8.4 нужно добавить <code class="docutils literal"><span class="pre">pg_config</span></code> в <code class="docutils literal"><span class="pre">PATH</span></code> (как то
+так <code class="docutils literal"><span class="pre">PATH=$PATH:/usr/bin/</span></code>). Путь до <code class="docutils literal"><span class="pre">pg_config</span></code> можно узнать:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ whereis pg_config
+pg_config: /usr/bin/pg_config
+</pre></div>
+</div>
+<p>И установить пакеты:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo apt-get install libpq-dev python-dev
+</pre></div>
+</div>
+<p>Но если стоит 9.1 версия то может возникнуть ошибка:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or <span class="k">if</span> you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may <span class="nb">help</span> to resolve the situation:
+
+The following packages have unmet dependencies:
+ libpq-dev : Depends: libpq5 <span class="o">(=</span> <span class="m">8</span>.4.9-0squeeze1<span class="o">)</span> but <span class="m">9</span>.1.1-1~bpo60+1 is to be installed
+E: Broken packages
+</pre></div>
+</div>
+<p>В этом случае устанавливаем <a class="reference external" href="http://initd.org/psycopg/">psycopg</a> не в окружении через:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo pip install psycopg2
+</pre></div>
+</div>
+<p>Смотрим куда это встало:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo python -c <span class="s2">&quot;import psycopg2;print psycopg2.__file__&quot;</span>
+/usr/lib/python2.6/dist-packages/psycopg2/__init__.pyc
+</pre></div>
+</div>
+<p>И копируем к себе в lib&#8217;ы в <a class="reference external" href="https://virtualenv.pypa.io/en/latest">virtualenv</a>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo cp -r /usr/lib/python2.6/dist-packages/psycopg2  mypythonenv/lib/python2.6/site-packages/
+</pre></div>
+</div>
+<p>Копипастим яйцо:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo cp /usr/lib/python2.6/dist-packages/psycopg2-2.4.4.egg-info  mypythonenv/lib/python2.6/site-packages/
+</pre></div>
+</div>
+<p>Еще надо будет скопировать <code class="docutils literal"><span class="pre">mx</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ sudo cp -r /usr/lib/python2.6/dist-packages/mx  mypythonenv/lib/python2.6/site-packages/
+</pre></div>
+</div>
+<p>Жеский дьютихак но главное что работает малой кровью.</p>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../rrd_cut/">
+    <i class="fa fa-arrow-circle-left"></i>
+    Срезаем пики в RRD при помощи python
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../fa_keyerror/">
+    FormAlchemy KeyError: "Key not found: "
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <br />
+    <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="medium" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yashareTheme="counter"></div>
+    <h2>Comments</h2>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'uralbash'; // required: replace example with your forum shortname
+        var disqus_identifier = '/articles/2011/psycopg2/';
+        var disqus_title = 'Установка psycopg2 в virtualenv для Postgres 9.1';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+                    </div>
+                    <footer class="footer">
+                      
+  
+                        
+    <div class="footer__copyright">
+            
+                &copy; Copyright 2015, uralbash.
+            
+    </div>
+<div class="footer__theme">
+    <a href="https://github.com/ITCase/itcase_sphinx_theme" class="footer__theme-link">
+      ITCase Sphinx Theme
+    </a>
+      <span class="footer__theme-text">
+          | version: 0.2.0
+      </span>
+</div>
+                      
+  <div class="footer__theme">
+      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+        Ablog powered.
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="http://uralbash.ru/blog/atom.xml" class="footer__theme-link">
+        RSS/Atom
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="https://uralbash.blogspot.com" class="footer__theme-link">
+        Старый блог
+      </a>
+  </div>
+
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+            var STICKY_MENU = true;
+        
+    </script>
+
+    <script type="text/javascript" src="../../../_static/js/__theme.js"></script>
+
+    
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT: '../../../',
+                    VERSION: '',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '',
+                    HAS_SOURCE: true
+            };
+        </script>
+    
+
+    
+</body>
+</html>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом alembic</title>
+  <id>http://uralbash.ru/blog/tag/alembic/atom.xml</id>
+  <updated>2014-02-16T02:04:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/alembic/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/alembic/atom.xml">
+    <title type="text">миграции в Pyramid</title>
+    <id>http://uralbash.ru/articles/2014/alembic_pyramid/</id>
+    <updated>2014-02-16T02:04:00Z</updated>
+    <published>2014-02-16T02:04:00Z</published>
+    <link href="http://uralbash.ru/articles/2014/alembic_pyramid/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid&quot;&gt;
+
+&lt;p&gt;Пример миграций в пирамиде:&lt;/p&gt;
+&lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/south&quot;&gt;south&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/alembic&quot;&gt;alembic&lt;/a&gt;. Создаём файл
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;alembic.ini&lt;/span&gt;&lt;/code&gt; и указываем путь до настроек :, т.е. &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;имя&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;проекта&amp;gt;:&amp;lt;название&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;папки&amp;gt;&lt;/span&gt;&lt;/code&gt; например &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hlp:alembic&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;alembic.ini&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-ini&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;pyramid.includes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;    pyramid_debugtoolbar&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;    pyramid_tm&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;    ziggurat_foundations.ext.pyramid.sign_in&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;ziggurat_foundations.model_locations.User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;hlp.models.auth:User&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#sqlalchemy.url = sqlite:///%(here)s/hlp.sqlite&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;sqlalchemy.url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;postgresql://postgres:postgres@localhost:5432/hlp&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# By default, the toolbar only appears for clients from IP addresses&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# &amp;#39;127.0.0.1&amp;#39; and &amp;#39;::1&amp;#39;.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# debugtoolbar.hosts = 127.0.0.1 ::1&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;###&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# wsgi server configuration&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;###&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;[server:main]&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;egg:waitress#main&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0.0.0.0&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;port&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;6543&lt;/span&gt;
+
+&lt;span class=&quot;hll&quot;&gt;&lt;span class=&quot;k&quot;&gt;[alembic]&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# path to migration scripts&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;&lt;span class=&quot;na&quot;&gt;script_location&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;hlp:alembic&lt;/span&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;в проекте создаем папку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;alembic&lt;/span&gt;&lt;/code&gt; со следующей структурой:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; alembic/$ tree
+.
+├── env.py
+├── script.py.mako
+└── versions
+    └── 29ac938c56f_starting.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id2&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;env.py&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;__future__&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;with_statement&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;alembic&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sqlalchemy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;engine_from_config&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sqlalchemy.engine.base&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Engine&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.paster&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setup_logging&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# this is the Alembic Config object, which provides&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# access to the values within the .ini file in use.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;hlp.models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Base&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;setup_logging&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config_file_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;engine_from_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_section&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;app:main&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;sqlalchemy.&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;target_metadata&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Base&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metadata&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_migrations_offline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;Run migrations in &amp;#39;offline&amp;#39; mode.&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;    This configures the context with just a URL&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    and not an Engine, though an Engine is acceptable&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    here as well. By skipping the Engine creation&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    we don&amp;#39;t even need a DBAPI to be available.&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;    Calls to context.execute() here emit the given string to the&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    script output.&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;configure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin_transaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_migrations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;run_migrations_online&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;Run migrations in &amp;#39;online&amp;#39; mode.&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;    In this scenario we need to create an Engine&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    and associate a connection with the context.&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;isinstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Engine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;ne&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;&amp;#39;Expected engine instance got &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; instead&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;configure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;target_metadata&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target_metadata&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin_transaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run_migrations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;finally&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_offline_mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;run_migrations_offline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;run_migrations_online&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id3&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;script.py.mako&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-mako&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;Revision ID: &lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;up_revision&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;Revises: &lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;down_revision&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;Create Date: &lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create_date&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;# revision identifiers, used by Alembic.&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;revision = &lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;repr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;up_revision&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;down_revision = &lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;repr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;down_revision&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;from alembic import op&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;import sqlalchemy as sa&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;imports&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;imports&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;def upgrade():&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;upgrades&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;upgrades&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;pass&amp;quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;
+
+
+&lt;span class=&quot;x&quot;&gt;def downgrade():&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;downgrades&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;downgrades&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;pass&amp;quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Создаем первую миграцию:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ alembic revision --autogenerate -m &lt;span class=&quot;s2&quot;&gt;&amp;quot;create table&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;переходим к последней миграции:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ alembic upgrade head
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Есть ешё ништиковые команды типа:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ alembic upgrade +2
+$ alembic downgrade -1
+$ alembic upgrade 29ac
+$ alembic &lt;span class=&quot;nb&quot;&gt;history&lt;/span&gt;
+$ alembic current
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;пример исключения таблиц из миграций &lt;a class=&quot;reference external&quot; href=&quot;http://blog.utek.pl/2013/ignoring-tables-in-alembic/&quot;&gt;http://blog.utek.pl/2013/ignoring-tables-in-alembic/&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;подробнее здесь &lt;a class=&quot;reference external&quot; href=&quot;https://alembic.readthedocs.org/en/latest/tutorial.html&quot;&gt;https://alembic.readthedocs.org/en/latest/tutorial.html&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

@@ -1,0 +1,23 @@
+.. note::
+
+   Это статья из лекций
+   http://lectureswww.readthedocs.io/999.additions/texteditors/vscode.html
+
+.. post:: 7 Sep, 2016 20:48
+   :tags: linux, vscode, python, pyramid
+   :category: Python
+   :author: Uralbash
+   :language: ru
+
+#############################
+Visual Studio Code для Python
+#############################
+
+.. include:: ../../vendor/lectures.www/docs/999.additions/texteditors/vscode.rst
+
+Итог
+====
+
+Я, конечно, использую :l:`Vim`, но советую :l:`Visual Studio Code`, особенно тем
+кто не знает что выбрать. Очень, оказался, самодостаточный редактор, `git`,
+дбаггер, плагины, vi-мод. Ай да Микрософт!

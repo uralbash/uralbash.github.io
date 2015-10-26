@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом Internet</title>
+  <id>http://uralbash.ru/blog/tag/internet/atom.xml</id>
+  <updated>2012-11-16T14:08:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/internet/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/internet/atom.xml">
+    <title type="text">Раздача Интернета с десктоп Linux машины</title>
+    <id>http://uralbash.ru/articles/2012/shared_net/</id>
+    <updated>2012-11-16T14:08:00Z</updated>
+    <published>2012-11-16T14:08:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/shared_net/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;linux&quot;&gt;
+
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Дано&lt;/span&gt;&lt;/code&gt;: ноутбук который смотрит в Интернет&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Надо&lt;/span&gt;&lt;/code&gt;: получить Интернет на другом компе (компах) через этот ноут&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В ноутбук вставляем еще одну сетевую карту, например такую:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/USB+RJ45.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/USB+RJ45.jpg&quot; /&gt;
+&lt;p&gt;В итоге у нас в ноуте &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;eth0&lt;/span&gt;&lt;/code&gt; это Интернет, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;eth1&lt;/span&gt;&lt;/code&gt; это локалка. Для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;eth1&lt;/span&gt;&lt;/code&gt;
+делаем например такие настройки ip &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;10.0.0.100&lt;/span&gt;&lt;/code&gt; mask 24. Я делал через
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;networkmanager&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Дальше соединяем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;eth1&lt;/span&gt;&lt;/code&gt; ноута с компом из локалки или со свичом. На компе из
+локалки делаем следующие настройки (для &lt;a class=&quot;reference external&quot; href=&quot;http://www.ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; в
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/etc/network/interfaces&lt;/span&gt;&lt;/code&gt;):&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;iface eth0 inet static
+&lt;span class=&quot;c1&quot;&gt;# ip компа&lt;/span&gt;
+address &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;.0.0.15
+netmask &lt;span class=&quot;m&quot;&gt;255&lt;/span&gt;.255.255.0
+&lt;span class=&quot;c1&quot;&gt;# шлюз наш ноут&lt;/span&gt;
+gateway &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;.0.0.100
+&lt;span class=&quot;c1&quot;&gt;# днс&amp;#39;ы от гула фор фри, в версиях раньше 12.04 надо править /etc/resolv.conf&lt;/span&gt;
+dns-nameservers &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;.8.8.8 &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;.8.4.4
+auto eth0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Я не сетевик и не админ и не фанатею за сети, поэтому здесь описывается самый
+примитивный способ, как это заставить работать за 4мин18сек. В продакшине эту
+схему конечно нельзя использовать (наверно), для этого нужно пользоваться
+настройками фаервола и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NAT&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Дальше устанавливаем на ноуте &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;firestarter&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ apt-get install firestarter
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;Запускаем и в ГУЕ указываем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;eth0&lt;/span&gt;&lt;/code&gt; как внешний интерфейс и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;eth1&lt;/span&gt;&lt;/code&gt; как&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;внутренний.&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;На локальной машине:&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ping uralbash.ru
+PING uralbash.ru &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;216&lt;/span&gt;.239.36.21&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;56&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;84&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; bytes of data.
+&lt;span class=&quot;m&quot;&gt;64&lt;/span&gt; bytes from any-in-2415.1e100.net &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;216&lt;/span&gt;.239.36.21&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;nv&quot;&gt;icmp_req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;44&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;59&lt;/span&gt;.4 ms
+&lt;span class=&quot;m&quot;&gt;64&lt;/span&gt; bytes from any-in-2415.1e100.net &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;216&lt;/span&gt;.239.36.21&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;nv&quot;&gt;icmp_req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;44&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;51&lt;/span&gt;.6 ms
+&lt;span class=&quot;m&quot;&gt;64&lt;/span&gt; bytes from any-in-2415.1e100.net &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;216&lt;/span&gt;.239.36.21&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;nv&quot;&gt;icmp_req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;44&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;50&lt;/span&gt;.9 ms
+&lt;span class=&quot;m&quot;&gt;64&lt;/span&gt; bytes from any-in-2415.1e100.net &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;216&lt;/span&gt;.239.36.21&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;nv&quot;&gt;icmp_req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;44&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;50&lt;/span&gt;.0 ms
+&lt;span class=&quot;m&quot;&gt;64&lt;/span&gt; bytes from any-in-2415.1e100.net &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;216&lt;/span&gt;.239.36.21&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;nv&quot;&gt;icmp_req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;44&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;51&lt;/span&gt;.4 ms
+&lt;span class=&quot;m&quot;&gt;64&lt;/span&gt; bytes from any-in-2415.1e100.net &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;216&lt;/span&gt;.239.36.21&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;nv&quot;&gt;icmp_req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;44&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;52&lt;/span&gt;.5 ms
+&lt;span class=&quot;m&quot;&gt;64&lt;/span&gt; bytes from any-in-2415.1e100.net &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;216&lt;/span&gt;.239.36.21&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;nv&quot;&gt;icmp_req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;44&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;52&lt;/span&gt;.3 ms
+&lt;span class=&quot;m&quot;&gt;64&lt;/span&gt; bytes from any-in-2415.1e100.net &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;216&lt;/span&gt;.239.36.21&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: &lt;span class=&quot;nv&quot;&gt;icmp_req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ttl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;44&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;51&lt;/span&gt;.1 ms
+^C
+--- uralbash.ru ping statistics ---
+&lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; packets transmitted, &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; received, &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;% packet loss, &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt; 7008ms
+rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50&lt;/span&gt;.083/52.444/59.403/2.733 ms
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

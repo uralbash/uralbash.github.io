@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом psycopg2</title>
+  <id>http://uralbash.ru/blog/tag/psycopg2/atom.xml</id>
+  <updated>2011-12-16T18:45:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/psycopg2/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/psycopg2/atom.xml">
+    <title type="text">Установка psycopg2 в virtualenv для Postgres 9.1</title>
+    <id>http://uralbash.ru/articles/2011/psycopg2/</id>
+    <updated>2011-12-16T18:45:00Z</updated>
+    <published>2011-12-16T18:45:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/psycopg2/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;psycopg2-virtualenv-postgres-9-1&quot;&gt;
+
+&lt;p&gt;При установке &lt;a class=&quot;reference external&quot; href=&quot;http://initd.org/psycopg/&quot;&gt;psycopg&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;https://virtualenv.pypa.io/en/latest&quot;&gt;virtualenv&lt;/a&gt; может возникнуть ошибка:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;mypythonenv&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;uralbash@server:~$ pip install psycopg
+Downloading/unpacking psycopg
+  Downloading psycopg2-2.4.3.tar.gz &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;687Kb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: 687Kb downloaded
+  Running setup.py egg_info &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; package psycopg
+    Error: You need to install postgresql-server-dev-X.Y &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; building a server-side extension or libpq-dev &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; building a client-side application.
+
+    Complete output from &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; python setup.py egg_info:
+    running egg_info
+
+creating pip-egg-info/psycopg2.egg-info
+
+writing pip-egg-info/psycopg2.egg-info/PKG-INFO
+
+writing top-level names to pip-egg-info/psycopg2.egg-info/top_level.txt
+
+writing dependency_links to pip-egg-info/psycopg2.egg-info/dependency_links.txt
+
+writing manifest file &lt;span class=&quot;s1&quot;&gt;&amp;#39;pip-egg-info/psycopg2.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+
+warning: manifest_maker: standard file &lt;span class=&quot;s1&quot;&gt;&amp;#39;-c&amp;#39;&lt;/span&gt; not found
+
+Error: You need to install postgresql-server-dev-X.Y &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; building a server-side extension or libpq-dev &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; building a client-side application.
+
+
+
+----------------------------------------
+Command python setup.py egg_info failed with error code &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+Storing &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; log in /home/uralbash/.pip/pip.log
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Это возникает из-за утилиты &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; которая требуется для установки &lt;a class=&quot;reference external&quot; href=&quot;http://initd.org/psycopg/&quot;&gt;psycopg&lt;/a&gt;.
+В случае если у Вас &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; 8.4 нужно добавить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH&lt;/span&gt;&lt;/code&gt; (как то
+так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH=$PATH:/usr/bin/&lt;/span&gt;&lt;/code&gt;). Путь до &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; можно узнать:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ whereis pg_config
+pg_config: /usr/bin/pg_config
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;И установить пакеты:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install libpq-dev python-dev
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Но если стоит 9.1 версия то может возникнуть ошибка:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may &lt;span class=&quot;nb&quot;&gt;help&lt;/span&gt; to resolve the situation:
+
+The following packages have unmet dependencies:
+ libpq-dev : Depends: libpq5 &lt;span class=&quot;o&quot;&gt;(=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;.4.9-0squeeze1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; but &lt;span class=&quot;m&quot;&gt;9&lt;/span&gt;.1.1-1~bpo60+1 is to be installed
+E: Broken packages
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В этом случае устанавливаем &lt;a class=&quot;reference external&quot; href=&quot;http://initd.org/psycopg/&quot;&gt;psycopg&lt;/a&gt; не в окружении через:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install psycopg2
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Смотрим куда это встало:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo python -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;import psycopg2;print psycopg2.__file__&amp;quot;&lt;/span&gt;
+/usr/lib/python2.6/dist-packages/psycopg2/__init__.pyc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;И копируем к себе в lib&amp;#8217;ы в &lt;a class=&quot;reference external&quot; href=&quot;https://virtualenv.pypa.io/en/latest&quot;&gt;virtualenv&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo cp -r /usr/lib/python2.6/dist-packages/psycopg2  mypythonenv/lib/python2.6/site-packages/
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Копипастим яйцо:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo cp /usr/lib/python2.6/dist-packages/psycopg2-2.4.4.egg-info  mypythonenv/lib/python2.6/site-packages/
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Еще надо будет скопировать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;mx&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo cp -r /usr/lib/python2.6/dist-packages/mx  mypythonenv/lib/python2.6/site-packages/
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Жеский дьютихак но главное что работает малой кровью.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

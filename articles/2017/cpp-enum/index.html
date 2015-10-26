@@ -1,0 +1,637 @@
+
+
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>C++: Приведение Enum структур к общему виду в шаблонах &mdash; Ural penguins</title>
+    
+
+    
+        <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    
+
+    
+        
+    
+            <link rel="index" title="Алфавитный указатель" href="../../../genindex/"/>
+            <link rel="search" title="Поиск" href="../../../search/"/>
+
+        <link rel="top" title="Ural penguins" href="../../../"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300&subset=latin,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <link href="../../../_static/css/badge_only.css" type="text/css" rel="stylesheet" />
+    <link href="../../../_static/css/__theme.css" type="text/css" rel="stylesheet" />
+
+    
+            <script type="text/javascript" src="../../../_static/jquery.js"></script>
+            <script type="text/javascript" src="../../../_static/underscore.js"></script>
+            <script type="text/javascript" src="../../../_static/doctools.js"></script>
+            <script type="text/javascript" src="../../../_static/metrika.js"></script>
+            <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+  
+  <style type="text/css">
+    html, body {
+      background: #545d5c !important;
+    }
+    .page__left .menu {
+        width: 0px;
+    }
+    .page__right {
+      background-color: #e7e7e7;
+      margin: 0 0 0 30px;
+    }
+    .rst-content {
+      padding: 13px;
+    }
+    .footer {
+      padding: 13px;
+    }
+    /* unvisited link */
+    ul.postlist-style-none a:link, .head a:link {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* visited link */
+    ul.postlist-style-none a:visited, .head a:visited {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* mouse over link */
+    ul.postlist-style-none a:hover, .head a:hover {
+        color: #222;
+        text-decoration: none;
+    }
+
+    ul.postlist-style-none a:active, .head a:active {
+        color: #222;
+        text-decoration: none;
+    }
+    ul.postlist-style-none li {
+        list-style-type: none;
+    }
+    ul.postlist-style-none li p.first {
+      color: red !important;
+      font: 1.8em "Open Sans",Arial,sans-serif !important;
+    }
+    .first a {
+      font-weight: bold;
+    }
+    .first em {
+      font-style: normal !important;
+    }
+    .wrapper__inner {
+      padding: 0px 30px 0 0 !important;
+    }
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
+
+  
+  
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.post-list-style-disc {list-style-type: disc;}
+    ul.post-list-style-none {list-style-type: none;}
+    ul.post-list-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper__inner">
+            <div class="page
+                ">
+                <div class="page__left">
+                  
+                    <nav class="menu" id="menu" data-state="expand">
+                        <div class="menu-inner">
+                            
+                                <div class="menu-project">
+                                    <a href="../../../" class="menu-project__link">Ural penguins</a>
+                                </div>
+                            
+                            <div class="tree">
+                                
+                                
+                                    <ul>
+<li><a class="reference internal" href="#">C++: Приведение Enum структур к общему виду в шаблонах</a></li>
+</ul>
+
+                                
+                            </div>
+                            <div class="menu-search search">
+                                <div class="search-title">Quick search</div>
+                                <form id="search-form" class="search-form" action="../../../search/" method="GET">
+                                    <input type="text" name="q" placeholder="Search docs" />
+                                    <input type="hidden" name="check_keywords" value="yes" />
+                                    <input type="hidden" name="area" value="default" />
+                                </form>
+                                <div class="search-desc">Enter search terms or a module, class or function name.</div>
+                            </div>
+                            <nav class="wy-nav-side">&nbsp;</nav>
+                        </div>
+                        <div class="menu-switch">
+                            <div class="menu-switch__arrow">«</div>
+                        </div>
+                    </nav>
+                  
+                </div>
+
+                <section class="page__right">
+                    
+  <div class="head" style="background-image: url('/_static/bg.jpg');
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  height: 200px">
+    <a href="/">
+      <div style="width:100%; height: 75%">
+        <h1 style="padding-top:15px;padding-left:15px;font-size:60px">Ural penguins</h1>
+      </div>
+    </a>
+    <table style="
+        border-collapse: unset !important;
+        border-spacing: 1 !important;">
+        <tr>
+            <td style="padding-right: 2px">
+                <a href="/pages/pyramid/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        Pyramid
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="/pages/nixos/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        NixOS
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </table>
+  </div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <div class="badge" style="width:100%;height:80px">
+    <!-- uralbash.ru -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2884502571619359"
+         data-ad-slot="9876011339"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+
+                    <div class="badge">
+                        
+                        
+                    </div>
+
+                    <div class="rst-content">
+                        
+  <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+  <table>
+    <tr>
+      <td>
+        <div class="yashare-auto-init" data-yashareL10n="ru"
+          data-yashareType="medium"
+          data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"
+          data-yashareTheme="counter"></div>
+      </td>
+      <td>
+        
+  
+  
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+        Aug 16, 2017
+      </div>
+    
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+      
+        
+          <i class="fa-fw fa fa-tags"></i>
+        
+        
+      
+        
+        <a href="../../../blog/tag/c/">C++</a>,
+        
+      
+        
+        <a href="../../../blog/tag/c11/">c++11</a>
+        
+      
+      </div>
+    
+
+      </td>
+    </tr>
+  </table>
+  <div class="section" id="c-enum">
+<h1>C++: Приведение Enum структур к общему виду в шаблонах<a class="headerlink" href="#c-enum" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Задача - создать шаблонную функцию, в которой в зависимости от типа
+перечисления выбирается нужный индекс в контейнере <code class="docutils literal"><span class="pre">vector</span></code>. Попробуем решить
+задачу в лоб, создадим 3 перечисления и выберем нужный индекс в шаблоне.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Использование enum в шаблоне напрямую</span><a class="headerlink" href="#id1" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt; // cout</span><span class="cp"></span>
+
+<span class="k">struct</span> <span class="n">PEOPLE</span> <span class="p">{</span>
+  <span class="k">enum</span> <span class="p">{</span>
+    <span class="n">PEOPLE_ID</span><span class="p">,</span>    <span class="c1">// 0</span>
+    <span class="n">FIRSTNAME</span><span class="p">,</span>    <span class="c1">// 1</span>
+    <span class="n">LASTNAME</span>      <span class="c1">// 2</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">STUDENT</span> <span class="p">{</span>
+  <span class="k">enum</span> <span class="p">{</span>
+    <span class="n">LASTNAME</span><span class="p">,</span>     <span class="c1">// 0</span>
+    <span class="n">FIRSTNAME</span><span class="p">,</span>    <span class="c1">// 1</span>
+    <span class="n">SALARY</span><span class="p">,</span>       <span class="c1">// 2</span>
+    <span class="n">_ID</span><span class="p">,</span>          <span class="c1">// 3</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">EMPLOYE</span> <span class="p">{</span>
+  <span class="k">enum</span> <span class="p">{</span>
+    <span class="n">LASTNAME</span><span class="p">,</span>     <span class="c1">// 0</span>
+    <span class="n">_ID</span><span class="p">,</span>          <span class="c1">// 1</span>
+    <span class="n">FIRSTNAME</span><span class="p">,</span>    <span class="c1">// 2</span>
+    <span class="n">SALARY</span>        <span class="c1">// 3</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">t_item</span><span class="p">;</span>
+
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">printHuman</span><span class="p">(</span><span class="n">t_item</span> <span class="n">item</span><span class="p">,</span> <span class="n">T</span> <span class="n">_type</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">salary</span>   <span class="o">=</span> <span class="s">&quot;0.00 $&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">human_id</span> <span class="o">=</span> <span class="s">&quot;-1&quot;</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="kt">bool</span> <span class="n">isStudent</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_same</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">STUDENT</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">bool</span> <span class="n">isEmploye</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_same</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">EMPLOYE</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+
+  <span class="c1">// PEOPLE</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">PEOPLE</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">human_id</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">PEOPLE</span><span class="o">::</span><span class="n">PEOPLE_ID</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// STUDENT || EMPLOYE</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">isStudent</span> <span class="o">||</span> <span class="n">isEmploye</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Выбираем поле в зависимости от типа структуры</span>
+<span class="hll">    <span class="n">salary</span>   <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">T</span><span class="o">::</span><span class="n">SALARY</span><span class="p">);</span>
+</span><span class="hll">    <span class="n">human_id</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">T</span><span class="o">::</span><span class="n">_ID</span><span class="p">);</span>
+</span>  <span class="p">}</span>
+
+  <span class="c1">// Отобажаем на экране</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">human_id</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\t\t</span><span class="s">&quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">item</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">T</span><span class="o">::</span><span class="n">FIRSTNAME</span><span class="p">)</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\t\t</span><span class="s">&quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">item</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">T</span><span class="o">::</span><span class="n">LASTNAME</span><span class="p">)</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\t\t</span><span class="s">&quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">salary</span>
+            <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="c1">// Создаем людей разных типов</span>
+  <span class="n">t_item</span> <span class="n">vasya</span><span class="p">{</span><span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;Vasya&quot;</span><span class="p">,</span> <span class="s">&quot;Vasnetsov&quot;</span><span class="p">};</span>                    <span class="c1">// PEOPLE</span>
+  <span class="n">t_item</span> <span class="n">petya</span><span class="p">{</span><span class="s">&quot;Иванов&quot;</span><span class="p">,</span> <span class="s">&quot;Petr&quot;</span><span class="p">,</span> <span class="s">&quot;10.00 $&quot;</span><span class="p">,</span> <span class="s">&quot;13&quot;</span><span class="p">};</span>            <span class="c1">// STUDENT</span>
+  <span class="n">t_item</span> <span class="n">bjarne</span><span class="p">{</span><span class="s">&quot;Бьёрн&quot;</span><span class="p">,</span> <span class="s">&quot;66&quot;</span><span class="p">,</span> <span class="s">&quot;Straustrup&quot;</span><span class="p">,</span> <span class="s">&quot;100 000.00 $&quot;</span><span class="p">};</span> <span class="c1">// EMPLOYE</span>
+
+  <span class="c1">// Выводим информацию о людях</span>
+  <span class="n">printHuman</span><span class="p">(</span><span class="n">vasya</span><span class="p">,</span>  <span class="n">PEOPLE</span><span class="p">());</span>
+  <span class="n">printHuman</span><span class="p">(</span><span class="n">petya</span><span class="p">,</span>  <span class="n">STUDENT</span><span class="p">());</span>
+  <span class="n">printHuman</span><span class="p">(</span><span class="n">bjarne</span><span class="p">,</span> <span class="n">EMPLOYE</span><span class="p">());</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Скомпилируем пример с добавлением <code class="docutils literal"><span class="pre">C++11</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Попытка компиляции enum в шаблоне</span><a class="headerlink" href="#id2" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ g++ -std<span class="o">=</span>c++11 main.cpp -o enum-example
+main-bad.cpp: In instantiation of ‘void printHuman<span class="o">(</span>t_item, T<span class="o">)</span> <span class="o">[</span>with <span class="nv">T</span> <span class="o">=</span> PEOPLE<span class="p">;</span> <span class="nv">t_item</span> <span class="o">=</span> std::vector&lt;std::__cxx11::basic_string&lt;char&gt; &gt;<span class="o">]</span>’:
+main-bad.cpp:78:30:   required from here
+main-bad.cpp:55:14: error: ‘SALARY’ is not a member of ‘PEOPLE’
+     <span class="nv">salary</span>   <span class="o">=</span> item.at<span class="o">(</span>T::SALARY<span class="o">)</span><span class="p">;</span>
+              ^
+main-bad.cpp:56:14: error: ‘_ID’ is not a member of ‘PEOPLE’
+     <span class="nv">human_id</span> <span class="o">=</span> item.at<span class="o">(</span>T::_ID<span class="o">)</span><span class="p">;</span>
+              ^
+Makefile:7: recipe <span class="k">for</span> target <span class="s1">&#39;bad&#39;</span> failed
+make: *** <span class="o">[</span>bad<span class="o">]</span> Error <span class="m">1</span>
+</pre></div>
+</div>
+</div>
+<p>Получаем ошибку, т.к. подстановка типа перечисления <code class="docutils literal"><span class="pre">PEOPLE</span></code> не имеет
+атрибутов <code class="docutils literal"><span class="pre">_ID</span></code> и <code class="docutils literal"><span class="pre">SALARY</span></code>.</p>
+<p>Что бы обойти эту проблему выведем тип с помощью <code class="docutils literal"><span class="pre">std::conditional</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Использование enum в шаблоне через выведение типа енума</span><a class="headerlink" href="#id3" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-cpp"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">printHuman</span><span class="p">(</span><span class="n">t_item</span> <span class="n">item</span><span class="p">,</span> <span class="n">T</span> <span class="n">_type</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">salary</span>   <span class="o">=</span> <span class="s">&quot;0.00 $&quot;</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">human_id</span> <span class="o">=</span> <span class="s">&quot;-1&quot;</span><span class="p">;</span>
+
+  <span class="k">const</span> <span class="kt">bool</span> <span class="n">isStudent</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_same</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">STUDENT</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">bool</span> <span class="n">isEmploye</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">is_same</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">EMPLOYE</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">;</span>
+
+  <span class="c1">// PEOPLE</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">is_same</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">PEOPLE</span><span class="o">&gt;::</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">human_id</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">PEOPLE</span><span class="o">::</span><span class="n">PEOPLE_ID</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// STUDENT || EMPLOYE</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">isStudent</span> <span class="o">||</span> <span class="n">isEmploye</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Выбираем поле в зависимости от типа структуры</span>
+<span class="hll">    <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">conditional</span><span class="o">&lt;</span><span class="n">isStudent</span><span class="p">,</span> <span class="n">STUDENT</span><span class="p">,</span> <span class="n">EMPLOYE</span><span class="o">&gt;</span> <span class="n">cond</span><span class="p">;</span>
+</span><span class="hll">    <span class="n">salary</span>   <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">cond</span><span class="o">::</span><span class="n">type</span><span class="o">::</span><span class="n">SALARY</span><span class="p">);</span>
+</span><span class="hll">    <span class="n">human_id</span> <span class="o">=</span> <span class="n">item</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">cond</span><span class="o">::</span><span class="n">type</span><span class="o">::</span><span class="n">_ID</span><span class="p">);</span>
+</span>  <span class="p">}</span>
+
+  <span class="c1">// Отобажаем на экране</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">human_id</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\t\t</span><span class="s">&quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">item</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">T</span><span class="o">::</span><span class="n">FIRSTNAME</span><span class="p">)</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\t\t</span><span class="s">&quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">item</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">T</span><span class="o">::</span><span class="n">LASTNAME</span><span class="p">)</span>
+            <span class="o">&lt;&lt;</span> <span class="s">&quot;</span><span class="se">\t\t</span><span class="s">&quot;</span>
+            <span class="o">&lt;&lt;</span> <span class="n">salary</span>
+            <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>В результате программа скомпилируется без ошибок. Это происходит потому, что
+<code class="docutils literal"><span class="pre">conditional</span></code> реализует свой шаблон на базе только двух нужных нам enum&#8217;ов
+(<code class="docutils literal"><span class="pre">STUDENT</span></code>, <code class="docutils literal"><span class="pre">EMPLOY</span></code>).</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Компиляция и запуск</span><a class="headerlink" href="#id4" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ g++ -std<span class="o">=</span>c++11 main.cpp -o enum-example
+$ ./enum-example
+<span class="m">1</span>               Vasya           Vasnetsov               <span class="m">0</span>.00 $
+<span class="m">13</span>              Petr            Иванов          <span class="m">10</span>.00 $
+<span class="m">66</span>              Straustrup              Бьёрн           <span class="m">100</span> <span class="m">000</span>.00 $
+</pre></div>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../protobuf-mingw/">
+    <i class="fa fa-arrow-circle-left"></i>
+    Сборка libprotobuf под Windows
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../nixpkgs-contribute/">
+    Сборка пакета для Nix
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <br />
+    <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="medium" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yashareTheme="counter"></div>
+    <h2>Comments</h2>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'uralbash'; // required: replace example with your forum shortname
+        var disqus_identifier = '/articles/2017/cpp-enum/';
+        var disqus_title = 'C++: Приведение Enum структур к общему виду в шаблонах';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+                    </div>
+                    <footer class="footer">
+                      
+  
+                        
+    <div class="footer__copyright">
+            
+                &copy; Copyright 2015, uralbash.
+            
+    </div>
+<div class="footer__theme">
+    <a href="https://github.com/ITCase/itcase_sphinx_theme" class="footer__theme-link">
+      ITCase Sphinx Theme
+    </a>
+      <span class="footer__theme-text">
+          | version: 0.2.0
+      </span>
+</div>
+                      
+  <div class="footer__theme">
+      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+        Ablog powered.
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="http://uralbash.ru/blog/atom.xml" class="footer__theme-link">
+        RSS/Atom
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="https://uralbash.blogspot.com" class="footer__theme-link">
+        Старый блог
+      </a>
+  </div>
+
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+            var STICKY_MENU = true;
+        
+    </script>
+
+    <script type="text/javascript" src="../../../_static/js/__theme.js"></script>
+
+    
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT: '../../../',
+                    VERSION: '',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '',
+                    HAS_SOURCE: true
+            };
+        </script>
+    
+
+    
+</body>
+</html>

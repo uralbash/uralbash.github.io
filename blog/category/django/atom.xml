@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщений в Django</title>
+  <id>http://uralbash.ru/blog/category/django/atom.xml</id>
+  <updated>2014-02-02T20:43:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/category/django/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/category/django/atom.xml">
+    <title type="text">Django - кот в мешке.</title>
+    <id>http://uralbash.ru/articles/2014/django-hyango/</id>
+    <updated>2014-02-02T20:43:00Z</updated>
+    <published>2014-02-02T20:43:00Z</published>
+    <link href="http://uralbash.ru/articles/2014/django-hyango/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;django&quot;&gt;
+
+&lt;img alt=&quot;../../../_images/wat.jpg&quot; class=&quot;align-right&quot; src=&quot;../../../_images/wat.jpg&quot; style=&quot;width: 420px;&quot; /&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; это фреймворк, при помощи которого быстро пишутся сайты. Так ли это?&lt;/p&gt;
+&lt;p&gt;Фичи джанги:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;Админка&lt;/li&gt;
+&lt;li&gt;куча аппликэйшинов&lt;/li&gt;
+&lt;li&gt;Шаблоны&lt;/li&gt;
+&lt;li&gt;ORM&lt;/li&gt;
+&lt;li&gt;DebugToolbar&lt;/li&gt;
+&lt;/ul&gt;
+&lt;br clear=&quot;both&quot;/&gt;&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;Админка&lt;/h2&gt;
+&lt;p&gt;Из коробки у вас есть админка. Для простых сайтов её нужно кастомайзить долго и
+упорно, правда, обычно, это делается один раз. В сайте среднего уровня
+жангоадминка уже не прокатит. Вывод админка даёт профит в простых сайтах.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;Аппликашины&lt;/h2&gt;
+&lt;p&gt;Обычно очень посредственного качества и не совместимы друг с другом, поэтому
+танцы с бубном и велосипеды наше всё + &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;djangosnippets&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h2&gt;Шаблоны&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;нету break, continue
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;jinja2.ext.loopcontrols&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;This&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;extension&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;adds&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;support&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;break&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;continue&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;loops.&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;рекурсия Jinja&lt;/p&gt;
+&lt;div class=&quot;highlight-html+jinja&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;sitemap&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sitemap&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;recursive&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;item.href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;e&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;item.title&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;item.children&lt;/span&gt; -&lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;submenu&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;loop&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;item.children&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endfor&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;а в джанге это видимо не нужно&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;не работает вызов функций типа &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;item()&lt;/span&gt;&lt;/code&gt; (лолшто?)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;[:-1]&lt;/span&gt;&lt;/code&gt; не работает, нужно писать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;|latest&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;&lt;span class=&quot;strike&quot;&gt;для js выражение типа:&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;strike&quot;&gt;var foo = [{% for item in items %}{{ item.paren }}{% endfor %}]&lt;/span&gt;
+&lt;span class=&quot;strike&quot;&gt;не работает, потому что js выполняется до рендеринга таких {%%} конструкций.&lt;/span&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;коменты &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{#&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;#}&lt;/span&gt;&lt;/code&gt; неработают в несколько строк&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;вместо &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;list[5]&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt; -&amp;gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;arr.5&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;для словарей &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;dict.foo&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt; не работает, да здравствует &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;tag&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;для &lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;itertools.chain&lt;/span&gt;&lt;/code&gt; можно сосать лапу с таким фокусом &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;list[5]&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;о джанга ты прекрасна &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;myval|add:&amp;quot;-5&amp;quot;&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt; вместо уродского &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;myval&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;нельзя сделать так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;dir(foo)&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;как узнать длину &lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/itertools.html#module-itertools&quot; title=&quot;(в Python v3.6)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;itertools&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;? в &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;jinja&lt;/a&gt; делается так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;list(foo).length&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;orm&quot;&gt;
+&lt;h2&gt;ORM&lt;/h2&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Page.objects.filter(parent__in=objects)&lt;/span&gt;&lt;/code&gt; вместо &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DBSession.query(Page).filter(parent&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;objects)&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;великолепный &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;foomodel_set__barmodel__name&lt;/span&gt;&lt;/code&gt; лолшто?!&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Entry.objects.all()[:1].get()&lt;/span&gt;&lt;/code&gt; вместо &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DBSession.query(Entry).first()&lt;/span&gt;&lt;/code&gt; или &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;one()&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;добавляем в модель: &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Meta:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;app_label&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;'asdasda'&lt;/span&gt;&lt;/code&gt; и переходим к разделу дебаг!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;debug&quot;&gt;
+&lt;h2&gt;Debug&lt;/h2&gt;
+&lt;style&gt;
+ .red {
+    color: red;
+    font-weight: bold;
+ }
+ .red-white {
+    background-color: red;
+    font-weight: bold;
+    color: white;
+&lt;/style&gt;&lt;p&gt;&lt;span class=&quot;red-white&quot;&gt;Дебаг джанго кормит вас!&lt;/span&gt; Потому что вы &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; программист и
+половину рабочего времени пытаетесь понять что за !&amp;#64;#$% произошла, получая за
+это зарплату.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Meta:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;app_label&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;'asdasda'&lt;/span&gt;&lt;/code&gt; генерит трейс:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;red&quot;&gt;django.core.management.base.CommandError: One or more models did not validate:
+gallery.galleryimage: &amp;#8216;gallery&amp;#8217; has a relation with model &amp;lt;class
+&amp;#8216;gallery.models.Gallery&amp;#8217;&amp;gt;, which has either not been installed or is abstract.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Шыкарные красные ошибки джанги. Очень информативно, ищется аникейством и
+вспоминанием чё правил.&lt;/p&gt;
+&lt;p&gt;Я запилил &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/django-hyango&quot;&gt;небольшой пример&lt;/a&gt; что
+бы вы могли поднять его и посмотреть на эту магию.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id5&quot;&gt;
+&lt;h2&gt;Квик старт&lt;/h2&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Установка по &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pip&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-r&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;requirements.txt&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Далее введим &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;manage.py&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;syncdb&lt;/span&gt;&lt;/code&gt; и видим &lt;span class=&quot;red&quot;&gt;ImportError: cannot import name SEOModel&lt;/span&gt; Супер информативный вывод, все сразу стало понятно.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;2.1 Прошел все модели в проекте, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;SEOModel&lt;/span&gt;&lt;/code&gt; не нашел, при учете что у меня &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;gallery&lt;/span&gt;&lt;/code&gt; стоит в &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/virtualenv&quot;&gt;virtualenv&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2.2 может во вью? Во вью то же нету&lt;/p&gt;
+&lt;p&gt;2.3 ищем по проекту тупо по всем файлам, нету.&lt;/p&gt;
+&lt;p&gt;2.4 идем в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;settings/apps.py&lt;/span&gt;&lt;/code&gt; и смотрим какое г может это содержать (так на угад), смотрим &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;common&lt;/span&gt;&lt;/code&gt; опа вот он в моделях, осталось найти где он импортируется неправильно.&lt;/p&gt;
+&lt;p&gt;2.5 ради интереса запускаю сервер &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;manage.py&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;runserver&lt;/span&gt;&lt;/code&gt; и получаю:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;&lt;span class=&quot;red&quot;&gt;File &amp;#8221;.../local/lib/python2.7/site-packages/gallery/models.py&amp;#8221;, line 12, in &amp;lt;module&amp;gt; from website.models import SEOModel, VisibleModel ImportError: cannot import name SEOModel&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;т.е. в некоторых случаях джангу надо дебажить runserver&amp;#8217;ом&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;pages&quot;&gt;
+&lt;h2&gt;Pages&lt;/h2&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;захожу в pages в админке&lt;/li&gt;
+&lt;li&gt;добавляю дерево&lt;/li&gt;
+&lt;li&gt;тыкаю по дереву (вложенность 2го уровня) что бы развернуть список и получаю:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Error&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;loading&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;server.&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/pages_tree.png&quot; src=&quot;../../../_images/pages_tree.png&quot; /&gt;
+&lt;p&gt;и трэйс:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Internal Server Error: /admin/pages/page/tree_json/
+Traceback &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;most recent call last&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
+  File &lt;span class=&quot;s2&quot;&gt;&amp;quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django/core/handlers/base.py&amp;quot;&lt;/span&gt;, line &lt;span class=&quot;m&quot;&gt;115&lt;/span&gt;, in get_response
+    &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; callback&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;request, *callback_args, **callback_kwargs&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  File &lt;span class=&quot;s2&quot;&gt;&amp;quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django_mptt_admin/admin.py&amp;quot;&lt;/span&gt;, line &lt;span class=&quot;m&quot;&gt;50&lt;/span&gt;, in wrapper
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; self.admin_site.admin_view&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;view&lt;span class=&quot;o&quot;&gt;)(&lt;/span&gt;*args, **kwargs&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  File &lt;span class=&quot;s2&quot;&gt;&amp;quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django/utils/decorators.py&amp;quot;&lt;/span&gt;, line &lt;span class=&quot;m&quot;&gt;91&lt;/span&gt;, in _wrapped_view
+    &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; view_func&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;request, *args, **kwargs&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  File &lt;span class=&quot;s2&quot;&gt;&amp;quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django/views/decorators/cache.py&amp;quot;&lt;/span&gt;, line &lt;span class=&quot;m&quot;&gt;89&lt;/span&gt;, in _wrapped_view_func
+    &lt;span class=&quot;nv&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; view_func&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;request, *args, **kwargs&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  File &lt;span class=&quot;s2&quot;&gt;&amp;quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django/contrib/admin/sites.py&amp;quot;&lt;/span&gt;, line &lt;span class=&quot;m&quot;&gt;202&lt;/span&gt;, in inner
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; view&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;request, *args, **kwargs&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  File &lt;span class=&quot;s2&quot;&gt;&amp;quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django_mptt_admin/admin.py&amp;quot;&lt;/span&gt;, line &lt;span class=&quot;m&quot;&gt;157&lt;/span&gt;, in tree_json_view
+    &lt;span class=&quot;nv&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; self.model.objects.get&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;node_id&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  File &lt;span class=&quot;s2&quot;&gt;&amp;quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django/db/models/manager.py&amp;quot;&lt;/span&gt;, line &lt;span class=&quot;m&quot;&gt;143&lt;/span&gt;, in get
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; self.get_query_set&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;.get&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;*args, **kwargs&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  File &lt;span class=&quot;s2&quot;&gt;&amp;quot;/home/uralbash/.virtualenvs/django-hyango/local/lib/python2.7/site-packages/django/db/models/query.py&amp;quot;&lt;/span&gt;, line &lt;span class=&quot;m&quot;&gt;404&lt;/span&gt;, in get
+    self.model._meta.object_name&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+DoesNotExist: Page matching query does not exist.
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;16&lt;/span&gt;/Dec/2013 &lt;span class=&quot;m&quot;&gt;23&lt;/span&gt;:42:28&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;GET /admin/pages/page/tree_json/?node=5&amp;amp;_=1387215746550 HTTP/1.1&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;500&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;22668&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;бесполезный трейс и непонятная ошибка КРУТО!&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Если я зайду на адрес &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/admin/pages/page/tree_json/?node=5&amp;amp;_=1387215746550&lt;/span&gt;&lt;/code&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;то получу статический trace и хер знает куда bp вставить что бы хоть за че-то
+зацепиться.&lt;/p&gt;
+&lt;p&gt;Ставлю &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/django-extensions&quot;&gt;django-extensions&lt;/a&gt; через &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/pip&quot;&gt;pip&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/Werkzeug&quot;&gt;Werkzeug&lt;/a&gt; что бы
+получить хоть какой то интерактив на том же трэйсе.&lt;/p&gt;
+&lt;p&gt;Запускаю командой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;manage.py&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;runserver_plus&lt;/span&gt;&lt;/code&gt;, отваливается
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;debug_toolbar&lt;/span&gt;&lt;/code&gt;. Но и интерактивный трейс мало чем помогает в этом случае.
+Джанга каким то чудом обходит то место которое все ломает, ГРЕБАННЫЙ СТЫД!
+Ошибка ищется тупым эникейством. Предполагая что &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;django&lt;/a&gt; идеальна и в ней
+нет ошибок, &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/django_mptt_admin&quot;&gt;django_mptt_admin&lt;/a&gt; на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;example&lt;/span&gt;&lt;/code&gt; работает хорошо, может
+быть что то в Pages??? Ад же какойто?&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

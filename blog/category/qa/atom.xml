@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщений в QA</title>
+  <id>http://uralbash.ru/blog/category/qa/atom.xml</id>
+  <updated>2014-04-13T04:40:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/category/qa/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/category/qa/atom.xml">
+    <title type="text">Локальный Continuous Integration сервер</title>
+    <id>http://uralbash.ru/articles/2014/ci/</id>
+    <updated>2014-04-13T04:40:00Z</updated>
+    <published>2014-04-13T04:40:00Z</published>
+    <link href="http://uralbash.ru/articles/2014/ci/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;continuous-integration&quot;&gt;
+
+&lt;img alt=&quot;../../../_images/ci1.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ci1.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;p&gt;Идея непрерывной интеграции заключается в том, что при любом изменении проекта
+он пересобирается в условиях приближенных к реальной эксплуатации и каждый раз
+запускает тесты. Это позволяет моментально отловить баги и исправить их не
+отходя от кассы, пока ещё помнишь что понаписал.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;Принцип работы у всех примерно один:&lt;/div&gt;&lt;/blockquote&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;скачать код&lt;/li&gt;
+&lt;li&gt;создать окружение&lt;/li&gt;
+&lt;li&gt;установить (собрать) код&lt;/li&gt;
+&lt;li&gt;запустить и протестировать&lt;/li&gt;
+&lt;li&gt;отправить уведомление&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Это можно сделать самостоятельно, например при помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;fabric&lt;/span&gt;&lt;/code&gt;, &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=cron&quot;&gt;cron&lt;/a&gt;,
+&lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=chroot&quot;&gt;chroot&lt;/a&gt; или &lt;a class=&quot;reference external&quot; href=&quot;http://docker.io/&quot;&gt;docker&lt;/a&gt; или при помощи готовых &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CI&lt;/span&gt;&lt;/code&gt; серверов:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://jenkins-ci.org/&quot;&gt;jenkins&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://buildbot.net/&quot;&gt;buildbot&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://travis-ci.org/&quot;&gt;travis-ci&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://stridercd.com/&quot;&gt;StriderCD&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/drone/drone&quot;&gt;drone&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Облачные &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CI&lt;/span&gt;&lt;/code&gt; сервера:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://travis-ci.org/&quot;&gt;https://travis-ci.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://drone.io&quot;&gt;https://drone.io&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Облачный &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CI&lt;/span&gt;&lt;/code&gt; отлично подойдет для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;OpenSource&lt;/span&gt;&lt;/code&gt; проектов, а остальное можно
+тестировать на локальном сервере.&lt;/p&gt;
+&lt;p&gt;Посмотрим как это работает на примере python + pyramid приложения.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/ci2.JPG&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ci2.JPG&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;Начнём с Travis-ci&lt;/h2&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;https://travis-ci.org/&quot;&gt;&lt;img alt=&quot;../../../_images/travis.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/travis.png&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;Следит за вашими репозитариями на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt;, выкачивает при каждом коммите,
+собирает окружение в индивидуальном контейнере каждый раз, имеет простой
+конфиг. Работает только с &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt;, закрытые репы за деньги.&lt;/p&gt;
+&lt;br clear=&quot;both&quot;/&gt;&lt;p&gt;Авторизация через гитхаб аккаунт, дальше указываем что будем тестировать&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/travis1.png&quot; src=&quot;../../../_images/travis1.png&quot; /&gt;
+&lt;p&gt;Теперь положим в корень репы на гитхабе файл с настройками &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.travis.yml&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/travis3.png&quot; src=&quot;../../../_images/travis3.png&quot; /&gt;
+&lt;p&gt;В этом файле находятся инструкции, какое окружение нужно для вашего проекта,
+как его собирать, запускать тесты и куда слать уведомления.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id3&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;.travis.yml&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-yaml&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;notifications&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;sacrud@uralbash.ru&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;arkadiy@bk.ru&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;1. &amp;quot;2.7&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;2. &amp;quot;2.6&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;install&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;1. pip install nose coverage coveralls&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;2. pip install pyramid pyramid_jinja2 pyramid_beaker&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;3. pip install -r requirements.txt&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;1. nosetests --with-coverage --cover-package sacrud --cover-erase --with-doctest&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;after_success&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;coveralls&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Здесь я думаю и так все понятно. &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/coveralls&quot;&gt;coveralls&lt;/a&gt; нужен для сервиса
+&lt;a class=&quot;reference external&quot; href=&quot;https://coveralls.io/&quot;&gt;https://coveralls.io/&lt;/a&gt; (про него ниже).&lt;/p&gt;
+&lt;p&gt;После каждого коммита создается задание в трависе которое заканчивается
+примерно таким выводом &lt;a class=&quot;reference external&quot; href=&quot;https://travis-ci.org/ITCase/sacrud/jobs/22811094&quot;&gt;https://travis-ci.org/ITCase/sacrud/jobs/22811094&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Иногда СЕОшники всё портят как здесь
+&lt;a class=&quot;reference external&quot; href=&quot;https://travis-ci.org/ITCase/sacrud/jobs/22688250&quot;&gt;https://travis-ci.org/ITCase/sacrud/jobs/22688250&lt;/a&gt; т.к. не умеют запускать
+тесты, но благодаря &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CI&lt;/span&gt;&lt;/code&gt; эти проблемы сразу обнаруживаются.
+Более сложный конфиг с установкой postgres
+&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/ITCase/pyramid_sacrud_example/blob/master/.travis.yml&quot;&gt;https://github.com/ITCase/pyramid_sacrud_example/blob/master/.travis.yml&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;drone-io&quot;&gt;
+&lt;h2&gt;drone.io&lt;/h2&gt;
+&lt;img alt=&quot;../../../_images/drone.io.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone.io.png&quot; /&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Drone&lt;/span&gt;&lt;/code&gt; похож на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;travis-ci&lt;/span&gt;&lt;/code&gt; но он дешевле, умеет &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;bitbucket&lt;/span&gt;&lt;/code&gt; и исходный
+код &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/drone/drone&quot;&gt;https://github.com/drone/drone&lt;/a&gt;. Очень удобно &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;OpenSource&lt;/span&gt;&lt;/code&gt; в облаке,
+приватные репы на локальном сервере и все это имеет одинаковый конфиг. Конфиг
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.drone.yml&lt;/span&gt;&lt;/code&gt;, формат очень похож на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;travis&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id4&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;.drone.yml&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-yaml&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;python2.7&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;1. pip install nose coverage pyramid pyramid_jinja2 pyramid_beaker&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;2. pip install -r requirements.txt&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;3. nosetests --cover-package=sacrud --cover-erase --with-coverage --with-doctest&lt;/span&gt;
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;notify&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;recipients&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;1. sacrud@uralbash.ru&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;С облаком всё понятно, установим &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;drone&lt;/span&gt;&lt;/code&gt; локально. В качестве платформы
+используется VM с Ubuntu server 12.04 с одним ядром и 2Гб ОЗУ, что вполне
+достаточно для небольшой команды программистов.&lt;/p&gt;
+&lt;p&gt;Т.к. drone собирает проекты в легковесных контенерах при помощи &lt;a class=&quot;reference external&quot; href=&quot;http://docker.io/&quot;&gt;Docker&lt;/a&gt;
+вначале установим его
+&lt;a class=&quot;reference external&quot; href=&quot;http://docs.docker.io/en/latest/installation/ubuntulinux/#ubuntu-precise&quot;&gt;http://docs.docker.io/en/latest/installation/ubuntulinux/#ubuntu-precise&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Сам drone устанавливается очень просто через &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;deb&lt;/span&gt;&lt;/code&gt; пакет
+&lt;a class=&quot;reference external&quot; href=&quot;http://drone.readthedocs.org/en/latest/install.html&quot;&gt;http://drone.readthedocs.org/en/latest/install.html&lt;/a&gt;, теперь он у вас висит на
+80 порту или на том который вы указали. Запускается и конфигурируется через
+upstart (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;drone&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sudo&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;stop&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;drone&lt;/span&gt;&lt;/code&gt;). Можно проверить локально,
+если перейти в репозитарий проекта с файлом &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.drone.yml&lt;/span&gt;&lt;/code&gt;  и запустить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;drone&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;build&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Для того что бы github или bitbucket слал уведомление вашему drone серверу
+нужен статический IP. Пробросим порты к виртуалке на роутере :) и укажем IP в
+настройках:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/drone1.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone1.png&quot; /&gt;
+&lt;p&gt;добавим репу:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/drone2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone2.png&quot; /&gt;
+&lt;p&gt;После добавления в гитхаб появится новый аппликайшин:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/drone3.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone3.png&quot; /&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Client&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;ID&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Client&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Secret&lt;/span&gt;&lt;/code&gt; нужно указать в настройках drone. Теперь
+комитим и чиним.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/drone4.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone4.png&quot; /&gt;
+&lt;p&gt;Для приватных реп drone автоматически  прописывает RSA ключ. Его можно
+посмотреть в настройках репы и скопировать вручную например или поменять.&lt;/p&gt;
+&lt;p&gt;Вывод похож на travis:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/drone5.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone5.png&quot; /&gt;
+&lt;p&gt;Пару слов почему не другие системы. Во первых &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;drone&lt;/span&gt;&lt;/code&gt; это и облако и локалхост,
+дальше bitbucket+github, контейнеры docker из коробки, иконка-статус сборки в
+Markdown, написан на Go как и Docker. Из недостатков пока мало свистелок и
+перделок, первое что бросается в глаза отсутствие кнопки REBUILD (пересобрать
+вручную). Но т.к. проект молодой то всё обещают запилить в следующей версии,
+судя по issue на github&amp;#8217;е.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Jenkins&lt;/span&gt;&lt;/code&gt; страшный, сложный, всё пилить руками, докера нет, написан на Java.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Buildbot&lt;/span&gt;&lt;/code&gt; написан на python, хорошая архитектура master-slave, можно запилить
+slave в контейнеры, но написан на старой версии twisted и sqlalchemy аж 0.7
+версии, код ужасен, инструкции из документации устаревшие, нужно додумывать,
+конфиг сложный, будущего у системы нет.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;StriderCD&lt;/span&gt;&lt;/code&gt; написан на nodejs, много чего есть из коробки, принцип плагинов
+через npm, docker пилить самому, глючный :( хотя выглядит неплохо.&lt;/p&gt;
+&lt;p&gt;Есть ещё альтернативы типа gitlab-ci и наверняка ещё что-то, но я их не смотрел.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;coveralls&quot;&gt;
+&lt;h2&gt;Coveralls&lt;/h2&gt;
+&lt;div class=&quot;figure align-center&quot; id=&quot;id5&quot;&gt;
+&lt;img alt=&quot;../../../_images/coverrals1.png&quot; src=&quot;../../../_images/coverrals1.png&quot; /&gt;
+&lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://coveralls.io/r/ITCase/sacrud&quot;&gt;https://coveralls.io/r/ITCase/sacrud&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;figure align-center&quot;&gt;
+&lt;img alt=&quot;../../../_images/coverrals2.png&quot; src=&quot;../../../_images/coverrals2.png&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;Coveralls отличное дополнение, в котором можно визуально отследить что ещё не
+покрыто тестами. Из минусов, нет bitbucket, мне показался он дороговатым для
+приватных реп и ещё лежит отдавая 503 на момент написания этой статьи, но
+локальных альтернатив я не нашёл, к сожалению.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;anykey&quot;&gt;
+&lt;h2&gt;AnyKey&lt;/h2&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://jmcvetta.github.io/blog/2013/08/30/continuous-integration-for-go-code/&quot;&gt;http://jmcvetta.github.io/blog/2013/08/30/continuous-integration-for-go-code/&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://lucapette.com/go/go-docker-and-a-ci-server/&quot;&gt;http://lucapette.com/go/go-docker-and-a-ci-server/&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;И напоследок...&lt;/h2&gt;
+&lt;p&gt;В этом обзоре показан простой пример как можно настроить непрерывную интеграцию
+проекта на python и pyramid. Но по аналогии можно поднять любой другой проект.
+Думаю вам эта статья поможет, хотя бы начать писать тесты :)&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/ci_end.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ci_end.jpg&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

@@ -1,0 +1,962 @@
+
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>uralbash &mdash; Ural penguins</title>
+    
+
+    
+        <link rel="shortcut icon" href="_static/favicon.ico"/>
+    
+
+    
+        
+    
+            <link rel="index" title="Алфавитный указатель" href="genindex/"/>
+            <link rel="search" title="Поиск" href="search/"/>
+
+        <link rel="top" title="Ural penguins" href="#"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300&subset=latin,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <link href="_static/css/badge_only.css" type="text/css" rel="stylesheet" />
+    <link href="_static/css/__theme.css" type="text/css" rel="stylesheet" />
+
+    
+            <script type="text/javascript" src="_static/jquery.js"></script>
+            <script type="text/javascript" src="_static/underscore.js"></script>
+            <script type="text/javascript" src="_static/doctools.js"></script>
+            <script type="text/javascript" src="_static/metrika.js"></script>
+            <script type="text/javascript" src="_static/translations.js"></script>
+    
+  
+  <style type="text/css">
+    html, body {
+      background: #545d5c !important;
+    }
+    .page__left .menu {
+        width: 0px;
+    }
+    .page__right {
+      background-color: #e7e7e7;
+      margin: 0 0 0 30px;
+    }
+    .rst-content {
+      padding: 13px;
+    }
+    .footer {
+      padding: 13px;
+    }
+    /* unvisited link */
+    ul.postlist-style-none a:link, .head a:link {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* visited link */
+    ul.postlist-style-none a:visited, .head a:visited {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* mouse over link */
+    ul.postlist-style-none a:hover, .head a:hover {
+        color: #222;
+        text-decoration: none;
+    }
+
+    ul.postlist-style-none a:active, .head a:active {
+        color: #222;
+        text-decoration: none;
+    }
+    ul.postlist-style-none li {
+        list-style-type: none;
+    }
+    ul.postlist-style-none li p.first {
+      color: red !important;
+      font: 1.8em "Open Sans",Arial,sans-serif !important;
+    }
+    .first a {
+      font-weight: bold;
+    }
+    .first em {
+      font-style: normal !important;
+    }
+    .wrapper__inner {
+      padding: 0px 30px 0 0 !important;
+    }
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
+
+  
+  
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.post-list-style-disc {list-style-type: disc;}
+    ul.post-list-style-none {list-style-type: none;}
+    ul.post-list-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper__inner">
+            <div class="page
+                
+                    page_type_main-page
+                ">
+                <div class="page__left">
+                  
+                    <nav class="menu" id="menu" data-state="expand">
+                        <div class="menu-inner">
+                            
+                                <div class="menu-project">
+                                    <a href="#" class="menu-project__link">Ural penguins</a>
+                                </div>
+                            
+                            <div class="tree">
+                                
+                                
+                                    <ul>
+<li><a class="reference internal" href="#">uralbash</a></li>
+</ul>
+
+                                
+                            </div>
+                            <div class="menu-search search">
+                                <div class="search-title">Quick search</div>
+                                <form id="search-form" class="search-form" action="search/" method="GET">
+                                    <input type="text" name="q" placeholder="Search docs" />
+                                    <input type="hidden" name="check_keywords" value="yes" />
+                                    <input type="hidden" name="area" value="default" />
+                                </form>
+                                <div class="search-desc">Enter search terms or a module, class or function name.</div>
+                            </div>
+                            <nav class="wy-nav-side">&nbsp;</nav>
+                        </div>
+                        <div class="menu-switch">
+                            <div class="menu-switch__arrow">«</div>
+                        </div>
+                    </nav>
+                  
+                </div>
+
+                <section class="page__right">
+                    
+  <div class="head" style="background-image: url('/_static/bg.jpg');
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  height: 200px">
+    <a href="/">
+      <div style="width:100%; height: 75%">
+        <h1 style="padding-top:15px;padding-left:15px;font-size:60px">Ural penguins</h1>
+      </div>
+    </a>
+    <table style="
+        border-collapse: unset !important;
+        border-spacing: 1 !important;">
+        <tr>
+            <td style="padding-right: 2px">
+                <a href="/pages/pyramid/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        Pyramid
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="/pages/nixos/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        NixOS
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </table>
+  </div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <div class="badge" style="width:100%;height:80px">
+    <!-- uralbash.ru -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2884502571619359"
+         data-ad-slot="9876011339"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+
+                    <div class="badge">
+                        
+                        
+                    </div>
+
+                    <div class="rst-content">
+                        
+  <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+  <table>
+    <tr>
+      <td>
+        <div class="yashare-auto-init" data-yashareL10n="ru"
+          data-yashareType="medium"
+          data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"
+          data-yashareTheme="counter"></div>
+      </td>
+      <td>
+        
+      </td>
+    </tr>
+  </table>
+  <ul class="postlist-style-none postlist">
+<li><p class="first">19-09-2017 | <a class="reference internal" href="articles/2017/python/">Python инфографика</a></p>
+<p>Последнее время крупные компании всё чаще выбирают Python для разных проектов.
+И правда, для многих задач Python имеет замечательные решения.</p>
+</li>
+<li><p class="first">01-09-2017 | <a class="reference internal" href="articles/2017/netcore/">C# .Net Core для Linux</a></p>
+<p>Благодаря популярности <code class="docutils literal"><span class="pre">Java</span></code> язык <code class="docutils literal"><span class="pre">C#</span></code> обрел ещё большую популярность, да
+так, что теперь доступен на <cite>Linux</cite>. Я конечно не испытываю симпатий к этим
+языкам и <code class="docutils literal"><span class="pre">.Net</span></code> стеку в целом, но <cite>OpenSource</cite> и доступность в <cite>Linux</cite> не
+может не радовать. Ниже рассмотрим пример как развернуть проект на <code class="docutils literal"><span class="pre">.NET</span>
+<span class="pre">Core</span></code> и отправить <cite>HTTP</cite> запрос.</p>
+</li>
+<li><p class="first">28-08-2017 | <a class="reference internal" href="articles/2017/nixpkgs-contribute/">Сборка пакета для Nix</a></p>
+<p><a class="reference external" href="https://nixos.org/nixpkgs/">Nix</a> - замечательный пакетный менеджер, который
+работает на <cite>MacOS</cite> и любом дистрибутиве <cite>Linux</cite>, причем из-за своей
+функциональной чистоты и изоляции зависимостей, гарантировано выдает всегда
+одинаковый результат.</p>
+</li>
+<li><p class="first">16-08-2017 | <a class="reference internal" href="articles/2017/cpp-enum/">C++: Приведение Enum структур к общему виду в шаблонах</a></p>
+<p>Задача - создать шаблонную функцию, в которой в зависимости от типа
+перечисления выбирается нужный индекс в контейнере <code class="docutils literal"><span class="pre">vector</span></code>. Попробуем решить
+задачу в лоб, создадим 3 перечисления и выберем нужный индекс в шаблоне.</p>
+</li>
+<li><p class="first">10-08-2017 | <a class="reference internal" href="articles/2017/protobuf-mingw/">Сборка libprotobuf под Windows</a></p>
+<p>Сборка сей библиотеки из исходников под Windows не такая уж простая задача, как
+может показаться на первый взгляд. Ее можно осуществлять при помощи Visual
+Studio (cl.exe) или компилятора mingw.</p>
+</li>
+<li><p class="first">16-11-2016 | <a class="reference internal" href="articles/2016/ibexpert/">Firebird Developmen Studio на Linux</a></p>
+<p><cite>Firebird</cite> - это опенсорс, версионная СУБД, с регистронезависимыми названиями
+таблиц и полей (как у <cite>Oracle</cite>), которая хранит каждую базу в одном отдельном
+файле (как sqlite, но требует наличия сервера, хотя бы embeded). Из минусов
+можно отметить довольно скудную систему типов, индексов и по сути отсутствие
+возможности горизонтального масштабирования. Также многие библиотеки, ОРМ и
+прочее игнорируют поддержку этой СУБД, однако <cite>FireBird</cite> сильно популярен
+(был?) на территории СНГ, поэтому довольно часто приходится с ним работать.</p>
+</li>
+<li><p class="first">31-10-2016 | <a class="reference internal" href="articles/2016/boinc-seti-home/">SETI&#64;home в Docker</a></p>
+<p><cite>BOINC</cite> - платформа, которая позволяет выполнять <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B2%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5_%D0%B2%D1%8B%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F">добровольные вычисления</a>
+для различных проектов. Изначально создавался для проекта <a class="reference external" href="https://ru.wikipedia.org/wiki/SETI&#64;home">SETI&#64;home</a>.</p>
+</li>
+<li><p class="first">07-09-2016 | <a class="reference internal" href="articles/2016/visualstudiocode/">Visual Studio Code для Python</a></p>
+<p>Это статья из лекций
+<a class="reference external" href="http://lectureswww.readthedocs.io/999.additions/texteditors/vscode.html">http://lectureswww.readthedocs.io/999.additions/texteditors/vscode.html</a></p>
+</li>
+<li><p class="first">31-08-2016 | <a class="reference internal" href="articles/2016/il-z2usb-linux/">IronLogic Z-2 USB на Linux</a></p>
+<p><code class="docutils literal"><span class="pre">Z-2</span> <span class="pre">USB</span></code> всеядный считыватель, который умеет работать на двух частотах 13,56
+МГц и 125 кГц одновременно.  Поддерживаемые форматы карт <code class="docutils literal"><span class="pre">EM-Marine</span></code>, <code class="docutils literal"><span class="pre">HID</span>
+<span class="pre">ProxCard</span> <span class="pre">II</span></code>, <code class="docutils literal"><span class="pre">Mifare</span></code>, <code class="docutils literal"><span class="pre">Mifare</span> <span class="pre">Plus</span></code>, <code class="docutils literal"><span class="pre">Mifare-UL</span></code> (чтение/запись),
+<code class="docutils literal"><span class="pre">Temic</span></code> (чтение/запись), <code class="docutils literal"><span class="pre">Cotag</span></code> (опционально).</p>
+</li>
+<li><p class="first">13-07-2016 | <a class="reference internal" href="articles/2016/docker-mtu/">Пропал доступ в Интернет в Docker контейнерах</a></p>
+<p>Docker начиная с версии <code class="docutils literal"><span class="pre">1.10</span></code> и выше, перестал брать значение <code class="docutils literal"><span class="pre">MTU</span></code> от
+сетевого интерфейса. Теперь его нужно указывать явно:</p>
+</li>
+<li><p class="first">06-07-2016 | <a class="reference internal" href="articles/2016/nixpkgs/">Пакетный менеджер Nix</a></p>
+<p><a class="reference external" href="http://nixos.org/nix/">http://nixos.org/nix/</a></p>
+</li>
+<li><p class="first">06-07-2016 | <a class="reference internal" href="pages/nixos/">NixOS</a></p>
+<p>Здесь я буду собирать разные полезные ресурсы по ОС <a class="reference external" href="http://nixos.org/">NixOS</a> и пакетному
+менеджеру <a class="reference external" href="https://nixos.org/nix/">nix</a>. Если вы, что то не нашли пишите в комментах.</p>
+</li>
+<li><p class="first">05-06-2016 | <a class="reference internal" href="articles/2016/centos6-gcc-cpp11/">gcc для C++11 из реп в CentOS6</a></p>
+<p>C++11 в <a class="reference external" href="https://www.freebsd.org/cgi/man.cgi?query=gcc">gcc</a> появился, начиная с версии 4.7, но в CentOS6 естественно
+более старая версия без С++11. Как вариант, можно собрать из исходников, но я
+опишу способ установки из дополнительных реп.</p>
+</li>
+<li><p class="first">31-05-2016 | <a class="reference internal" href="articles/2016/pyramid-restapi/">REST API в Pyramid</a></p>
+<p>Это статья из лекций
+<a class="reference external" href="http://lectureswww.readthedocs.io/6.www.sync/3.framework/pyramid/5.1.rest.html">http://lectureswww.readthedocs.io/6.www.sync/3.framework/pyramid/5.1.rest.html</a></p>
+</li>
+<li><p class="first">30-05-2016 | <a class="reference internal" href="articles/2016/pyramid-traversal/">Traversal роутинг в Pyramid</a></p>
+<p>Это статья из лекций
+<a class="reference external" href="http://lectureswww.readthedocs.io/6.www.sync/3.framework/pyramid/5.urldispatch.html">http://lectureswww.readthedocs.io/6.www.sync/3.framework/pyramid/5.urldispatch.html</a></p>
+</li>
+<li><p class="first">21-11-2015 | <a class="reference internal" href="pages/pyramid/">Pyramid фреймворк</a></p>
+<p>Здесь я буду собирать разные полезные ресурсы по фреймворку <a class="reference external" href="http://www.pylonsproject.org/">Pyramid</a>. Если
+вы что то не нашли, пишите в комментах.</p>
+</li>
+<li><p class="first">15-10-2015 | <a class="reference internal" href="articles/2015/asyncio-decorator/">Декораторы для корутин в asyncio</a></p>
+<p>Это статья из лекций
+<a class="reference external" href="http://lectureswww.readthedocs.io/999.additions/python/asyncio-decorator.html">http://lectureswww.readthedocs.io/999.additions/python/asyncio-decorator.html</a></p>
+</li>
+<li><p class="first">10-10-2015 | <a class="reference internal" href="articles/2015/python3.5-virtualenv/">Установка python 3.5 в virtualenv</a></p>
+<p>Все уже слышали про новый pyhton версии 3.5
+(<a class="reference external" href="https://docs.python.org/3/whatsnew/3.5.html">https://docs.python.org/3/whatsnew/3.5.html</a>). Я постараюсь описать как начать
+им пользоваться в вашем виртуальном окружении.</p>
+</li>
+<li><p class="first">20-08-2015 | <a class="reference internal" href="articles/2015/go1.5/">Обновление до Go1.5</a></p>
+<p>Для управления версиями я пользуюсь <a class="reference external" href="https://github.com/moovweb/gvm">moovweb/gvm</a>.</p>
+</li>
+<li><p class="first">13-08-2015 | <a class="reference internal" href="articles/2015/rstcheck/">Vim (и не только) для reStructuredText</a></p>
+<p><a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> - очень удобная разметка, которая используется при
+написании документации (<a class="reference external" href="https://pypi.python.org/pypi/sphinx">sphinx</a>), README для гитхаба, битбакета, PyPi и
+всего прочего вплоть до научных статей (<a class="reference external" href="http://hplgit.github.io/teamods/writing_reports/_static/report_solarized2_dark.html">пример</a>)
+или же статей для <a class="reference internal" href="articles/2015/ablog/#ablog"><span class="std std-ref">блога</span></a> :)</p>
+</li>
+<li><p class="first">12-08-2015 | <a class="reference internal" href="articles/2015/ablog/">Блог в reStructuredText разметке</a></p>
+<p>Перевел тут блог с <a class="reference external" href="https://www.blogger.com/">https://www.blogger.com/</a> на <a class="reference external" href="https://github.com/abakan/ablog">abakan/ablog</a>. Блоггер
+это конечно хорошо, но у него крайне ограниченный WYSIWYG, тем более только из
+браузера. <a class="reference external" href="https://github.com/abakan/ablog">Ablog</a> по сути это <a class="reference external" href="https://pypi.python.org/pypi/sphinx">sphinx</a> движок заточенный на блог со
+всеми плюшками, rST разметкой, RSS и disqus комментами.</p>
+</li>
+<li><p class="first">04-10-2014 | <a class="reference internal" href="articles/2014/king_penguin/">Королевский пингвин - круче только ты один!</a></p>
+</li>
+<li><p class="first">22-09-2014 | <a class="reference internal" href="articles/2014/sphinx/">Документация python проекта на практике</a></p>
+<p>Документация в <a class="reference external" href="https://www.python.org/">python</a> проектах пишется при помощи <a class="reference external" href="https://pypi.python.org/pypi/sphinx">sphinx</a>, он умеет
+используя расширение <code class="docutils literal"><span class="pre">automodule</span></code> читать докстринги и формировать
+документацию из кода.</p>
+</li>
+<li><p class="first">05-09-2014 | <a class="reference internal" href="articles/2014/cornice/">REST API для Pyramid при помощи Cornice и SACRUD</a></p>
+<p><a class="reference external" href="https://github.com/Mozilla">Mozilla</a> использует в своих проектах <a class="reference external" href="http://www.pylonsproject.org/">Pyramid</a> и у них есть
+отличный модуль для создания <code class="docutils literal"><span class="pre">REST</span> <span class="pre">API</span></code>
+<a class="reference external" href="https://cornice.readthedocs.org/en/latest/">https://cornice.readthedocs.org/en/latest/</a></p>
+</li>
+<li><p class="first">19-08-2014 | <a class="reference internal" href="articles/2014/chameleon_deform/">Chameleon, deform и маленькая хитрость</a></p>
+<p><a class="reference external" href="https://pypi.python.org/pypi/Deform">Deform</a> - это такая штука которая генерит формы, а шаблоны для виджетов
+в нем написаны в формате Chameleon шаблонизатора.</p>
+</li>
+<li><p class="first">26-06-2014 | <a class="reference internal" href="articles/2014/sqlalchemy_mptt_0_0_5/">sqlalchemy_mptt v0.0.5</a></p>
+<p>В новом релизе:</p>
+</li>
+<li><p class="first">06-06-2014 | <a class="reference internal" href="articles/2014/scrum/">Scrum и XP: заметки с передовой</a></p>
+<p>Старая, но очень полезная книга по <code class="docutils literal"><span class="pre">Agile</span></code>. Довольно редкий случай когда вся
+книга описывает рабочие процессы реальной организации, никакой воды, никакой
+зауми и вялой теории. Очень рекомендую. Тем более книга в свободном доступе и
+переведена на русский язык (лучи добра и счастья переводчикам).</p>
+</li>
+<li><p class="first">22-05-2014 | <a class="reference internal" href="articles/2014/ia32-libs-multiarch:i386/">ia32-libs-multiarch:i386 : Зависит: libsane:i386 но он не установлен</a></p>
+<p>Что бы удалить поломанный пакет типа такого:</p>
+</li>
+<li><p class="first">12-05-2014 | <a class="reference internal" href="articles/2014/sqlalchemy_mptt/">MPTT для SQLAlchemy</a></p>
+<p>Запилил я тут для своих нужд небольшое приложение (<a class="reference external" href="https://pypi.python.org/pypi/sqlalchemy_mptt">sqlalchemy_mptt</a>)
+которое добавляет в модель поля и функционал необходимый для <code class="docutils literal"><span class="pre">Nested</span> <span class="pre">sets</span></code>.
+По аналогии с <a class="reference external" href="https://pypi.python.org/pypi/django-mptt">django-mptt</a>. Грубо говоря в модель добавляются поля
+<code class="docutils literal"><span class="pre">left</span></code> и <code class="docutils literal"><span class="pre">right</span></code> которые при помощи системы эвентов самостоятельно
+пересчитываются при изменении дерева. Ниже пример обхода дерева:</p>
+</li>
+<li><p class="first">13-04-2014 | <a class="reference internal" href="articles/2014/ci/">Локальный Continuous Integration сервер</a></p>
+<p>Идея непрерывной интеграции заключается в том, что при любом изменении проекта
+он пересобирается в условиях приближенных к реальной эксплуатации и каждый раз
+запускает тесты. Это позволяет моментально отловить баги и исправить их не
+отходя от кассы, пока ещё помнишь что понаписал.</p>
+</li>
+<li><p class="first">06-04-2014 | <a class="reference internal" href="articles/2014/go/">Пишем на Go (Golang)</a></p>
+<p>Go замечательный язык программирования, который можно компилировать,
+компилировать под разные платформы (<code class="docutils literal"><span class="pre">ARM</span></code>, <code class="docutils literal"><span class="pre">x86</span></code>), распараллеливать. Он
+проще <code class="docutils literal"><span class="pre">C/C++</span></code> и уже сформировавшийся язык в отличии от <code class="docutils literal"><span class="pre">Rust</span></code> который
+ломает программы с каждым обновлением. Область применения самая разная начиная
+от консольных утилит, всяких парсеров, системного, сетевого ПО, связи с
+физическими устройствами и заканчивая веб приложениями, <span class="strike">разве что пока нету
+реализаций под смартфоны</span> (<a class="reference external" href="https://docs.google.com/document/d/1N3XyVkAP8nmWjASz8L_OjjnjVKxgeVBjIsTr5qIUcA4/edit">android</a>).</p>
+</li>
+<li><p class="first">15-03-2014 | <a class="reference internal" href="articles/2014/sqlite_to_pg/">Перенос БД с sqlite на postgres</a></p>
+<p><code class="docutils literal"><span class="pre">ORM</span></code> позволяет быстро переключатся между БД не учитывая их диалект
+(практически).  Но данные хранятся физически в разных местах и естественно их
+надо переносить, например при переключении с <a class="reference external" href="http://sqlite.org/">sqlite</a> на <a class="reference external" href="http://www.postgresql.org/">PostgreSQL</a>. В
+<a class="reference external" href="https://www.djangoproject.com/">Django</a> есть встроенный функционал в виде:</p>
+</li>
+<li><p class="first">10-03-2014 | <a class="reference internal" href="articles/2014/sacrud_release_0.1.2/">Обновление sacrud. Версия 0.1.2</a></p>
+<p>В этой версии делался упор на кастомизацию интерфейса.</p>
+</li>
+<li><p class="first">28-02-2014 | <a class="reference internal" href="articles/2014/panel_pyramid_dt/">Своя панель в pyramid_debugtoolbar</a></p>
+<p>Я создал небольшой пример, как это сделать на примере <a class="reference external" href="https://pypi.python.org/pypi/sadisplay">sadisplay</a>.
+<a class="reference external" href="https://pypi.python.org/pypi/sadisplay">sadisplay</a> - это модуль который отображает модели <a class="reference external" href="http://sqlalchemy.org/">SQLAlchemy</a> в виде
+<code class="docutils literal"><span class="pre">UML</span></code> диаграммы.</p>
+</li>
+<li><p class="first">23-02-2014 | <a class="reference internal" href="articles/2014/sacrud_release_0.1.1/">Обновление sacrud. Версия 0.1.1</a></p>
+<p>Что нового?</p>
+</li>
+<li><p class="first">16-02-2014 | <a class="reference internal" href="articles/2014/man_month_book/">Мифический человеко месяц</a></p>
+<p>Я прочитал этот шедевр довольно давно, но всё же раз начал писать про книги,
+то напишу отзыв. Книга просто необходима для прочтения, в первую очередь
+руководителям и разработчикам с опытом решения разных проблем в области IT и
+возможно HR в той же области. В этой книге главное осилить первую половину,
+вторая читается на одном дыхании (а почему так это лучше узнать из контекста).
+Брукс крут! <strong>Реально крут!</strong></p>
+</li>
+<li><p class="first">16-02-2014 | <a class="reference internal" href="articles/2014/alembic_pyramid/">миграции в Pyramid</a></p>
+<p>Пример миграций в пирамиде:</p>
+</li>
+<li><p class="first">02-02-2014 | <a class="reference internal" href="articles/2014/django-hyango/">Django - кот в мешке.</a></p>
+<p><a class="reference external" href="https://www.djangoproject.com/">Django</a> это фреймворк, при помощи которого быстро пишутся сайты. Так ли это?</p>
+</li>
+<li><p class="first">22-12-2013 | <a class="reference internal" href="articles/2013/reason_names_of/">Причины названий python, django и pyramid</a></p>
+<p>Название языка произошло вовсе не от вида пресмыкающихся. Автор назвал язык в
+честь популярного британского комедийного телешоу 70x «<a class="reference external" href="http://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D1%82%D0%B0%D1%8E%D1%89%D0%B8%D0%B9_%D1%86%D0%B8%D1%80%D0%BA_%D0%9C%D0%BE%D0%BD%D1%82%D0%B8_%D0%9F%D0%B0%D0%B9%D1%82%D0%BE%D0%BD%D0%B0">Летающий цирк Монти
+Пайтона</a>».
+Но потом все стали его ассоциировать со змеей, ибо змея она и в
+африке змея.</p>
+</li>
+<li><p class="first">23-11-2013 | <a class="reference internal" href="articles/2013/python_vim/">Python&#8217;им в Vim</a></p>
+<p>В продолжение статьи о рабочем окружении (<a class="reference internal" href="articles/2013/where_to_start/#were-to-start"><span class="std std-ref">С чего начать?©</span></a>), по просьбам
+трудящихся и во благо партии пишу о текстовом редакторе <a class="reference external" href="http://www.vim.org">Vim</a>.</p>
+</li>
+<li><p class="first">22-11-2013 | <a class="reference internal" href="articles/2013/where_to_start/">С чего начать?©</a></p>
+<p>С чего начать программировать?</p>
+</li>
+<li><p class="first">19-11-2013 | <a class="reference internal" href="articles/2013/sacrud_release_0_1_0/">sacrud 0.1.0</a></p>
+<p>Обновил <a class="reference external" href="https://pypi.python.org/pypi/sacrud">sacrud</a> до <code class="docutils literal"><span class="pre">0.1.0</span></code>.</p>
+</li>
+<li><p class="first">07-11-2013 | <a class="reference internal" href="articles/2013/linux_attack/">Linux attack</a></p>
+</li>
+<li><p class="first">29-09-2013 | <a class="reference internal" href="articles/2013/sacrud_demo/">Демо репозитарий Pyramid + sacrud</a></p>
+<p>pyramid_sacrud_example - пример работы <a class="reference external" href="https://pypi.python.org/pypi/sacrud">sacrud</a> в <a class="reference external" href="http://www.pylonsproject.org/">Pyramid</a> вместе с
+<code class="docutils literal"><span class="pre">PostgreSQL</span></code>.</p>
+</li>
+<li><p class="first">07-09-2013 | <a class="reference internal" href="articles/2013/vim_book/">Практическое использование Vim</a></p>
+<p>Еще одна книга по <code class="docutils literal"><span class="pre">Vim</span></code> на русском языке готовится к выходу. ДМК - это всегда
+прекрасный перевод тех. литературы, но ксожалению  отсутствие эл.форматов.</p>
+</li>
+<li><p class="first">06-09-2013 | <a class="reference internal" href="articles/2013/sacrud_alfa_0_1_0/">Новое в sacrud 0.1.0a</a></p>
+<p>Теперь <a class="reference external" href="https://pypi.python.org/pypi/sacrud">sacrud</a> 0.1.0a</p>
+</li>
+<li><p class="first">05-09-2013 | <a class="reference internal" href="articles/2013/vi_book/">Изучаем редакторы vi и Vim, epub + pdf</a></p>
+<p>Уже упоминал эту замечательную книгу (<a class="reference internal" href="articles/2013/vi_book/#vi_book"><span class="std std-ref">Изучаем редакторы vi и Vim, epub + pdf</span></a>). Теперь в epub&#8217;е, вобщем зачёт.</p>
+</li>
+<li><p class="first">26-08-2013 | <a class="reference internal" href="articles/2013/sacrud_howto/">Запись в БД через sacrud используя SQLAlchemy session.</a></p>
+<p>Для простых <code class="docutils literal"><span class="pre">CRUD</span></code> действий с БД, можно воспользоваться модулем
+<a class="reference external" href="http://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action" title="(в sacrud v)"><code class="xref py py-mod docutils literal"><span class="pre">action</span></code></a> из <a class="reference external" href="https://pypi.python.org/pypi/sacrud">sacrud</a>. Это немного сократит код и добавит
+некоторой универсальности в ПО со сложной логикой.</p>
+</li>
+<li><p class="first">26-08-2013 | <a class="reference internal" href="articles/2013/sacrud_release_0_0_3/">Обновление sacrud и pyramid_ext</a></p>
+<p>Новая версия <a class="reference external" href="https://pypi.python.org/pypi/sacrud">sacrud</a> <code class="docutils literal"><span class="pre">0.0.3</span></code>. В ней поправлены некоторые баги,
+добавлены <span class="strike">нескучные обои</span> элементы дизайна в расширении для
+<code class="docutils literal"><span class="pre">Pyramid</span></code> и создан отдельный репозитарий с примерами работы разных типов
+полей (pyramid_sacrud_example). Pyramid_sacrud_example работает только с
+<a class="reference external" href="http://www.postgresql.org/">Postgres</a> потому что включает в себя примеры полей специфичных именно для этой
+БД (таких как <code class="docutils literal"><span class="pre">hstore</span></code>).</p>
+</li>
+<li><p class="first">22-07-2013 | <a class="reference internal" href="articles/2013/hstore_plpython/">Опиум hstore в plpython</a></p>
+<p>Приведу просто пример триггера на <code class="docutils literal"><span class="pre">plpython</span></code> который использует данные из
+поля <code class="docutils literal"><span class="pre">hstore</span></code>:</p>
+</li>
+<li><p class="first">09-03-2013 | <a class="reference internal" href="articles/2013/sacrud/">CRUD интерфейс для SQLAlchemy и подключение к Pyramid</a></p>
+<p>Запилил Yet another CRUD интерфейс для <a class="reference external" href="http://sqlalchemy.org/">SQLAlchemy</a>. По сути это аналог
+<a class="reference external" href="https://www.djangoproject.com/">Django</a> админки или <a class="reference external" href="http://docs.formalchemy.org/">FormAlchemy</a>, но ОЧЕНЬ сильно упрощенный, ничего
+лишнего. Есть поддержка большинства полей + кастомные поля типа файл (для
+загрузки файлов, изображений) и <code class="docutils literal"><span class="pre">GUID</span></code>. Довольно просто подключить к
+<a class="reference external" href="http://www.pylonsproject.org/">Pyramid</a> проекту и сразу начать работать по адресу
+<a class="reference external" href="http://localhost:6543/sacrud">http://localhost:6543/sacrud</a></p>
+</li>
+<li><p class="first">28-02-2013 | <a class="reference internal" href="articles/2013/flag_jinja2/">Объявление флага в цикле Jinja2</a></p>
+<p>Понадобилось мне тут создать флаг в цикле, который можно использовать где
+нибудь потом в шаблоне. По логике все должно выглядеть примерно так:</p>
+</li>
+<li><p class="first">19-02-2013 | <a class="reference internal" href="articles/2013/jinja2_lorem_ipsum/">Jinja2 Lorem ipsum dolor sit amet</a></p>
+<p>Иногда в шаблоне нужно зафигачить какую-нибудь рыбу типа <code class="docutils literal"><span class="pre">&quot;Lorem</span> <span class="pre">ipsum</span> <span class="pre">dolor</span>
+<span class="pre">sit</span> <span class="pre">amet&quot;</span></code>, часто в цикле итд. Для этого существует функция <a class="reference external" href="http://jinja.pocoo.org/docs/dev/templates/#lipsum">lipsum()</a>.</p>
+</li>
+<li><p class="first">17-02-2013 | <a class="reference internal" href="articles/2013/dbsession_includeme/">Использование SQLAlchemy в дополнениях к Pyramid</a></p>
+<p>У меня есть дополнение к pyramid которое я включаю почти в каждый проект при
+помощи <code class="docutils literal"><span class="pre">includeme</span></code> (<a class="reference external" href="https://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html#pyramid.config.Configurator.include" title="(в The Pyramid Web Framework v1.9.1)"><code class="xref py py-meth docutils literal"><span class="pre">include()</span></code></a>). Приложение
+это дает мне простой <code class="docutils literal"><span class="pre">CRUD</span></code> интерфейс с <a class="reference external" href="http://jinja.pocoo.org/">Jinja</a> шаблонами малой кровью.
+Что позволяет избавиться от монстра <a class="reference external" href="http://docs.formalchemy.org/">FormAlchemy</a>.  Естественно каждый
+проект имеет свое название поэтому пришлось применить немного магии что бы
+создать универсальный механизм получения <code class="docutils literal"><span class="pre">DBSession</span></code> в своем подключаемом
+дополнении.</p>
+</li>
+<li><p class="first">17-02-2013 | <a class="reference internal" href="articles/2013/hdaps_music/">ThinkPad управление музыкой с помощью HDAPS</a></p>
+<p>Сначала установим HDAPS:</p>
+</li>
+<li><p class="first">16-01-2013 | <a class="reference internal" href="articles/2013/car_differ/">Как устроен дифференциал в автомобиле</a></p>
+<p>Отличное видео 1937г.</p>
+</li>
+<li><p class="first">15-01-2013 | <a class="reference internal" href="articles/2013/matrix/">Матрица в терминале на python</a></p>
+<p>Программа для консоли в <a class="reference external" href="https://www.kernel.org/">Linux</a>, которая имитирует поток бинарных цифр из
+фильма матрица. Очень эффектно выглядит, рекомендую попробовать!</p>
+</li>
+<li><p class="first">07-01-2013 | <a class="reference internal" href="articles/2013/penguin/">Пингвины императорские</a></p>
+<p>Ускоряются за счет воздуха:</p>
+</li>
+<li><p class="first">01-01-2013 | <a class="reference internal" href="articles/2013/wat/">Wat</a></p>
+</li>
+<li><p class="first">19-12-2012 | <a class="reference internal" href="articles/2012/sran/">Срань...</a></p>
+<p>В последнее время мне кажется что я пользователь <code class="docutils literal"><span class="pre">Интернета</span></code> в <code class="docutils literal"><span class="pre">Северной</span>
+<span class="pre">Корее</span></code>.</p>
+</li>
+<li><p class="first">07-12-2012 | <a class="reference internal" href="articles/2012/vi_book/">Изучаем редакторы vi и Vim, книга на Русском</a></p>
+<p>Издательство &#8220;Символ&#8221; радует последнее время годной литературой. Для предзаказа
+представлена ПЕРВАЯ книга на Русском языке по <code class="docutils literal"><span class="pre">vi</span></code> и <code class="docutils literal"><span class="pre">vim</span></code>. Я конечно
+понимаю что можно прочитать <code class="docutils literal"><span class="pre">vimtutor</span></code>, но когда это все в картинках и со
+стрелками то въезжаешь намного быстрее. В общем заказал, для меня очередной
+хэндбук.</p>
+</li>
+<li><p class="first">04-12-2012 | <a class="reference internal" href="articles/2012/http_header_pyramid/">Меняем заголовок ответа в Pyramid/Pylons</a></p>
+<p>Обычно в заголовке находится что то типа:</p>
+</li>
+<li><p class="first">21-11-2012 | <a class="reference internal" href="articles/2012/cms_pyramid2/">CMS на python-pyramid</a></p>
+<p>Мне иногда приходится писать сайты знакомым, друзьям, знакомым друзей, знакомым знакомых друзей...
+И почти всегда всем нужен простой сайт нахаляву визитка, но что бы можно было
+вносить изменения периодически. Идеально для этого наверно подходит CMS, но CMS
+слишком тяжелая и имеет зачастую слишком много ненужного. Поэтому я написал
+движок сайта-визитки с выпиленным ненужным.</p>
+</li>
+<li><p class="first">16-11-2012 | <a class="reference internal" href="articles/2012/shared_net/">Раздача Интернета с десктоп Linux машины</a></p>
+<p>В ноутбук вставляем еще одну сетевую карту, например такую:</p>
+</li>
+<li><p class="first">16-11-2012 | <a class="reference internal" href="articles/2012/pg_book/">Работа с PostgreSQL настройка и масштабирование</a></p>
+<p>Шыкарная книга по <a class="reference external" href="http://www.postgresql.org/">Postgres</a>. Много умных и полезных мыслей в одном месте.
+Хорошо написано про репликацию и настройку производительности. Книга на
+гитхабе в свободном доступе! Автору лучи добра и счастья, пиши исчо!</p>
+</li>
+<li><p class="first">14-11-2012 | <a class="reference internal" href="articles/2012/arch_book/">Идеальная архитектура. Ведущие специалисты о красоте программных архитектур</a></p>
+<p>Т.к. я читаю много техлитературы, то периодически буду писать мысли о ней.</p>
+</li>
+<li><p class="first">13-11-2012 | <a class="reference internal" href="articles/2012/3com/">Убираем свист коммутатора 3Com OfficeConnect Dual Speed Hub 8</a></p>
+<p>Если у вас засвистела электроника то 99% это схема питания, будь это нетбук
+<code class="docutils literal"><span class="pre">x100e</span></code> или БП или коммутатор.</p>
+</li>
+<li><p class="first">12-11-2012 | <a class="reference internal" href="articles/2012/x220t_buttons/">x220 tablet и доп кнопки в Linux</a></p>
+<p>В принципе мой <a class="reference external" href="https://www.debian.org/">Debian</a> Wheezy определил почти все системные клавиши кроме 2х
+справа на картинке (<code class="docutils literal"><span class="pre">Ctr+Alt+Del</span></code> и <code class="docutils literal"><span class="pre">поворот</span> <span class="pre">экрана</span></code>), микрофон и zoom по
+<code class="docutils literal"><span class="pre">Fn+пробел</span></code>. <code class="docutils literal"><span class="pre">Ctr+Alt+Del</span></code> не нужен, микрофон и зум это повод написать
+отдельную тему, а про поворот экрана я напишу подробно.</p>
+</li>
+<li><p class="first">11-11-2012 | <a class="reference internal" href="articles/2012/fortune/">корова говорит fortune</a></p>
+<p>мой скрипт в <code class="docutils literal"><span class="pre">.bashrc</span></code> для животного говорящего цитаты при открытии
+терминала.</p>
+</li>
+<li><p class="first">10-11-2012 | <a class="reference internal" href="articles/2012/lisp_book/">Книга по Lisp на русском</a></p>
+<p>Внезапно, вышла книга НА РУССКОМ по кошерному, более чем, <code class="docutils literal"><span class="pre">Лиспу</span></code>.</p>
+</li>
+<li><p class="first">02-11-2012 | <a class="reference internal" href="articles/2012/redactor-js/">Redactor-js WYSIWYG редактор и python</a></p>
+<p><a class="reference external" href="https://github.com/dybskiy/redactor-js">Redactor-js</a> - это простой вайсвиг с
+возможностью загрузки изображений.</p>
+</li>
+<li><p class="first">18-10-2012 | <a class="reference internal" href="articles/2012/python_labirint/">Генератор лабиринта на Питоне</a></p>
+<p>Отличное приложение для создания лабиринтов. Написано на Python и доставляет
+много фана.</p>
+</li>
+<li><p class="first">14-10-2012 | <a class="reference internal" href="articles/2012/penguin_vs_leo/">Еще пингвины...</a></p>
+</li>
+<li><p class="first">28-09-2012 | <a class="reference internal" href="articles/2012/jinja_pyramid_i18n/">Перевод шаблонов Jinja в Pyramid</a></p>
+<p>Основная документация как это делать <a class="reference external" href="http://pyramid.readthedocs.org/en/1.2-branch/narr/i18n.html">здесь</a>. Но как обычно
+есть нюансы.</p>
+</li>
+<li><p class="first">27-09-2012 | <a class="reference internal" href="articles/2012/jinja_pylons_i18n/">Перевод шаблонов Jinja в Pylons</a></p>
+<p>Все точно также как и с <a class="reference external" href="http://docs.makotemplates.org/en/latest/">mako</a>, &#8220;Но есть нюансы&#8221;©</p>
+</li>
+<li><p class="first">26-09-2012 | <a class="reference internal" href="articles/2012/cms_pyramid/">CMS на Pyramid фреймворке</a></p>
+<p><a class="reference external" href="http://www.nive.co/cms/root.html">Poolyx CMS</a> - малоизвестная система
+управления сайтом написанная на Python с применением <a class="reference external" href="http://www.pylonsproject.org/">Pyramid</a> немецкими
+кодерами.</p>
+</li>
+<li><p class="first">24-09-2012 | <a class="reference internal" href="articles/2012/lisp/">Lisp...</a></p>
+<p>Ссылка: <a class="reference external" href="http://video.yandex.ru/users/alexey-v-zubkov/collection/1/">лекции</a></p>
+</li>
+<li><p class="first">15-09-2012 | <a class="reference internal" href="articles/2012/debian_bc/">debian business card зависает при установке</a></p>
+<p>При установке дистрибутива <code class="docutils literal"><span class="pre">debian-6.0.5-amd64-businesscard.iso</span></code> было
+замечено зависание на шаге <code class="docutils literal"><span class="pre">network</span> <span class="pre">detect</span></code>. Из-за чего это происходит я не
+знаю, но лечится нажатием <code class="docutils literal"><span class="pre">Ctrl+C</span></code> один или два раза. После чего начинается
+поиск настроек сети при помощи <code class="docutils literal"><span class="pre">DHCP</span></code>.</p>
+</li>
+<li><p class="first">11-09-2012 | <a class="reference internal" href="articles/2012/pyramid_blog/">Простой блог на фреймворке Pyramid</a></p>
+<p>Пример простого блога на Pyramid <a class="reference external" href="https://github.com/uralbash/pyramid_easy_blog">https://github.com/uralbash/pyramid_easy_blog</a></p>
+</li>
+<li><p class="first">05-07-2012 | <a class="reference internal" href="articles/2012/pyramid_as_django/">Структура Pyramid приложений как в Django</a></p>
+<p>Одной из причин отказа развивать ветку <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a> стала его архитектура
+проекта.  Все контроллеры хранятся в директории <code class="docutils literal"><span class="pre">controllers</span></code>, модели в
+<code class="docutils literal"><span class="pre">models</span></code>, шаблоны в <code class="docutils literal"><span class="pre">templates</span></code>. Это очень удобно когда у вас маленький
+проект, но если он разрастается до десятков и сотен сущностей, то становится
+крайне сложно скакать по этим папкам выискивая нужный файл, относящийся именно
+к этой сущности. В <a class="reference external" href="https://www.djangoproject.com/">Django</a> сделано по другому, в проекте хранятся
+приложения (<code class="docutils literal"><span class="pre">application</span></code>) - это такие маленькие подпрограммы которые
+отвечают за конкретный функционал проекта (например фотогалерея
+<a class="reference external" href="https://pypi.python.org/pypi/django-photologue">django-photologue</a> или дерево сайта <a class="reference external" href="https://pypi.python.org/pypi/django-sitetree">django-sitetree</a> и прочее).
+Каждое такое приложение имеет свою папку и уже в ней хранятся контроллеры
+(<code class="docutils literal"><span class="pre">views</span></code> в данном случае) и модели (<code class="docutils literal"><span class="pre">models</span></code>). Т.е. вместо такой
+архитектуры <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a>:</p>
+</li>
+<li><p class="first">04-07-2012 | <a class="reference internal" href="articles/2012/pyramid_formalchemy/">pyramid_formalchemy</a></p>
+<p><a class="reference external" href="https://pypi.python.org/pypi/FormAlchemy">FormAlchemy</a> это <code class="docutils literal"><span class="pre">CRUD</span></code> для <a class="reference external" href="http://sqlalchemy.org/">SQLAlchemy</a>. Для <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a>
+существовало расширение прямо в самом модуле в разделе ext. Для Pyramid создали
+отдельный пакет <a class="reference external" href="https://pypi.python.org/pypi/pyramid_formalchemy">pyramid_formalchemy</a>. Посмотрим как это работает:</p>
+</li>
+<li><p class="first">05-06-2012 | <a class="reference internal" href="articles/2012/proxmox/">Установка ProxMox VE с USB флешки</a></p>
+<p>Взято от сюда <a class="reference external" href="http://c-nergy.be/blog/?p=897">http://c-nergy.be/blog/?p=897</a></p>
+</li>
+<li><p class="first">23-05-2012 | <a class="reference internal" href="articles/2012/proxy_apt/">Настройка прокси для apt-get</a></p>
+<p>В файле <code class="docutils literal"><span class="pre">/etc/apt/apt.conf.d/proxy</span></code> (его небыло) добавить строки:</p>
+</li>
+<li><p class="first">22-05-2012 | <a class="reference internal" href="articles/2012/boyan/">Боян :)</a></p>
+<p>UPD: Создатель электромеханического бояна <code class="docutils literal"><span class="pre">Владимир</span> <span class="pre">Демин</span></code> - человек с
+высоким ощущением прекрасного: <a class="reference external" href="http://hackaday.com/2012/05/25/interview-vladimir-denin-the-creator-of-the-player-guitar/?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+hackaday%2FLgoM+(Hack+a+Day)#">подробнее на Hack Day</a></p>
+</li>
+<li><p class="first">10-05-2012 | <a class="reference internal" href="articles/2012/rrd_faketime/">Обновление rrd задней датой при помощи faketime</a></p>
+<p>Иногда скрипты, выполнение которых зависит от времени, не срабатывают. Менять
+время и запускать их повторно или менять код приложения неправильно. Что бы
+выполнить их задним числом есть утилита <code class="docutils literal"><span class="pre">faketime</span></code>.</p>
+</li>
+<li><p class="first">26-04-2012 | <a class="reference internal" href="articles/2012/pycrypto_virtualenv/">Установка pycrypto в virtualenv</a></p>
+<p>Если появляется ошибка типа <code class="docutils literal"><span class="pre">&quot;RuntimeError:</span> <span class="pre">autoconf</span> <span class="pre">error&quot;</span></code>, то необходимо
+установить <code class="docutils literal"><span class="pre">C</span></code> компилятор:</p>
+</li>
+<li><p class="first">17-04-2012 | <a class="reference internal" href="articles/2012/python_snmp/">Что юзать в Python&#8217;е для SNMP...</a></p>
+<p>Для <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol">SNMP</a>
+в питоне есть несколько библиотек но у всех свои недостатки.</p>
+</li>
+<li><p class="first">12-04-2012 | <a class="reference internal" href="articles/2012/sphinx_github/">Хостим документацию Sphinx на github</a></p>
+<p>Немного допиленная версия этого
+<a class="reference external" href="http://djangonaut.blogspot.com/2009/05/sphinx-documentation-github-pages-3.html">http://djangonaut.blogspot.com/2009/05/sphinx-documentation-github-pages-3.html</a></p>
+</li>
+<li><p class="first">11-04-2012 | <a class="reference internal" href="articles/2012/rrdtool/">RRDTool пример использования в python</a></p>
+<p><a class="reference external" href="http://oss.oetiker.ch/rrdtool/">RRDtool</a> (<cite>Round Robin Database</cite>). Обеспечивает хранение и отображение данных
+мониторинга (загрузка каналов, температура и любая другая зависящая от времени
+последовательность данных, которую можно получить некоторым способом).
+Задумывалась как повторная, но более правильная реализация MRTG. Объём хранимых
+данных не увеличивается со временем (ячейки хранения используются циклически).
+Использование различных функций консолидации данных позволяет охватывать
+большие интервалы времени без чрезмерного увеличения объема БД за счет снижения
+разрешающей способности. В отличие от mrtg, программа не упаковывает старые
+данные самостоятельно, это надо предусматривать при проектировании БД. Сбор
+информации и генерация HTML-кода также производится с помощью внешних средств.
+Более мощные средства генерации графиков. Все времена во внутреннем формате
+Unix (число секунд с 1 января 1970 в UTC). Значения счетчиков могут быть целыми
+или вещественными числами или специальным значением UNKNOWN. Лицензия - GPL (но
+автор не будет против, если в благодарность послать ему CD/DVD из указанного им
+списка; при установке rrdtool имитируется заказ CD на amazone.com ;-).
+Необходимо иметь perl 5 (без perl rrdtool соберется, но не будет модулей
+подержки perl) и обычный набор средств компиляции (make, gcc, autoconf,
+automake, libtool). Имеется также поддержка tcl и python. Нельзя использовать
+для учета и биллинга - слишком много он усредняет и сглаживает, используя
+достаточно сложные алгоритмы.</p>
+</li>
+<li><p class="first">11-04-2012 | <a class="reference internal" href="articles/2012/sa_big_table/">SQLAlchemy и большие таблицы (Memory error)</a></p>
+<p><a class="reference external" href="http://sqlalchemy.org/">SQLAlchemy</a> в больших таблицах при таком запросе <code class="docutils literal"><span class="pre">s.query(TableName).all()</span></code>
+зависает и выдает ошибку <code class="docutils literal"><span class="pre">Memory</span> <span class="pre">error</span></code>. Для решения проблемы нужно
+использовать метод <code class="xref py py-meth docutils literal"><span class="pre">yield_per()</span></code>. Если
+необходимо еще изменять данные, то нужно делать коммиты каждые N записей.</p>
+</li>
+<li><p class="first">02-04-2012 | <a class="reference internal" href="articles/2012/qtile/">Qtile жив</a></p>
+<p><a class="reference external" href="http://qtile.org">Qtile</a> - это тайловый оконный менеджер написанный на <a class="reference external" href="https://www.python.org/">Python</a>. Последний
+месяц активно коммитится на github&#8217;е. Свежая инфа здесь
+<a class="reference external" href="http://qtile.readthedocs.org/en/latest/">http://qtile.readthedocs.org/en/latest/</a> (<a class="reference external" href="http://Qtile.org">http://Qtile.org</a> обновляется редко.)</p>
+</li>
+<li><p class="first">28-03-2012 | <a class="reference internal" href="articles/2012/penguin_troll/">Троллинг от Пингвинов :)))</a></p>
+</li>
+<li><p class="first">27-03-2012 | <a class="reference internal" href="articles/2012/pylons_csv/">Pylons обработка csv с веб формы (метод POST)</a></p>
+<p>Небольшой &#8220;хинт&#8221; как при помощи <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a> обрабатывать CSV файлы,
+отправленные из формы.</p>
+</li>
+<li><p class="first">12-03-2012 | <a class="reference internal" href="articles/2012/matplotlib_numpy_and_virtualenv/">Установка Matplotlib и Numpy в virtualenv на Debian</a></p>
+<p>Взято от <a class="reference external" href="http://coreygoldberg.blogspot.com/2012/01/python-matplotlib-and-numpy-on.html">сюда</a>.
+Если вы хотите в <a class="reference external" href="https://pypi.python.org/pypi/virtualenv">virtualenv</a>, через <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></code> установить
+<a class="reference external" href="https://pypi.python.org/pypi/Numpy">Numpy</a> и <a class="reference external" href="https://pypi.python.org/pypi/Matplotlib">Matplotlib</a>, то необходимо вначале поставить в систему:</p>
+</li>
+<li><p class="first">27-02-2012 | <a class="reference internal" href="articles/2012/pylons_yapsy/">Pylons система плагинов для своего проекта (yapsy)</a></p>
+<p>При проектировании любого проекта, через определенное время, встает проблема
+маштабируемости, конечно если вы не пишите сайт-визитку или что то подобное.
+Проект может состоять из одного большого монолитного ядра с множеством
+контроллеров, сотнями или даже тысячами таблиц и бессчетным количеством разных
+шаблонов, библиотек итд итп. Под ядром подразумевается та часть проекта
+(<a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">pylons</a>), которую либо нельзя изменить совсем, либо это потребует очень
+больших усилий. Для того что бы создать гибкий и легко масштабируемый веб (и не
+только) проект, необходимо иметь небольшое ядро, которое будет выполнять
+минимальный функционал соответствующий логически завершенной программе.
+Остальные функции, пусть даже улучшающие программу, нужно выносить за пределы
+ядра. Вообще я знаю только два способа решения этой проблемы:</p>
+</li>
+<li><p class="first">22-02-2012 | <a class="reference internal" href="articles/2012/ajax_triple_select/">AJAX тройной выпадающий список (triple select)</a></p>
+<p>Опишу очень простую реализацию трех выпадающих списков, данные которых связанны
+последовательно. Выглядит это примерно так <code class="docutils literal"><span class="pre">&quot;Город&quot;</span> <span class="pre">-&gt;</span> <span class="pre">&quot;Улица&quot;</span> <span class="pre">-&gt;</span> <span class="pre">&quot;Дом&quot;</span></code>.
+После выбора дома, на основе <code class="docutils literal"><span class="pre">AJAX</span></code> запроса, генерируется список улиц этого
+города, а после выбора улицы генерируется список домов на этой улице. Создадим
+html файл:</p>
+</li>
+<li><p class="first">10-02-2012 | <a class="reference internal" href="articles/2012/pyyandexmap/">pyandexmap работа с Яндекс Карты API используя Python</a></p>
+<p>У Яндекс Карт хороший геокодинг и есть API, но нет автодополнение поисковой
+строки (как в гугле). У гугла плохой геокодинг (для России) но есть
+автодополнение. Более подробно можно прочитать например <a class="reference external" href="http://clubs.ya.ru/mapsapi/replies.xml?item_no=17733">здесь</a>. Парадокс какой-то. Я
+написал простой модуль для вычленения данных через API при помощи
+питона. Это очень удобно использовать в AJAX запросах. Пример использования
+здесь (<a class="reference internal" href="articles/2012/osm_geotagging/#osm_geotagging"><span class="std std-ref">OpenStreetMap, Геокодирование и автодополнение адреса в строке поиска (как у гугла) с помощью Яндекс API :)</span></a>). Код для изучения/исправления здесь
+<a class="reference external" href="https://github.com/uralbash/pyandexmap">https://github.com/uralbash/pyandexmap</a>.</p>
+</li>
+<li><p class="first">10-02-2012 | <a class="reference internal" href="articles/2012/pypi/">Размещаем свои python проекты на https://pypi.python.org</a></p>
+<p>Я периодически использую свои скрипты в разных местах, для того что бы не
+копипастить их постоянно и следить за обновлением удобно добавить их в
+<a class="reference external" href="https://pypi.python.org">https://pypi.python.org</a> и устанавливать/обновлять через <code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></code>. Для
+этого необходимо подготовить наш модуль.</p>
+</li>
+<li><p class="first">10-02-2012 | <a class="reference internal" href="articles/2012/jinja_silent_none/">Jinja замена None, Null, итд на пустую строку</a></p>
+<p>В питоне пустые значения возвращаются как <code class="docutils literal"><span class="pre">None</span></code>. Поэтому в шаблонах
+<a class="reference external" href="http://jinja.pocoo.org/">Jinja</a> вместо пустых значений отображаются <code class="docutils literal"><span class="pre">None</span></code>. Что бы поправить это
+нужно изменить метод <code class="docutils literal"><span class="pre">finalize</span></code>. Пример из google groups:</p>
+</li>
+<li><p class="first">10-02-2012 | <a class="reference internal" href="articles/2012/pylons_console/">Скрипты работающие в окружении проекта на Pylons</a></p>
+<p>Иногда необходимо написать скрипт который выполняется из консоли и использует
+окружение проекта на Pylons. Копипастю простой пример с <a class="reference external" href="http://pylonshq.com/snippets/running_commands_with_the_app_environment">pylonshq</a>.
+Так-как там есть привычка периодически удалять информацию.</p>
+</li>
+<li><p class="first">10-02-2012 | <a class="reference internal" href="articles/2012/paramiko/">Python + ssh или основы paramiko</a></p>
+<p>Для работы с ssh в питоновских скриптах идеально подходит модуль
+<a class="reference external" href="https://pypi.python.org/pypi/paramiko">paramiko</a>.</p>
+</li>
+<li><p class="first">10-02-2012 | <a class="reference internal" href="articles/2012/osm_geotagging/">OpenStreetMap, Геокодирование и автодополнение адреса в строке поиска (как у гугла) с помощью Яндекс API :)</a></p>
+<p><cite>Геокоди́рование</cite> — процесс назначения географических идентификаторов (таких как
+<a class="reference external" href="http://ru.wikipedia.org/wiki/%D0%93%D0%B5%D0%BE%D0%B3%D1%80%D0%B0%D1%84%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5_%D0%BA%D0%BE%D0%BE%D1%80%D0%B4%D0%B8%D0%BD%D0%B0%D1%82%D1%8B">географические координаты</a>,
+выраженные в виде <a class="reference external" href="http://ru.wikipedia.org/wiki/%D0%A8%D0%B8%D1%80%D0%BE%D1%82%D0%B0">широты</a> и
+<a class="reference external" href="http://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%BB%D0%B3%D0%BE%D1%82%D0%B0">долготы</a>)
+объектам карты и записям данных.</p>
+</li>
+<li><p class="first">10-02-2012 | <a class="reference internal" href="articles/2012/osm_example/">Пример карты OpenStreetMap на своем сайте</a></p>
+<p><a class="reference external" href="http://www.openstreetmap.org">OpenStreetMap</a> — это свободно редактируемая карта всего мира. Она сделана
+такими же людьми, как и вы. <a class="reference external" href="http://www.openstreetmap.org">OpenStreetMap</a> позволяет совместно
+просматривать, изменять и использовать географические данные в любой точке
+Земли. Также позволяет накладывать разные слои в том числе и карты Яндекса с
+Гуглом. У гугла проблема с детализацией карт в России у Яндекса с API поэтому
+<a class="reference external" href="http://www.openstreetmap.org">OpenStreetMap</a> смотрится наиболее красивым решением, при том что софт и
+сами карты распространяются по свободным лицензиям.</p>
+</li>
+<li><p class="first">26-12-2011 | <a class="reference internal" href="articles/2011/snmp/">Набор snmp скриптов облегчающие жизнь</a></p>
+<p>Скрипты написаны на питоне, для установки достаточно форкнуть <code class="docutils literal"><span class="pre">git</span></code> репозитарий
+<a class="reference external" href="https://github.com/uralbash/snmpdesk">https://github.com/uralbash/snmpdesk</a>. Документация как работать со скриптами
+будет выкладываться на <code class="docutils literal"><span class="pre">github</span></code>. Сейчас пока только 1 для извлечения таблицы
+коммутации (<code class="docutils literal"><span class="pre">fdb</span></code>), со временем будут появляться остальные.</p>
+</li>
+<li><p class="first">21-12-2011 | <a class="reference internal" href="articles/2011/rrd_cut2/">upd: Режем пики в rrd</a></p>
+<p>Обновления в скрипте <a class="reference internal" href="articles/2011/rrd_cut/#rrd_cut"><span class="std std-ref">Срезаем пики в RRD при помощи python</span></a>. В предыдущем варианте скрипт получал
+предельное значение и если любое значение в <a class="reference external" href="http://oss.oetiker.ch/rrdtool/">rrd</a> файле его превышало, то
+оно обнулялось. Это неудобно когда для каждого <code class="docutils literal"><span class="pre">datasource</span></code> нужно задавать
+свой предел. Ниже пример где несколько строк, в каждой строке 6 значений.</p>
+</li>
+<li><p class="first">19-12-2011 | <a class="reference internal" href="articles/2011/demo/">Как поднять demo версию проекта на paster + virtualenv в Debian</a></p>
+<p>Иногда необходимо поднять демо версию своего проекта для тестов. Склонируем
+наш <code class="docutils literal"><span class="pre">git</span></code> проект на сервер где будет демо:</p>
+</li>
+<li><p class="first">18-12-2011 | <a class="reference internal" href="articles/2011/fa_keyerror/">FormAlchemy KeyError: &#8220;Key not found: &#8220;</a></p>
+<p>Ошибка в <a class="reference external" href="http://docs.formalchemy.org/">FormAlchemy</a> типа <code class="docutils literal"><span class="pre">KeyError:</span> <span class="pre">&quot;Key</span> <span class="pre">not</span> <span class="pre">found:</span>
+<span class="pre">u'Task--super_task_id'&quot;</span></code> лечится обновлением:</p>
+</li>
+<li><p class="first">16-12-2011 | <a class="reference internal" href="articles/2011/psycopg2/">Установка psycopg2 в virtualenv для Postgres 9.1</a></p>
+<p>При установке <a class="reference external" href="http://initd.org/psycopg/">psycopg</a> в <a class="reference external" href="https://virtualenv.pypa.io/en/latest">virtualenv</a> может возникнуть ошибка:</p>
+</li>
+<li><p class="first">09-12-2011 | <a class="reference internal" href="articles/2011/rrd_cut/">Срезаем пики в RRD при помощи python</a></p>
+<p>В некоторых случаях на <a class="reference external" href="http://oss.oetiker.ch/rrdtool/">rrd</a> графиках появляются пики, как например после
+перезагрузки сетевой карты:</p>
+</li>
+<li><p class="first">28-11-2011 | <a class="reference internal" href="articles/2011/couchdb/">Основы CouchDB</a></p>
+<p><a class="reference external" href="http://couchdb.apache.org/">CouchDB</a> - документо-ориентированная СУБД, в которой удобно хранить разную
+информацию с изменяющимся количеством параметров. Например сущность товары
+могут иметь бесконечное количество параметров. Создавать в РСУБД миллионы
+таблиц или одну огромную не вариант. В <a class="reference external" href="http://couchdb.apache.org/">couchdb</a> хранятся документы, т.е.
+простые записи. В записи может быть сколько угодно разных параметров. А для
+унификации записей обычно создают параметр type который заменяет имя таблицы в
+РСУБД.</p>
+</li>
+<li><p class="first">27-11-2011 | <a class="reference internal" href="articles/2011/wtform_validation/">WTForm валидация</a></p>
+<p>Продолжение статьи <a class="reference internal" href="articles/2011/wtforms/#wtforms"><span class="std std-ref">готовим Pylons + WTForms</span></a>. Рассмотрим как создать свой
+класс для валидации. Здесь можно найти стандартные валидаторы
+<a class="reference external" href="http://wtforms.simplecodes.com/docs/0.6/validators.html">http://wtforms.simplecodes.com/docs/0.6/validators.html</a></p>
+</li>
+<li><p class="first">27-11-2011 | <a class="reference internal" href="articles/2011/peyote/">Вот он плеер моей мечты - Peyote</a></p>
+<p>Плеер который в Линуксе нормально отображает кодировки и читает на ура
+<code class="docutils literal"><span class="pre">lossless</span></code>, написан на <a class="reference external" href="https://www.python.org/">python</a>, работает в консоле. Интерфейс как в
+<a class="reference external" href="http://www.midnight-commander.org/">mc</a> - очень удобно музыку перемещать + поддержка мышки.
+<a class="reference external" href="http://peyote.sourceforge.net/about.rus.html">http://peyote.sourceforge.net/about.rus.html</a></p>
+</li>
+<li><p class="first">22-11-2011 | <a class="reference internal" href="articles/2011/wtforms/">готовим Pylons + WTForms</a></p>
+<p><a class="reference external" href="http://wtforms.simplecodes.com/">WTForm</a> простая, но довольно удобная библиотека для создания форм. И еще
+<a class="reference external" href="http://wtforms.simplecodes.com/">WTForm</a> очень похожа на формы в <a class="reference external" href="https://www.djangoproject.com/">Django</a> - одно из немногого что в
+джанге сделано хорошо. Посмотрим как это работает с <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a>. Для удобства
+будем хранить формы отдельно:</p>
+</li>
+<li><p class="first">19-11-2011 | <a class="reference internal" href="articles/2011/sqlalchemy_trigger/">Альтернатива SQL триггерам в SQLAlchemy</a></p>
+<p>Когда необходимо выполнять какие-то действия при записи в базу, обычно создают
+триггеры <code class="docutils literal"><span class="pre">before</span></code>, <code class="docutils literal"><span class="pre">after</span> <span class="pre">INSERT</span> <span class="pre">UPDATE</span></code>. В <a class="reference external" href="http://sqlalchemy.org/">SQLAlchemy</a> можно
+реализовать аналогичный механизм но работающий на стороне питона а не БД. В
+версии 0.6 это делается при помощи
+<code class="xref py py-class docutils literal"><span class="pre">MapperExtension</span></code>, в 0.7
+<code class="xref py py-class docutils literal"><span class="pre">MapperExtension</span></code> заменили на <code class="xref py py-func docutils literal"><span class="pre">sqlalchemy.event.listen()</span></code>.</p>
+</li>
+<li><p class="first">19-11-2011 | <a class="reference internal" href="articles/2011/java_iceweasel/">Установка Java Environment на Debian для Iceweasel (FireFox)</a></p>
+<p>Часто веб интерфейс какого-нибудь устройства требует <a class="reference external" href="http://www.java.com">Java</a>. Что бы ее
+поставить на <a class="reference external" href="https://www.debian.org/">Debian</a> необходимо выполнить команды:</p>
+</li>
+<li><p class="first">16-11-2011 | <a class="reference internal" href="articles/2011/sqlalchemy_why_postgres/">SQLAlchemy почему PostgreSQL?</a></p>
+<p>Потому что я могу делать так:</p>
+</li>
+<li><p class="first">13-11-2011 | <a class="reference internal" href="articles/2011/js_rrd/">Красивые графики javascriptRRD + Float</a></p>
+<p>В продолжение статьи <a class="reference internal" href="articles/2011/rrdtool_ds18b20/#py-rrdtool-temp"><span class="std std-ref">Python + Tornado + RRDTool: температура на улице и в серверной</span></a>: температура на улице и в
+серверной рассмотрим как можно рисовать <a class="reference external" href="http://oss.oetiker.ch/rrdtool/">RRD</a> используя только
+javascript на стороне клиента. Результат будет такой:</p>
+</li>
+<li><p class="first">13-11-2011 | <a class="reference internal" href="articles/2011/fa_rest_controller/">Pylons + FormAlchemy REST Controller</a></p>
+<p>Для своих <a class="reference external" href="https://ru.wikipedia.org/wiki/REST">REST</a> контроллеров можно использовать, формы <a class="reference external" href="http://docs.formalchemy.org/">FormAlchemy</a>.</p>
+</li>
+<li><p class="first">13-11-2011 | <a class="reference internal" href="articles/2011/rrdtool_ds18b20/">Python + Tornado + RRDTool: температура на улице и в серверной</a></p>
+<p>Рассмотрим как можно мониторить температуру при помощи сервера. Алгоритм
+довольно простой: подключаем датчик температуры к компу, пишем скрипт который
+снимает данные с датчика, записываем данные и отдаем по запросу пользователю.
+Результат будет выглядеть так:</p>
+</li>
+<li><p class="first">06-11-2011 | <a class="reference internal" href="articles/2011/content_assigment/">The Content Assignment</a></p>
+<p>В этом топике вольный перевод довольно интересной статьи <a class="reference external" href="http://knolleary.net">http://knolleary.net</a>
+об одной книге издательства <a class="reference external" href="http://www.penguin.co.uk/">penguin books</a>.</p>
+</li>
+<li><p class="first">05-11-2011 | <a class="reference internal" href="articles/2011/xfce_display/">Linux xfce настройка двух мониторов</a></p>
+<p>В <a class="reference external" href="http://www.xfce.org/">Xfce</a> по умолчанию второй монитор работает в режиме зеркало. Что бы
+настроить его под себя придется лезть в консоль, т.к. более менее нормальных
+desktop приложений я не обнаружил. Нам понадобится команда <a class="reference external" href="http://www.x.org/wiki/Projects/XRandR/">xrandr</a>. Если ее запустить без параметров то
+она покажет параметры мониторов:</p>
+</li>
+<li><p class="first">27-10-2011 | <a class="reference internal" href="articles/2011/formalchemy/">Админка FormAlchemy для Pylons и Jinja</a></p>
+<p>Для <a class="reference external" href="http://sqlalchemy.org/">SQLAlchemy</a> существуют интерфейсы управления моделями(что-то типа админки).
+Как минимум их 2, это <a class="reference external" href="http://brickenstein.bitbucket.org/rum-docs/user/tutorial.html">Rum</a> и
+<a class="reference external" href="http://docs.formalchemy.org/formalchemy/ext/pylons.html">formalchemy.ext.pylons</a>.</p>
+</li>
+<li><p class="first">27-10-2011 | <a class="reference internal" href="articles/2011/pylons_backslash/">Pylons + Routes фикс слэша в конце URL</a></p>
+<p>Если мапить URL&#8217;ы вот так:</p>
+</li>
+<li><p class="first">27-10-2011 | <a class="reference internal" href="articles/2011/sqlalchemy_mixin/">Pylons + SQLalchemy расширенная модель (Mixin)</a></p>
+<p>Часто при проектировании структуры БД появляется необходимость повторять одни
+и те же действия с таблицами. Добавлять одинаковые поля, ссылки, счетчики и
+т.д. Модели в <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a> (<a class="reference external" href="http://sqlalchemy.org/">SQLAlchemy</a>), как и в большинстве других фреймворках
+использующих паттерн MVC, являются классом и соответственно могут быть
+унаследованы от других классов. Это позволяет нам избежать рутинной работы с
+повторяющимися действиями.</p>
+</li>
+<li><p class="first">26-10-2011 | <a class="reference internal" href="articles/2011/repoze.what/">Авторизация в Pylons за 5 мин при помощи repoze.what</a></p>
+<p>Статья по сути вольный перевод <a class="reference external" href="http://countergram.com/open-source/PylonsTemplates">PylonsTemplates: extra Paster templates for
+Pylons apps</a> с моими
+дополнениями.</p>
+</li>
+<li><p class="first">26-10-2011 | <a class="reference internal" href="articles/2011/breadcrumbs/">Простые хлебные крошки для Pylons и не только...</a></p>
+<p>В Интернете множество советов как делать хлебные крошки. Для <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a> эти советы
+довольно запутанные, сложные в реализации и рутины в поддержке на мой взгляд.
+Поэтому я рассмотрю простой способ парсить URI. Нас будет интересовать только
+URN (та часть которая идет после названия сайта).</p>
+</li>
+<li><p class="first">25-10-2011 | <a class="reference internal" href="articles/2011/pylons_jscss_minificator/">Pylons javascript и css link</a></p>
+<p>В <a class="reference external" href="http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/">Pylons</a>, в шаблоны есть возможность вставить <a class="reference external" href="http://www.w3.org/Style/CSS/">CSS</a> или JS при помощи
+<a class="reference external" href="https://webhelpers.readthedocs.io/en/latest/modules/pylonslib/minify.html#webhelpers.pylonslib.minify.stylesheet_link" title="(в WebHelpers v1.3)"><code class="xref py py-func docutils literal"><span class="pre">stylesheet_link()</span></code></a> и
+<a class="reference external" href="https://webhelpers.readthedocs.io/en/latest/modules/pylonslib/minify.html#webhelpers.pylonslib.minify.javascript_link" title="(в WebHelpers v1.3)"><code class="xref py py-func docutils literal"><span class="pre">javascript_link()</span></code></a>. Но существует расширение
+<a class="reference external" href="http://minification-webhelpers.readthedocs.org/en/latest/">MinificationWebHelpers</a> которое позволяет также удобно добавлять javascript
+файлы.</p>
+</li>
+<li><p class="first">24-10-2011 | <a class="reference internal" href="articles/2011/sqlalchemy_uml/">SQLalchemy UML диаграмма</a></p>
+<p>UPD: <a class="reference external" href="https://pypi.python.org/pypi/sadisplay">sadisplay</a> - замечательная штука!</p>
+</li>
+<li><p class="first">17-10-2011 | <a class="reference internal" href="articles/2011/thinkpad_trackpoint/">ThinkPad TrackPoint настройка в Linux</a></p>
+<p>Вообще всю информацию по настройке <a class="reference external" href="https://ru.wikipedia.org/wiki/Тензометрический_джойстик">trackpoint</a> можно взять здесь: <a class="reference external" href="http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint">How to
+configure the TrackPoint</a></p>
+</li>
+<li><p class="first">17-10-2011 | <a class="reference internal" href="articles/2011/capslock/">Отключить CapsLock</a></p>
+<p>Отключение:</p>
+</li>
+<li><p class="first">17-10-2011 | <a class="reference internal" href="articles/2011/xfce_button/">Xfce перенос кнопок окна влево</a></p>
+<p>Для того что бы кнопки закрыть-развернуть-свернуть оказались слева, например
+как в <a class="reference external" href="http://www.ubuntu.com/">Ubuntu</a> или <a class="reference external" href="http://www.apple.com/osx/">MacOS</a>, необходимо:</p>
+</li>
+</ul>
+<div class="section" id="uralbash">
+<h1>uralbash<a class="headerlink" href="#uralbash" title="Ссылка на этот заголовок">¶</a></h1>
+</div>
+
+  <div class="section">
+  
+  </div>
+
+                    </div>
+                    <footer class="footer">
+                      
+  
+                        
+    <div class="footer__copyright">
+            
+                &copy; Copyright 2015, uralbash.
+            
+    </div>
+<div class="footer__theme">
+    <a href="https://github.com/ITCase/itcase_sphinx_theme" class="footer__theme-link">
+      ITCase Sphinx Theme
+    </a>
+      <span class="footer__theme-text">
+          | version: 0.2.0
+      </span>
+</div>
+                      
+  <div class="footer__theme">
+      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+        Ablog powered.
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="http://uralbash.ru/blog/atom.xml" class="footer__theme-link">
+        RSS/Atom
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="https://uralbash.blogspot.com" class="footer__theme-link">
+        Старый блог
+      </a>
+  </div>
+
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+            var STICKY_MENU = true;
+        
+    </script>
+
+    <script type="text/javascript" src="_static/js/__theme.js"></script>
+
+    
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT: '',
+                    VERSION: '',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '',
+                    HAS_SOURCE: true
+            };
+        </script>
+    
+
+    
+</body>
+</html>

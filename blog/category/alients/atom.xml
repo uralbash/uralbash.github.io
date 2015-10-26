@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщений в Alients</title>
+  <id>http://uralbash.ru/blog/category/alients/atom.xml</id>
+  <updated>2016-10-31T20:04:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/category/alients/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/category/alients/atom.xml">
+    <title type="text">SETI@home в Docker</title>
+    <id>http://uralbash.ru/articles/2016/boinc-seti-home/</id>
+    <updated>2016-10-31T20:04:00Z</updated>
+    <published>2016-10-31T20:04:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/boinc-seti-home/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;seti-home-docker&quot;&gt;
+
+&lt;p&gt;&lt;cite&gt;BOINC&lt;/cite&gt; - платформа, которая позволяет выполнять &lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B2%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5_%D0%B2%D1%8B%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F&quot;&gt;добровольные вычисления&lt;/a&gt;
+для различных проектов. Изначально создавался для проекта &lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/SETI&amp;#64;home&quot;&gt;SETI&amp;#64;home&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;ul class=&quot;last simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://boinc.berkeley.edu/&quot;&gt;https://boinc.berkeley.edu/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/BOINC&quot;&gt;https://ru.wikipedia.org/wiki/BOINC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/SETI&amp;#64;home&quot;&gt;https://ru.wikipedia.org/wiki/SETI&amp;#64;home&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;Идея заключается в том, что можно задействовать часть ресурсов своей машины для
+распределенных вычислений некого проекта, например &lt;cite&gt;SETI&amp;#64;home&lt;/cite&gt; обрабатывает
+сигналы с радиотелескопа (&lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/Обсерватория_Аресибо&quot;&gt;Аресибо&lt;/a&gt;) в поисках внеземной
+цивилизации, &lt;cite&gt;Rosetta&amp;#64;home&lt;/cite&gt; вычисляет структуру белков и таких проектов
+огромное множество в самых разных
+областях. Обычно домашний/рабочий компьютер не загружен на 100% и какую то
+часть, к примеру 20% одного ядра можно спокойно отвести на эту задачу.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;ul class=&quot;last simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/laurent-malvert/docker-boinc&quot;&gt;https://github.com/laurent-malvert/docker-boinc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/laurent-malvert/docker-boinccmd&quot;&gt;https://github.com/laurent-malvert/docker-boinccmd&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;Что-бы не захламлять систему я ставлю &lt;cite&gt;boinc&lt;/cite&gt; в виде &lt;cite&gt;Docker&lt;/cite&gt; контейнеров.
+Вначале установим клиента-демона, который умеет принимать внешние команды:&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;При помощи флагов &lt;cite&gt;Docker&lt;/cite&gt; можно ограничить контейнер на использование только
+одного ядра на 50% загрузки &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--cpu-period=50000&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--cpu-quota=25000&lt;/span&gt;&lt;/code&gt;,
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--cpuset-cpus=&amp;quot;0,1&amp;quot;&lt;/span&gt;&lt;/code&gt;. По умолчанию &lt;cite&gt;Boinc&lt;/cite&gt; забирает все ресурсы.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker run                &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+       --name boinc         &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+       -d                   &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+       --cpu-period&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;50000&lt;/span&gt;   &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+       --cpu-quota&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;25000&lt;/span&gt;    &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+       --cpuset-cpus&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;0,1&amp;quot;&lt;/span&gt;  &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+       laurentmalvert/docker-boinc --allow_remote_gui_rpc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После этого можно останавливать/запускать &lt;cite&gt;Boinc&lt;/cite&gt;, как обычный &lt;cite&gt;Docker&lt;/cite&gt;
+контейнер по его имени:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker stop boinc
+$ docker start boinc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь нужно подключиться к проекту указав свой ключ, в моем случае это
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;13e79a77503e10517358c18698717413&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker run --rm --link boinc:boinc laurentmalvert/docker-boinccmd &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    --host boinc &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    --project_attach http://setiathome.berkeley.edu/ &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    13e79a77503e10517358c18698717413
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Что бы получить ключ, нужно сначала зарегистрироваться на сайте проекта
+&lt;a class=&quot;reference external&quot; href=&quot;http://setiathome.berkeley.edu&quot;&gt;http://setiathome.berkeley.edu&lt;/a&gt;, а затем выполнить команду:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker run --rm --link boinc:boinc laurentmalvert/docker-boinccmd &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    --host boinc --lookup_account http://setiathome.berkeley.edu &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &amp;lt;email-address&amp;gt; &amp;lt;password&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Отключиться от проекта можно командой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;detach&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker run --rm --link boinc:boinc laurentmalvert/docker-boinccmd &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    --host boinc --project http://setiathome.berkeley.edu/ detach
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Посмотреть статус вашего профиля:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker run --rm --link boinc:boinc laurentmalvert/docker-boinccmd &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    --host boinc &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    --get_project_status
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

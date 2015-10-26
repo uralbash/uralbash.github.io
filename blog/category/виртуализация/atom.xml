@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщений в Виртуализация</title>
+  <id>http://uralbash.ru/blog/category/виртуализация/atom.xml</id>
+  <updated>2012-06-05T15:45:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/category/виртуализация/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/category/виртуализация/atom.xml">
+    <title type="text">Установка ProxMox VE с USB флешки</title>
+    <id>http://uralbash.ru/articles/2012/proxmox/</id>
+    <updated>2012-06-05T15:45:00Z</updated>
+    <published>2012-06-05T15:45:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/proxmox/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;proxmox-ve-usb&quot;&gt;
+
+&lt;p&gt;Взято от сюда &lt;a class=&quot;reference external&quot; href=&quot;http://c-nergy.be/blog/?p=897&quot;&gt;http://c-nergy.be/blog/?p=897&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;Шаг 1: создание загрузочной флешки&lt;/h2&gt;
+&lt;p&gt;Скачайте iso образ с сайта и установите его например при помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;UNetbootin&lt;/span&gt;&lt;/code&gt;.
+У вас должно получиться что то типа того на флешке:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/proxmox1.png&quot; src=&quot;../../../_images/proxmox1.png&quot; /&gt;
+&lt;p&gt;Дальше удалите все катологи с флешки кроме boot и перенесите на нее iso образ
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;proxmox&lt;/span&gt;&lt;/code&gt; (в корень).&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/proxmox2.png&quot; src=&quot;../../../_images/proxmox2.png&quot; /&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;Шаг 2: загрузка в отладочном режиме&lt;/h2&gt;
+&lt;p&gt;Загрузитесь в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;debug&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;mode&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/proxmox3.png&quot; src=&quot;../../../_images/proxmox3.png&quot; /&gt;
+&lt;p&gt;Вы должны увидеть что наша флешка обнаружена и увидеть следующую надпись:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;no&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;cdrom&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;found&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;–&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;unable&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;continue&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;(type&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Ctrl-D&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;reboot)&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h2&gt;Шаг 3: монтирование флешки&lt;/h2&gt;
+&lt;p&gt;Смотрим как называется наша флешка &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;fdisk&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-l&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/proxmox4.png&quot; src=&quot;../../../_images/proxmox4.png&quot; /&gt;
+&lt;p&gt;У меня она называется &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/dev/sdb1&lt;/span&gt;&lt;/code&gt;. Монтируем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;mount&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;/dev/sdb1&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;/mnt&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Пишем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;mount&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/proxmox5.png&quot; src=&quot;../../../_images/proxmox5.png&quot; /&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;iso&quot;&gt;
+&lt;h2&gt;Шаг 4: монтируем ISO файл и запускаем установщик&lt;/h2&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;Вводим команду &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;mount&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;loop&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-t&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;iso9660&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;/mnt/proxmox_1-7.iso&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;/mnt&lt;/span&gt;&lt;/code&gt;.&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Проверяем что все подмонтировалось &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;mount&lt;/span&gt;&lt;/code&gt;.&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Заходим в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;mnt&lt;/span&gt;&lt;/code&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;/mnt&lt;/span&gt;&lt;/code&gt; и запускаем установщик &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;chroot&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;/mnt&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;sbin/unconfigured.sh&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Появится окошко:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/proxmox6.png&quot; src=&quot;../../../_images/proxmox6.png&quot; /&gt;
+&lt;p&gt;Удачи!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

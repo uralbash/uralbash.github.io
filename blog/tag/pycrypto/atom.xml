@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом pycrypto</title>
+  <id>http://uralbash.ru/blog/tag/pycrypto/atom.xml</id>
+  <updated>2012-05-10T11:40:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/pycrypto/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/pycrypto/atom.xml">
+    <title type="text">Обновление rrd задней датой при помощи faketime</title>
+    <id>http://uralbash.ru/articles/2012/rrd_faketime/</id>
+    <updated>2012-05-10T11:40:00Z</updated>
+    <published>2012-05-10T11:40:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/rrd_faketime/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;rrd-faketime&quot;&gt;
+
+&lt;p&gt;Иногда скрипты, выполнение которых зависит от времени, не срабатывают. Менять
+время и запускать их повторно или менять код приложения неправильно. Что бы
+выполнить их задним числом есть утилита &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;faketime&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Установка:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install faketime
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Пример использования:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ faketime &lt;span class=&quot;s1&quot;&gt;&amp;#39;last Friday 5 pm&amp;#39;&lt;/span&gt; /bin/date
+$ faketime &lt;span class=&quot;s1&quot;&gt;&amp;#39;2008-12-24 08:15:42&amp;#39;&lt;/span&gt; /bin/date
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Также работает с &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;wine&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ faketime &lt;span class=&quot;s1&quot;&gt;&amp;#39;2006-09-20&amp;#39;&lt;/span&gt; wine myprogramm.exe
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;У меня есть скрипт на питоне который добавляет записи в rrd каждый день.
+Пересчитаем rrd за последние 3 дня.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ faketime &lt;span class=&quot;s1&quot;&gt;&amp;#39;2012-05-05 5 am&amp;#39;&lt;/span&gt; python updatemyrrd.py
+$ faketime &lt;span class=&quot;s1&quot;&gt;&amp;#39;2012-05-04 5 am&amp;#39;&lt;/span&gt; python updatemyrrd.py
+$ faketime &lt;span class=&quot;s1&quot;&gt;&amp;#39;2012-05-03 5 am&amp;#39;&lt;/span&gt; python updatemyrrd.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/pycrypto/atom.xml">
+    <title type="text">Установка pycrypto в virtualenv</title>
+    <id>http://uralbash.ru/articles/2012/pycrypto_virtualenv/</id>
+    <updated>2012-04-26T00:24:00Z</updated>
+    <published>2012-04-26T00:24:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/pycrypto_virtualenv/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;pycrypto-virtualenv&quot;&gt;
+
+&lt;p&gt;Если появляется ошибка типа &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;RuntimeError:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;autoconf&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;error&amp;quot;&lt;/span&gt;&lt;/code&gt;, то необходимо
+установить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C&lt;/span&gt;&lt;/code&gt; компилятор:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ apt-get install gcc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;или &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;src/MD2.c:31:20:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;fatal&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;error:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Python.h:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Нет&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;такого&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;файла&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;или&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;каталога&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ apt-get install python-dev
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Далее стандартно:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; mydevenv/bin/activate
+$ pip install pycrypto
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

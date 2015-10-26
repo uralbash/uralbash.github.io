@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Опубликовано в 2017</title>
+  <id>http://uralbash.ru/blog/2017/atom.xml</id>
+  <updated>2017-09-19T21:41:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/2017/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/2017/atom.xml">
+    <title type="text">Python инфографика</title>
+    <id>http://uralbash.ru/articles/2017/python/</id>
+    <updated>2017-09-19T21:41:00Z</updated>
+    <published>2017-09-19T21:41:00Z</published>
+    <link href="http://uralbash.ru/articles/2017/python/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
+
+&lt;p&gt;Последнее время крупные компании всё чаще выбирают Python для разных проектов.
+И правда, для многих задач Python имеет замечательные решения.&lt;/p&gt;
+&lt;img alt=&quot;Python инфографика&quot; src=&quot;../../_images/get-the-job-done-faster-with-python.jpg&quot; /&gt;
+&lt;p&gt;Источник &lt;a class=&quot;reference external&quot; href=&quot;https://pythontips.com/2017/09/19/13-python-libraries-to-keep-you-busy/&quot;&gt;https://pythontips.com/2017/09/19/13-python-libraries-to-keep-you-busy/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2017/atom.xml">
+    <title type="text">C# .Net Core для Linux</title>
+    <id>http://uralbash.ru/articles/2017/netcore/</id>
+    <updated>2017-09-01T21:35:00Z</updated>
+    <published>2017-09-01T21:35:00Z</published>
+    <link href="http://uralbash.ru/articles/2017/netcore/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;c-net-core-linux&quot;&gt;
+
+&lt;p&gt;Благодаря популярности &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Java&lt;/span&gt;&lt;/code&gt; язык &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C#&lt;/span&gt;&lt;/code&gt; обрел ещё большую популярность, да
+так, что теперь доступен на &lt;cite&gt;Linux&lt;/cite&gt;. Я конечно не испытываю симпатий к этим
+языкам и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.Net&lt;/span&gt;&lt;/code&gt; стеку в целом, но &lt;cite&gt;OpenSource&lt;/cite&gt; и доступность в &lt;cite&gt;Linux&lt;/cite&gt; не
+может не радовать. Ниже рассмотрим пример как развернуть проект на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.NET&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;Core&lt;/span&gt;&lt;/code&gt; и отправить &lt;cite&gt;HTTP&lt;/cite&gt; запрос.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Это статья из лекций
+&lt;a class=&quot;reference external&quot; href=&quot;http://lecturesnet.readthedocs.io/net/requests/csharp.html&quot;&gt;http://lecturesnet.readthedocs.io/net/requests/csharp.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;c&quot;&gt;
+&lt;h2&gt;C#&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;ul class=&quot;last simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.microsoft.com/net/download/linux&quot;&gt;https://www.microsoft.com/net/download/linux&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient&quot;&gt;HttpClient Class&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient&quot;&gt;HttpClient Class&lt;/a&gt;
+содержится в поставке &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.NET&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Core&lt;/span&gt;&lt;/code&gt; для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Linux&lt;/span&gt;&lt;/code&gt;. Создадим проект на C#
+отправляющий HTTP запрос.&lt;/p&gt;
+&lt;p&gt;Первой командой создается проект из шаблона, затем устанавливаются зависимости
+и запускается программа.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ dotnet new Console
+$ dotnet restore
+$ dotnet run
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;HTTP запрос выполняется асинхронно.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id2&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Program.cs&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-csharp&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Net.Http&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Net.Http.Headers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;System.Threading.Tasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ConsoleApplication&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Program&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;MainAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Wait&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MainAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HttpClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DefaultRequestHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Accept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DefaultRequestHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Accept&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+              &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MediaTypeWithQualityHeaderValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+                &lt;span class=&quot;s&quot;&gt;&amp;quot;application/vnd.github.v3+json&amp;quot;&lt;/span&gt;
+              &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DefaultRequestHeaders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;&amp;quot;User-Agent&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;&amp;quot;.NET Foundation Repository Reporter&amp;quot;&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+          &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stringTask&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetStringAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;&amp;quot;https://api.github.com/orgs/ustu/repos&amp;quot;&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+          &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stringTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;Console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Результат выполнения программы.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ dotnet run
+Project net &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;.NETCoreApp,Version&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;v1.1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; will be compiled because inputs were modified
+Compiling net &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; .NETCoreApp,Version&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;v1.1
+
+Compilation succeeded.
+    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; Warning&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; Error&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;s&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+Time elapsed &lt;span class=&quot;m&quot;&gt;00&lt;/span&gt;:00:01.0363043
+
+&lt;span class=&quot;o&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;:25028386,&lt;span class=&quot;s2&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;urfu_sphinx_theme&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;full_name&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;ustu/urfu_sphinx_theme&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;owner&amp;quot;&lt;/span&gt;:&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;log&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;in&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;ustu&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;:9111291,&lt;span class=&quot;s2&quot;&gt;&amp;quot;avatar_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://avatars0.githubusercontent.com/u/9111291?v=4&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;gravatar_id&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.github.com/users/ustu&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;html_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://github.com/ustu&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;followers_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.github.com/users/ustu/followers&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;following_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;github.com/users/ustu/following{/other_user}&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;gists_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.github.com/users/ustu/&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;gists{/gist_id}&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;starred_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.github.com/users/ustu/starred{/owner}{/repo}&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;su&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;bscriptions_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.github.com/users/ustu/subscriptions&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;organizations_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;://api.github.com/users/ustu/orgs&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;repos_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.github.com/users/ustu/repos&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;eve&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;nts_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.github.com/users/ustu/events{/privacy}&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;received_events_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;api.github.com/users/ustu/received_events&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;Organization&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;site_admin&amp;quot;&lt;/span&gt;:false&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;private&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;:false,&lt;span class=&quot;s2&quot;&gt;&amp;quot;html_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://github.com/ustu/urfu_sphinx_theme&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;description&amp;quot;&lt;/span&gt;:null,&lt;span class=&quot;s2&quot;&gt;&amp;quot;fork&amp;quot;&lt;/span&gt;:fals
+e,&lt;span class=&quot;s2&quot;&gt;&amp;quot;url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.github.com/repos/ustu/urfu_sphinx_theme&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;forks_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.github&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;.com/repos/ustu/urfu_sphinx_theme/forks&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;keys_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.github.com/repos/ustu/urfu_s&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;phinx_theme/keys{/key_id}&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;collaborators_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.github.com/repos/ustu/urfu_sphinx&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;_theme/collaborators{/collaborator}&amp;quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&amp;quot;teams_url&amp;quot;&lt;/span&gt;:&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://api.github.com/repos/ustu/urfu_sphi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Пользуйтесь, радуйтесь, пишите на том, что вы любите.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2017/atom.xml">
+    <title type="text">Сборка пакета для Nix</title>
+    <id>http://uralbash.ru/articles/2017/nixpkgs-contribute/</id>
+    <updated>2017-08-28T19:33:00Z</updated>
+    <published>2017-08-28T19:33:00Z</published>
+    <link href="http://uralbash.ru/articles/2017/nixpkgs-contribute/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;nix&quot;&gt;
+
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nixpkgs/&quot;&gt;Nix&lt;/a&gt; - замечательный пакетный менеджер, который
+работает на &lt;cite&gt;MacOS&lt;/cite&gt; и любом дистрибутиве &lt;cite&gt;Linux&lt;/cite&gt;, причем из-за своей
+функциональной чистоты и изоляции зависимостей, гарантировано выдает всегда
+одинаковый результат.&lt;/p&gt;
+&lt;p&gt;На сегодняшний день &lt;cite&gt;Nix&lt;/cite&gt; имеет огромную базу пакетов, которая ежедневно
+пополняется. Для сборки своего пакета потребуется знание языка &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/manual/#chap-writing-nix-expressions&quot;&gt;Nix
+expression&lt;/a&gt;. Это
+чистый функциональный язык созданный специально для пакетного менеджера &lt;cite&gt;Nix&lt;/cite&gt; и
+операционной системы &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;ul class=&quot;last simple&quot;&gt;
+&lt;li&gt;Ресурсы по &lt;a class=&quot;reference internal&quot; href=&quot;../../pages/nixos/#nixos&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;NixOS&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Статьи &lt;a class=&quot;reference external&quot; href=&quot;http://uralbash.ru/blog/tag/nix/&quot;&gt;http://uralbash.ru/blog/tag/nix/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;Для примера создадим сборку пакета языка программирования &lt;a class=&quot;reference external&quot; href=&quot;http://www.red-lang.org/&quot;&gt;Red&lt;/a&gt;. Будем следовать оф. документации
+&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nixpkgs/manual/#chap-quick-start&quot;&gt;https://nixos.org/nixpkgs/manual/#chap-quick-start&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;1. Скачиваем исходники&lt;/h2&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone git://github.com/NixOS/nixpkgs.git
+$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; nixpkgs
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h2&gt;2. Добавляем директорию с новым пакетом&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Правила именования файлов
+&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nixpkgs/manual/#sec-organisation&quot;&gt;https://nixos.org/nixpkgs/manual/#sec-organisation&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir pkgs/development/interpreters/red/
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;default-nix&quot;&gt;
+&lt;h2&gt;3. Создаем файл описания пакета &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;default.nix&lt;/span&gt;&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Заготовка для нашего пакета будет выглядеть так:&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;table class=&quot;highlighttable&quot;&gt;&lt;tr&gt;&lt;td class=&quot;linenos&quot;&gt;&lt;div class=&quot;linenodiv&quot;&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; stdenv&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fetchFromGitHub &lt;span class=&quot;p&quot;&gt;}:&lt;/span&gt;
+
+stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;mkDerivation &lt;span class=&quot;k&quot;&gt;rec&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;src =&lt;/span&gt; fetchFromGitHub &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;rev =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;6a43c767fa2e85d668b83f749158a18e62c30f70&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;owner =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;repo =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;sha256 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1zh6xc728bs7r4v5jz1jjrdk0xd838xsxmvy9gfg75a3zffm0slr&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;configurePhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;buildPhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;installPhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;meta =&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;lib&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;description =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      New programming language strongly inspired by Rebol, but with a&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      broader field of usage thanks to its native-code compiler, from system&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      programming to high-level scripting, while providing modern support for&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      concurrency and multi-core CPUs&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;maintainers =&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; maintainers&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; uralbash &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;platforms =&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;i686-linux&amp;quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;x86_64-linux&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;license =&lt;/span&gt; licenses&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;bsd3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;homepage =&lt;/span&gt; &lt;span class=&quot;l&quot;&gt;http://www.red-lang.org/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;В первой строке указан импорт необходимых нам функций.&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; stdenv&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fetchFromGitHub &lt;span class=&quot;p&quot;&gt;}:&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Далее забираем исходники с &lt;cite&gt;GitHub&lt;/cite&gt; при помощи функции &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;fetchFromGitHub&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;src =&lt;/span&gt; fetchFromGitHub &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;rev =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;6a43c767fa2e85d668b83f749158a18e62c30f70&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;owner =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;repo =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;sha256 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1zh6xc728bs7r4v5jz1jjrdk0xd838xsxmvy9gfg75a3zffm0slr&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Что бы посчитать хэш (sha256) нам потребуется утилита &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix-prefetch-git&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-prefetch-git https://github.com/red/red 6a43c767fa2e85d668b83f749158a18e62c30f70
+Initialized empty Git repository in /tmp/git-checkout-tmp-Jzca0REG/red-6a43c76/.git/
+fatal: Invalid refspec &amp;#39;+refs/tags/v0.6.3^{}&amp;#39;
+remote: Counting objects: 52473, done.
+remote: Total 52473 (delta 0), reused 0 (delta 0), pack-reused 52473
+Receiving objects: 100% (52473/52473), 20.39 MiB | 1.50 MiB/s, done.
+Resolving deltas: 100% (35793/35793), done.
+From https://github.com/red/red
+Switched to a new branch &amp;#39;fetchgit&amp;#39;
+removing `.git&amp;#39;...
+
+git revision is 6a43c767fa2e85d668b83f749158a18e62c30f70
+path is /nix/store/qp10dy2plvskbv0zjpcg9mmrsszd1a6i-red-6a43c76
+git human-readable version is v0.6.3
+Commit date is 2017-07-17 21:25:27 +0800
+hash is 1zh6xc728bs7r4v5jz1jjrdk0xd838xsxmvy9gfg75a3zffm0slr
+{
+  &amp;quot;url&amp;quot;: &amp;quot;https://github.com/red/red&amp;quot;,
+  &amp;quot;rev&amp;quot;: &amp;quot;6a43c767fa2e85d668b83f749158a18e62c30f70&amp;quot;,
+  &amp;quot;date&amp;quot;: &amp;quot;2017-07-17T21:25:27+08:00&amp;quot;,
+&lt;span class=&quot;hll&quot;&gt;  &amp;quot;sha256&amp;quot;: &amp;quot;1zh6xc728bs7r4v5jz1jjrdk0xd838xsxmvy9gfg75a3zffm0slr&amp;quot;,
+&lt;/span&gt;  &amp;quot;fetchSubmodules&amp;quot;: true
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В конце файла указывается мета информация:&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;meta =&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;lib&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;description =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    New programming language strongly inspired by Rebol, but with a&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    broader field of usage thanks to its native-code compiler, from system&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    programming to high-level scripting, while providing modern support for&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    concurrency and multi-core CPUs&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;maintainers =&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; maintainers&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; uralbash &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;platforms =&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;i686-linux&amp;quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;x86_64-linux&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;license =&lt;/span&gt; licenses&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;bsd3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;homepage =&lt;/span&gt; &lt;span class=&quot;l&quot;&gt;http://www.red-lang.org/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Сама сборка происходит в 3 директивах &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;configurePhase&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;buildPhase&lt;/span&gt;&lt;/code&gt;,
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;installPhase&lt;/span&gt;&lt;/code&gt;. Если их не указывать, то по умолчанию будут выполняться
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;./configure&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;make&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;make&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;install&lt;/span&gt;&lt;/code&gt; соответственно. Т.к. &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Red&lt;/span&gt;&lt;/code&gt; не
+использует &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;autotools&lt;/span&gt;&lt;/code&gt; для сборки, то нам придется вручную прописать все
+необходимые шаги. Что бы не изобретать велосипед возьмем за основу пакет из
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Arch&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Linux&lt;/span&gt;&lt;/code&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=red&quot;&gt;https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=red&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Red&lt;/span&gt;&lt;/code&gt; требует 32х битный &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;curl&lt;/span&gt;&lt;/code&gt;, добавим его в окружение сборки:&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; stdenv&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; stdenv_32bit&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; pkgsi686Linux&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fetchFromGitHub&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fetchurl &lt;span class=&quot;p&quot;&gt;}:&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;ss&quot;&gt;buildInputs =&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; pkgsi686Linux&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;curl stdenv_32bit &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Скачаем &lt;a class=&quot;reference external&quot; href=&quot;http://www.rebol.com/&quot;&gt;Rebol&lt;/a&gt;. При помощи него собирается
+интерпретатор &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Red&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;ss&quot;&gt;rebol =&lt;/span&gt; fetchurl &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;url =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;http://www.rebol.com/downloads/v278/rebol-core-278-4-2.tar.gz&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;sha256 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1c1v0pyhf3d8z98qc93a5zmx0bbl0qq5lr8mbkdgygqsq2bv2xbz&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;ss&quot;&gt;r2 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;./rebol/releases/rebol-core/rebol&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В нашем случае, что добавлять в фазы установки имеет очень условных характер.
+Поделим следующим образом - в фазу конфигурации добавим распаковку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Rebol&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;configurePhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  # Download rebol&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  mkdir rebol/&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  tar -xzvf &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;rebol&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -C rebol/&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  patchelf --set-interpreter \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;stdenv_32bit&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;cc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;libc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib/32/ld-linux.so.2 \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Заметьте &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;r2&lt;/span&gt;&lt;/code&gt; это переменная, которую мы объявили выше. А &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/patchelf.html&quot;&gt;PatchELF&lt;/a&gt; это мега крутая утилита, которой можно
+подменять динамические зависимости в бинарниках, не пересобирая их. Мы изменили
+путь до &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ld-linux.so.2&lt;/span&gt;&lt;/code&gt; файла, т.к. в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NixOS&lt;/span&gt;&lt;/code&gt; он имеет нестандартный путь.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;При этом если такой пакет собирать в Ubuntu то патчить rebol нет
+необходимости, он подхватит зависимость из стандартного пути. Но для
+большей универсальности это необходимо.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;После условной конфигурации приступим к сборке интерпретатора &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Red&lt;/span&gt;&lt;/code&gt;. Все шаги
+выполняются относительно директории с исходными кодами с GitHub:&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;buildPhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  # Do tests&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  #&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw run-all.r&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  # Build test&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw red.r tests/hello.red&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  # Compiling the Red console...&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw red.r -r environment/console/console.red&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  # Generating docs...&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  cd docs&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  ../&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw makedoc2.r red-system-specs.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  ../&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw makedoc2.r red-system-quick-test.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  cd ../&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Установка:&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;installPhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  mkdir $out&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  # Install&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  install -d $out/opt/red&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  find quick-test -type f -executable -print0 | xargs -0 rm&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  cp -R * $out/opt/red/&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  rm -rf $out/opt/red/rebol&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  install -Dm755 console $out/bin/red&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  install -Dm644 BSD-3-License.txt                          \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/share/licenses/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/BSD-3-License.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  install -Dm644 BSL-License.txt                            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/share/licenses/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/BSL-License.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  install -Dm644 docs/red-system-quick-test.html            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/share/doc/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/red-system-quick-test.html&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  install -Dm644 docs/red-system-specs.html                 \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/share/doc/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/red-system-specs.html&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  # PathElf&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  patchelf --set-interpreter                            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;stdenv_32bit&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;cc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;libc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib/32/ld-linux.so.2  \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/opt/red/console&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  patchelf --set-rpath &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;pkgsi686Linux&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;curl&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/opt/red/console&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  patchelf --set-interpreter                            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;stdenv_32bit&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;cc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;libc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib/32/ld-linux.so.2  \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/bin/red&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  patchelf --set-rpath &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;pkgsi686Linux&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;curl&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/bin/red&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id4&quot;&gt;
+&lt;h2&gt;4. Добавление в общий список пакетов&lt;/h2&gt;
+&lt;p&gt;Почти все готово, осталось добавить новый пакет в общий список и собрать.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ vim pkgs/top-level/all-packages.nix
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;ss&quot;&gt;rascal =&lt;/span&gt; callPackage &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;l&quot;&gt;/development/interpreters/rascal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;hll&quot;&gt;&lt;span class=&quot;ss&quot;&gt;red =&lt;/span&gt; callPackage &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;l&quot;&gt;/development/interpreters/red&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;regina =&lt;/span&gt; callPackage &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;l&quot;&gt;/development/interpreters/regina&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id5&quot;&gt;
+&lt;h2&gt;5. Сборка&lt;/h2&gt;
+&lt;p&gt;Сборка пакета выполняется командой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix-build&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-build -A red
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Или если необходимо его сразу установить в окружение:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-build -f . -iA red
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Полный исходник выглядит так:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id6&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;default.nix&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; stdenv&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; stdenv_32bit&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; pkgsi686Linux&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fetchFromGitHub&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fetchurl &lt;span class=&quot;p&quot;&gt;}:&lt;/span&gt;
+
+stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;mkDerivation &lt;span class=&quot;k&quot;&gt;rec&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;name =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red-v&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;version&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;version =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.6.3&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;src =&lt;/span&gt; fetchFromGitHub &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;rev =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;6a43c767fa2e85d668b83f749158a18e62c30f70&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;owner =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;repo =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;sha256 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1zh6xc728bs7r4v5jz1jjrdk0xd838xsxmvy9gfg75a3zffm0slr&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;rebol =&lt;/span&gt; fetchurl &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;url =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;http://www.rebol.com/downloads/v278/rebol-core-278-4-2.tar.gz&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;sha256 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1c1v0pyhf3d8z98qc93a5zmx0bbl0qq5lr8mbkdgygqsq2bv2xbz&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;buildInputs =&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; pkgsi686Linux&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;curl stdenv_32bit &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;r2 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;./rebol/releases/rebol-core/rebol&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;configurePhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    # Download rebol&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    mkdir rebol/&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    tar -xzvf &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;rebol&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -C rebol/&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    patchelf --set-interpreter \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;stdenv_32bit&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;cc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;libc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib/32/ld-linux.so.2 \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;buildPhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    # Do tests&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    #&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw run-all.r&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;    # Build test&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw red.r tests/hello.red&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;    # Compiling the Red console...&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw red.r -r environment/console/console.red&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;    # Generating docs...&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    cd docs&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    ../&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw makedoc2.r red-system-specs.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    ../&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw makedoc2.r red-system-quick-test.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    cd ../&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;installPhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    mkdir $out&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;    # Install&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    install -d $out/opt/red&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    find quick-test -type f -executable -print0 | xargs -0 rm&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    cp -R * $out/opt/red/&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    rm -rf $out/opt/red/rebol&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    install -Dm755 console $out/bin/red&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    install -Dm644 BSD-3-License.txt                          \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/share/licenses/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/BSD-3-License.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    install -Dm644 BSL-License.txt                            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/share/licenses/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/BSL-License.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    install -Dm644 docs/red-system-quick-test.html            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/share/doc/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/red-system-quick-test.html&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    install -Dm644 docs/red-system-specs.html                 \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/share/doc/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/red-system-specs.html&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;    # PathElf&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    patchelf --set-interpreter                            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;stdenv_32bit&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;cc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;libc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib/32/ld-linux.so.2  \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/opt/red/console&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    patchelf --set-rpath &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;pkgsi686Linux&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;curl&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/opt/red/console&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    patchelf --set-interpreter                            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;stdenv_32bit&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;cc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;libc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib/32/ld-linux.so.2  \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/bin/red&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    patchelf --set-rpath &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;pkgsi686Linux&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;curl&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/bin/red&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;meta =&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;lib&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;description =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      New programming language strongly inspired by Rebol, but with a&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      broader field of usage thanks to its native-code compiler, from system&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      programming to high-level scripting, while providing modern support for&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      concurrency and multi-core CPUs&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;maintainers =&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; maintainers&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; uralbash &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;platforms =&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;i686-linux&amp;quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;x86_64-linux&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;license =&lt;/span&gt; licenses&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;bsd3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;homepage =&lt;/span&gt; &lt;span class=&quot;l&quot;&gt;http://www.red-lang.org/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Готовый пакет можно отправить в основную ветку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nixpkgs&lt;/span&gt;&lt;/code&gt;. Перед этим лучше
+почитать как правильно делать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pull&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;request&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nixpkgs/manual/#idm140737317358720&quot;&gt;https://nixos.org/nixpkgs/manual/#idm140737317358720&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nixpkgs/manual/#sec-reviewing-contributions&quot;&gt;https://nixos.org/nixpkgs/manual/#sec-reviewing-contributions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;В следующей статье я постараюсь описать как собирать свой собственный &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NixOS&lt;/span&gt;&lt;/code&gt;
+дистрибутив с шахматами и балеринами.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2017/atom.xml">
+    <title type="text">C++: Приведение Enum структур к общему виду в шаблонах</title>
+    <id>http://uralbash.ru/articles/2017/cpp-enum/</id>
+    <updated>2017-08-16T17:11:00Z</updated>
+    <published>2017-08-16T17:11:00Z</published>
+    <link href="http://uralbash.ru/articles/2017/cpp-enum/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;c-enum&quot;&gt;
+
+&lt;p&gt;Задача - создать шаблонную функцию, в которой в зависимости от типа
+перечисления выбирается нужный индекс в контейнере &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vector&lt;/span&gt;&lt;/code&gt;. Попробуем решить
+задачу в лоб, создадим 3 перечисления и выберем нужный индекс в шаблоне.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Использование enum в шаблоне напрямую&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-cpp&quot;&gt;&lt;table class=&quot;highlighttable&quot;&gt;&lt;tr&gt;&lt;td class=&quot;linenos&quot;&gt;&lt;div class=&quot;linenodiv&quot;&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;#include&lt;/span&gt; &lt;span class=&quot;cpf&quot;&gt;&amp;lt;vector&amp;gt;&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;#include&lt;/span&gt; &lt;span class=&quot;cpf&quot;&gt;&amp;lt;iostream&amp;gt; // cout&lt;/span&gt;&lt;span class=&quot;cp&quot;&gt;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PEOPLE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;PEOPLE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;FIRSTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;LASTNAME&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// 2&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;STUDENT&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;LASTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// 0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;FIRSTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SALARY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// 2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// 3&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;LASTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// 0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// 1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;FIRSTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// 2&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;SALARY&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// 3&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t_item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;printHuman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_item&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;0.00 $&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;-1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isStudent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_same&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;STUDENT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEmploye&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_same&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// PEOPLE&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_same&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PEOPLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PEOPLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PEOPLE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// STUDENT || EMPLOYE&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isStudent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEmploye&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Выбираем поле в зависимости от типа структуры&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SALARY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Отобажаем на экране&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRSTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LASTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Создаем людей разных типов&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;t_item&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vasya&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Vasya&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Vasnetsov&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;                    &lt;span class=&quot;c1&quot;&gt;// PEOPLE&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;t_item&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;petya&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Иванов&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Petr&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;10.00 $&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;13&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;// STUDENT&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;t_item&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bjarne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;Бьёрн&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;66&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;Straustrup&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;100 000.00 $&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// EMPLOYE&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Выводим информацию о людях&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;printHuman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vasya&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;PEOPLE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;printHuman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;petya&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;STUDENT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;printHuman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bjarne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Скомпилируем пример с добавлением &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C++11&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id2&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Попытка компиляции enum в шаблоне&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ g++ -std&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;c++11 main.cpp -o enum-example
+main-bad.cpp: In instantiation of ‘void printHuman&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;t_item, T&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;with &lt;span class=&quot;nv&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; PEOPLE&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;t_item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; std::vector&amp;lt;std::__cxx11::basic_string&amp;lt;char&amp;gt; &amp;gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;’:
+main-bad.cpp:78:30:   required from here
+main-bad.cpp:55:14: error: ‘SALARY’ is not a member of ‘PEOPLE’
+     &lt;span class=&quot;nv&quot;&gt;salary&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; item.at&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;T::SALARY&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+              ^
+main-bad.cpp:56:14: error: ‘_ID’ is not a member of ‘PEOPLE’
+     &lt;span class=&quot;nv&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; item.at&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;T::_ID&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+              ^
+Makefile:7: recipe &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; target &lt;span class=&quot;s1&quot;&gt;&amp;#39;bad&amp;#39;&lt;/span&gt; failed
+make: *** &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;bad&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Error &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Получаем ошибку, т.к. подстановка типа перечисления &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PEOPLE&lt;/span&gt;&lt;/code&gt; не имеет
+атрибутов &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;_ID&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;SALARY&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Что бы обойти эту проблему выведем тип с помощью &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;std::conditional&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id3&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Использование enum в шаблоне через выведение типа енума&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-cpp&quot;&gt;&lt;table class=&quot;highlighttable&quot;&gt;&lt;tr&gt;&lt;td class=&quot;linenos&quot;&gt;&lt;div class=&quot;linenodiv&quot;&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;printHuman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t_item&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;0.00 $&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;-1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isStudent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_same&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;STUDENT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEmploye&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_same&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// PEOPLE&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;is_same&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PEOPLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PEOPLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PEOPLE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// STUDENT || EMPLOYE&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isStudent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isEmploye&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Выбираем поле в зависимости от типа структуры&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conditional&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isStudent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;STUDENT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cond&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;   &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cond&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SALARY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cond&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Отобажаем на экране&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;human_id&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRSTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;at&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LASTNAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;salary&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В результате программа скомпилируется без ошибок. Это происходит потому, что
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;conditional&lt;/span&gt;&lt;/code&gt; реализует свой шаблон на базе только двух нужных нам enum&amp;#8217;ов
+(&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;STUDENT&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;EMPLOY&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id4&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Компиляция и запуск&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ g++ -std&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;c++11 main.cpp -o enum-example
+$ ./enum-example
+&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;               Vasya           Vasnetsov               &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;.00 $
+&lt;span class=&quot;m&quot;&gt;13&lt;/span&gt;              Petr            Иванов          &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;.00 $
+&lt;span class=&quot;m&quot;&gt;66&lt;/span&gt;              Straustrup              Бьёрн           &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;000&lt;/span&gt;.00 $
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2017/atom.xml">
+    <title type="text">Сборка libprotobuf под Windows</title>
+    <id>http://uralbash.ru/articles/2017/protobuf-mingw/</id>
+    <updated>2017-08-10T19:50:00Z</updated>
+    <published>2017-08-10T19:50:00Z</published>
+    <link href="http://uralbash.ru/articles/2017/protobuf-mingw/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;libprotobuf-windows&quot;&gt;
+
+&lt;p&gt;Сборка сей библиотеки из исходников под Windows не такая уж простая задача, как
+может показаться на первый взгляд. Ее можно осуществлять при помощи Visual
+Studio (cl.exe) или компилятора mingw.&lt;/p&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://developers.google.com/protocol-buffers/&quot;&gt;Protobuf&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Вариант с mingw мне показался более родной и простой, поэтому начнем с установки MSYS2.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Скачать MSYS2 можно по адресу &lt;a class=&quot;reference external&quot; href=&quot;http://msys2.org&quot;&gt;http://msys2.org&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;После установки в открывшейся консоле устанавливаем все необходимое. Protobuf
+из пакетов нужен потому, что при сборке из исходных кодов будет использоваться
+утилита &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;protoc.exe&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pacman -S vim binutils base-devel unzip
+$ pacman -S mingw-w64-i686-toolchain mingw-w64-i686-protobuf
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Пропишем компилятор в окружение и симлинк на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;protoc.exe&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/mingw32/bin/:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+$ ln -s /mingw32/bin/protoc.exe /usr/bin/protoc.exe
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Готовый пакет для pacman&amp;#8217;а позаимствуем у ArchLinux из AUR
+(&lt;a class=&quot;reference external&quot; href=&quot;https://aur.archlinux.org/packages/mingw-w64-protobuf/&quot;&gt;https://aur.archlinux.org/packages/mingw-w64-protobuf/&lt;/a&gt;).&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ wget https://aur.archlinux.org/cgit/aur.git/snapshot/mingw-w64-protobuf.tar.gz
+$ tar -zxf mingw-w64-protobuf.tar.gz
+$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; mingw-w64-protobuf
+$ vim PKGBUILD
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Закомментим зависимости из файла сборки PKGBUILD и переименуем
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;${_arch}-strip&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;strip&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;PKGBUILD&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Contributor: Benoit Favre &amp;lt;benoit.favre@gmail.com&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;pkgname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;mingw-w64-protobuf&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;_pkgname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;protobuf
+&lt;span class=&quot;nv&quot;&gt;pkgver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;.3.1
+&lt;span class=&quot;nv&quot;&gt;pkgrel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;pkgdesc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Protocol Buffers - Google&amp;#39;s data interchange format (mingw-w64)&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;arch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;any&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;https://developers.google.com/protocol-buffers/&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;BSD&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#depends=(&amp;#39;mingw-w64-crt&amp;#39; &amp;#39;mingw-w64-zlib&amp;#39;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;&lt;span class=&quot;c1&quot;&gt;#makedepends=(&amp;#39;mingw-w64-configure&amp;#39; &amp;#39;protobuf&amp;#39;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;!strip !buildflags staticlibs&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;https://github.com/google/protobuf/archive/v&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgver&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.tar.gz&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;md5sums&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;20c685147753b515ce380421442044b5&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;_architectures&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;i686-w64-mingw32 x86_64-w64-mingw32&amp;quot;&lt;/span&gt;
+
+build&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;srcdir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_pkgname&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;-&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgver&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+  ./autogen.sh
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; _arch in &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_architectures&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    mkdir -p build-&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pushd&lt;/span&gt; build-&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;-configure --with-protoc&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/bin/protoc ..
+    make
+    &lt;span class=&quot;nb&quot;&gt;popd&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+package&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; _arch in &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_architectures&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;srcdir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;/&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_pkgname&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;-&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgver&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/build-&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+    make &lt;span class=&quot;nv&quot;&gt;DESTDIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$pkgdir&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; install
+    rm &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgdir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;/usr/&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/bin/*.exe
+&lt;span class=&quot;hll&quot;&gt;    strip --strip-unneeded &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$pkgdir&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;/usr/&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/bin/*.dll
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;    strip -g &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$pkgdir&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;/usr/&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/lib/*.a
+&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Собираем пакет утилитой &lt;a class=&quot;reference external&quot; href=&quot;https://www.archlinux.org/pacman/makepkg.8.html&quot;&gt;makepkg&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nv&quot;&gt;CARCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;i686 makepkg -Acs
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Сборка пакета mingw-w64-protobuf &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;.3.1-1 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt; авг &lt;span class=&quot;m&quot;&gt;2017&lt;/span&gt; г. &lt;span class=&quot;m&quot;&gt;19&lt;/span&gt;:03:34&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Проверка зависимостей для запуска...
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Проверка зависимостей для сборки...
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Получение исходных файлов...
+  -&amp;gt; Найден v3.3.1.tar.gz
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Проверка файлов &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; с использованием md5sums...
+    v3.3.1.tar.gz ... &lt;span class=&quot;nv&quot;&gt;Готово&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Распаковка исходных файлов...
+  -&amp;gt; Распаковка &lt;span class=&quot;s1&quot;&gt;&amp;#39;v3.3.1.tar.gz&amp;#39;&lt;/span&gt; с помощью &lt;span class=&quot;nv&quot;&gt;bsdtar&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Удаление директории &lt;span class=&quot;s1&quot;&gt;&amp;#39;$pkgdir/&amp;#39;&lt;/span&gt;...
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; Запускается build&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;...
+Google Mock not present.  Fetching gmock-1.7.0 from the web...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;129&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;129&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;     &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;153&lt;/span&gt;      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; --:--:-- --:--:-- --:--:--   &lt;span class=&quot;m&quot;&gt;163&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;  362k  &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;  362k    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;     &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   160k      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;:00:02  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;:00:02 --:--:--  603k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;129&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   &lt;span class=&quot;m&quot;&gt;129&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;     &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;    &lt;span class=&quot;m&quot;&gt;145&lt;/span&gt;      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; --:--:-- --:--:-- --:--:--   &lt;span class=&quot;m&quot;&gt;145&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;  618k  &lt;span class=&quot;m&quot;&gt;100&lt;/span&gt;  618k    &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;     &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   195k      &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;:00:03  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;:00:03 --:--:--  355k
++ autoreconf -f -i -Wall,no-obsolete
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux&amp;#39;&lt;/span&gt;.
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/ltmain.sh&amp;#39;&lt;/span&gt;
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4&amp;#39;&lt;/span&gt;.
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/libtool.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/ltoptions.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/ltsugar.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/ltversion.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/lt~obsolete.m4&amp;#39;&lt;/span&gt;
+configure.ac:27: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/compile&amp;#39;&lt;/span&gt;
+configure.ac:30: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/config.guess&amp;#39;&lt;/span&gt;
+configure.ac:30: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/config.sub&amp;#39;&lt;/span&gt;
+configure.ac:24: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/install-sh&amp;#39;&lt;/span&gt;
+configure.ac:24: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/missing&amp;#39;&lt;/span&gt;
+Makefile.am: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/depcomp&amp;#39;&lt;/span&gt;
+parallel-tests: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/test-driver&amp;#39;&lt;/span&gt;
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux&amp;#39;&lt;/span&gt;.
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/ltmain.sh&amp;#39;&lt;/span&gt;
+libtoolize: Consider adding &lt;span class=&quot;s1&quot;&gt;&amp;#39;AC_CONFIG_MACRO_DIRS([m4])&amp;#39;&lt;/span&gt; to configure.ac,
+libtoolize: and rerunning libtoolize and aclocal.
+libtoolize: Consider adding &lt;span class=&quot;s1&quot;&gt;&amp;#39;-I m4&amp;#39;&lt;/span&gt; to ACLOCAL_AMFLAGS in Makefile.am.
+configure.ac:22: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/compile&amp;#39;&lt;/span&gt;
+configure.ac:25: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/config.guess&amp;#39;&lt;/span&gt;
+configure.ac:25: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/config.sub&amp;#39;&lt;/span&gt;
+configure.ac:19: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/install-sh&amp;#39;&lt;/span&gt;
+configure.ac:19: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/missing&amp;#39;&lt;/span&gt;
+Makefile.am: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/depcomp&amp;#39;&lt;/span&gt;
+parallel-tests: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;build-aux/test-driver&amp;#39;&lt;/span&gt;
+libtoolize: putting auxiliary files in &lt;span class=&quot;s1&quot;&gt;&amp;#39;.&amp;#39;&lt;/span&gt;.
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;./ltmain.sh&amp;#39;&lt;/span&gt;
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4&amp;#39;&lt;/span&gt;.
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/libtool.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/ltoptions.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/ltsugar.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/ltversion.m4&amp;#39;&lt;/span&gt;
+libtoolize: copying file &lt;span class=&quot;s1&quot;&gt;&amp;#39;m4/lt~obsolete.m4&amp;#39;&lt;/span&gt;
+configure.ac:66: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./ar-lib&amp;#39;&lt;/span&gt;
+configure.ac:61: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./compile&amp;#39;&lt;/span&gt;
+configure.ac:46: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./config.guess&amp;#39;&lt;/span&gt;
+configure.ac:46: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./config.sub&amp;#39;&lt;/span&gt;
+configure.ac:48: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./install-sh&amp;#39;&lt;/span&gt;
+configure.ac:48: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./missing&amp;#39;&lt;/span&gt;
+benchmarks/Makefile.am: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./depcomp&amp;#39;&lt;/span&gt;
+parallel-tests: installing &lt;span class=&quot;s1&quot;&gt;&amp;#39;./test-driver&amp;#39;&lt;/span&gt;
++ rm -rf autom4te.cache config.h.in~
++ &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+~/mingw-w64-protobuf/src/protobuf-3.3.1/build-i686-w64-mingw32 ~/mingw-w64-protobuf/src/protobuf-3.3.1
+/home/user/mingw-w64-protobuf/PKGBUILD: line &lt;span class=&quot;m&quot;&gt;24&lt;/span&gt;: i686-w64-mingw32-configure: команда не &lt;span class=&quot;nv&quot;&gt;найдена&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&amp;gt; ОШИБКА: Произошел сбой в build&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;.
+    Прерывание...
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Для сборки требуется скрипт &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;configure&lt;/span&gt;&lt;/code&gt; как его поставить в MinGW из оф. реп
+я не знаю, поэтому ставим по тому же принципу из исходников (&lt;a class=&quot;reference external&quot; href=&quot;https://aur.archlinux.org/packages/mingw-w64-configure/&quot;&gt;https://aur.archlinux.org/packages/mingw-w64-configure/&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Перед сборкой также важно закомментировать зависимости:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id2&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;PKGBUILD&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;mingw-w64-configure
+&lt;span class=&quot;nv&quot;&gt;pkgver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;.1
+&lt;span class=&quot;nv&quot;&gt;pkgrel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;arch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;any&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;pkgdesc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;configure wrapper for MinGW (mingw-w64)&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#depends=(&amp;#39;mingw-w64-gcc&amp;#39; &amp;#39;mingw-w64-pkg-config&amp;#39;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;GPL&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;http://fedoraproject.org/wiki/MinGW&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;mingw-configure.sh&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;md5sums&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;SKIP&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;_architectures&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;i686-w64-mingw32 x86_64-w64-mingw32&amp;quot;&lt;/span&gt;
+
+build&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; _arch in &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_architectures&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    sed &lt;span class=&quot;s2&quot;&gt;&amp;quot;s|@TRIPLE@|&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;|g&amp;quot;&lt;/span&gt; mingw-configure.sh &amp;gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;-configure
+  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+package&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  install -d &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgdir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;/usr/bin
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; _arch in &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_architectures&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    install -m &lt;span class=&quot;m&quot;&gt;755&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;_arch&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;-configure &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkgdir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;/usr/bin/
+  &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Сборка &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;configure&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ../
+$ wget https://aur.archlinux.org/cgit/aur.git/snapshot/mingw-w64-configure.tar.gz
+$ tar -zxf mingw-w64-configure.tar.gz
+$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; mingw-w64-configure/
+$ &lt;span class=&quot;nv&quot;&gt;CARCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;i686 makepkg -Acs
+$ pacman -U mingw-w64-configure-0.1-1-any.pkg.tar.xz
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь все готово для сборки Protobuf:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ../mingw-w64-protobuf/
+$ &lt;span class=&quot;nv&quot;&gt;CARCH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;i686 makepkg -Acs
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В результате получим архив с dll-ками и заголовочными файлами. Вот так просто и
+лаконично, хотя лучше поставить ArchLinux в виртуалку и собрать там тоже самое
+без лишних хлопот.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

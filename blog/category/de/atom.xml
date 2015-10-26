@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщений в DE</title>
+  <id>http://uralbash.ru/blog/category/de/atom.xml</id>
+  <updated>2011-10-17T00:08:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/category/de/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/category/de/atom.xml">
+    <title type="text">Xfce перенос кнопок окна влево</title>
+    <id>http://uralbash.ru/articles/2011/xfce_button/</id>
+    <updated>2011-10-17T00:08:00Z</updated>
+    <published>2011-10-17T00:08:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/xfce_button/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;xfce&quot;&gt;
+
+&lt;p&gt;Для того что бы кнопки закрыть-развернуть-свернуть оказались слева, например
+как в &lt;a class=&quot;reference external&quot; href=&quot;http://www.ubuntu.com/&quot;&gt;Ubuntu&lt;/a&gt; или &lt;a class=&quot;reference external&quot; href=&quot;http://www.apple.com/osx/&quot;&gt;MacOS&lt;/a&gt;, необходимо:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;Перейти в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;меню-&amp;gt;настройки-&amp;gt;диспетчер&lt;/span&gt;&lt;/code&gt; настроек &lt;a class=&quot;reference external&quot; href=&quot;http://www.xfce.org/&quot;&gt;Xfce&lt;/a&gt; 4&lt;/li&gt;
+&lt;li&gt;Выбрать раздел &amp;#8220;окна&amp;#8221;&lt;/li&gt;
+&lt;li&gt;В разделе &amp;#8220;Расположения кнопок&amp;#8221; мышкой перенести кнопки&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img alt=&quot;../../../_images/xfce_left_button_menu.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/xfce_left_button_menu.png&quot; /&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

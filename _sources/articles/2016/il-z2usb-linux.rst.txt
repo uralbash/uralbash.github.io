@@ -1,0 +1,155 @@
+.. post:: 31 Aug, 2016 20:02
+   :tags: ftdi, ironlogic, linux
+   :category: linux
+   :author: Uralbash
+   :language: ru
+
+##########################
+IronLogic Z-2 USB на Linux
+##########################
+
+.. image:: /_static/2016/z2usb.png
+   :width: 300px
+   :align: left
+
+``Z-2 USB`` всеядный считыватель, который умеет работать на двух частотах 13,56
+МГц и 125 кГц одновременно.  Поддерживаемые форматы карт ``EM-Marine``, ``HID
+ProxCard II``, ``Mifare``, ``Mifare Plus``, ``Mifare-UL`` (чтение/запись),
+``Temic`` (чтение/запись), ``Cotag`` (опционально).
+
+Работает по USB через ``FTDI`` преобразователь, т.е. в компе видится как COM
+порт. В ядре Linux есть модуль ``ftdi_sio`` для работы с такими устройствами.
+Что бы система увидела ридер нужно подключить этот модуль и указать ему какое
+устройство является ``FTDI``.
+
+Подключаем устройство и находим его в списке:
+
+.. code-block:: bash
+    :emphasize-lines: 8
+
+    $ lsusb
+    Bus 002 Device 002: ID 8087:8001 Intel Corp.
+    Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+    Bus 001 Device 002: ID 8087:8009 Intel Corp.
+    Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+    Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+    Bus 003 Device 011: ID 046d:c050 Logitech, Inc. RX 250 Optical Mouse
+    Bus 003 Device 016: ID 0403:1234 Future Technology Devices International, Ltd IronLogic RFID Adapter [Z-2 USB]
+    Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+Отключаем ридер и добавляем модуль ядра ``ftdi_sio``:
+
+.. code-block:: bash
+
+    $ sudo modprobe ftdi_sio
+
+Указываем драйверу какое устройство является ``FTDI``:
+
+.. code-block:: bash
+
+    $ sudo echo 0403 1234 > /sys/bus/usb-serial/drivers/ftdi_sio/new_id
+
+В ``Ubuntu`` без root пользователя можно сделать так:
+
+.. code-block:: bash
+
+    sudo bash -c "echo 0403 1234 > /sys/bus/usb-serial/drivers/ftdi_sio/new_id"
+
+Подключаем устройство, смотри что система его видит:
+
+.. code-block:: bash
+
+    $ dmesg | tail
+
+    [793134.996159] usb 3-1: new full-speed USB device number 20 using xhci_hcd
+    [793135.131301] usb 3-1: New USB device found, idVendor=0403, idProduct=1234
+    [793135.131303] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+    [793135.131305] usb 3-1: Product: USB IronLogic RFID Adapter
+    [793135.131306] usb 3-1: Manufacturer: ILogic
+    [793135.131307] usb 3-1: SerialNumber: IL02KQQ9
+    [793135.135463] ftdi_sio 3-1:1.0: FTDI USB Serial Device converter detected
+    [793135.135502] usb 3-1: Detected FT232RL
+    [793135.135641] usb 3-1: FTDI USB Serial Device converter now attached to ttyUSB0
+
+Проверяем что драйвер привязался к устройству:
+
+.. code-block:: bash
+
+    $ usb-devices | grep ftdi
+    I:  If#= 0 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=ff Prot=ff Driver=ftdi_sio
+
+Для работы с устройством без ``sudo`` добавим прав:
+
+.. code-block:: bash
+
+    sudo chown username:usergroup /dev/ttyUSB0
+
+Далее настраиваем ридер, как обычный COM порт:
+
+.. code-block:: bash
+
+    $ stty -F /dev/ttyUSB0 cs8 cstopb -ixon raw speed 9600
+
+Считываем данные:
+
+.. code-block:: bash
+
+   $ cat /dev/ttyUSB0
+   Em-Marine[0000] 125,59903
+   No card
+   Em-Marine[0000] 125,59904
+   No card
+   Em-Marine[0000] 125,59904
+   No card
+   Em-Marine[7900] 108,19751
+   No card
+
+
+После перезагрузки все настройки сбиваются. Что бы это исправить нужно
+подключить кардридер и запустить скрипт один раз под суперпользователем:
+
+.. code-block:: bash
+
+    #! /bin/bash
+    #
+    # z2usb_install.sh
+    # Copyright (C) 2017 uralbash <root@uralbash.ru>
+    #
+    # Distributed under terms of the MIT license.
+    #
+
+
+    # https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-kernel-modules-persistant.html
+    echo modprobe ftdi_sio >> /etc/rc.modules
+    chmod +x /etc/rc.modules
+
+    # Make rules file
+    rules_file=/etc/udev/rules.d/40-persistent-ftdi.rules
+    touch $rules_file
+
+    # Set FTDI devices
+    for device in $(
+      lsusb | awk '/FT232'`
+      `'|Future Technology Devices International'`
+      `'|Z-2 USB'`
+      `'|Ltd IronLogic RFID Adapter/ '`
+      `'{print $6}'
+      )
+    do
+      vendor_id=${device:0:4}
+      product_id=${device:5:10}
+      echo "bash -c \"echo ${vendor_id} ${product_id} > " \
+        "/sys/bus/usb-serial/drivers/ftdi_sio/new_id\""   \
+        >> /etc/rc.modules
+      echo "ATTRS{idVendor}==\"${vendor_id}\"," \
+        "ATTRS{idProduct}==\"${product_id}\","  \
+        "MODE=\"0666\",GROUP=\"dialout\""       \
+        >> $rules_file
+    done
+
+    # Add user to dialout group
+    usermod -aG tty user
+    usermod -aG dialout user
+
+``user`` нужно поменять на имя вашего пользователя. Проверялось на `CentOS`,
+для `Ubuntu` возможно нужно поменять ``rc.modules`` на просто ``modules``.

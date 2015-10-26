@@ -1,0 +1,24 @@
+.. post:: 1 Sep, 2017 21:35
+   :tags: linux, netcore, csharp
+   :category: Microsoft
+   :author: Uralbash
+   :language: ru
+
+######################
+C# .Net Core для Linux
+######################
+
+Благодаря популярности ``Java`` язык ``C#`` обрел ещё большую популярность, да
+так, что теперь доступен на `Linux`. Я конечно не испытываю симпатий к этим
+языкам и ``.Net`` стеку в целом, но `OpenSource` и доступность в `Linux` не
+может не радовать. Ниже рассмотрим пример как развернуть проект на ``.NET
+Core`` и отправить `HTTP` запрос.
+
+.. note::
+
+   Это статья из лекций
+   http://lecturesnet.readthedocs.io/net/requests/csharp.html
+
+.. include:: ../../vendor/lectures.net/docs/net/requests/csharp.rst
+
+Пользуйтесь, радуйтесь, пишите на том, что вы любите.

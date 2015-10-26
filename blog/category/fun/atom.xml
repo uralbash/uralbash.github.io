@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщений в fun</title>
+  <id>http://uralbash.ru/blog/category/fun/atom.xml</id>
+  <updated>2014-10-04T00:00:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/category/fun/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/category/fun/atom.xml">
+    <title type="text">Королевский пингвин - круче только ты один!</title>
+    <id>http://uralbash.ru/articles/2014/king_penguin/</id>
+    <updated>2014-10-04T00:00:00Z</updated>
+    <published>2014-10-04T00:00:00Z</published>
+    <link href="http://uralbash.ru/articles/2014/king_penguin/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+
+&lt;img alt=&quot;../../../_images/penguin.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/penguin.jpg&quot; /&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/category/fun/atom.xml">
+    <title type="text">Генератор лабиринта на Питоне</title>
+    <id>http://uralbash.ru/articles/2012/python_labirint/</id>
+    <updated>2012-10-18T18:31:00Z</updated>
+    <published>2012-10-18T18:31:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/python_labirint/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+
+&lt;p&gt;Отличное приложение для создания лабиринтов. Написано на Python и доставляет
+много фана.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/maze.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/maze.jpg&quot; /&gt;
+&lt;p&gt;Вот ссылка на код &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/daleobrien/maze&quot;&gt;https://github.com/daleobrien/maze&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/category/fun/atom.xml">
+    <title type="text">Боян :)</title>
+    <id>http://uralbash.ru/articles/2012/boyan/</id>
+    <updated>2012-05-22T01:40:00Z</updated>
+    <published>2012-05-22T01:40:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/boyan/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+
+&lt;iframe width=&quot;420&quot; height=&quot;315&quot;
+src=&quot;https://www.youtube.com/embed/0TTXVMMWlbU&quot; frameborder=&quot;0&quot;
+allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;UPD: Создатель электромеханического бояна &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Владимир&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Демин&lt;/span&gt;&lt;/code&gt; - человек с
+высоким ощущением прекрасного: &lt;a class=&quot;reference external&quot; href=&quot;http://hackaday.com/2012/05/25/interview-vladimir-denin-the-creator-of-the-player-guitar/?utm_source=feedburner&amp;amp;utm_medium=feed&amp;amp;utm_campaign=Feed%3A+hackaday%2FLgoM+(Hack+a+Day)#&quot;&gt;подробнее на Hack Day&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

@@ -1,0 +1,775 @@
+
+
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Traversal роутинг в Pyramid &mdash; Ural penguins</title>
+    
+
+    
+        <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    
+
+    
+        
+    
+            <link rel="index" title="Алфавитный указатель" href="../../../genindex/"/>
+            <link rel="search" title="Поиск" href="../../../search/"/>
+
+        <link rel="top" title="Ural penguins" href="../../../"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300&subset=latin,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <link href="../../../_static/css/badge_only.css" type="text/css" rel="stylesheet" />
+    <link href="../../../_static/css/__theme.css" type="text/css" rel="stylesheet" />
+
+    
+            <script type="text/javascript" src="../../../_static/jquery.js"></script>
+            <script type="text/javascript" src="../../../_static/underscore.js"></script>
+            <script type="text/javascript" src="../../../_static/doctools.js"></script>
+            <script type="text/javascript" src="../../../_static/metrika.js"></script>
+            <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+  
+  <style type="text/css">
+    html, body {
+      background: #545d5c !important;
+    }
+    .page__left .menu {
+        width: 0px;
+    }
+    .page__right {
+      background-color: #e7e7e7;
+      margin: 0 0 0 30px;
+    }
+    .rst-content {
+      padding: 13px;
+    }
+    .footer {
+      padding: 13px;
+    }
+    /* unvisited link */
+    ul.postlist-style-none a:link, .head a:link {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* visited link */
+    ul.postlist-style-none a:visited, .head a:visited {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* mouse over link */
+    ul.postlist-style-none a:hover, .head a:hover {
+        color: #222;
+        text-decoration: none;
+    }
+
+    ul.postlist-style-none a:active, .head a:active {
+        color: #222;
+        text-decoration: none;
+    }
+    ul.postlist-style-none li {
+        list-style-type: none;
+    }
+    ul.postlist-style-none li p.first {
+      color: red !important;
+      font: 1.8em "Open Sans",Arial,sans-serif !important;
+    }
+    .first a {
+      font-weight: bold;
+    }
+    .first em {
+      font-style: normal !important;
+    }
+    .wrapper__inner {
+      padding: 0px 30px 0 0 !important;
+    }
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
+
+  
+  
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.post-list-style-disc {list-style-type: disc;}
+    ul.post-list-style-none {list-style-type: none;}
+    ul.post-list-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper__inner">
+            <div class="page
+                ">
+                <div class="page__left">
+                  
+                    <nav class="menu" id="menu" data-state="expand">
+                        <div class="menu-inner">
+                            
+                                <div class="menu-project">
+                                    <a href="../../../" class="menu-project__link">Ural penguins</a>
+                                </div>
+                            
+                            <div class="tree">
+                                
+                                
+                                    <ul>
+<li><a class="reference internal" href="#">Traversal роутинг в Pyramid</a><ul>
+<li><a class="reference internal" href="#url">Диспетчеризация URL</a><ul>
+<li><a class="reference internal" href="#pattern-matching">Pattern Matching</a></li>
+<li><a class="reference internal" href="#traversal">Traversal</a><ul>
+<li><a class="reference internal" href="#id1">Обход словаря</a></li>
+<li><a class="reference internal" href="#view">Привязка View к ресурсам</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id14">Комбинация обоих методов</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                                
+                            </div>
+                            <div class="menu-search search">
+                                <div class="search-title">Quick search</div>
+                                <form id="search-form" class="search-form" action="../../../search/" method="GET">
+                                    <input type="text" name="q" placeholder="Search docs" />
+                                    <input type="hidden" name="check_keywords" value="yes" />
+                                    <input type="hidden" name="area" value="default" />
+                                </form>
+                                <div class="search-desc">Enter search terms or a module, class or function name.</div>
+                            </div>
+                            <nav class="wy-nav-side">&nbsp;</nav>
+                        </div>
+                        <div class="menu-switch">
+                            <div class="menu-switch__arrow">«</div>
+                        </div>
+                    </nav>
+                  
+                </div>
+
+                <section class="page__right">
+                    
+  <div class="head" style="background-image: url('/_static/bg.jpg');
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  height: 200px">
+    <a href="/">
+      <div style="width:100%; height: 75%">
+        <h1 style="padding-top:15px;padding-left:15px;font-size:60px">Ural penguins</h1>
+      </div>
+    </a>
+    <table style="
+        border-collapse: unset !important;
+        border-spacing: 1 !important;">
+        <tr>
+            <td style="padding-right: 2px">
+                <a href="/pages/pyramid/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        Pyramid
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="/pages/nixos/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        NixOS
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </table>
+  </div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <div class="badge" style="width:100%;height:80px">
+    <!-- uralbash.ru -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2884502571619359"
+         data-ad-slot="9876011339"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+
+                    <div class="badge">
+                        
+                        
+                    </div>
+
+                    <div class="rst-content">
+                        
+  <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+  <table>
+    <tr>
+      <td>
+        <div class="yashare-auto-init" data-yashareL10n="ru"
+          data-yashareType="medium"
+          data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"
+          data-yashareTheme="counter"></div>
+      </td>
+      <td>
+        
+  
+  
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+        May 30, 2016
+      </div>
+    
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+      
+        
+          <i class="fa-fw fa fa-tags"></i>
+        
+        
+      
+        
+        <a href="../../../blog/tag/python/">python</a>,
+        
+      
+        
+        <a href="../../../blog/tag/python3/">python3</a>,
+        
+      
+        
+        <a href="../../../blog/tag/pyramid/">pyramid</a>,
+        
+      
+        
+        <a href="../../../blog/tag/traversal/">traversal</a>
+        
+      
+      </div>
+    
+
+      </td>
+    </tr>
+  </table>
+  <div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Это статья из лекций
+<a class="reference external" href="http://lectureswww.readthedocs.io/6.www.sync/3.framework/pyramid/5.urldispatch.html">http://lectureswww.readthedocs.io/6.www.sync/3.framework/pyramid/5.urldispatch.html</a></p>
+</div>
+<div class="section" id="traversal-pyramid">
+<h1>Traversal роутинг в Pyramid<a class="headerlink" href="#traversal-pyramid" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="url">
+<h2>Диспетчеризация URL<a class="headerlink" href="#url" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">См.также</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://docs.pylonsproject.org/projects/pyramid/en/1.6-branch/narr/urldispatch.html">http://docs.pylonsproject.org/projects/pyramid/en/1.6-branch/narr/urldispatch.html</a></li>
+<li><a class="reference external" href="http://pyramid-cookbook.readthedocs.org/en/latest/routing/index.html">http://pyramid-cookbook.readthedocs.org/en/latest/routing/index.html</a></li>
+<li><a class="reference external" href="http://blog.delaguardia.com.mx/pyramid-view-configuration-let-me-count-the-ways.html">Для тех кто в Djang&#8217;е
+(http://blog.delaguardia.com.mx/pyramid-view-configuration-let-me-count-the-ways.html)</a></li>
+</ul>
+</div>
+<p>Каждый поступающий на сервер приложений Pyramid запрос (<strong>request</strong>) должен
+найти вид (<strong>view</strong>), который и будет его обрабатывать.</p>
+<p>В Pyramid имеется два базовых подхода к поиску нужного вида для обрабатываемого
+запроса: на основе сопоставления (<strong>matching</strong>), как в большинстве подобных
+фреймворков, и обхода (<strong>traversal</strong>), как в <a class="reference external" href="http://www.zope.org/">Zope</a>. Кроме того, в одном
+приложении можно с успехом сочетать оба подхода.</p>
+<div class="section" id="pattern-matching">
+<h3>Pattern Matching<a class="headerlink" href="#pattern-matching" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Простейший пример с заданием маршрута (заимствован из документации):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Здесь config - экземпляр pyramid.config.Configurator</span>
+<span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;idea&#39;</span><span class="p">,</span> <span class="s1">&#39;site/{id}&#39;</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="s1">&#39;mypackage.views.site_view&#39;</span><span class="p">,</span> <span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;idea&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="traversal">
+<span id="traversal-routing"></span><h3>Traversal<a class="headerlink" href="#traversal" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="admonition seealso">
+<p class="first admonition-title">См.также</p>
+<ul class="last simple">
+<li><a class="reference external" href="http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/traversal.html">http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/traversal.html</a></li>
+</ul>
+</div>
+<p>Использование обхода лучше проиллюстрировать на небольшом примере:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">wsgiref.simple_server</span> <span class="kn">import</span> <span class="n">make_server</span>
+<span class="kn">from</span> <span class="nn">pyramid.config</span> <span class="kn">import</span> <span class="n">Configurator</span>
+<span class="kn">from</span> <span class="nn">pyramid.response</span> <span class="kn">import</span> <span class="n">Response</span>
+
+<span class="c1"># Класс некоторого ресурса</span>
+<span class="k">class</span> <span class="nc">Resource</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="c1"># Дерево ресурсов (жёстко закодированное) в фабрике корня</span>
+<span class="k">def</span> <span class="nf">get_root</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Resource</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">Resource</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">Resource</span><span class="p">({</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">Resource</span><span class="p">()})})})</span>
+
+<span class="c1"># Вид-для-вызова, который умеет показывать ресурс Resource (в context)</span>
+<span class="k">def</span> <span class="nf">hello_world_of_resources</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;Ресурс и его дети: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">context</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">Configurator</span><span class="p">(</span><span class="n">root_factory</span><span class="o">=</span><span class="n">get_root</span><span class="p">)</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="n">hello_world_of_resources</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">Resource</span><span class="p">)</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">make_wsgi_app</span><span class="p">()</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">make_server</span><span class="p">(</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">,</span> <span class="n">app</span><span class="p">)</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>В этом примере иерархия для обхода жестко задана в методе <code class="docutils literal"><span class="pre">get_root</span></code> с
+помощью вложенных словарей, тогда как реальные приложения должны сами
+определять необходимый доступ по ключам (метод <code class="docutils literal"><span class="pre">__getitem__</span></code> помогает
+организовать такой доступ). В коде также присутствует корневая фабрика, с
+которой собственно и начинается обход узлов (node) дерева ресурсов.
+Вид-для-вызова (<a class="reference external" href="https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-view-callable" title="(в The Pyramid Web Framework v1.9.1)"><span class="xref std std-term">view callable</span></a>) представлен функцией
+<code class="docutils literal"><span class="pre">hello_world_of_resources</span></code>. Говоря несколько упрощённо, на основе URL запроса
+в результате обхода иерархии Pyramid находит ресурс и применяет к нему
+«наилучший» вид-для-вызова (в нашем примере — он единственный).</p>
+<div class="section" id="id1">
+<h4>Обход словаря<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h4>
+<div class="admonition warning">
+<p class="first admonition-title">Предупреждение</p>
+<p class="last">В примерах используется Python3</p>
+</div>
+<p>Метод обхода дерева (traversal), позволяет находить ресурсы во вложенных структурах.
+Такой механизм хорошо применим для некоторых практических задач, например
+список всех URL маршрутов сайта является деревом, в котором каждый конечный URL
+это отдельная ветка дерева. Поэтому всю структуру сайта можно поместить в словарь.</p>
+<p>К примеру, известно, что смерь сказочного персонажа &#8220;кащея&#8221; находится в яйце,
+которое в свою очередь в утке, которая в зайце и т.д. В сумме получается
+вложенная структура, которую можно описать так:</p>
+<p><code class="docutils literal"><span class="pre">остров</span> <span class="pre">-&gt;</span> <span class="pre">дуб</span> <span class="pre">-&gt;</span> <span class="pre">сундук</span> <span class="pre">-&gt;</span> <span class="pre">заяц</span> <span class="pre">-&gt;</span> <span class="pre">утка</span> <span class="pre">-&gt;</span> <span class="pre">яйцо</span> <span class="pre">-&gt;</span> <span class="pre">игла</span> <span class="pre">-&gt;</span> <span class="pre">СмертьКощея</span></code></p>
+<p>Мы можем такую, плоскую, вложенную структуру легко представить в виде URL:</p>
+<p><code class="docutils literal"><span class="pre">http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла</span></code></p>
+<p>А так-как любой URL является веткой дерева, то несложно описать это в Python:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="p">{</span>
+     <span class="s1">&#39;остров&#39;</span><span class="p">:</span> <span class="p">{</span>
+         <span class="s1">&#39;дуб&#39;</span><span class="p">:</span> <span class="p">{</span>
+             <span class="s1">&#39;сундук&#39;</span><span class="p">:</span> <span class="p">{</span>
+                 <span class="s1">&#39;заяц&#39;</span><span class="p">:</span> <span class="p">{</span>
+                     <span class="s1">&#39;утка&#39;</span><span class="p">:</span> <span class="p">{</span>
+                         <span class="s1">&#39;яйцо&#39;</span><span class="p">:</span> <span class="p">{</span>
+                             <span class="s1">&#39;игла&#39;</span><span class="p">:</span> <span class="n">СмертьКощея</span><span class="p">()</span>
+                         <span class="p">}</span>
+                     <span class="p">}</span>
+                 <span class="p">}</span>
+             <span class="p">}</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">СмертьКощея()</span></code> - это объект класса <code class="docutils literal"><span class="pre">СмертьКощея</span></code>, который может выглядеть к примеру так:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">СмертьКощея</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__json__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;имя&#39;</span><span class="p">:</span> <span class="s1">&#39;кощей&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;статус&#39;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">context</span> <span class="o">==</span> <span class="bp">self</span> <span class="ow">and</span> <span class="s1">&#39;мертв&#39;</span> <span class="ow">or</span> <span class="s1">&#39;жив ещё&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>В принципе, этого достаточно что бы наш сайт-убийца &#8220;кощея&#8221; заработал.
+Осталось лишь прописать пути и добавить представление (view).</p>
+<p>View будет просто возвращать объект, например, если мы ввели:</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>URL: &#39;остров&#39;
+объект: {&#39;дуб&#39;: {
+            &#39;сундук&#39;: {
+                &#39;заяц&#39;: {
+                    &#39;утка&#39;: {
+                        &#39;яйцо&#39;: {
+                            &#39;игла&#39;: СмертьКощея()
+                        }
+                    }
+                }
+            }
+        }}
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>URL: &#39;остров/дуб&#39;
+объект: {&#39;сундук&#39;: {
+            &#39;заяц&#39;: {
+                &#39;утка&#39;: {
+                    &#39;яйцо&#39;: {
+                        &#39;игла&#39;: СмертьКощея()
+                    }
+                }
+            }
+        }}
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>URL: &#39;остров/дуб/сундук&#39;
+объект: {&#39;заяц&#39;: {
+            &#39;утка&#39;: {
+                &#39;яйцо&#39;: {
+                    &#39;игла&#39;: СмертьКощея()
+                }
+            }
+        }}
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>URL: &#39;остров/дуб/сундук/заяц&#39;
+объект: {&#39;утка&#39;: {
+            &#39;яйцо&#39;: {
+                &#39;игла&#39;: СмертьКощея()
+            }
+        }}
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>URL: &#39;остров/дуб/сундук/заяц/утка&#39;
+объект: {&#39;яйцо&#39;: {
+            &#39;игла&#39;: СмертьКощея()
+        }}
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>URL: &#39;остров/дуб/сундук/заяц/утка/яйцо&#39;
+объект: {&#39;игла&#39;: СмертьКощея()}
+</pre></div>
+</div>
+<div class="highlight-text"><div class="highlight"><pre><span></span>URL: &#39;остров/дуб/сундук/заяц/утка/яйцо/игла&#39;
+объект: СмертьКощея()
+</pre></div>
+</div>
+<p>Такие функции-представления (View) должны принимать 2 параметра, где первый
+параметр будет являться объектом, обычно именуемым <code class="docutils literal"><span class="pre">context</span></code>, а второй
+параметр <code class="docutils literal"><span class="pre">request</span></code>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">traverse_koshey</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">context</span>  <span class="c1"># Наш объект</span>
+</pre></div>
+</div>
+<p>Роуты создаются почти так же как в <code class="docutils literal"><span class="pre">pattern</span> <span class="pre">matching</span></code>, за исключением того,
+что структура путей передается в виде &#8220;фабрики&#8221;, которая возвращает словарь или
+ему подобный (dict-like) объект. Путь указывается в виде статической и
+динамической части, например <code class="docutils literal"><span class="pre">/fixedpath/*traverse</span></code>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;koshey&#39;</span><span class="p">,</span> <span class="s1">&#39;/mytraversal/*traverse&#39;</span><span class="p">,</span> <span class="n">factory</span><span class="o">=</span><span class="n">my_factory</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Фабрика, которая возвращает структуру сайта:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_factory</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;остров&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;дуб&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;сундук&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;заяц&#39;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s1">&#39;утка&#39;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s1">&#39;яйцо&#39;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s1">&#39;игла&#39;</span><span class="p">:</span> <span class="n">СмертьКощея</span><span class="p">()</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>View добавляется стандартно:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="n">traverse_koshey</span><span class="p">,</span> <span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;koshey&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Все готово, можно перемещаться по объектам:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://localhost:8080/mytraversal/">http://localhost:8080/mytraversal/</a></li>
+<li><a class="reference external" href="http://localhost:8080/mytraversal/остров">http://localhost:8080/mytraversal/остров</a></li>
+<li><a class="reference external" href="http://localhost:8080/mytraversal/остров/дуб">http://localhost:8080/mytraversal/остров/дуб</a></li>
+<li><a class="reference external" href="http://localhost:8080/mytraversal/остров/дуб/сундук">http://localhost:8080/mytraversal/остров/дуб/сундук</a></li>
+<li><a class="reference external" href="http://localhost:8080/mytraversal/остров/дуб/сундук/заяц">http://localhost:8080/mytraversal/остров/дуб/сундук/заяц</a></li>
+<li><a class="reference external" href="http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка">http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка</a></li>
+<li><a class="reference external" href="http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо">http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо</a></li>
+<li><a class="reference external" href="http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла">http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла</a></li>
+</ul>
+<p>Полный пример:</p>
+<p>Есть один нюанс, json renderer, по умолчанию, все не латинские символы отображает
+как UTF коды <code class="docutils literal"><span class="pre">\uxxxx</span></code>, поэтому мы увидим следующий вывод:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;\u043e\u0441\u0442\u0440\u043e\u0432&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;\u0434\u0443\u0431&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;\u0441\u0443\u043d\u0434\u0443\u043a&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;\u0437\u0430\u044f\u0446&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;\u0443\u0442\u043a\u0430&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;\u044f\u0439\u0446\u043e&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;\u0438\u0433\u043b\u0430&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;\u0441\u0442\u0430\u0442\u0443\u0441&quot;</span><span class="p">:</span> <span class="s2">&quot;\u0436\u0438\u0432 \u0435\u0449\u0451&quot;</span><span class="p">,</span> <span class="nt">&quot;\u0438\u043c\u044f&quot;</span><span class="p">:</span> <span class="s2">&quot;\u043a\u043e\u0449\u0435\u0439&quot;</span><span class="p">}}}}}}}}</span>
+</pre></div>
+</div>
+<p>Но можно изменить его поведение следующим образом:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span> <span class="kn">from</span> <span class="nn">pyramid.renderers</span> <span class="k">import</span> <span class="n">JSON</span>
+ <span class="o">...</span>
+<span class="hll"> <span class="n">config</span><span class="o">.</span><span class="n">add_renderer</span><span class="p">(</span><span class="s1">&#39;myjson&#39;</span><span class="p">,</span> <span class="n">JSON</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</span> <span class="n">config</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="n">traverse_koshey</span><span class="p">,</span> <span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;koshey&#39;</span><span class="p">,</span> <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;myjson&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Результат:</p>
+<p><a class="reference external" href="http://localhost:8080/mytraversal/">http://localhost:8080/mytraversal/</a></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;остров&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;дуб&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;сундук&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;заяц&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;утка&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="nt">&quot;яйцо&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="nt">&quot;игла&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="nt">&quot;имя&quot;</span><span class="p">:</span> <span class="s2">&quot;кощей&quot;</span><span class="p">,</span>
+                                <span class="nt">&quot;статус&quot;</span><span class="p">:</span> <span class="s2">&quot;жив ещё&quot;</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла">http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла</a></p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;имя&quot;</span><span class="p">:</span> <span class="s2">&quot;кощей&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;статус&quot;</span><span class="p">:</span> <span class="s2">&quot;мертв&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Полный код:</p>
+</div>
+<div class="section" id="view">
+<h4>Привязка View к ресурсам<a class="headerlink" href="#view" title="Ссылка на этот заголовок">¶</a></h4>
+<p>В Пирамиде объект (context) который передается во вью, именуют еще как &#8220;ресурс&#8221;.
+Есть возможность жестко привязать View к типу ресурса. Например, наше
+представление <code class="docutils literal"><span class="pre">traverse_koshey</span></code> должно вызываться, только когда пришел объект
+класса <code class="docutils literal"><span class="pre">СмертьКощея</span></code>:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="n">traverse_koshey</span><span class="p">,</span> <span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;koshey_context&#39;</span><span class="p">,</span>
+                <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;myjson&#39;</span><span class="p">,</span>
+<span class="hll">                <span class="n">context</span><span class="o">=</span><span class="n">СмертьКощея</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>Параметр <code class="docutils literal"><span class="pre">context</span></code> указывает на то, что это View принадлежит ТОЛЬКО объектам
+класса <code class="docutils literal"><span class="pre">СмертьКащея</span></code>.</p>
+<p>Все пути, кроме полного (который возвращает нужный объект), вернут 404 код ответа.
+Полный путь <a class="reference external" href="http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла">http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла</a>.</p>
+<p>Добавим в нашу структуру еще ресурсов:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_factory</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;превед&#39;</span><span class="p">:</span> <span class="n">Человек</span><span class="p">(),</span>
+        <span class="s1">&#39;остров&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;ясень&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;что то здесь&#39;</span><span class="p">:</span> <span class="s1">&#39;не так!&#39;</span>
+            <span class="p">},</span>
+            <span class="s1">&#39;дуб&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;сундук&#39;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s1">&#39;заяц&#39;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s1">&#39;утка&#39;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s1">&#39;яйцо&#39;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s1">&#39;игла&#39;</span><span class="p">:</span> <span class="n">СмертьКощея</span><span class="p">()</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>Здесь <code class="docutils literal"><span class="pre">Человек()</span></code> это новый тип ресурса, который имеет метод <code class="docutils literal"><span class="pre">__getitem__</span></code>
+как у словаря и при обращении по ключу возвращает другой ресурс:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Человек</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Человек&#39;</span>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Имя</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Имя</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="n">__parent__</span> <span class="o">=</span> <span class="n">Человек</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+</pre></div>
+</div>
+<p>Например мы обращаемся по URL <a class="reference external" href="http://localhost:8080/mytraversal/превед/Пирамид">http://localhost:8080/mytraversal/превед/Пирамид</a>.
+<code class="docutils literal"><span class="pre">превед</span></code> вернет ресурс <code class="docutils literal"><span class="pre">Человек</span></code>, а <code class="docutils literal"><span class="pre">Пирамид</span></code> вызовет метод
+<code class="docutils literal"><span class="pre">__getitem__</span></code>, который вернет ресурс <code class="docutils literal"><span class="pre">Имя('Пирамид')</span></code>. Таким образом мы
+можем строить дерево динамически при помощи dict-like объектов.</p>
+<p>Для ресурса <code class="docutils literal"><span class="pre">Имя</span></code> мы можем создать отдельное представление и жестко привязать
+его к этому типу.</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">traverse_hello</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    http://localhost:8080/mytraversal/первед/Пирамид</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s1">&#39;Превед &#39;</span> <span class="o">+</span> <span class="n">context</span><span class="o">.</span><span class="n">__parent__</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">context</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="o">...</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="n">traverse_hello</span><span class="p">,</span> <span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;koshey_context&#39;</span><span class="p">,</span>
+                <span class="n">renderer</span><span class="o">=</span><span class="s1">&#39;text&#39;</span><span class="p">,</span>
+                <span class="n">context</span><span class="o">=</span><span class="n">Имя</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Результат вывода по адресу
+<a class="reference external" href="http://localhost:8080/mytraversal/превед/Пирамид">http://localhost:8080/mytraversal/превед/Пирамид</a>, будет обычный текст
+(<code class="docutils literal"><span class="pre">Content-Type:</span> <span class="pre">plain/text</span></code>):</p>
+<div class="highlight-text"><div class="highlight"><pre><span></span>Превед Человек Пирамид
+</pre></div>
+</div>
+<p>Полный пример:</p>
+</div>
+</div>
+<div class="section" id="id14">
+<h3>Комбинация обоих методов<a class="headerlink" href="#id14" title="Ссылка на этот заголовок">¶</a></h3>
+<p>Фреймворк <code class="docutils literal"><span class="pre">Pyramid</span></code> позволяет использовать оба способа URL маршрутизации
+одновременно.</p>
+<p>Добавим к примеру с &#8220;кащеем&#8221; hello world с использованием pattern matching:</p>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello_world</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="s1">&#39;Hello </span><span class="si">%(name)s</span><span class="s1">!&#39;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">matchdict</span><span class="p">)</span>
+
+<span class="o">...</span>
+
+<span class="c1"># Pattern matching routes</span>
+<span class="n">config</span><span class="o">.</span><span class="n">add_route</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;/hello/</span><span class="si">{name}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">add_view</span><span class="p">(</span><span class="n">hello_world</span><span class="p">,</span> <span class="n">route_name</span><span class="o">=</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Полный пример:</p>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../../../pages/pyramid/">
+    <i class="fa fa-arrow-circle-left"></i>
+    Pyramid фреймворк
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../pyramid-restapi/">
+    REST API в Pyramid
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <br />
+    <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="medium" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yashareTheme="counter"></div>
+    <h2>Comments</h2>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'uralbash'; // required: replace example with your forum shortname
+        var disqus_identifier = '/articles/2016/pyramid-traversal/';
+        var disqus_title = 'Traversal роутинг в Pyramid';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+                    </div>
+                    <footer class="footer">
+                      
+  
+                        
+    <div class="footer__copyright">
+            
+                &copy; Copyright 2015, uralbash.
+            
+    </div>
+<div class="footer__theme">
+    <a href="https://github.com/ITCase/itcase_sphinx_theme" class="footer__theme-link">
+      ITCase Sphinx Theme
+    </a>
+      <span class="footer__theme-text">
+          | version: 0.2.0
+      </span>
+</div>
+                      
+  <div class="footer__theme">
+      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+        Ablog powered.
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="http://uralbash.ru/blog/atom.xml" class="footer__theme-link">
+        RSS/Atom
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="https://uralbash.blogspot.com" class="footer__theme-link">
+        Старый блог
+      </a>
+  </div>
+
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+            var STICKY_MENU = true;
+        
+    </script>
+
+    <script type="text/javascript" src="../../../_static/js/__theme.js"></script>
+
+    
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT: '../../../',
+                    VERSION: '',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '',
+                    HAS_SOURCE: true
+            };
+        </script>
+    
+
+    
+</body>
+</html>

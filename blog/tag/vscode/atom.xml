@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом vscode</title>
+  <id>http://uralbash.ru/blog/tag/vscode/atom.xml</id>
+  <updated>2016-09-07T20:48:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/vscode/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/vscode/atom.xml">
+    <title type="text">Visual Studio Code для Python</title>
+    <id>http://uralbash.ru/articles/2016/visualstudiocode/</id>
+    <updated>2016-09-07T20:48:00Z</updated>
+    <published>2016-09-07T20:48:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/visualstudiocode/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Это статья из лекций
+&lt;a class=&quot;reference external&quot; href=&quot;http://lectureswww.readthedocs.io/999.additions/texteditors/vscode.html&quot;&gt;http://lectureswww.readthedocs.io/999.additions/texteditors/vscode.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;visual-studio-code-python&quot;&gt;
+
+&lt;div class=&quot;section&quot; id=&quot;visual-studio-code&quot;&gt;
+&lt;h2&gt;Visual Studio Code&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.visualstudio.com/ru-ru/products/code-vs.aspx&quot;&gt;https://www.visualstudio.com/ru-ru/products/code-vs.aspx&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; отличный выбор для начинающего программиста,
+имеет необходимый минимум:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;неплохую документацию&lt;/li&gt;
+&lt;li&gt;автодополнение кода (с использованием &lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/IntelliSense&quot;&gt;IntelliSense&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;подсветка синтаксиса&lt;/li&gt;
+&lt;li&gt;встроенный отладчик&lt;/li&gt;
+&lt;li&gt;расширение функционала за счет плагинов&lt;/li&gt;
+&lt;li&gt;управление системой контроля версий git&lt;/li&gt;
+&lt;li&gt;кроссплатформенный&lt;/li&gt;
+&lt;li&gt;бесплатный, с открытым исходным кодом&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Также редактор адаптирован для Веб-разработки и вполне подойдет для серьезных
+проектов как основной инструмент редактирования кода.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h3&gt;Установка&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/setup/setup-overview&quot;&gt;https://code.visualstudio.com/docs/setup/setup-overview&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;linux&quot;&gt;
+&lt;h4&gt;Linux&lt;/h4&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/setup/linux&quot;&gt;https://code.visualstudio.com/docs/setup/linux&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Скачиваем дистрибутив для своей ОС &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/download&quot;&gt;https://code.visualstudio.com/download&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Для Linux существуют два типа пакетов, самых популярных форматов, rpm и deb.&lt;/p&gt;
+&lt;p&gt;Установка в Ubuntu/Debian:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo dpkg -i &amp;lt;file&amp;gt;.deb
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;CentOS/Fedora:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo yum install &amp;lt;file&amp;gt;.rpm
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Fedora &amp;gt; 22 версии:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo dnf install &amp;lt;file&amp;gt;.rpm
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;После установки можно запустить редактор следующей командой:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ code
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;nix&quot;&gt;
+&lt;h4&gt;Nix&lt;/h4&gt;
+&lt;p&gt;Пакетный менеджер &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/&quot;&gt;Nix&lt;/a&gt; работает на любом Linux дистрибутиве, содержит
+богатую базу уже готовых пакетов, в том числе и &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;vscode&lt;/a&gt;.&lt;/p&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Установка пакетного менеджера:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl https://nixos.org/nix/install &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sh
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Установка &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-env -i vscode
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h3&gt;Плагины&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/editor/extension-gallery&quot;&gt;https://code.visualstudio.com/docs/editor/extension-gallery&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Редактор имеет возможность расширения функционала за счет плагинов и удобный
+интерфейс их установки, доступный по нажатию кнопки:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/extension-gallery_extensions-view-icon.png&quot; src=&quot;../../../_images/extension-gallery_extensions-view-icon.png&quot; /&gt;
+&lt;p&gt;Из списка можно выбрать любой плагин и установить, после чего он применит свои
+настройки к редактору.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/extension-gallery_extensions-popular.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/extension-gallery_extensions-popular.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Расширения можно искать введя название или ключевые слова в строке поиска,
+например &lt;cite&gt;Python&lt;/cite&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/extension-gallery_extensions-python.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/extension-gallery_extensions-python.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Существует огромное количество расширений для &lt;cite&gt;Go&lt;/cite&gt;, &lt;cite&gt;C#&lt;/cite&gt;, &lt;cite&gt;C/C++&lt;/cite&gt;, &lt;cite&gt;Nix&lt;/cite&gt;,
+&lt;cite&gt;Haskell&lt;/cite&gt;, &lt;cite&gt;Python&lt;/cite&gt;, &lt;cite&gt;JS&lt;/cite&gt;, &lt;cite&gt;TypeScript&lt;/cite&gt; и др.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
+&lt;h3&gt;Python&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/languages/python&quot;&gt;https://code.visualstudio.com/docs/languages/python&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;После установки плагина &lt;cite&gt;Python&lt;/cite&gt; нам становятся доступны многие функции:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;Автодополнение кода&lt;/li&gt;
+&lt;li&gt;Проверка синтаксиса&lt;/li&gt;
+&lt;li&gt;Отладка&lt;/li&gt;
+&lt;li&gt;Подсказки&lt;/li&gt;
+&lt;li&gt;Переход к определению функции, класса и прочее&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h4&gt;Автодополнение&lt;/h4&gt;
+&lt;p&gt;Работает при наборе по нажатию &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctrl&lt;/span&gt;&lt;/code&gt; + &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Space&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;video muted=&quot;&quot; width=600px controls=&quot;&quot; loop=&quot;&quot; autoplay=&quot;&quot;
+poster=&quot;/images/python_python-linting-placeholder.png&quot;
+src=&quot;https://az754404.vo.msecnd.net/public/python-linting.mp4&quot;
+id=&quot;python-linting-video&quot;&gt;&lt;/video&gt;&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id4&quot;&gt;
+&lt;h4&gt;Проверка синтаксиса&lt;/h4&gt;
+&lt;p&gt;Показывает ошибки в коде:&lt;/p&gt;
+&lt;video muted=&quot;&quot; width=600px controls=&quot;&quot; loop=&quot;&quot; autoplay=&quot;&quot;
+poster=&quot;/images/python_python-linting-placeholder.png&quot;
+src=&quot;https://az754404.vo.msecnd.net/public/python-linting.mp4&quot;
+id=&quot;python-linting-video&quot;&gt;&lt;/video&gt;&lt;p&gt;Работает если установлены Python пакеты &lt;cite&gt;Pylint&lt;/cite&gt;, &lt;cite&gt;Pep8&lt;/cite&gt; или &lt;cite&gt;Flake8&lt;/cite&gt;.&lt;/p&gt;
+&lt;div class=&quot;admonition tip&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Совет&lt;/p&gt;
+&lt;div class=&quot;last highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install -U --user pylint pep8 flake8
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id5&quot;&gt;
+&lt;h4&gt;Отладка&lt;/h4&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/editor/debugging&quot;&gt;https://code.visualstudio.com/docs/editor/debugging&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Встроенный в редактор отладчик позволяет отлаживать код визуально,
+устанавливать точки останова мышкой и просматривать переменные в отдельном
+окне. Это похоже на отладку в различных IDE, таких как &lt;a class=&quot;reference external&quot; href=&quot;https://www.qt.io/ide/&quot;&gt;QtCreator&lt;/a&gt; или
+&lt;a class=&quot;reference external&quot; href=&quot;https://wingware.com/&quot;&gt;Wingware&lt;/a&gt;.&lt;/p&gt;
+&lt;video muted=&quot;&quot; width=600px controls=&quot;&quot; loop=&quot;&quot; autoplay=&quot;&quot;
+poster=&quot;/images/python_python-debugging-placeholder.png&quot;
+src=&quot;https://az754404.vo.msecnd.net/public/python-debugging.mp4&quot;
+id=&quot;python-debugging-video&quot;&gt;&lt;/video&gt;&lt;p&gt;Также избавляет программиста писать мучительные строки типа &lt;cite&gt;printf&lt;/cite&gt; или &lt;cite&gt;import
+pdb;pdb.set_trace();&lt;/cite&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id6&quot;&gt;
+&lt;h3&gt;Настройки&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/customization/userandworkspace&quot;&gt;https://code.visualstudio.com/docs/customization/userandworkspace&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Настройки хранятся в формате &lt;cite&gt;JSON&lt;/cite&gt; и доступны из меню
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;File-&amp;gt;Preferences-&amp;gt;User&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Settings&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id7&quot;&gt;
+&lt;h4&gt;Шрифт&lt;/h4&gt;
+&lt;p&gt;Шрифт задается в настройках &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;File-&amp;gt;Preferences-&amp;gt;User&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Settings&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;// Place your settings in this file to overwrite the default settings
+{
+    // Controls the font size.
+&lt;span class=&quot;hll&quot;&gt;    &amp;quot;editor.fontSize&amp;quot;: 16
+&lt;/span&gt;}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;tab&quot;&gt;
+&lt;h4&gt;Автодополнение через &amp;lt;Tab&amp;gt;&lt;/h4&gt;
+&lt;p&gt;Более привычно дополнять код по клавише &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;Tab&amp;gt;&lt;/span&gt;&lt;/code&gt;. Для этого необходимо
+открыть настройки пользователя &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;File-&amp;gt;Preferences-&amp;gt;User&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Settings&lt;/span&gt;&lt;/code&gt; и прописать
+опцию &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;editor.tabCompletion&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;// Place your settings in this file to overwrite the default settings
+{
+    // Controls the font size.
+    &amp;quot;editor.fontSize&amp;quot;: 16,
+    // Insert snippets when their prefix matches. Works best when &amp;#39;quickSuggestions&amp;#39; aren&amp;#39;t enabled.
+&lt;span class=&quot;hll&quot;&gt;    &amp;quot;editor.tabCompletion&amp;quot;: true
+&lt;/span&gt;}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id8&quot;&gt;
+&lt;h4&gt;Язык&lt;/h4&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/customization/locales&quot;&gt;https://code.visualstudio.com/docs/customization/locales&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Открываем командную строку &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctrl&lt;/span&gt;&lt;/code&gt; + &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Shift&lt;/span&gt;&lt;/code&gt; + &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;P&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Вводим команду &lt;cite&gt;Configure Language&lt;/cite&gt;&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/locales_configure-language-command.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/locales_configure-language-command.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Меняем локаль на нужную, например &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ru&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/locales_locale-intellisense.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/locales_locale-intellisense.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{
+    // Defines VS Code&amp;#39;s display language.
+    &amp;quot;locale&amp;quot;: &amp;quot;ru&amp;quot;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id9&quot;&gt;
+&lt;h4&gt;Тема&lt;/h4&gt;
+&lt;p&gt;Цветовое оформление задается в настройках &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;File-&amp;gt;Preferences-&amp;gt;Color&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Theme&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;git&quot;&gt;
+&lt;h3&gt;Git&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/editor/versioncontrol&quot;&gt;https://code.visualstudio.com/docs/editor/versioncontrol&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Умеет подсвечивать изменения в файлах с предыдущего коммита, выполнять команды
+&lt;cite&gt;git&lt;/cite&gt; и отслеживать состояние, например какая текущая ветка.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/versioncontrol_merge.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/versioncontrol_merge.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id10&quot;&gt;
+&lt;h3&gt;Python скрипты&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://trypyramid.com&quot;&gt;http://trypyramid.com&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; требует для отладки открывать не просто файл, а
+директорию. Это необходимо, что бы в этом каталоге сохранить локальные
+настройки редактора. Такая директория будет считаться проектом для редактора.&lt;/p&gt;
+&lt;p&gt;Для примера, создадим директорию &lt;cite&gt;hello1&lt;/cite&gt; и откроем в редакторе &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;File-&amp;gt;Open&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;Folder...&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Создадим в этой директории файл &lt;cite&gt;myapp.py&lt;/cite&gt;:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_add_file.png&quot; src=&quot;../../../_images/vscode_add_file.png&quot; /&gt;
+&lt;p&gt;Добавим в файл пример с сайта &lt;a class=&quot;reference external&quot; href=&quot;http://trypyramid.com&quot;&gt;http://trypyramid.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;wsgiref.simple_server&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_server&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.config&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configurator&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.response&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hello_world&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%(name)s&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;!&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matchdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configurator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/hello/{name}&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hello_world&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;route_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;make_wsgi_app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;serve_forever&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Для запуска приложения, заходим в режим отладки по нажатию на кнопку:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_debugicon.png&quot; src=&quot;../../../_images/vscode_debugicon.png&quot; /&gt;
+&lt;p&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_debug_noconfig.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_debug_noconfig.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Пока у нас нет никаких настроек отладки/запуска проекта, но при первом
+запуске редактор предложит их выбрать из существующих шаблонов.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_chose_dbg_template.png&quot; src=&quot;../../../_images/vscode_chose_dbg_template.png&quot; /&gt;
+&lt;p&gt;Шаблон &lt;cite&gt;Python&lt;/cite&gt; создает настройки в файле &lt;cite&gt;launch.json&lt;/cite&gt; в локальной директории,
+которые выглядят примерно так:&lt;/p&gt;
+&lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.2.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;configurations&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;launch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;stopOnEntry&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;pythonPath&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${config.python.pythonPath}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;program&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${file}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;debugOptions&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnAbnormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnNormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;RedirectOutput&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Python Console App&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;launch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;stopOnEntry&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;pythonPath&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${config.python.pythonPath}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;program&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${file}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;externalConsole&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;debugOptions&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnAbnormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnNormalExit&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Django&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;launch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;stopOnEntry&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;pythonPath&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${config.python.pythonPath}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;program&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}/manage.py&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;args&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;runserver&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;--noreload&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;debugOptions&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnAbnormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnNormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;RedirectOutput&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;DjangoDebugging&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Watson&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;launch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;stopOnEntry&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;pythonPath&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${config.python.pythonPath}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;program&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}/console.py&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;args&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;dev&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;runserver&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;--noreload=True&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;debugOptions&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnAbnormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnNormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;RedirectOutput&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Attach&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;attach&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;localRoot&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;remoteRoot&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;port&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;secret&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;my_secret&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;host&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Это универсальный шаблон, который добавляет несколько вариантов запуска
+приложений. Нас будет интересовать первый вариант &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Python&lt;/span&gt;&lt;/code&gt;, просто
+запускающий python файл.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_python_dbg.png&quot; src=&quot;../../../_images/vscode_python_dbg.png&quot; /&gt;
+&lt;p&gt;Запущенное приложение останавливается на первой строчке, что позволяет нам
+продолжать выполнение программы по шагам.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_python_run.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_python_run.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;После выполнения второй строки, интерпретатор выдаст ошибку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ImportError:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;No&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;named&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;pyramid.config&lt;/span&gt;&lt;/code&gt;. Это происходит из-за того что в нашем &lt;cite&gt;Python&lt;/cite&gt;
+окружении не установлен модуль &lt;cite&gt;pyramid&lt;/cite&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_python_dbg_import_error.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_python_dbg_import_error.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Решить эту проблему можно двумя способами:&lt;/p&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Установить &lt;cite&gt;Pyramid&lt;/cite&gt; в глобальное окружение.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install --user pyramid
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Создать виртуальное окружение, установить в нем &lt;cite&gt;Pyramid&lt;/cite&gt; и прописать его в
+настройках &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Как создать &lt;span class=&quot;xref std std-ref&quot;&gt;virtualenv&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Создаем виртуальное окружение:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /path/to/hello1/
+$ pyvenv hello1_env
+$ &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ./hello1_env/bin/activate
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Устанавливаем &lt;cite&gt;Pyramid&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;hello1_env&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;$ pip install pyramid
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Прописываем путь до виртуального окружения в настройках проекта
+&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; (файл &lt;cite&gt;launch.json&lt;/cite&gt;):&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_python_venv.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_python_venv.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;PythonVenv&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;launch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;stopOnEntry&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;pythonPath&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}/hello1_env/bin/python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;program&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${file}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;debugOptions&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnAbnormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnNormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&amp;quot;RedirectOutput&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;После этого появится возможность запускать наш скрипт в локальном виртуальном
+окружении. Запущенная программа будет доступна по адресу
+&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/hello/foo&quot;&gt;http://localhost:8080/hello/foo&lt;/a&gt;. В консоле отладчика можно наблюдать ее вывод.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_pyramid_run.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_pyramid_run.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Поставим точку останова внутри функции &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello_world&lt;/span&gt;&lt;/code&gt;, в строке 6. Это
+позволит нам остановить программу при запуске этой функции. После запуска,
+программа будет нормально работать, пока мы не зайдем по адресу
+&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/hello/foo&quot;&gt;http://localhost:8080/hello/foo&lt;/a&gt;, в этом случае запустится функция
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello_world&lt;/span&gt;&lt;/code&gt; и выполнение программы прервется, до тех пор пока мы ее не
+продолжим вручную.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_pyramid_breakpoint.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_pyramid_breakpoint.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Примерно так выглядит процесс разработки и отладки программ на &lt;cite&gt;Python&lt;/cite&gt;.
+Осталось только инициализировать &lt;cite&gt;git&lt;/cite&gt; репозиторий и выложить проект на
+&lt;a class=&quot;reference external&quot; href=&quot;https://github.com&quot;&gt;https://github.com&lt;/a&gt;.&lt;/p&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Инициализируем репозиторий:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_git_init.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_git_init.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Добавим файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.gitignore&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Для этого нам потребуется скопировать содержимое
+&lt;a class=&quot;reference external&quot; href=&quot;https://www.gitignore.io/api/visualstudiocode,python&quot;&gt;https://www.gitignore.io/api/visualstudiocode,python&lt;/a&gt; в файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.gitignore&lt;/span&gt;&lt;/code&gt;
+и добавить туда директорию &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello1_env&lt;/span&gt;&lt;/code&gt;, что бы она не участвовала в
+процессе создания версий.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_gitignore.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_gitignore.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Created by https://www.gitignore.io/api/visualstudiocode,python
+
+&lt;span class=&quot;hll&quot;&gt;hello1_env
+&lt;/span&gt;
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+...
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Создаем первый коммит&lt;/p&gt;
+&lt;p&gt;Для создания коммита требуется ввести комментарий и нажать на кнопку в виде
+галочки.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_git_commit.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_git_commit.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Отправляем изменения на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com&quot;&gt;https://github.com&lt;/a&gt;&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;Добавляем плагин &lt;cite&gt;Git Easy&lt;/cite&gt; в проект&lt;/li&gt;
+&lt;li&gt;Создаем репозиторий на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img alt=&quot;../../../_images/github_create_repo.png&quot; src=&quot;../../../_images/github_create_repo.png&quot; /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Прописываем путь до гитхаба в нашем проекте, при помощи команды &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Git&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;Easy:Add&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Orign&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_giteasy_add_orign.png&quot; src=&quot;../../../_images/vscode_giteasy_add_orign.png&quot; /&gt;
+&lt;img alt=&quot;../../../_images/vscode_git_origin.png&quot; src=&quot;../../../_images/vscode_git_origin.png&quot; /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Отправляем изменения на &lt;cite&gt;GitHub&lt;/cite&gt;, при помощи команды
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Git&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Easy:Push&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Current&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Branch&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Origin&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_git_push.png&quot; src=&quot;../../../_images/vscode_git_push.png&quot; /&gt;
+&lt;p&gt;При успешном выполнении команды, мы должны увидеть сообщение типа:&lt;/p&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;To github.com:uralbash/hello1.git
+* [new branch]      master -&amp;gt; master
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;img alt=&quot;../../../_images/vscode_git_push_ok.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_git_push_ok.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Файлы будут доступны по адресу &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/hello1&quot;&gt;https://github.com/uralbash/hello1&lt;/a&gt;&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/github_hello1.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/github_hello1.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Для того что бы проверка синтаксиса заработала, необходимо создать файл
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.vscode/settings.json&lt;/span&gt;&lt;/code&gt; и переопределить в нем глобальные настройки для
+нашего проекта:&lt;/p&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{
+    &amp;quot;editor.fontSize&amp;quot;: 18,
+
+    //Python
+    &amp;quot;python.pythonPath&amp;quot;: &amp;quot;${workspaceRoot}/hello1_env/bin/python&amp;quot;,
+
+    // Whether to lint Python files using pylint.
+    &amp;quot;python.linting.pylintEnabled&amp;quot;: true,
+
+    // Whether to lint Python files using pep8
+    &amp;quot;python.linting.pep8Enabled&amp;quot;: true,
+
+    // Whether to lint Python files using flake8
+    &amp;quot;python.linting.flake8Enabled&amp;quot;: true
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;pyramid&quot;&gt;
+&lt;h3&gt;Pyramid&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/project.html&quot;&gt;http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/project.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Фреймворк &lt;cite&gt;Pyramid&lt;/cite&gt; имеет несколько стартовых шаблонов, которые нужны для того,
+что бы не начинать писать код с нуля. Рассмотрим как создать шаблон с БД
+&lt;cite&gt;sqlite&lt;/cite&gt; + &lt;cite&gt;SQLAlchemy&lt;/cite&gt; и настроить его в &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Для начала создадим директорию &lt;cite&gt;hello2&lt;/cite&gt; и виртуальное окружение &lt;cite&gt;hello2_env&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir hello2
+$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; hello2/
+$ pyvenv hello2_env
+$ &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; hello2_env/bin/activate
+$ pip install pyramid
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pyramid/en/latest/pscripts/index.html&quot;&gt;http://docs.pylonsproject.org/projects/pyramid/en/latest/pscripts/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;После установки &lt;cite&gt;Pyramid&lt;/cite&gt;, в окружении появляется команда &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pcreate&lt;/span&gt;&lt;/code&gt;. С ее
+помощью создадим проект по шаблону:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pcreate -t alchemy .
+$ ls
+CHANGES.txt  development.ini  hello2  hello2_env  MANIFEST.in  production.ini  pytest.ini  README.txt  setup.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Устанавливаем его как &lt;cite&gt;Python&lt;/cite&gt; пакет:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install -e .
+$ pserve development.ini
+Starting server in PID &lt;span class=&quot;m&quot;&gt;17311&lt;/span&gt;.
+Serving on http://localhost:6543
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После запуска, становится доступен адрес &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543&quot;&gt;http://localhost:6543&lt;/a&gt;&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/pyramid_home.png&quot; src=&quot;../../../_images/pyramid_home.png&quot; /&gt;
+&lt;p&gt;Но так-как БД еще не создана, отображается страница с подсказкой как ее
+инициализировать:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ initialize_hello2_db development.ini
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь мы увидим стартовую страницу шаблона &lt;cite&gt;alchemy&lt;/cite&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/pyramid_home2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/pyramid_home2.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Проект на пирамиде запускается при помощи утилиты &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pserve&lt;/span&gt;&lt;/code&gt;. Добавим
+конфигурацию для &lt;cite&gt;Pyramid&lt;/cite&gt; в файл настроек &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;launch.json&lt;/span&gt;&lt;/code&gt;, что бы можно было
+запускать/отлаживать приложение из редактора:&lt;/p&gt;
+&lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.2.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;configurations&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Pyramid&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;launch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;stopOnEntry&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;pythonPath&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}/hello2_env/bin/python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;program&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}/hello2_env/bin/pserve&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;args&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}/development.ini&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;debugOptions&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;            &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnNormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;            &lt;span class=&quot;s2&quot;&gt;&amp;quot;RedirectOutput&amp;quot;&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Попробуем запустить:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_pserve_run.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_pserve_run.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Поставим точку останова в функции &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;my_view&lt;/span&gt;&lt;/code&gt; в файле
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello2/views/default.py&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vscode_pyramid_dbg.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_pyramid_dbg.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;После обновления страницы &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543&quot;&gt;http://localhost:6543&lt;/a&gt; в браузере, программа остановит
+свое выполнение в этой точке, а браузер будет ждать пока мы не закончим отладку
+и не продолжим выполнение вручную.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;javascript&quot;&gt;
+&lt;h3&gt;JavaScript&lt;/h3&gt;
+&lt;img alt=&quot;../../../_images/vscode_js.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_js.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id11&quot;&gt;
+&lt;h2&gt;Итог&lt;/h2&gt;
+&lt;p&gt;Я, конечно, использую &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt;, но советую &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;, особенно тем
+кто не знает что выбрать. Очень, оказался, самодостаточный редактор, &lt;cite&gt;git&lt;/cite&gt;,
+дбаггер, плагины, vi-мод. Ай да Микрософт!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

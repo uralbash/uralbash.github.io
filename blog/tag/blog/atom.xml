@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом Blog</title>
+  <id>http://uralbash.ru/blog/tag/blog/atom.xml</id>
+  <updated>2012-09-11T17:14:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/blog/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/blog/atom.xml">
+    <title type="text">Простой блог на фреймворке Pyramid</title>
+    <id>http://uralbash.ru/articles/2012/pyramid_blog/</id>
+    <updated>2012-09-11T17:14:00Z</updated>
+    <published>2012-09-11T17:14:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/pyramid_blog/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid&quot;&gt;
+
+&lt;p&gt;Пример простого блога на Pyramid &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/pyramid_easy_blog&quot;&gt;https://github.com/uralbash/pyramid_easy_blog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Фьючерсы:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;wysiwyg редактор&lt;/li&gt;
+&lt;li&gt;загрузка изображений&lt;/li&gt;
+&lt;li&gt;мобайл фон реди&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img alt=&quot;../../../_images/blog1.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/blog1.png&quot; style=&quot;width: 300px;&quot; /&gt;
+&lt;p&gt;Туду:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;коменты&lt;/li&gt;
+&lt;li&gt;теги&lt;/li&gt;
+&lt;li&gt;удаление изображений (файл менеджер)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;пул реквест реди&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/blog2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/blog2.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

@@ -1,0 +1,1299 @@
+
+
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Блог в reStructuredText разметке &mdash; Ural penguins</title>
+    
+
+    
+        <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    
+
+    
+        
+    
+            <link rel="index" title="Алфавитный указатель" href="../../../genindex/"/>
+            <link rel="search" title="Поиск" href="../../../search/"/>
+
+        <link rel="top" title="Ural penguins" href="../../../"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300&subset=latin,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <link href="../../../_static/css/badge_only.css" type="text/css" rel="stylesheet" />
+    <link href="../../../_static/css/__theme.css" type="text/css" rel="stylesheet" />
+
+    
+            <script type="text/javascript" src="../../../_static/jquery.js"></script>
+            <script type="text/javascript" src="../../../_static/underscore.js"></script>
+            <script type="text/javascript" src="../../../_static/doctools.js"></script>
+            <script type="text/javascript" src="../../../_static/metrika.js"></script>
+            <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+  
+  <style type="text/css">
+    html, body {
+      background: #545d5c !important;
+    }
+    .page__left .menu {
+        width: 0px;
+    }
+    .page__right {
+      background-color: #e7e7e7;
+      margin: 0 0 0 30px;
+    }
+    .rst-content {
+      padding: 13px;
+    }
+    .footer {
+      padding: 13px;
+    }
+    /* unvisited link */
+    ul.postlist-style-none a:link, .head a:link {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* visited link */
+    ul.postlist-style-none a:visited, .head a:visited {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* mouse over link */
+    ul.postlist-style-none a:hover, .head a:hover {
+        color: #222;
+        text-decoration: none;
+    }
+
+    ul.postlist-style-none a:active, .head a:active {
+        color: #222;
+        text-decoration: none;
+    }
+    ul.postlist-style-none li {
+        list-style-type: none;
+    }
+    ul.postlist-style-none li p.first {
+      color: red !important;
+      font: 1.8em "Open Sans",Arial,sans-serif !important;
+    }
+    .first a {
+      font-weight: bold;
+    }
+    .first em {
+      font-style: normal !important;
+    }
+    .wrapper__inner {
+      padding: 0px 30px 0 0 !important;
+    }
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
+
+  
+  
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.post-list-style-disc {list-style-type: disc;}
+    ul.post-list-style-none {list-style-type: none;}
+    ul.post-list-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper__inner">
+            <div class="page
+                ">
+                <div class="page__left">
+                  
+                    <nav class="menu" id="menu" data-state="expand">
+                        <div class="menu-inner">
+                            
+                                <div class="menu-project">
+                                    <a href="../../../" class="menu-project__link">Ural penguins</a>
+                                </div>
+                            
+                            <div class="tree">
+                                
+                                
+                                    <ul>
+<li><a class="reference internal" href="#">Блог в reStructuredText разметке</a><ul>
+<li><a class="reference internal" href="#id1">Профит</a></li>
+<li><a class="reference internal" href="#id2">Установка</a></li>
+<li><a class="reference internal" href="#id3">Инициализация нового проекта</a></li>
+<li><a class="reference internal" href="#id4">Сборка и запуск</a></li>
+<li><a class="reference internal" href="#id5">Статьи</a></li>
+<li><a class="reference internal" href="#id6">Тема</a></li>
+<li><a class="reference internal" href="#id7">Комменты</a></li>
+<li><a class="reference internal" href="#id8">Деплой</a></li>
+<li><a class="reference internal" href="#id9">Итог</a></li>
+</ul>
+</li>
+</ul>
+
+                                
+                            </div>
+                            <div class="menu-search search">
+                                <div class="search-title">Quick search</div>
+                                <form id="search-form" class="search-form" action="../../../search/" method="GET">
+                                    <input type="text" name="q" placeholder="Search docs" />
+                                    <input type="hidden" name="check_keywords" value="yes" />
+                                    <input type="hidden" name="area" value="default" />
+                                </form>
+                                <div class="search-desc">Enter search terms or a module, class or function name.</div>
+                            </div>
+                            <nav class="wy-nav-side">&nbsp;</nav>
+                        </div>
+                        <div class="menu-switch">
+                            <div class="menu-switch__arrow">«</div>
+                        </div>
+                    </nav>
+                  
+                </div>
+
+                <section class="page__right">
+                    
+  <div class="head" style="background-image: url('/_static/bg.jpg');
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  height: 200px">
+    <a href="/">
+      <div style="width:100%; height: 75%">
+        <h1 style="padding-top:15px;padding-left:15px;font-size:60px">Ural penguins</h1>
+      </div>
+    </a>
+    <table style="
+        border-collapse: unset !important;
+        border-spacing: 1 !important;">
+        <tr>
+            <td style="padding-right: 2px">
+                <a href="/pages/pyramid/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        Pyramid
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="/pages/nixos/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        NixOS
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </table>
+  </div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <div class="badge" style="width:100%;height:80px">
+    <!-- uralbash.ru -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2884502571619359"
+         data-ad-slot="9876011339"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+
+                    <div class="badge">
+                        
+                        
+                    </div>
+
+                    <div class="rst-content">
+                        
+  <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+  <table>
+    <tr>
+      <td>
+        <div class="yashare-auto-init" data-yashareL10n="ru"
+          data-yashareType="medium"
+          data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"
+          data-yashareTheme="counter"></div>
+      </td>
+      <td>
+        
+  
+  
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+        Aug 12, 2015
+      </div>
+    
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+      
+        
+          <i class="fa-fw fa fa-tags"></i>
+        
+        
+      
+        
+        <a href="../../../blog/tag/python/">Python</a>,
+        
+      
+        
+        <a href="../../../blog/tag/restructuredtext/">reStructuredText</a>,
+        
+      
+        
+        <a href="../../../blog/tag/sphinx/">Sphinx</a>
+        
+      
+      </div>
+    
+
+      </td>
+    </tr>
+  </table>
+  <div class="section" id="restructuredtext">
+<span id="ablog"></span><h1>Блог в reStructuredText разметке<a class="headerlink" href="#restructuredtext" title="Ссылка на этот заголовок">¶</a></h1>
+<a class="reference internal image-reference" href="../../../_images/uralbash.ru.png"><img alt="../../../_images/uralbash.ru.png" class="align-left" src="../../../_images/uralbash.ru.png" style="width: 500px;" /></a>
+<p>Перевел тут блог с <a class="reference external" href="https://www.blogger.com/">https://www.blogger.com/</a> на <a class="reference external" href="https://github.com/abakan/ablog">abakan/ablog</a>. Блоггер
+это конечно хорошо, но у него крайне ограниченный WYSIWYG, тем более только из
+браузера. <a class="reference external" href="https://github.com/abakan/ablog">Ablog</a> по сути это <a class="reference external" href="https://pypi.python.org/pypi/sphinx">sphinx</a> движок заточенный на блог со
+всеми плюшками, rST разметкой, RSS и disqus комментами.</p>
+<br clear="both"/>
+<test/><div class="section" id="id1">
+<h2>Профит<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://pypi.python.org/pypi/Sphinx">Sphinx</a> позволяет автоматизировать многие вещи</li>
+<li><code class="docutils literal"><span class="pre">reStructuredText</span></code> позволяет точно и красиво оформлять статьи, это как
+писать &#8220;курсач&#8221; в LaTeX заместо MS Office</li>
+<li>писать в <a class="reference external" href="http://www.vim.org">Vim</a> :)</li>
+<li>хоститься где угодно и хранить информацию у себя локально</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>Установка<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Стабильная версия с PyPi</span><a class="headerlink" href="#id10" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install ablog
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">Свежая версия из мастера</span><a class="headerlink" href="#id11" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pip install git+https://github.com/abakan/ablog
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Инициализация нового проекта<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">См.также</p>
+<p class="last"><a class="reference external" href="http://ablog.readthedocs.org/manual/ablog-quick-start/">http://ablog.readthedocs.org/manual/ablog-quick-start/</a></p>
+</div>
+<p>Можно добавить настройки в <code class="docutils literal"><span class="pre">conf.py</span></code> уже существующего проекта:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># 1. Add &#39;ablog&#39; to list of extensions</span>
+<span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;...&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ablog&#39;</span>
+<span class="p">]</span>
+
+<span class="c1"># 2. Add ablog templates path</span>
+<span class="kn">import</span> <span class="nn">ablog</span>
+
+<span class="c1"># 2a. if `templates_path` is not defined</span>
+<span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">ablog</span><span class="o">.</span><span class="n">get_html_templates_path</span><span class="p">()]</span>
+
+<span class="c1"># 2b. if `templates_path` is defined</span>
+<span class="n">templates_path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ablog</span><span class="o">.</span><span class="n">get_html_templates_path</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Или создать новый проект:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ablog start
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>Сборка и запуск<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Что бы собрать блог нужно выполнить:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ablog build
+</pre></div>
+</div>
+<p>HTML страницы создаются в папке <code class="docutils literal"><span class="pre">_website</span></code></p>
+<p>Что запустить блог достаточно выполнить:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ablog serve
+</pre></div>
+</div>
+<p>теперь он доступен по адресу <a class="reference external" href="http://127:0.0.1:8000/">http://127:0.0.1:8000/</a></p>
+</div>
+<div class="section" id="id5">
+<h2>Статьи<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Главная страница блога это <code class="docutils literal"><span class="pre">index.rst</span></code>. У меня она выглядит так:</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">index.rst</span><a class="headerlink" href="#id12" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-rst"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">postlist</span><span class="p">::</span> 100500
+   <span class="nc">:excerpts:</span>
+   <span class="nc">:date:</span> <span class="nf">%d-%m-%Y</span>
+   <span class="nc">:format:</span> <span class="nf">{date} | {title}</span>
+</pre></div>
+</div>
+</div>
+<p>Статьи могут находится в любом месте проекта, <a class="reference external" href="https://github.com/abakan/ablog">Ablog</a> их находит
+автоматически. Я отвожу для этого отдельную папку:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>articles/
+├── <span class="m">2011</span>
+│   ├── breadcrumbs.rst
+│   ├── capslock.rst
+│   ├── content_assigment.rst
+│   ├── couchdb.rst
+│   ├── demo.rst
+│   ├── fa_keyerror.rst
+│   ├── fa_rest_controller.rst
+│   ├── formalchemy.rst
+│   ├── java_iceweasel.rst
+│   ├── js_rrd.rst
+│   ├── peyote.rst
+│   ├── psycopg2.rst
+│   ├── pylons_backslash.rst
+│   ├── pylons_jscss_minificator.rst
+│   ├── repoze.what.rst
+│   ├── rrd_cut2.rst
+│   ├── rrd_cut.rst
+│   ├── rrdtool_ds18b20.rst
+│   ├── snmp.rst
+│   ├── sqlalchemy_mixin.rst
+│   ├── sqlalchemy_trigger.rst
+│   ├── sqlalchemy_uml.rst
+│   ├── sqlalchemy_why_postgres.rst
+│   ├── thinkpad_trackpoint.rst
+│   ├── wtforms.rst
+│   ├── wtform_validation.rst
+│   ├── xfce_button.rst
+│   └── xfce_display.rst
+├── <span class="m">2012</span>
+│   ├── 3com.rst
+│   ├── ajax_triple_select.rst
+│   ├── arch_book.rst
+│   ├── boyan.rst
+│   ├── cms_pyramid2.rst
+│   ├── cms_pyramid.rst
+│   ├── debian_bc.rst
+│   ├── fortune.rst
+│   ├── http_header_pyramid.rst
+│   ├── jinja_pylons_i18n.rst
+│   ├── jinja_pyramid_i18n.rst
+│   ├── jinja_silent_none.rst
+│   ├── lisp_book.rst
+│   ├── lisp.rst
+│   ├── matplotlib_numpy_and_virtualenv.rst
+│   ├── osm_example.rst
+│   ├── osm_geotagging.rst
+│   ├── paramiko.rst
+│   ├── penguin_troll.rst
+│   ├── penguin_vs_leo.rst
+│   ├── pg_book.rst
+│   ├── proxmox.rst
+│   ├── proxy_apt.rst
+│   ├── pycrypto_virtualenv.rst
+│   ├── pylons_console.rst
+│   ├── pylons_csv.rst
+│   ├── pylons_yapsy.rst
+│   ├── pypi.rst
+│   ├── pyramid_as_django.rst
+│   ├── pyramid_blog.rst
+│   ├── pyramid_formalchemy.rst
+│   ├── python_labirint.rst
+│   ├── python_snmp.rst
+│   ├── pyyandexmap.rst
+│   ├── qtile.rst
+│   ├── redactor-js.rst
+│   ├── rrd_faketime.rst
+│   ├── rrdtool.rst
+│   ├── sa_big_table.rst
+│   ├── shared_net.rst
+│   ├── sphinx_github.rst
+│   ├── sran.rst
+│   ├── vi_book.rst
+│   └── x220t_buttons.rst
+├── <span class="m">2013</span>
+│   ├── car_differ.rst
+│   ├── dbsession_includeme.rst
+│   ├── flag_jinja2.rst
+│   ├── hdaps_music.rst
+│   ├── hstore_plpython.rst
+│   ├── jinja2_lorem_ipsum.rst
+│   ├── linux_attack.rst
+│   ├── matrix.rst
+│   ├── penguin.rst
+│   ├── python_vim.rst
+│   ├── reason_names_of.rst
+│   ├── sacrud_alfa_0_1_0.rst
+│   ├── sacrud_demo.rst
+│   ├── sacrud_howto.rst
+│   ├── sacrud_release_0_0_3.rst
+│   ├── sacrud_release_0_1_0.rst
+│   ├── sacrud.rst
+│   ├── vi_book.rst
+│   ├── vim_book.rst
+│   ├── wat.rst
+│   └── where_to_start.rst
+├── <span class="m">2014</span>
+│   ├── alembic_pyramid.rst
+│   ├── chameleon_deform.rst
+│   ├── ci.rst
+│   ├── cornice.rst
+│   ├── django-hyango.rst
+│   ├── go.rst
+│   ├── ia32-libs-multiarch:i386.rst
+│   ├── king_penguin.rst
+│   ├── man_month_book.rst
+│   ├── panel_pyramid_dt.rst
+│   ├── sacrud_release_0.1.1.rst
+│   ├── sacrud_release_0.1.2.rst
+│   ├── scrum.rst
+│   ├── sphinx.rst
+│   ├── sqlalchemy_mptt_0_0_5.rst
+│   ├── sqlalchemy_mptt.rst
+│   └── sqlite_to_pg.rst
+└── <span class="m">2015</span>
+    └── ablog.rst
+
+<span class="m">5</span> directories, <span class="m">111</span> files
+</pre></div>
+</div>
+<p>Что бы файл <code class="docutils literal"><span class="pre">*.rst</span></code> стал статьей в нем должна находится директива <code class="docutils literal"><span class="pre">post</span></code>.
+Например:</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">foo.rst</span><a class="headerlink" href="#id13" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-rst"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">post</span><span class="p">::</span> 15 Apr, 2013
+   <span class="nc">:tags:</span> <span class="nf">tips, ablog, directive</span>
+   <span class="nc">:category:</span> <span class="nf">Example, How To</span>
+   <span class="nc">:author:</span> <span class="nf">Ahmet, Durden</span>
+   <span class="nc">:location:</span> <span class="nf">Pittsburgh, SF</span>
+   <span class="nc">:redirect:</span> <span class="nf">blog/old-page-name-for-the-post</span>
+   <span class="nc">:excerpt:</span> <span class="nf">2</span>
+   <span class="nc">:image:</span> <span class="nf">1</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">См.также</p>
+<p class="last"><a class="reference external" href="http://ablog.readthedocs.org/manual/posting-and-listing/#directive-post">http://ablog.readthedocs.org/manual/posting-and-listing/#directive-post</a></p>
+</div>
+<p>Пример кода этой статьи:</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">articles/2015/ablog.rst</span><a class="headerlink" href="#id14" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-rst"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">post</span><span class="p">::</span> 12 Aug, 2015 12:06
+   <span class="nc">:tags:</span> <span class="nf">Python, reStructuredText, Sphinx</span>
+   <span class="nc">:category:</span> <span class="nf">Python</span>
+   <span class="nc">:author:</span> <span class="nf">Uralbash</span>
+   <span class="nc">:language:</span> <span class="nf">ru</span>
+
+<span class="p">..</span> <span class="nt">_ablog:</span>
+
+<span class="gh">Блог в reStructuredText разметке</span>
+<span class="gh">================================</span>
+
+<span class="p">..</span> <span class="ow">image</span><span class="p">::</span> /_static/2015/uralbash.ru.png
+   <span class="nc">:align:</span> <span class="nf">left</span>
+   <span class="nc">:width:</span> <span class="nf">500px</span>
+
+Перевел тут блог с https://www.blogger.com/ на <span class="na">:github:</span><span class="nv">`abakan/ablog`</span>. Блоггер
+это конечно хорошо, но у него крайне ограниченный WYSIWYG, тем более только из
+браузера. <span class="na">:l:</span><span class="nv">`Ablog`</span> по сути это <span class="na">:pypi:</span><span class="nv">`sphinx`</span> движок заточенный на блог со
+всеми плюшками, rST разметкой, RSS и disqus комментами.
+
+<span class="p">..</span> <span class="ow">raw</span><span class="p">::</span> html
+
+   &lt;br clear=&quot;both&quot;/&gt;
+   &lt;test/&gt;
+
+<span class="gh">Профит</span>
+<span class="gh">------</span>
+
+<span class="m">*</span> <span class="na">:pypi:</span><span class="nv">`Sphinx`</span> позволяет автоматизировать многие вещи
+<span class="m">*</span> <span class="s">``reStructuredText``</span> позволяет точно и красиво оформлять статьи, это как
+  писать &quot;курсач&quot; в LaTeX заместо MS Office
+<span class="m">*</span> писать в <span class="na">:l:</span><span class="nv">`Vim`</span> :)
+<span class="m">*</span> хоститься где угодно и хранить информацию у себя локально
+
+<span class="gh">Установка</span>
+<span class="gh">---------</span>
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> bash
+   <span class="nc">:caption:</span> <span class="nf">Стабильная версия с PyPi</span>
+
+   $ pip install ablog
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> bash
+   <span class="nc">:caption:</span> <span class="nf">Свежая версия из мастера</span>
+
+   $ pip install git+https://github.com/abakan/ablog
+
+<span class="gh">Инициализация нового проекта</span>
+<span class="gh">----------------------------</span>
+
+<span class="p">..</span> <span class="ow">seealso</span><span class="p">::</span>
+
+   http://ablog.readthedocs.org/manual/ablog-quick-start/
+
+Можно добавить настройки в <span class="s">``conf.py``</span> уже существующего проекта:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">python</span>
+
+   <span class="c1"># 1. Add &#39;ablog&#39; to list of extensions</span>
+   <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
+       <span class="s1">&#39;...&#39;</span><span class="p">,</span>
+       <span class="s1">&#39;ablog&#39;</span>
+   <span class="p">]</span>
+
+   <span class="c1"># 2. Add ablog templates path</span>
+   <span class="kn">import</span> <span class="nn">ablog</span>
+
+   <span class="c1"># 2a. if `templates_path` is not defined</span>
+   <span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">ablog</span><span class="o">.</span><span class="n">get_html_templates_path</span><span class="p">()]</span>
+
+   <span class="c1"># 2b. if `templates_path` is defined</span>
+   <span class="n">templates_path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ablog</span><span class="o">.</span><span class="n">get_html_templates_path</span><span class="p">())</span>
+
+Или создать новый проект:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+   $ ablog start
+
+<span class="gh">Сборка и запуск</span>
+<span class="gh">---------------</span>
+
+Что бы собрать блог нужно выполнить:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+   $ ablog build
+
+HTML страницы создаются в папке <span class="s">``_website``</span>
+
+Что запустить блог достаточно выполнить:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+   $ ablog serve
+
+теперь он доступен по адресу http://127:0.0.1:8000/
+
+<span class="gh">Статьи</span>
+<span class="gh">------</span>
+
+Главная страница блога это <span class="s">``index.rst``</span>. У меня она выглядит так:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> rst
+   <span class="nc">:caption:</span> <span class="nf">index.rst</span>
+
+<span class="p">   ..</span> <span class="ow">postlist</span><span class="p">::</span> 100500
+      <span class="nc">:excerpts:</span>
+      <span class="nc">:date:</span> <span class="nf">%d-%m-%Y</span>
+      <span class="nc">:format:</span> <span class="nf">{date} | {title}</span>
+
+Статьи могут находится в любом месте проекта, <span class="na">:l:</span><span class="nv">`Ablog`</span> их находит
+автоматически. Я отвожу для этого отдельную папку:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> <span class="k">bash</span>
+
+   articles/
+   ├── <span class="m">2011</span>
+   │   ├── breadcrumbs.rst
+   │   ├── capslock.rst
+   │   ├── content_assigment.rst
+   │   ├── couchdb.rst
+   │   ├── demo.rst
+   │   ├── fa_keyerror.rst
+   │   ├── fa_rest_controller.rst
+   │   ├── formalchemy.rst
+   │   ├── java_iceweasel.rst
+   │   ├── js_rrd.rst
+   │   ├── peyote.rst
+   │   ├── psycopg2.rst
+   │   ├── pylons_backslash.rst
+   │   ├── pylons_jscss_minificator.rst
+   │   ├── repoze.what.rst
+   │   ├── rrd_cut2.rst
+   │   ├── rrd_cut.rst
+   │   ├── rrdtool_ds18b20.rst
+   │   ├── snmp.rst
+   │   ├── sqlalchemy_mixin.rst
+   │   ├── sqlalchemy_trigger.rst
+   │   ├── sqlalchemy_uml.rst
+   │   ├── sqlalchemy_why_postgres.rst
+   │   ├── thinkpad_trackpoint.rst
+   │   ├── wtforms.rst
+   │   ├── wtform_validation.rst
+   │   ├── xfce_button.rst
+   │   └── xfce_display.rst
+   ├── <span class="m">2012</span>
+   │   ├── 3com.rst
+   │   ├── ajax_triple_select.rst
+   │   ├── arch_book.rst
+   │   ├── boyan.rst
+   │   ├── cms_pyramid2.rst
+   │   ├── cms_pyramid.rst
+   │   ├── debian_bc.rst
+   │   ├── fortune.rst
+   │   ├── http_header_pyramid.rst
+   │   ├── jinja_pylons_i18n.rst
+   │   ├── jinja_pyramid_i18n.rst
+   │   ├── jinja_silent_none.rst
+   │   ├── lisp_book.rst
+   │   ├── lisp.rst
+   │   ├── matplotlib_numpy_and_virtualenv.rst
+   │   ├── osm_example.rst
+   │   ├── osm_geotagging.rst
+   │   ├── paramiko.rst
+   │   ├── penguin_troll.rst
+   │   ├── penguin_vs_leo.rst
+   │   ├── pg_book.rst
+   │   ├── proxmox.rst
+   │   ├── proxy_apt.rst
+   │   ├── pycrypto_virtualenv.rst
+   │   ├── pylons_console.rst
+   │   ├── pylons_csv.rst
+   │   ├── pylons_yapsy.rst
+   │   ├── pypi.rst
+   │   ├── pyramid_as_django.rst
+   │   ├── pyramid_blog.rst
+   │   ├── pyramid_formalchemy.rst
+   │   ├── python_labirint.rst
+   │   ├── python_snmp.rst
+   │   ├── pyyandexmap.rst
+   │   ├── qtile.rst
+   │   ├── redactor-js.rst
+   │   ├── rrd_faketime.rst
+   │   ├── rrdtool.rst
+   │   ├── sa_big_table.rst
+   │   ├── shared_net.rst
+   │   ├── sphinx_github.rst
+   │   ├── sran.rst
+   │   ├── vi_book.rst
+   │   └── x220t_buttons.rst
+   ├── <span class="m">2013</span>
+   │   ├── car_differ.rst
+   │   ├── dbsession_includeme.rst
+   │   ├── flag_jinja2.rst
+   │   ├── hdaps_music.rst
+   │   ├── hstore_plpython.rst
+   │   ├── jinja2_lorem_ipsum.rst
+   │   ├── linux_attack.rst
+   │   ├── matrix.rst
+   │   ├── penguin.rst
+   │   ├── python_vim.rst
+   │   ├── reason_names_of.rst
+   │   ├── sacrud_alfa_0_1_0.rst
+   │   ├── sacrud_demo.rst
+   │   ├── sacrud_howto.rst
+   │   ├── sacrud_release_0_0_3.rst
+   │   ├── sacrud_release_0_1_0.rst
+   │   ├── sacrud.rst
+   │   ├── vi_book.rst
+   │   ├── vim_book.rst
+   │   ├── wat.rst
+   │   └── where_to_start.rst
+   ├── <span class="m">2014</span>
+   │   ├── alembic_pyramid.rst
+   │   ├── chameleon_deform.rst
+   │   ├── ci.rst
+   │   ├── cornice.rst
+   │   ├── django-hyango.rst
+   │   ├── go.rst
+   │   ├── ia32-libs-multiarch:i386.rst
+   │   ├── king_penguin.rst
+   │   ├── man_month_book.rst
+   │   ├── panel_pyramid_dt.rst
+   │   ├── sacrud_release_0.1.1.rst
+   │   ├── sacrud_release_0.1.2.rst
+   │   ├── scrum.rst
+   │   ├── sphinx.rst
+   │   ├── sqlalchemy_mptt_0_0_5.rst
+   │   ├── sqlalchemy_mptt.rst
+   │   └── sqlite_to_pg.rst
+   └── <span class="m">2015</span>
+       └── ablog.rst
+
+   <span class="m">5</span> directories, <span class="m">111</span> files
+
+Что бы файл <span class="s">``*.rst``</span> стал статьей в нем должна находится директива <span class="s">``post``</span>.
+Например:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> rst
+   <span class="nc">:caption:</span> <span class="nf">foo.rst</span>
+
+<span class="p">   ..</span> <span class="ow">post</span><span class="p">::</span> 15 Apr, 2013
+      <span class="nc">:tags:</span> <span class="nf">tips, ablog, directive</span>
+      <span class="nc">:category:</span> <span class="nf">Example, How To</span>
+      <span class="nc">:author:</span> <span class="nf">Ahmet, Durden</span>
+      <span class="nc">:location:</span> <span class="nf">Pittsburgh, SF</span>
+      <span class="nc">:redirect:</span> <span class="nf">blog/old-page-name-for-the-post</span>
+      <span class="nc">:excerpt:</span> <span class="nf">2</span>
+      <span class="nc">:image:</span> <span class="nf">1</span>
+
+<span class="p">..</span> <span class="ow">seealso</span><span class="p">::</span>
+
+   http://ablog.readthedocs.org/manual/posting-and-listing/#directive-post
+
+Пример кода этой статьи:
+
+<span class="p">..</span> <span class="ow">literalinclude</span><span class="p">::</span> /articles/2015/ablog.rst
+   <span class="nc">:language:</span> <span class="nf">rst</span>
+   <span class="nc">:caption:</span> <span class="nf">articles/2015/ablog.rst</span>
+
+<span class="gh">Тема</span>
+<span class="gh">----</span>
+
+Тема по умолчанию <span class="s">`Alabaster </span><span class="si">&lt;https://github.com/bitprophet/alabaster&gt;</span><span class="s">`_</span>, но
+можно поменять стандартными способами в <span class="s">``conf.py``</span>:
+
+<span class="p">..</span> <span class="ow">no-code-block</span><span class="p">::</span> python
+   <span class="nc">:caption:</span> <span class="nf">conf.py установка темы</span>
+
+   import itcase_sphinx_theme
+
+<span class="cp">   ...</span>
+
+<span class="cp">   # -- Options for HTML output ----------------------------------------------</span>
+
+<span class="cp">   # The theme to use for HTML and HTML Help pages.  See the documentation for</span>
+<span class="cp">   # a list of builtin themes.</span>
+<span class="cp">   html_theme = &#39;itcase&#39;</span>
+
+<span class="cp">   # Theme options are theme-specific and customize the look and feel of a theme</span>
+<span class="cp">   # further.  For a list of options available for each theme, see the</span>
+<span class="cp">   # documentation.</span>
+<span class="cp">   html_theme_options = {</span>
+<span class="cp">       &#39;github_button&#39;: False,</span>
+<span class="cp">   }</span>
+
+<span class="cp">   # Add any paths that contain custom themes here, relative to this directory.</span>
+<span class="cp">   html_theme_path = [itcase_sphinx_theme.get_html_themes_path()]</span>
+
+<span class="cp">   # The name for this set of Sphinx documents.  If None, it defaults to</span>
+<span class="cp">   # &quot;&lt;project&gt; v&lt;release&gt; documentation&quot;.</span>
+<span class="cp">   html_title = &quot;Ural penguins&quot;</span>
+
+Я использую <span class="na">:github:</span><span class="nv">`ITCase/itcase_sphinx_theme`</span> с переопределенными шаблонами.
+Для этого нужно указать где искать шаблоны и в каком порядке:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> python
+   <span class="nc">:caption:</span> <span class="nf">conf.py указание пути по шаблонов темы</span>
+
+   # Add any paths that contain templates here, relative to this directory.
+   templates_path = [&#39;_templates&#39;, ablog.get_html_templates_path()]
+
+Добавляем в папку <span class="s">``_templates``</span> нашего проекта шаблон <span class="s">``layout.html``</span>:
+
+<span class="p">..</span> <span class="ow">literalinclude</span><span class="p">::</span> /_templates/layout.html
+   <span class="nc">:language:</span> <span class="nf">html+jinja</span>
+   <span class="nc">:caption:</span> <span class="nf">_templates/layout.html</span>
+
+<span class="gh">Комменты</span>
+<span class="gh">--------</span>
+
+<span class="p">..</span> <span class="ow">seealso</span><span class="p">::</span>
+
+   http://ablog.readthedocs.org/manual/ablog-configuration-options/#disqus-integration
+
+DISQUS ставится просто:
+
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> python
+   <span class="nc">:caption:</span> <span class="nf">настройки DISQUS</span>
+
+   # -- disqus integration -------------------------------------------------------
+
+   # you can enable disqus_ by setting <span class="s">``disqus_shortname``</span> variable.
+   # disqus_ short name for the blog.
+   disqus_shortname = &quot;uralbash&quot;
+
+Правда у меня завелось только после переопределения шаблона <span class="s">``page.html``</span>:
+
+<span class="p">..</span> <span class="ow">literalinclude</span><span class="p">::</span> /_templates/page.html
+   <span class="nc">:language:</span> <span class="nf">html+jinja</span>
+   <span class="nc">:caption:</span> <span class="nf">_templates/page.html</span>
+   <span class="nc">:emphasize-lines:</span> <span class="nf">37</span>
+
+<span class="gh">Деплой</span>
+<span class="gh">------</span>
+
+<span class="p">..</span> <span class="ow">note</span><span class="p">::</span>
+
+   http://ablog.readthedocs.org/manual/deploy-to-github-pages/
+
+<span class="m">#.</span> Создать репу с именем <span class="s">``&lt;username&gt;.github.io``</span>
+<span class="m">#.</span> Добавить имя в настройки, например:
+
+<span class="p">   ..</span> <span class="ow">code-block</span><span class="p">::</span> python
+      <span class="nc">:caption:</span> <span class="nf">conf.py настройки github pages</span>
+
+      github_pages = &quot;uralbash&quot;
+
+<span class="m">#.</span> Сбилдить проект:
+
+<span class="p">   ..</span> <span class="ow">code-block</span><span class="p">::</span> bash
+
+      $ ablog build
+
+<span class="m">#.</span> Выложить на гитхаб:
+
+<span class="p">   ..</span> <span class="ow">code-block</span><span class="p">::</span> bash
+
+      $ ablog deploy
+
+<span class="gh">Итог</span>
+<span class="gh">----</span>
+
+На мой взгляд лучшее решения для <span class="s">``reStructuredText``</span> блога, местами сырой, но
+активно развивается.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>Тема<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Тема по умолчанию <a class="reference external" href="https://github.com/bitprophet/alabaster">Alabaster</a>, но
+можно поменять стандартными способами в <code class="docutils literal"><span class="pre">conf.py</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">conf.py установка темы</span><a class="headerlink" href="#id15" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">itcase_sphinx_theme</span>
+
+<span class="o">...</span>
+
+<span class="c1"># -- Options for HTML output ----------------------------------------------</span>
+
+<span class="c1"># The theme to use for HTML and HTML Help pages.  See the documentation for</span>
+<span class="c1"># a list of builtin themes.</span>
+<span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;itcase&#39;</span>
+
+<span class="c1"># Theme options are theme-specific and customize the look and feel of a theme</span>
+<span class="c1"># further.  For a list of options available for each theme, see the</span>
+<span class="c1"># documentation.</span>
+<span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;github_button&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Add any paths that contain custom themes here, relative to this directory.</span>
+<span class="n">html_theme_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">itcase_sphinx_theme</span><span class="o">.</span><span class="n">get_html_themes_path</span><span class="p">()]</span>
+
+<span class="c1"># The name for this set of Sphinx documents.  If None, it defaults to</span>
+<span class="c1"># &quot;&lt;project&gt; v&lt;release&gt; documentation&quot;.</span>
+<span class="n">html_title</span> <span class="o">=</span> <span class="s2">&quot;Ural penguins&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Я использую <a class="reference external" href="https://github.com/ITCase/itcase_sphinx_theme">ITCase/itcase_sphinx_theme</a> с переопределенными шаблонами.
+Для этого нужно указать где искать шаблоны и в каком порядке:</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">conf.py указание пути по шаблонов темы</span><a class="headerlink" href="#id16" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Add any paths that contain templates here, relative to this directory.</span>
+<span class="n">templates_path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;_templates&#39;</span><span class="p">,</span> <span class="n">ablog</span><span class="o">.</span><span class="n">get_html_templates_path</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+<p>Добавляем в папку <code class="docutils literal"><span class="pre">_templates</span></code> нашего проекта шаблон <code class="docutils literal"><span class="pre">layout.html</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">_templates/layout.html</span><a class="headerlink" href="#id17" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span> <span class="k">extends</span> <span class="s2">&quot;base.html&quot;</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">breadcrumbs</span> <span class="cp">%}</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;head&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-image: url(&#39;/_static/bg.jpg&#39;);</span>
+<span class="s">                  background-size: 100%;</span>
+<span class="s">                  background-repeat: no-repeat;</span>
+<span class="s">                  height: 200px&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:100%; height: 75%&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">h1</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;padding-top:15px;padding-left:15px;font-size:60px&quot;</span><span class="p">&gt;</span>Ural penguins<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;</span>
+<span class="s">        border-collapse: unset !important;</span>
+<span class="s">        border-spacing: 1 !important;&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;padding-right: 2px&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/pages/pyramid/index.html&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background: white;width:100px;height:50px;line-height:50px;text-align:center;&quot;</span>
+                        <span class="na">onmouseover</span><span class="o">=</span><span class="s">&quot;this.style.background=&#39;lightgrey&#39;;&quot;</span> <span class="na">onmouseout</span><span class="o">=</span><span class="s">&quot;this.style.background=&#39;white&#39;;&quot;</span><span class="p">&gt;</span>
+                        Pyramid
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/pages/nixos/index.html&quot;</span><span class="p">&gt;</span>
+                    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background: white;width:100px;height:50px;line-height:50px;text-align:center;&quot;</span>
+                        <span class="na">onmouseover</span><span class="o">=</span><span class="s">&quot;this.style.background=&#39;lightgrey&#39;;&quot;</span> <span class="na">onmouseout</span><span class="o">=</span><span class="s">&quot;this.style.background=&#39;white&#39;;&quot;</span><span class="p">&gt;</span>
+                        NixOS
+                    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">async</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;badge&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;width:100%;height:80px&quot;</span><span class="p">&gt;</span>
+    <span class="c">&lt;!-- uralbash.ru --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ins</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;adsbygoogle&quot;</span>
+         <span class="na">style</span><span class="o">=</span><span class="s">&quot;display:block&quot;</span>
+         <span class="na">data-ad-client</span><span class="o">=</span><span class="s">&quot;ca-pub-2884502571619359&quot;</span>
+         <span class="na">data-ad-slot</span><span class="o">=</span><span class="s">&quot;9876011339&quot;</span>
+         <span class="na">data-ad-format</span><span class="o">=</span><span class="s">&quot;auto&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">ins</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">(</span><span class="nx">adsbygoogle</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">adsbygoogle</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">push</span><span class="p">({});</span>
+    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">extrahead</span> <span class="cp">%}</span>
+  <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
+    <span class="nt">html</span><span class="o">,</span> <span class="nt">body</span> <span class="p">{</span>
+      <span class="k">background</span><span class="p">:</span> <span class="mh">#545d5c</span> <span class="cp">!important</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="nc">page__left</span> <span class="p">.</span><span class="nc">menu</span> <span class="p">{</span>
+        <span class="k">width</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="nc">page__right</span> <span class="p">{</span>
+      <span class="k">background-color</span><span class="p">:</span> <span class="mh">#e7e7e7</span><span class="p">;</span>
+      <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="nc">rst-content</span> <span class="p">{</span>
+      <span class="k">padding</span><span class="p">:</span> <span class="mi">13</span><span class="kt">px</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="nc">footer</span> <span class="p">{</span>
+      <span class="k">padding</span><span class="p">:</span> <span class="mi">13</span><span class="kt">px</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c">/* unvisited link */</span>
+    <span class="nt">ul</span><span class="p">.</span><span class="nc">postlist-style-none</span> <span class="nt">a</span><span class="p">:</span><span class="nd">link</span><span class="o">,</span> <span class="p">.</span><span class="nc">head</span> <span class="nt">a</span><span class="p">:</span><span class="nd">link</span> <span class="p">{</span>
+        <span class="k">color</span><span class="p">:</span> <span class="mh">#222</span><span class="p">;</span>
+        <span class="k">text-decoration</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c">/* visited link */</span>
+    <span class="nt">ul</span><span class="p">.</span><span class="nc">postlist-style-none</span> <span class="nt">a</span><span class="p">:</span><span class="nd">visited</span><span class="o">,</span> <span class="p">.</span><span class="nc">head</span> <span class="nt">a</span><span class="p">:</span><span class="nd">visited</span> <span class="p">{</span>
+        <span class="k">color</span><span class="p">:</span> <span class="mh">#222</span><span class="p">;</span>
+        <span class="k">text-decoration</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c">/* mouse over link */</span>
+    <span class="nt">ul</span><span class="p">.</span><span class="nc">postlist-style-none</span> <span class="nt">a</span><span class="p">:</span><span class="nd">hover</span><span class="o">,</span> <span class="p">.</span><span class="nc">head</span> <span class="nt">a</span><span class="p">:</span><span class="nd">hover</span> <span class="p">{</span>
+        <span class="k">color</span><span class="p">:</span> <span class="mh">#222</span><span class="p">;</span>
+        <span class="k">text-decoration</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nt">ul</span><span class="p">.</span><span class="nc">postlist-style-none</span> <span class="nt">a</span><span class="p">:</span><span class="nd">active</span><span class="o">,</span> <span class="p">.</span><span class="nc">head</span> <span class="nt">a</span><span class="p">:</span><span class="nd">active</span> <span class="p">{</span>
+        <span class="k">color</span><span class="p">:</span> <span class="mh">#222</span><span class="p">;</span>
+        <span class="k">text-decoration</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nt">ul</span><span class="p">.</span><span class="nc">postlist-style-none</span> <span class="nt">li</span> <span class="p">{</span>
+        <span class="k">list-style-type</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nt">ul</span><span class="p">.</span><span class="nc">postlist-style-none</span> <span class="nt">li</span> <span class="nt">p</span><span class="p">.</span><span class="nc">first</span> <span class="p">{</span>
+      <span class="k">color</span><span class="p">:</span> <span class="kc">red</span> <span class="cp">!important</span><span class="p">;</span>
+      <span class="k">font</span><span class="p">:</span> <span class="mf">1.8</span><span class="kt">em</span> <span class="s2">&quot;Open Sans&quot;</span><span class="p">,</span><span class="n">Arial</span><span class="p">,</span><span class="kc">sans-serif</span> <span class="cp">!important</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="nc">first</span> <span class="nt">a</span> <span class="p">{</span>
+      <span class="k">font-weight</span><span class="p">:</span> <span class="kc">bold</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="nc">first</span> <span class="nt">em</span> <span class="p">{</span>
+      <span class="k">font-style</span><span class="p">:</span> <span class="kc">normal</span> <span class="cp">!important</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="nc">wrapper__inner</span> <span class="p">{</span>
+      <span class="k">padding</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span> <span class="mi">30</span><span class="kt">px</span> <span class="mi">0</span> <span class="mi">0</span> <span class="cp">!important</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="p">.</span><span class="nc">strike</span> <span class="p">{</span>
+      <span class="k">text-decoration</span><span class="p">:</span> <span class="kc">line-through</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">footer</span> <span class="cp">%}</span>
+  <span class="cp">{{</span> <span class="nb">super</span><span class="o">()</span> <span class="cp">}}</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;footer__theme&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://github.com/abakan/ablog&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;footer__theme-link&quot;</span><span class="p">&gt;</span>
+        Ablog powered.
+      <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;footer__theme&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://uralbash.ru/blog/atom.xml&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;footer__theme-link&quot;</span><span class="p">&gt;</span>
+        RSS/Atom
+      <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;footer__theme&quot;</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://uralbash.blogspot.com&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;footer__theme-link&quot;</span><span class="p">&gt;</span>
+        Старый блог
+      <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Комменты<a class="headerlink" href="#id7" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="admonition seealso">
+<p class="first admonition-title">См.также</p>
+<p class="last"><a class="reference external" href="http://ablog.readthedocs.org/manual/ablog-configuration-options/#disqus-integration">http://ablog.readthedocs.org/manual/ablog-configuration-options/#disqus-integration</a></p>
+</div>
+<p>DISQUS ставится просто:</p>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">настройки DISQUS</span><a class="headerlink" href="#id18" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -- disqus integration -------------------------------------------------------</span>
+
+<span class="c1"># you can enable disqus_ by setting ``disqus_shortname`` variable.</span>
+<span class="c1"># disqus_ short name for the blog.</span>
+<span class="n">disqus_shortname</span> <span class="o">=</span> <span class="s2">&quot;uralbash&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Правда у меня завелось только после переопределения шаблона <code class="docutils literal"><span class="pre">page.html</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">_templates/page.html</span><a class="headerlink" href="#id19" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-html+jinja"><div class="highlight"><pre><span></span><span class="cp">{%</span>- <span class="k">extends</span> <span class="s2">&quot;layout.html&quot;</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">fa</span> <span class="o">=</span> <span class="nv">ablog.fontawesome</span> <span class="cp">%}</span>
+<span class="cp">{%</span>- <span class="k">block</span> <span class="nv">extrahead</span> <span class="cp">%}</span>
+  <span class="cp">{{</span> <span class="nb">super</span><span class="o">()</span> <span class="cp">}}</span>
+  <span class="cp">{%</span> <span class="k">if</span> <span class="nv">atom_feed</span> <span class="cp">%}</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;alternate&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;application/atom+xml&quot;</span>  <span class="na">href</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">pathto</span><span class="o">(</span><span class="nv">feed_path</span><span class="o">,</span> <span class="m">1</span><span class="o">)</span> <span class="cp">}}</span><span class="s">/atom.xml&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">ablog.blog_title</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="p">&gt;</span>
+  <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+  <span class="cp">{%</span> <span class="k">if</span> <span class="nv">ablog.fontawesome_link_cdn</span><span class="cp">%}</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
+  <span class="cp">{%</span> <span class="k">elif</span> <span class="nv">ablog.fontawesome_css_file</span> <span class="cp">%}</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">pathto</span><span class="o">(</span><span class="s1">&#39;_static/&#39;</span> <span class="o">+</span> <span class="nv">ablog.fontawesome_css_file</span><span class="o">,</span> <span class="m">1</span><span class="o">)</span> <span class="cp">}}</span><span class="s">&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span> <span class="p">/&gt;</span>
+  <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+  <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
+    <span class="nt">ul</span><span class="p">.</span><span class="nc">ablog-archive</span> <span class="p">{</span><span class="k">list-style</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span> <span class="k">overflow</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span> <span class="k">margin-left</span><span class="p">:</span> <span class="mi">0</span><span class="kt">px</span><span class="p">}</span>
+    <span class="nt">ul</span><span class="p">.</span><span class="nc">ablog-archive</span> <span class="nt">li</span> <span class="p">{</span><span class="k">float</span><span class="p">:</span> <span class="kc">left</span><span class="p">;</span> <span class="k">margin-right</span><span class="p">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span> <span class="k">font-size</span><span class="p">:</span> <span class="mi">80</span><span class="kt">%</span><span class="p">}</span>
+    <span class="nt">ul</span><span class="p">.</span><span class="nc">post-list-style-disc</span> <span class="p">{</span><span class="k">list-style-type</span><span class="p">:</span> <span class="kc">disc</span><span class="p">;}</span>
+    <span class="nt">ul</span><span class="p">.</span><span class="nc">post-list-style-none</span> <span class="p">{</span><span class="k">list-style-type</span><span class="p">:</span> <span class="kc">none</span><span class="p">;}</span>
+    <span class="nt">ul</span><span class="p">.</span><span class="nc">post-list-style-circle</span> <span class="p">{</span><span class="k">list-style-type</span><span class="p">:</span> <span class="kc">circle</span><span class="p">;}</span>
+  <span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">block</span> <span class="nv">body</span> <span class="cp">%}</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;//yastatic.net/share/share.js&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;yashare-auto-init&quot;</span> <span class="na">data-yashareL10n</span><span class="o">=</span><span class="s">&quot;ru&quot;</span>
+          <span class="na">data-yashareType</span><span class="o">=</span><span class="s">&quot;medium&quot;</span>
+          <span class="na">data-yashareQuickServices</span><span class="o">=</span><span class="s">&quot;vkontakte,facebook,twitter,odnoklassniki,moimir,gplus&quot;</span>
+          <span class="na">data-yashareTheme</span><span class="o">=</span><span class="s">&quot;counter&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;my_postcard.html&quot;</span> <span class="cp">%}</span>
+      <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+<span class="hll">  <span class="cp">{{</span> <span class="nv">body</span> <span class="cp">}}</span>
+</span>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;section&quot;</span><span class="p">&gt;</span>
+  <span class="cp">{%</span> <span class="k">if</span> <span class="nv">pagename</span> <span class="k">in</span> <span class="nv">ablog</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">include</span> <span class="s2">&quot;postnavy.html&quot;</span> <span class="cp">%}</span>
+  <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+ <span class="cp">{%</span>- <span class="k">if</span> <span class="k">not</span> <span class="nv">internal_build</span> <span class="k">and</span> <span class="o">(</span><span class="nv">pagename</span> <span class="p">!</span><span class="o">=</span> <span class="s1">&#39;index&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+  <span class="c">{# {% if ablog.disqus_shortname and ablog.blog_baseurl and ((pagename in ablog and (ablog[pagename].published or ablog.disqus_drafts)) or (not pagename in ablog and ablog.disqus_pages)) %} #}</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;section&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;//yastatic.net/share/share.js&quot;</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;yashare-auto-init&quot;</span> <span class="na">data-yashareL10n</span><span class="o">=</span><span class="s">&quot;ru&quot;</span> <span class="na">data-yashareType</span><span class="o">=</span><span class="s">&quot;medium&quot;</span> <span class="na">data-yashareQuickServices</span><span class="o">=</span><span class="s">&quot;vkontakte,facebook,twitter,odnoklassniki,moimir,gplus&quot;</span> <span class="na">data-yashareTheme</span><span class="o">=</span><span class="s">&quot;counter&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Comments<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;disqus_thread&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+        <span class="cm">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */</span>
+        <span class="kd">var</span> <span class="nx">disqus_shortname</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="cp">{{</span> <span class="nv">ablog.disqus_shortname</span> <span class="cp">}}</span><span class="s1">&#39;</span><span class="p">;</span> <span class="c1">// required: replace example with your forum shortname</span>
+        <span class="kd">var</span> <span class="nx">disqus_identifier</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="cp">{{</span><span class="nv">ablog.page_id</span><span class="o">(</span><span class="nv">pagename</span><span class="o">)</span><span class="cp">}}</span><span class="s1">&#39;</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">disqus_title</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="cp">{{</span><span class="nv">title</span><span class="o">|</span><span class="nf">e</span><span class="cp">}}</span><span class="s1">&#39;</span><span class="p">;</span>
+        <span class="c">{# var disqus_url = &#39;{{ablog.page_url(pagename)}}&#39;; #}</span>
+        <span class="cm">/* * * DON&#39;T EDIT BELOW THIS LINE * * */</span>
+        <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">dsq</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span> <span class="nx">dsq</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span> <span class="nx">dsq</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="nx">dsq</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">&#39;//&#39;</span> <span class="o">+</span> <span class="nx">disqus_shortname</span> <span class="o">+</span> <span class="s1">&#39;.disqus.com/embed.js&#39;</span><span class="p">;</span>
+            <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">||</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;body&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">dsq</span><span class="p">);</span>
+        <span class="p">})();</span>
+    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">noscript</span><span class="p">&gt;</span>Please enable JavaScript to view the <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://disqus.com/?ref_noscript&quot;</span><span class="p">&gt;</span>comments powered by Disqus.<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">noscript</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;http://disqus.com&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;dsq-brlink&quot;</span><span class="p">&gt;</span>comments powered by <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;logo-disqus&quot;</span><span class="p">&gt;</span>Disqus<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Деплой<a class="headerlink" href="#id8" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last"><a class="reference external" href="http://ablog.readthedocs.org/manual/deploy-to-github-pages/">http://ablog.readthedocs.org/manual/deploy-to-github-pages/</a></p>
+</div>
+<ol class="arabic">
+<li><p class="first">Создать репу с именем <code class="docutils literal"><span class="pre">&lt;username&gt;.github.io</span></code></p>
+</li>
+<li><p class="first">Добавить имя в настройки, например:</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">conf.py настройки github pages</span><a class="headerlink" href="#id20" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">github_pages</span> <span class="o">=</span> <span class="s2">&quot;uralbash&quot;</span>
+</pre></div>
+</div>
+</div>
+</li>
+<li><p class="first">Сбилдить проект:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ablog build
+</pre></div>
+</div>
+</li>
+<li><p class="first">Выложить на гитхаб:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ablog deploy
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="id9">
+<h2>Итог<a class="headerlink" href="#id9" title="Ссылка на этот заголовок">¶</a></h2>
+<p>На мой взгляд лучшее решения для <code class="docutils literal"><span class="pre">reStructuredText</span></code> блога, местами сырой, но
+активно развивается.</p>
+</div>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../../2014/king_penguin/">
+    <i class="fa fa-arrow-circle-left"></i>
+    Королевский пингвин - круче только ты один!
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../rstcheck/">
+    Vim (и не только) для reStructuredText
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <br />
+    <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="medium" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yashareTheme="counter"></div>
+    <h2>Comments</h2>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'uralbash'; // required: replace example with your forum shortname
+        var disqus_identifier = '/articles/2015/ablog/';
+        var disqus_title = 'Блог в reStructuredText разметке';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+                    </div>
+                    <footer class="footer">
+                      
+  
+                        
+    <div class="footer__copyright">
+            
+                &copy; Copyright 2015, uralbash.
+            
+    </div>
+<div class="footer__theme">
+    <a href="https://github.com/ITCase/itcase_sphinx_theme" class="footer__theme-link">
+      ITCase Sphinx Theme
+    </a>
+      <span class="footer__theme-text">
+          | version: 0.2.0
+      </span>
+</div>
+                      
+  <div class="footer__theme">
+      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+        Ablog powered.
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="http://uralbash.ru/blog/atom.xml" class="footer__theme-link">
+        RSS/Atom
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="https://uralbash.blogspot.com" class="footer__theme-link">
+        Старый блог
+      </a>
+  </div>
+
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+            var STICKY_MENU = true;
+        
+    </script>
+
+    <script type="text/javascript" src="../../../_static/js/__theme.js"></script>
+
+    
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT: '../../../',
+                    VERSION: '',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '',
+                    HAS_SOURCE: true
+            };
+        </script>
+    
+
+    
+</body>
+</html>

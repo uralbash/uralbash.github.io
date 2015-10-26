@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом Docker</title>
+  <id>http://uralbash.ru/blog/tag/docker/atom.xml</id>
+  <updated>2016-07-13T23:13:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/docker/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/docker/atom.xml">
+    <title type="text">Пропал доступ в Интернет в Docker контейнерах</title>
+    <id>http://uralbash.ru/articles/2016/docker-mtu/</id>
+    <updated>2016-07-13T23:13:00Z</updated>
+    <published>2016-07-13T23:13:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/docker-mtu/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;docker&quot;&gt;
+
+&lt;p&gt;Docker начиная с версии &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;1.10&lt;/span&gt;&lt;/code&gt; и выше, перестал брать значение &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;MTU&lt;/span&gt;&lt;/code&gt; от
+сетевого интерфейса. Теперь его нужно указывать явно:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker daemon --mtu&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1372&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Это может быть причиной отсутствия Интернет.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом virtualenv</title>
+  <id>http://uralbash.ru/blog/tag/virtualenv/atom.xml</id>
+  <updated>2015-10-10T13:51:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/virtualenv/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/virtualenv/atom.xml">
+    <title type="text">Установка python 3.5 в virtualenv</title>
+    <id>http://uralbash.ru/articles/2015/python3.5-virtualenv/</id>
+    <updated>2015-10-10T13:51:00Z</updated>
+    <published>2015-10-10T13:51:00Z</published>
+    <link href="http://uralbash.ru/articles/2015/python3.5-virtualenv/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;python-3-5-virtualenv&quot;&gt;
+
+&lt;p&gt;Все уже слышали про новый pyhton версии 3.5
+(&lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/whatsnew/3.5.html&quot;&gt;https://docs.python.org/3/whatsnew/3.5.html&lt;/a&gt;). Я постараюсь описать как начать
+им пользоваться в вашем виртуальном окружении.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;Скачиваем&lt;/h2&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/devguide/setup.html#getting-the-source-code&quot;&gt;оф. документации&lt;/a&gt;
+предлагают скачать ртутью с фирменного сайта:&lt;/p&gt;
+&lt;div class=&quot;last highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ hg clone https://hg.python.org/cpython
+$ hg update &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;.5
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Скачиваем с гитхаба &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/python/cpython&quot;&gt;python/cpython&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/python/cpython.git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Выбираем ветку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;3.5&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git checkout &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;.5
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h2&gt;Собираем&lt;/h2&gt;
+&lt;p&gt;Укажем локальную директорию для сборки:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;./configure --prefix&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/Projects/bin/python3.5
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Скомпилируем:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;make &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make install
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь можно запускать:&lt;/p&gt;
+&lt;div class=&quot;highlight-ipython&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ $HOME/Projects/bin/python3.5/bin/python3
+Python 3.5.0+ (default, Oct 10 2015, 13:35:25)
+[GCC 4.9.2] on linux
+Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information.
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-ipython&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; {*range(4), 4, *(5, 6, 7)}
+{0, 1, 2, 3, 4, 5, 6, 7}
+&amp;gt;&amp;gt;&amp;gt; import asyncio
+&amp;gt;&amp;gt;&amp;gt; async def foo(bar): await asyncio.sleep(42)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;virtualenv&quot;&gt;
+&lt;h2&gt;virtualenv&lt;/h2&gt;
+&lt;p&gt;Укажем виртуальному окружению где находится интерпретатор cpython:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkvirtualenv --python&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/Projects/bin/python3.5/bin/python3 python35_env
+Running virtualenv with interpreter /home/uralbash/Projects/bin/python3.5/bin/python3
+Using base prefix &lt;span class=&quot;s1&quot;&gt;&amp;#39;/home/uralbash/Projects/bin/python3.5&amp;#39;&lt;/span&gt;
+New python executable in aiohttp/bin/python3
+Also creating executable in aiohttp/bin/python
+Installing setuptools, pip, wheel...done.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/virtualenv/atom.xml">
+    <title type="text">Как поднять demo версию проекта на paster + virtualenv в Debian</title>
+    <id>http://uralbash.ru/articles/2011/demo/</id>
+    <updated>2011-12-19T11:48:00Z</updated>
+    <published>2011-12-19T11:48:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/demo/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;demo-paster-virtualenv-debian&quot;&gt;
+
+&lt;p&gt;Иногда необходимо поднять демо версию своего проекта для тестов. Склонируем
+наш &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;git&lt;/span&gt;&lt;/code&gt; проект на сервер где будет демо:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone --bare ~/myproject ssh://uralbash@myserver/~/my_project.git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Проект склонируется в домашнюю директорию сервера &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;myserver&lt;/span&gt;&lt;/code&gt;. Ключ &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--bare&lt;/span&gt;&lt;/code&gt;
+означает что клон предназначен только для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;push&lt;/span&gt;&lt;/code&gt; или &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pull&lt;/span&gt;&lt;/code&gt; т.е. все
+коммиты мы будем делать у себя локально а потом пушить на сервак. Далее напишем
+скрипт который будет из нашего bare репозитария создавать проект для запуска демки:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ rm -r /home/uralbash/my_project
+$ git clone /home/uralbash/my_project.git /home/uralbash/my_project
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После этого создаем &lt;a class=&quot;reference external&quot; href=&quot;https://virtualenv.pypa.io/en/latest&quot;&gt;virtualenv&lt;/a&gt; окружение (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/home/uralbash/mypythonenv/&lt;/span&gt;&lt;/code&gt;)
+и добавляем скрипт запуска в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/etc/init.d/my_project.sh&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#! /bin/sh&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;### BEGIN INIT INFO&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Required-Start:    $all&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Default-Start:     2 3 4 5&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Default-Stop:      0 1 6&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Short-Description: starts the paster server&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Description:       starts paster&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;### END INIT INFO&lt;/span&gt;
+
+
+&lt;span class=&quot;nv&quot;&gt;PROJECT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/uralbash/my_project
+&lt;span class=&quot;nv&quot;&gt;PID_DIR&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/var/run/my_project/
+&lt;span class=&quot;nv&quot;&gt;PID_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/var/run/my_project/paster.pid
+&lt;span class=&quot;nv&quot;&gt;LOG_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/uralbash/logs/my_project/paster.log
+&lt;span class=&quot;nv&quot;&gt;USER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;root
+&lt;span class=&quot;nv&quot;&gt;GROUP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;root
+&lt;span class=&quot;nv&quot;&gt;PROD_FILE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/uralbash/demo.ini
+&lt;span class=&quot;nv&quot;&gt;RET_VAL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PROJECT&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; in
+start&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+../mypythonenv/bin/paster  serve &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--daemon &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--pid-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--log-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--user&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--group&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$GROUP&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$PROD_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+start
+
+&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+stop&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+../mypythonenv/bin/paster  serve &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--daemon &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--pid-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--log-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--user&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--group&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$GROUP&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$PROD_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+stop
+
+&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+restart&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+../mypythonenv/bin/paster  serve &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--daemon &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--pid-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PID_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--log-file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$LOG_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--user&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+--group&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$GROUP&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$PROD_FILE&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+restart
+
+
+&lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+*&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; $&lt;span class=&quot;s2&quot;&gt;&amp;quot;Usage: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; {start|stop|restart}&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Для того что бы не хранить пароли в репозитарии файл с настройками вынесен
+отдельно &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/home/uralbash/demo.ini&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;И добавляем в крон перезапуск:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# выполнять каждый четный час в 00 мин&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; */2 * * *       /etc/init.d/my_project.sh stop &amp;gt; /dev/null
+&lt;span class=&quot;c1&quot;&gt;# выполнять каждый четный час в 01 мин&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; */2 * * *       /etc/init.d/my_project.sh start &amp;gt; /dev/null
+&lt;span class=&quot;c1&quot;&gt;# выполнять в 9:00&lt;/span&gt;
+&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;9&lt;/span&gt; * * *       /home/uralbash/demo_update.sh &amp;gt; /dev/null
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После этого каждый день в 9:00 будет обновляться код и каждые 2 часа
+перезапускаться сервер (на случай если он полег по какойто причине). Останется
+только периодически отправлять коммиты.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/virtualenv/atom.xml">
+    <title type="text">Установка psycopg2 в virtualenv для Postgres 9.1</title>
+    <id>http://uralbash.ru/articles/2011/psycopg2/</id>
+    <updated>2011-12-16T18:45:00Z</updated>
+    <published>2011-12-16T18:45:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/psycopg2/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;psycopg2-virtualenv-postgres-9-1&quot;&gt;
+
+&lt;p&gt;При установке &lt;a class=&quot;reference external&quot; href=&quot;http://initd.org/psycopg/&quot;&gt;psycopg&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;https://virtualenv.pypa.io/en/latest&quot;&gt;virtualenv&lt;/a&gt; может возникнуть ошибка:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;mypythonenv&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;uralbash@server:~$ pip install psycopg
+Downloading/unpacking psycopg
+  Downloading psycopg2-2.4.3.tar.gz &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;687Kb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;: 687Kb downloaded
+  Running setup.py egg_info &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; package psycopg
+    Error: You need to install postgresql-server-dev-X.Y &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; building a server-side extension or libpq-dev &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; building a client-side application.
+
+    Complete output from &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; python setup.py egg_info:
+    running egg_info
+
+creating pip-egg-info/psycopg2.egg-info
+
+writing pip-egg-info/psycopg2.egg-info/PKG-INFO
+
+writing top-level names to pip-egg-info/psycopg2.egg-info/top_level.txt
+
+writing dependency_links to pip-egg-info/psycopg2.egg-info/dependency_links.txt
+
+writing manifest file &lt;span class=&quot;s1&quot;&gt;&amp;#39;pip-egg-info/psycopg2.egg-info/SOURCES.txt&amp;#39;&lt;/span&gt;
+
+warning: manifest_maker: standard file &lt;span class=&quot;s1&quot;&gt;&amp;#39;-c&amp;#39;&lt;/span&gt; not found
+
+Error: You need to install postgresql-server-dev-X.Y &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; building a server-side extension or libpq-dev &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; building a client-side application.
+
+
+
+----------------------------------------
+Command python setup.py egg_info failed with error code &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+Storing &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; log in /home/uralbash/.pip/pip.log
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Это возникает из-за утилиты &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; которая требуется для установки &lt;a class=&quot;reference external&quot; href=&quot;http://initd.org/psycopg/&quot;&gt;psycopg&lt;/a&gt;.
+В случае если у Вас &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; 8.4 нужно добавить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH&lt;/span&gt;&lt;/code&gt; (как то
+так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH=$PATH:/usr/bin/&lt;/span&gt;&lt;/code&gt;). Путь до &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; можно узнать:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ whereis pg_config
+pg_config: /usr/bin/pg_config
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;И установить пакеты:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install libpq-dev python-dev
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Но если стоит 9.1 версия то может возникнуть ошибка:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may &lt;span class=&quot;nb&quot;&gt;help&lt;/span&gt; to resolve the situation:
+
+The following packages have unmet dependencies:
+ libpq-dev : Depends: libpq5 &lt;span class=&quot;o&quot;&gt;(=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;.4.9-0squeeze1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; but &lt;span class=&quot;m&quot;&gt;9&lt;/span&gt;.1.1-1~bpo60+1 is to be installed
+E: Broken packages
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В этом случае устанавливаем &lt;a class=&quot;reference external&quot; href=&quot;http://initd.org/psycopg/&quot;&gt;psycopg&lt;/a&gt; не в окружении через:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo pip install psycopg2
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Смотрим куда это встало:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo python -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;import psycopg2;print psycopg2.__file__&amp;quot;&lt;/span&gt;
+/usr/lib/python2.6/dist-packages/psycopg2/__init__.pyc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;И копируем к себе в lib&amp;#8217;ы в &lt;a class=&quot;reference external&quot; href=&quot;https://virtualenv.pypa.io/en/latest&quot;&gt;virtualenv&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo cp -r /usr/lib/python2.6/dist-packages/psycopg2  mypythonenv/lib/python2.6/site-packages/
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Копипастим яйцо:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo cp /usr/lib/python2.6/dist-packages/psycopg2-2.4.4.egg-info  mypythonenv/lib/python2.6/site-packages/
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Еще надо будет скопировать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;mx&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo cp -r /usr/lib/python2.6/dist-packages/mx  mypythonenv/lib/python2.6/site-packages/
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Жеский дьютихак но главное что работает малой кровью.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

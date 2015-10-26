@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом CSS</title>
+  <id>http://uralbash.ru/blog/tag/css/atom.xml</id>
+  <updated>2011-10-25T00:36:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/css/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/css/atom.xml">
+    <title type="text">Pylons javascript и css link</title>
+    <id>http://uralbash.ru/articles/2011/pylons_jscss_minificator/</id>
+    <updated>2011-10-25T00:36:00Z</updated>
+    <published>2011-10-25T00:36:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/pylons_jscss_minificator/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;pylons-javascript-css-link&quot;&gt;
+
+&lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt;, в шаблоны есть возможность вставить &lt;a class=&quot;reference external&quot; href=&quot;http://www.w3.org/Style/CSS/&quot;&gt;CSS&lt;/a&gt; или JS при помощи
+&lt;a class=&quot;reference external&quot; href=&quot;https://webhelpers.readthedocs.io/en/latest/modules/pylonslib/minify.html#webhelpers.pylonslib.minify.stylesheet_link&quot; title=&quot;(в WebHelpers v1.3)&quot;&gt;&lt;code class=&quot;xref py py-func docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;stylesheet_link()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; и
+&lt;a class=&quot;reference external&quot; href=&quot;https://webhelpers.readthedocs.io/en/latest/modules/pylonslib/minify.html#webhelpers.pylonslib.minify.javascript_link&quot; title=&quot;(в WebHelpers v1.3)&quot;&gt;&lt;code class=&quot;xref py py-func docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;javascript_link()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;. Но существует расширение
+&lt;a class=&quot;reference external&quot; href=&quot;http://minification-webhelpers.readthedocs.org/en/latest/&quot;&gt;MinificationWebHelpers&lt;/a&gt; которое позволяет также удобно добавлять javascript
+файлы.&lt;/p&gt;
+&lt;p&gt;Установка:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install MinificationWebHelpers
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Пример использования:&lt;/p&gt;
+&lt;div class=&quot;highlight-mako&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;${h.javascript_link(&amp;#39;/js/file1.js&amp;#39;,&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;                    &amp;#39;/js/file2.js&amp;#39;,&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;                    minified=True,&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;                    combined=True,&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;                    combined_filename=&amp;#39;all_javascript_files&amp;#39;)}&lt;/span&gt;
+
+&lt;span class=&quot;x&quot;&gt;${h.stylesheet_link(&amp;#39;/css/style1.css&amp;#39;,&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;                    &amp;#39;/css/style2.css&amp;#39;,&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;                    minified=True,&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;                    combined=True,&lt;/span&gt;
+&lt;span class=&quot;x&quot;&gt;                    beaker_kwargs=dict(invalidate_on_startup=False))}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Очень удобная штука, особенно когда нужно добавить много файлов.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом xfce</title>
+  <id>http://uralbash.ru/blog/tag/xfce/atom.xml</id>
+  <updated>2011-11-05T19:24:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/xfce/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/xfce/atom.xml">
+    <title type="text">Linux xfce настройка двух мониторов</title>
+    <id>http://uralbash.ru/articles/2011/xfce_display/</id>
+    <updated>2011-11-05T19:24:00Z</updated>
+    <published>2011-11-05T19:24:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/xfce_display/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;linux-xfce&quot;&gt;
+
+&lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;http://www.xfce.org/&quot;&gt;Xfce&lt;/a&gt; по умолчанию второй монитор работает в режиме зеркало. Что бы
+настроить его под себя придется лезть в консоль, т.к. более менее нормальных
+desktop приложений я не обнаружил. Нам понадобится команда &lt;a class=&quot;reference external&quot; href=&quot;http://www.x.org/wiki/Projects/XRandR/&quot;&gt;xrandr&lt;/a&gt;. Если ее запустить без параметров то
+она покажет параметры мониторов:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ xrandr
+
+Screen &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;: minimum &lt;span class=&quot;m&quot;&gt;320&lt;/span&gt; x &lt;span class=&quot;m&quot;&gt;200&lt;/span&gt;, current &lt;span class=&quot;m&quot;&gt;3200&lt;/span&gt; x &lt;span class=&quot;m&quot;&gt;1080&lt;/span&gt;, maximum &lt;span class=&quot;m&quot;&gt;3200&lt;/span&gt; x &lt;span class=&quot;m&quot;&gt;2646&lt;/span&gt;
+LVDS connected 1280x768+0+0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;normal left inverted right x axis y axis&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 256mm x 144mm
+   1366x768       &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0 +
+   1280x768       &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0*+
+   1280x720       &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0 +
+   1024x768       &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0 +
+   1280x600       &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0 +
+   1024x600       &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0 +
+   800x600        &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0 +
+   800x480        &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0 +
+   640x480        &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0 +
+CRT1 connected 1920x1080+1280+0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;normal left inverted right x axis y axis&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 510mm x 287mm
+   1280x1024      &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0 +
+   1920x1080      &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0*+
+   1680x1050      &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0
+   1400x1050      &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0
+   1440x900       &lt;span class=&quot;m&quot;&gt;59&lt;/span&gt;.9
+   1280x960       &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0
+   1366x768       &lt;span class=&quot;m&quot;&gt;59&lt;/span&gt;.9
+   1280x800       &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0
+   1152x864       &lt;span class=&quot;m&quot;&gt;75&lt;/span&gt;.0     &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0
+   1280x768       &lt;span class=&quot;m&quot;&gt;59&lt;/span&gt;.9
+   1280x720       &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0
+   1024x768       &lt;span class=&quot;m&quot;&gt;75&lt;/span&gt;.0     &lt;span class=&quot;m&quot;&gt;70&lt;/span&gt;.1     &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0
+   1280x600       &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0
+   1024x600       &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0
+   800x600        &lt;span class=&quot;m&quot;&gt;75&lt;/span&gt;.0     &lt;span class=&quot;m&quot;&gt;70&lt;/span&gt;.0     &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.3     &lt;span class=&quot;m&quot;&gt;56&lt;/span&gt;.2
+   800x480        &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0
+   640x480        &lt;span class=&quot;m&quot;&gt;75&lt;/span&gt;.0     &lt;span class=&quot;m&quot;&gt;60&lt;/span&gt;.0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRT1&lt;/span&gt;&lt;/code&gt; у меня это дополнительный (второй) монитор. &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;LVDS&lt;/span&gt;&lt;/code&gt; - монитор
+ноутбука. Для того что было так:&lt;/p&gt;
+&lt;div class=&quot;highlight-default&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;              &lt;span class=&quot;o&quot;&gt;++++++++++++++++++++++++&lt;/span&gt;
+              &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;                      &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+++++++++++++++&lt;/span&gt;                      &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;             &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;CRT1&lt;/span&gt;          &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;LVDS&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;                      &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;             &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;                      &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;++++++++++++++++++++++++++++++++++++++&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Выполним команду:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ xrandr --output LVDS --mode 1280x768 --output CRT1 --mode 1920x1080 --right-of LVDS
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--output&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;LVDS&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;--mode&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;1280x768&lt;/span&gt;&lt;/code&gt; это разрешение первого экрана&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--output&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;CRT1&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;--mode&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;1920x1080&lt;/span&gt;&lt;/code&gt; разрешение второго экрана&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--right-of&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;LVDS&lt;/span&gt;&lt;/code&gt; расположение экрана (также может быть &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;left-of&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;before&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;after&lt;/span&gt;&lt;/code&gt;)&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Это расширенный режим и если в нем возникнет ошибка связанная с разрешением то
+либо вы указали разрешение которое не поддерживает монитор, либо ширина данного
+режима больше чем указанно в настройках &lt;a class=&quot;reference external&quot; href=&quot;http://www.x.org/&quot;&gt;X.org&lt;/a&gt; (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/etx/X11/xorg.conf&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;Для сдвига панели нужно пользоваться ключом &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--pos&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ xrandr --output LVDS --mode 1280x768 --pos 320x156 --output CRT1 --mode 1920x1080 --right-of LVDS --pos 0x0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Я вычислял &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pos&lt;/span&gt;&lt;/code&gt; так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;([1280x768]-[1920x1080])/2=320x156&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Для сброса настроек монитора есть ключ &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--off&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ xrandr --off CRT1
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

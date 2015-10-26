@@ -1,0 +1,62 @@
+.. post:: 16 Aug, 2017 17:11
+   :tags: C++, c++11
+   :category: C++
+   :author: Uralbash
+   :language: ru
+
+######################################################
+C++: Приведение Enum структур к общему виду в шаблонах
+######################################################
+
+Задача - создать шаблонную функцию, в которой в зависимости от типа
+перечисления выбирается нужный индекс в контейнере ``vector``. Попробуем решить
+задачу в лоб, создадим 3 перечисления и выберем нужный индекс в шаблоне.
+
+.. literalinclude:: ../../_code/2017/enum-cpp/main-bad.cpp
+    :caption: Использование enum в шаблоне напрямую
+    :language: cpp
+    :lines: 8-
+    :emphasize-lines: 48-49
+    :linenos:
+
+Скомпилируем пример с добавлением ``C++11``.
+
+.. code-block:: bash
+    :caption: Попытка компиляции enum в шаблоне
+
+    $ g++ -std=c++11 main.cpp -o enum-example
+    main-bad.cpp: In instantiation of ‘void printHuman(t_item, T) [with T = PEOPLE; t_item = std::vector<std::__cxx11::basic_string<char> >]’:
+    main-bad.cpp:78:30:   required from here
+    main-bad.cpp:55:14: error: ‘SALARY’ is not a member of ‘PEOPLE’
+         salary   = item.at(T::SALARY);
+                  ^
+    main-bad.cpp:56:14: error: ‘_ID’ is not a member of ‘PEOPLE’
+         human_id = item.at(T::_ID);
+                  ^
+    Makefile:7: recipe for target 'bad' failed
+    make: *** [bad] Error 1
+
+Получаем ошибку, т.к. подстановка типа перечисления ``PEOPLE`` не имеет
+атрибутов ``_ID`` и ``SALARY``.
+
+Что бы обойти эту проблему выведем тип с помощью ``std::conditional``.
+
+.. literalinclude:: ../../_code/2017/enum-cpp/main-good.cpp
+    :caption: Использование enum в шаблоне через выведение типа енума
+    :language: cpp
+    :lines: 40-69
+    :emphasize-lines: 16-18
+    :linenos:
+
+В результате программа скомпилируется без ошибок. Это происходит потому, что
+``conditional`` реализует свой шаблон на базе только двух нужных нам enum'ов
+(``STUDENT``, ``EMPLOY``).
+
+.. code-block:: bash
+    :caption: Компиляция и запуск
+
+    $ g++ -std=c++11 main.cpp -o enum-example
+    $ ./enum-example
+    1               Vasya           Vasnetsov               0.00 $
+    13              Petr            Иванов          10.00 $
+    66              Straustrup              Бьёрн           100 000.00 $

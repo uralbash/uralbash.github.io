@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом ironlogic</title>
+  <id>http://uralbash.ru/blog/tag/ironlogic/atom.xml</id>
+  <updated>2016-08-31T20:02:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/ironlogic/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/ironlogic/atom.xml">
+    <title type="text">IronLogic Z-2 USB на Linux</title>
+    <id>http://uralbash.ru/articles/2016/il-z2usb-linux/</id>
+    <updated>2016-08-31T20:02:00Z</updated>
+    <published>2016-08-31T20:02:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/il-z2usb-linux/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;ironlogic-z-2-usb-linux&quot;&gt;
+
+&lt;img alt=&quot;../../../_images/z2usb.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/z2usb.png&quot; style=&quot;width: 300px;&quot; /&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Z-2&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;USB&lt;/span&gt;&lt;/code&gt; всеядный считыватель, который умеет работать на двух частотах 13,56
+МГц и 125 кГц одновременно.  Поддерживаемые форматы карт &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;EM-Marine&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;HID&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;ProxCard&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;II&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Mifare&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Mifare&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Plus&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Mifare-UL&lt;/span&gt;&lt;/code&gt; (чтение/запись),
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Temic&lt;/span&gt;&lt;/code&gt; (чтение/запись), &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Cotag&lt;/span&gt;&lt;/code&gt; (опционально).&lt;/p&gt;
+&lt;p&gt;Работает по USB через &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;FTDI&lt;/span&gt;&lt;/code&gt; преобразователь, т.е. в компе видится как COM
+порт. В ядре Linux есть модуль &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ftdi_sio&lt;/span&gt;&lt;/code&gt; для работы с такими устройствами.
+Что бы система увидела ридер нужно подключить этот модуль и указать ему какое
+устройство является &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;FTDI&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Подключаем устройство и находим его в списке:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lsusb
+Bus &lt;span class=&quot;m&quot;&gt;002&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;002&lt;/span&gt;: ID &lt;span class=&quot;m&quot;&gt;8087&lt;/span&gt;:8001 Intel Corp.
+Bus &lt;span class=&quot;m&quot;&gt;002&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;001&lt;/span&gt;: ID 1d6b:0002 Linux Foundation &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;.0 root hub
+Bus &lt;span class=&quot;m&quot;&gt;001&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;002&lt;/span&gt;: ID &lt;span class=&quot;m&quot;&gt;8087&lt;/span&gt;:8009 Intel Corp.
+Bus &lt;span class=&quot;m&quot;&gt;001&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;001&lt;/span&gt;: ID 1d6b:0002 Linux Foundation &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;.0 root hub
+Bus &lt;span class=&quot;m&quot;&gt;004&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;001&lt;/span&gt;: ID 1d6b:0003 Linux Foundation &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;.0 root hub
+Bus &lt;span class=&quot;m&quot;&gt;003&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;011&lt;/span&gt;: ID 046d:c050 Logitech, Inc. RX &lt;span class=&quot;m&quot;&gt;250&lt;/span&gt; Optical Mouse
+&lt;span class=&quot;hll&quot;&gt;Bus &lt;span class=&quot;m&quot;&gt;003&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;016&lt;/span&gt;: ID &lt;span class=&quot;m&quot;&gt;0403&lt;/span&gt;:1234 Future Technology Devices International, Ltd IronLogic RFID Adapter &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Z-2 USB&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;/span&gt;Bus &lt;span class=&quot;m&quot;&gt;003&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;001&lt;/span&gt;: ID 1d6b:0002 Linux Foundation &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;.0 root hub
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Отключаем ридер и добавляем модуль ядра &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ftdi_sio&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo modprobe ftdi_sio
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Указываем драйверу какое устройство является &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;FTDI&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0403&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1234&lt;/span&gt; &amp;gt; /sys/bus/usb-serial/drivers/ftdi_sio/new_id
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ubuntu&lt;/span&gt;&lt;/code&gt; без root пользователя можно сделать так:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo bash -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;echo 0403 1234 &amp;gt; /sys/bus/usb-serial/drivers/ftdi_sio/new_id&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Подключаем устройство, смотри что система его видит:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ dmesg &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; tail
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793134&lt;/span&gt;.996159&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: new full-speed USB device number &lt;span class=&quot;m&quot;&gt;20&lt;/span&gt; using xhci_hcd
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.131301&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: New USB device found, &lt;span class=&quot;nv&quot;&gt;idVendor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0403&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;idProduct&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1234&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.131303&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: New USB device strings: &lt;span class=&quot;nv&quot;&gt;Mfr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;SerialNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.131305&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: Product: USB IronLogic RFID Adapter
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.131306&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: Manufacturer: ILogic
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.131307&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: SerialNumber: IL02KQQ9
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.135463&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; ftdi_sio &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1:1.0: FTDI USB Serial Device converter detected
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.135502&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: Detected FT232RL
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.135641&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: FTDI USB Serial Device converter now attached to ttyUSB0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Проверяем что драйвер привязался к устройству:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ usb-devices &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep ftdi
+I:  If#&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Alt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#EPs= 2 Cls=ff(vend.) Sub=ff Prot=ff Driver=ftdi_sio&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Для работы с устройством без &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sudo&lt;/span&gt;&lt;/code&gt; добавим прав:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo chown username:usergroup /dev/ttyUSB0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Далее настраиваем ридер, как обычный COM порт:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ stty -F /dev/ttyUSB0 cs8 cstopb -ixon raw speed &lt;span class=&quot;m&quot;&gt;9600&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Считываем данные:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat /dev/ttyUSB0
+Em-Marine&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;125&lt;/span&gt;,59903
+No card
+Em-Marine&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;125&lt;/span&gt;,59904
+No card
+Em-Marine&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;125&lt;/span&gt;,59904
+No card
+Em-Marine&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;7900&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;108&lt;/span&gt;,19751
+No card
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После перезагрузки все настройки сбиваются. Что бы это исправить нужно
+подключить кардридер и запустить скрипт один раз под суперпользователем:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#! /bin/bash&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# z2usb_install.sh&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Copyright (C) 2017 uralbash &amp;lt;root@uralbash.ru&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Distributed under terms of the MIT license.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-kernel-modules-persistant.html&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; modprobe ftdi_sio &amp;gt;&amp;gt; /etc/rc.modules
+chmod +x /etc/rc.modules
+
+&lt;span class=&quot;c1&quot;&gt;# Make rules file&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;rules_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/etc/udev/rules.d/40-persistent-ftdi.rules
+touch &lt;span class=&quot;nv&quot;&gt;$rules_file&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Set FTDI devices&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; device in &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;
+  lsusb &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; awk &lt;span class=&quot;s1&quot;&gt;&amp;#39;/FT232&amp;#39;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;|Future Technology Devices International&amp;#39;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;|Z-2 USB&amp;#39;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;|Ltd IronLogic RFID Adapter/ &amp;#39;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;{print $6}&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;vendor_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;product_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;bash -c \&amp;quot;echo &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;vendor_id&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;product_id&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &amp;gt; &amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;/sys/bus/usb-serial/drivers/ftdi_sio/new_id\&amp;quot;&amp;quot;&lt;/span&gt;   &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &amp;gt;&amp;gt; /etc/rc.modules
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;ATTRS{idVendor}==\&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;vendor_id&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;\&amp;quot;,&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;ATTRS{idProduct}==\&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;product_id&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;\&amp;quot;,&amp;quot;&lt;/span&gt;  &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;MODE=\&amp;quot;0666\&amp;quot;,GROUP=\&amp;quot;dialout\&amp;quot;&amp;quot;&lt;/span&gt;       &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &amp;gt;&amp;gt; &lt;span class=&quot;nv&quot;&gt;$rules_file&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Add user to dialout group&lt;/span&gt;
+usermod -aG tty user
+usermod -aG dialout user
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;user&lt;/span&gt;&lt;/code&gt; нужно поменять на имя вашего пользователя. Проверялось на &lt;cite&gt;CentOS&lt;/cite&gt;,
+для &lt;cite&gt;Ubuntu&lt;/cite&gt; возможно нужно поменять &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rc.modules&lt;/span&gt;&lt;/code&gt; на просто &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;modules&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

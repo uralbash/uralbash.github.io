@@ -1,0 +1,16 @@
+.. note::
+
+   Это статья из лекций
+   http://lectureswww.readthedocs.io/6.www.sync/3.framework/pyramid/5.urldispatch.html
+
+.. post:: 30 May, 2016 14:49
+   :tags: python, python3, pyramid, traversal
+   :category: Python
+   :author: Uralbash
+   :language: ru
+
+###########################
+Traversal роутинг в Pyramid
+###########################
+
+.. include:: ../../vendor/lectures.www/docs/6.www.sync/3.framework/pyramid/5.urldispatch.rst

@@ -1,0 +1,569 @@
+
+
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>AJAX тройной выпадающий список (triple select) &mdash; Ural penguins</title>
+    
+
+    
+        <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    
+
+    
+        
+    
+            <link rel="index" title="Алфавитный указатель" href="../../../genindex/"/>
+            <link rel="search" title="Поиск" href="../../../search/"/>
+
+        <link rel="top" title="Ural penguins" href="../../../"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300&subset=latin,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <link href="../../../_static/css/badge_only.css" type="text/css" rel="stylesheet" />
+    <link href="../../../_static/css/__theme.css" type="text/css" rel="stylesheet" />
+
+    
+            <script type="text/javascript" src="../../../_static/jquery.js"></script>
+            <script type="text/javascript" src="../../../_static/underscore.js"></script>
+            <script type="text/javascript" src="../../../_static/doctools.js"></script>
+            <script type="text/javascript" src="../../../_static/metrika.js"></script>
+            <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+  
+  <style type="text/css">
+    html, body {
+      background: #545d5c !important;
+    }
+    .page__left .menu {
+        width: 0px;
+    }
+    .page__right {
+      background-color: #e7e7e7;
+      margin: 0 0 0 30px;
+    }
+    .rst-content {
+      padding: 13px;
+    }
+    .footer {
+      padding: 13px;
+    }
+    /* unvisited link */
+    ul.postlist-style-none a:link, .head a:link {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* visited link */
+    ul.postlist-style-none a:visited, .head a:visited {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* mouse over link */
+    ul.postlist-style-none a:hover, .head a:hover {
+        color: #222;
+        text-decoration: none;
+    }
+
+    ul.postlist-style-none a:active, .head a:active {
+        color: #222;
+        text-decoration: none;
+    }
+    ul.postlist-style-none li {
+        list-style-type: none;
+    }
+    ul.postlist-style-none li p.first {
+      color: red !important;
+      font: 1.8em "Open Sans",Arial,sans-serif !important;
+    }
+    .first a {
+      font-weight: bold;
+    }
+    .first em {
+      font-style: normal !important;
+    }
+    .wrapper__inner {
+      padding: 0px 30px 0 0 !important;
+    }
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
+
+  
+  
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.post-list-style-disc {list-style-type: disc;}
+    ul.post-list-style-none {list-style-type: none;}
+    ul.post-list-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper__inner">
+            <div class="page
+                ">
+                <div class="page__left">
+                  
+                    <nav class="menu" id="menu" data-state="expand">
+                        <div class="menu-inner">
+                            
+                                <div class="menu-project">
+                                    <a href="../../../" class="menu-project__link">Ural penguins</a>
+                                </div>
+                            
+                            <div class="tree">
+                                
+                                
+                                    <ul>
+<li><a class="reference internal" href="#">AJAX тройной выпадающий список (triple select)</a></li>
+</ul>
+
+                                
+                            </div>
+                            <div class="menu-search search">
+                                <div class="search-title">Quick search</div>
+                                <form id="search-form" class="search-form" action="../../../search/" method="GET">
+                                    <input type="text" name="q" placeholder="Search docs" />
+                                    <input type="hidden" name="check_keywords" value="yes" />
+                                    <input type="hidden" name="area" value="default" />
+                                </form>
+                                <div class="search-desc">Enter search terms or a module, class or function name.</div>
+                            </div>
+                            <nav class="wy-nav-side">&nbsp;</nav>
+                        </div>
+                        <div class="menu-switch">
+                            <div class="menu-switch__arrow">«</div>
+                        </div>
+                    </nav>
+                  
+                </div>
+
+                <section class="page__right">
+                    
+  <div class="head" style="background-image: url('/_static/bg.jpg');
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  height: 200px">
+    <a href="/">
+      <div style="width:100%; height: 75%">
+        <h1 style="padding-top:15px;padding-left:15px;font-size:60px">Ural penguins</h1>
+      </div>
+    </a>
+    <table style="
+        border-collapse: unset !important;
+        border-spacing: 1 !important;">
+        <tr>
+            <td style="padding-right: 2px">
+                <a href="/pages/pyramid/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        Pyramid
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="/pages/nixos/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        NixOS
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </table>
+  </div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <div class="badge" style="width:100%;height:80px">
+    <!-- uralbash.ru -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2884502571619359"
+         data-ad-slot="9876011339"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+
+                    <div class="badge">
+                        
+                        
+                    </div>
+
+                    <div class="rst-content">
+                        
+  <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+  <table>
+    <tr>
+      <td>
+        <div class="yashare-auto-init" data-yashareL10n="ru"
+          data-yashareType="medium"
+          data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"
+          data-yashareTheme="counter"></div>
+      </td>
+      <td>
+        
+  
+  
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+        Feb 22, 2012
+      </div>
+    
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+      <i class="fa-fw fa fa-tag"></i>
+      
+        
+        <a href="../../../blog/tag/javascript/">javascript</a>
+        
+      
+      </div>
+    
+
+      </td>
+    </tr>
+  </table>
+  <div class="section" id="ajax-triple-select">
+<h1>AJAX тройной выпадающий список (triple select)<a class="headerlink" href="#ajax-triple-select" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Опишу очень простую реализацию трех выпадающих списков, данные которых связанны
+последовательно. Выглядит это примерно так <code class="docutils literal"><span class="pre">&quot;Город&quot;</span> <span class="pre">-&gt;</span> <span class="pre">&quot;Улица&quot;</span> <span class="pre">-&gt;</span> <span class="pre">&quot;Дом&quot;</span></code>.
+После выбора дома, на основе <code class="docutils literal"><span class="pre">AJAX</span></code> запроса, генерируется список улиц этого
+города, а после выбора улицы генерируется список домов на этой улице. Создадим
+html файл:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">index.html</span><a class="headerlink" href="#id1" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>City:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;city&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;city&quot;</span> <span class="na">onchange</span><span class="o">=</span><span class="s">&quot;getStreet(this);&quot;</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">option</span> <span class="na">selected</span><span class="o">=</span><span class="s">&quot;selected&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;None&quot;</span><span class="p">&gt;</span>-----------<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Екатеринбург&quot;</span><span class="p">&gt;</span>Екатеринбург<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Березовский&quot;</span><span class="p">&gt;</span>Березовскийг<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">option</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Артемоский&quot;</span><span class="p">&gt;</span>Артемовский<span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">select</span><span class="p">&gt;</span>
+         <span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Street:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;streetAJAX&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;</span>Build:<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">td</span><span class="p">&gt;&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;buildAJAX&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">td</span><span class="p">&gt;&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<p>При выборе города срабатывает функция <code class="docutils literal"><span class="pre">getStreet</span></code>, которая генерирует код
+списка улиц. Добавим ниже javascript:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">script</span> <span class="na">language</span><span class="o">=</span><span class="s">&quot;JavaScript&quot;</span><span class="p">&gt;</span>
+<span class="c1">//Gets the browser specific XmlHttpRequest Object</span>
+<span class="kd">function</span> <span class="nx">getXmlHttpRequestObject</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">XMLHttpRequest</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span> <span class="c1">//Not IE</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">ActiveXObject</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">ActiveXObject</span><span class="p">(</span><span class="s2">&quot;Microsoft.XMLHTTP&quot;</span><span class="p">);</span> <span class="c1">//IE</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">//Display your error message here.</span>
+        <span class="c1">//and inform the user they might want to upgrade</span>
+        <span class="c1">//their browser.</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;Your browser doesn&#39;t support the XmlHttpRequest object.  Better upgrade to Firefox.&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//Get our browser specific XmlHttpRequest object.</span>
+<span class="kd">var</span> <span class="nx">receiveReq</span> <span class="o">=</span> <span class="nx">getXmlHttpRequestObject</span><span class="p">();</span>
+<span class="c1">//Initiate the asyncronous request.</span>
+<span class="kd">function</span> <span class="nx">getStreet</span><span class="p">(</span><span class="nx">sel</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//If our XmlHttpRequest object is not in the middle of a request, start the new asyncronous call.</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;buildAJAX&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">sel</span><span class="p">.</span><span class="nx">options</span><span class="p">[</span><span class="nx">sel</span><span class="p">.</span><span class="nx">selectedIndex</span><span class="p">].</span><span class="nx">value</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">receiveReq</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">||</span> <span class="nx">receiveReq</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Setup the connection as a GET call to SayHello.html.</span>
+        <span class="c1">//True explicity sets the request to asyncronous (default).</span>
+        <span class="nx">receiveReq</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/ajax/get_ajax_street?city=&quot;</span><span class="o">+</span><span class="nx">value</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+        <span class="c1">//Set the function that will be called when the XmlHttpRequest objects state changes.</span>
+        <span class="nx">receiveReq</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="nx">handleStreet</span><span class="p">;</span>
+        <span class="c1">//Make the actual request.</span>
+        <span class="nx">receiveReq</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//Called every time our XmlHttpRequest objects state changes.</span>
+<span class="kd">function</span> <span class="nx">handleStreet</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//Check to see if the XmlHttpRequests state is finished.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">receiveReq</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Set the contents of our span element to the result of the asyncronous call.</span>
+        <span class="c1">//document.getElementById(&#39;span_result&#39;).innerHTML = receiveReq.responseText;</span>
+        <span class="c1">//alert(receiveReq.responseText);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;streetAJAX&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">receiveReq</span><span class="p">.</span><span class="nx">responseText</span><span class="p">;</span>
+        <span class="nx">getBuild</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;street&#39;</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Теперь проделаем то же само для выбора улицы, добавим функции:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">getBuild</span><span class="p">(</span><span class="nx">sel</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//If our XmlHttpRequest object is not in the middle of a request, start the new asyncronous call.</span>
+    <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">sel</span><span class="p">.</span><span class="nx">options</span><span class="p">[</span><span class="nx">sel</span><span class="p">.</span><span class="nx">selectedIndex</span><span class="p">].</span><span class="nx">value</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">receiveReq</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">||</span> <span class="nx">receiveReq</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Setup the connection as a GET call to SayHello.html.</span>
+        <span class="c1">//True explicity sets the request to asyncronous (default).</span>
+        <span class="nx">receiveReq</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;/ajax/get_ajax_build?street=&quot;</span><span class="o">+</span><span class="nx">value</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+        <span class="c1">//Set the function that will be called when the XmlHttpRequest objects state changes.</span>
+        <span class="nx">receiveReq</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="nx">handleBuild</span><span class="p">;</span>
+        <span class="c1">//Make the actual request.</span>
+        <span class="nx">receiveReq</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//Called every time our XmlHttpRequest objects state changes.</span>
+<span class="kd">function</span> <span class="nx">handleBuild</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//Check to see if the XmlHttpRequests state is finished.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">receiveReq</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Set the contents of our span element to the result of the asyncronous call.</span>
+        <span class="c1">//document.getElementById(&#39;span_result&#39;).innerHTML = receiveReq.responseText;</span>
+        <span class="c1">//alert(receiveReq.responseText);</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;buildAJAX&#39;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">receiveReq</span><span class="p">.</span><span class="nx">responseText</span><span class="p">;</span>
+        <span class="nx">summAddress</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Все должно работать :) Осталось написать функции на стороне сервера, для AJAX
+запросов. Тут их две <code class="docutils literal"><span class="pre">get_ajax_build</span></code> и <code class="docutils literal"><span class="pre">get_ajax_street</span></code>. Обе возвращают
+обычный HTML список формата:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;street&quot;</span> <span class="na">name=</span><span class="s">&quot;street&quot;</span> <span class="na">onchange=</span><span class="s">&quot;getBuild(this);&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1750&quot;</span><span class="nt">&gt;</span>8 Марта<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1718&quot;</span><span class="nt">&gt;</span>Академика Королева<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1734&quot;</span><span class="nt">&gt;</span>Анучина<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1733&quot;</span><span class="nt">&gt;</span>БЗСК пос<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1715&quot;</span><span class="nt">&gt;</span>Больничный городок<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1744&quot;</span><span class="nt">&gt;</span>Брусницына<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1704&quot;</span><span class="nt">&gt;</span>Воротникова<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1747&quot;</span><span class="nt">&gt;</span>Восточная<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1709&quot;</span><span class="nt">&gt;</span>Гагарина<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1701&quot;</span><span class="nt">&gt;</span>Героев труда<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1714&quot;</span><span class="nt">&gt;</span>Горького<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1721&quot;</span><span class="nt">&gt;</span>Декабристов<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1735&quot;</span><span class="nt">&gt;</span>Загвозкина<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1746&quot;</span><span class="nt">&gt;</span>Заречная (Шиловка)<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1738&quot;</span><span class="nt">&gt;</span>Исакова<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1731&quot;</span><span class="nt">&gt;</span>Кирова<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1707&quot;</span><span class="nt">&gt;</span>Коммуны<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1708&quot;</span><span class="nt">&gt;</span>Комсомольская<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1706&quot;</span><span class="nt">&gt;</span>Косых<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1737&quot;</span><span class="nt">&gt;</span>Красноармейская<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1702&quot;</span><span class="nt">&gt;</span>Красных героев<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1745&quot;</span><span class="nt">&gt;</span>Ленина<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1742&quot;</span><span class="nt">&gt;</span>ЛЕНИНСКИИ (ШИЛОВКА)<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1705&quot;</span><span class="nt">&gt;</span>Ленинский (Шиловка)<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1736&quot;</span><span class="nt">&gt;</span>Мамина-Сибиряка<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1740&quot;</span><span class="nt">&gt;</span>Машинистов<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1732&quot;</span><span class="nt">&gt;</span>Маяковского<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1741&quot;</span><span class="nt">&gt;</span>Мебельщиков<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1717&quot;</span><span class="nt">&gt;</span>Мира<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1725&quot;</span><span class="nt">&gt;</span>Мичурина<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1722&quot;</span><span class="nt">&gt;</span>Новая (Шиловка)<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1723&quot;</span><span class="nt">&gt;</span>Овощное отделение<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1728&quot;</span><span class="nt">&gt;</span>Парковая (Шиловка)<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1720&quot;</span><span class="nt">&gt;</span>Первомайская<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1739&quot;</span><span class="nt">&gt;</span>Первомайский пос<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1703&quot;</span><span class="nt">&gt;</span>Пролетарская<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1743&quot;</span><span class="nt">&gt;</span>Смирнова<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1710&quot;</span><span class="nt">&gt;</span>Совхозная (Шиловка)<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1713&quot;</span><span class="nt">&gt;</span>Спортивная<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1727&quot;</span><span class="nt">&gt;</span>Старых Большевиков<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1729&quot;</span><span class="nt">&gt;</span>Строителей<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1716&quot;</span><span class="nt">&gt;</span>Театральная<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1748&quot;</span><span class="nt">&gt;</span>Толбухина<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1730&quot;</span><span class="nt">&gt;</span>Февральская<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1749&quot;</span><span class="nt">&gt;</span>Фурманова<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1724&quot;</span><span class="nt">&gt;</span>Циолковского<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1711&quot;</span><span class="nt">&gt;</span>Чапаева<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1712&quot;</span><span class="nt">&gt;</span>Чкалова<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1726&quot;</span><span class="nt">&gt;</span>Шиловская<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">&quot;1755&quot;</span><span class="nt">&gt;</span>Энергостроителей<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+</pre></div>
+</div>
+<p>У меня на питоне они выглядят так:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_ajax_street</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">city</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;city&#39;</span><span class="p">]</span>
+        <span class="n">streets</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Streets</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Streets</span><span class="o">.</span><span class="n">city</span><span class="o">==</span><span class="n">city</span><span class="p">)</span><span class="o">.</span>\
+                <span class="n">order_by</span><span class="p">(</span><span class="n">Streets</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">street</span> <span class="ow">in</span> <span class="n">streets</span><span class="p">:</span>
+            <span class="n">html</span> <span class="o">+=</span> <span class="s2">&quot;&lt;option value=&quot;</span><span class="o">%</span><span class="n">s</span><span class="s2">&quot;&gt;&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">street</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span>\
+                    <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&lt;/option&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">street</span><span class="o">.</span><span class="n">name</span> <span class="ow">or</span> <span class="s1">&#39;No name&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">html</span><span class="p">:</span>
+            <span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&lt;select &quot;</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="s2">&quot;onchange=&quot;</span><span class="n">getBuild</span><span class="p">(</span><span class="n">this</span><span class="p">);</span><span class="s2">&quot; +\=&quot;&quot; id=&quot;</span><span class="n">street</span><span class="s2">&quot; name=&quot;</span><span class="n">street</span><span class="s2">&quot;&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">html</span> <span class="o">+</span> <span class="s2">&quot;&lt;/select&gt;&quot;</span>
+
+        <span class="k">return</span> <span class="n">html</span>
+
+<span class="k">def</span> <span class="nf">get_ajax_build</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">street</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="p">[</span><span class="s1">&#39;street&#39;</span><span class="p">]</span>
+    <span class="n">builds</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Builds</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">Builds</span><span class="o">.</span><span class="n">streetid</span><span class="o">==</span><span class="n">street</span><span class="p">)</span><span class="o">.</span>\
+            <span class="n">order_by</span><span class="p">(</span><span class="n">Builds</span><span class="o">.</span><span class="n">building</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">html</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">build</span> <span class="ow">in</span> <span class="n">builds</span><span class="p">:</span>
+        <span class="n">html</span> <span class="o">+=</span> <span class="s2">&quot;&lt;option value=&quot;</span><span class="o">%</span><span class="n">s</span><span class="s2">&quot;&gt;&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">build</span><span class="o">.</span><span class="n">id</span><span class="p">)</span> <span class="o">+</span>\
+                <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&lt;/option&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">build</span><span class="o">.</span><span class="n">building</span> <span class="ow">or</span> <span class="s1">&#39;No name&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">html</span><span class="p">:</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&lt;select &quot;</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="s2">&quot;onchange=&quot;</span><span class="n">summAddress</span><span class="p">();</span><span class="s2">&quot; +\=&quot;&quot; id=&quot;</span><span class="n">build</span><span class="s2">&quot; name=&quot;</span><span class="n">build</span><span class="s2">&quot;&gt;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">html</span> <span class="o">+</span> <span class="s2">&quot;&lt;/select&gt;&quot;</span>
+
+    <span class="k">return</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>Выглядит это как-то так:</p>
+<img alt="../../../_images/triple_select.png" class="align-center" src="../../../_images/triple_select.png" />
+<p>Думаю понятно, что функции должны быть доступны по адресам
+<code class="docutils literal"><span class="pre">/ajax/get_ajax_street</span></code> и <code class="docutils literal"><span class="pre">/ajax/get_ajax_build</span></code> соответственно.</p>
+<p>Пользуйтесь )</p>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../pyyandexmap/">
+    <i class="fa fa-arrow-circle-left"></i>
+    pyandexmap работа с Яндекс Карты API используя Python
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../pylons_yapsy/">
+    Pylons система плагинов для своего проекта (yapsy)
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <br />
+    <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="medium" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yashareTheme="counter"></div>
+    <h2>Comments</h2>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'uralbash'; // required: replace example with your forum shortname
+        var disqus_identifier = '/articles/2012/ajax_triple_select/';
+        var disqus_title = 'AJAX тройной выпадающий список (triple select)';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+                    </div>
+                    <footer class="footer">
+                      
+  
+                        
+    <div class="footer__copyright">
+            
+                &copy; Copyright 2015, uralbash.
+            
+    </div>
+<div class="footer__theme">
+    <a href="https://github.com/ITCase/itcase_sphinx_theme" class="footer__theme-link">
+      ITCase Sphinx Theme
+    </a>
+      <span class="footer__theme-text">
+          | version: 0.2.0
+      </span>
+</div>
+                      
+  <div class="footer__theme">
+      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+        Ablog powered.
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="http://uralbash.ru/blog/atom.xml" class="footer__theme-link">
+        RSS/Atom
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="https://uralbash.blogspot.com" class="footer__theme-link">
+        Старый блог
+      </a>
+  </div>
+
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+            var STICKY_MENU = true;
+        
+    </script>
+
+    <script type="text/javascript" src="../../../_static/js/__theme.js"></script>
+
+    
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT: '../../../',
+                    VERSION: '',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '',
+                    HAS_SOURCE: true
+            };
+        </script>
+    
+
+    
+</body>
+</html>

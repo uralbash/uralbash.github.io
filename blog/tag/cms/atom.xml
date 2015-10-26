@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом CMS</title>
+  <id>http://uralbash.ru/blog/tag/cms/atom.xml</id>
+  <updated>2012-11-21T15:41:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/cms/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/cms/atom.xml">
+    <title type="text">CMS на python-pyramid</title>
+    <id>http://uralbash.ru/articles/2012/cms_pyramid2/</id>
+    <updated>2012-11-21T15:41:00Z</updated>
+    <published>2012-11-21T15:41:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/cms_pyramid2/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;cms-python-pyramid&quot;&gt;
+
+&lt;p&gt;Мне иногда приходится писать сайты знакомым, друзьям, знакомым друзей, знакомым знакомых друзей...
+И почти всегда всем нужен простой сайт нахаляву визитка, но что бы можно было
+вносить изменения периодически. Идеально для этого наверно подходит CMS, но CMS
+слишком тяжелая и имеет зачастую слишком много ненужного. Поэтому я написал
+движок сайта-визитки с выпиленным ненужным.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/pyramid_promosite&quot;&gt;pyramid_promosite&lt;/a&gt; - это не CMS это движок сайта написанный на Pyramid.
+Этот движок дает вам из коробки редактор страниц как &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;django&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;flatpages&lt;/span&gt;&lt;/code&gt;,
+простую админку, возможность переводить страницу на другие языки и ВАЙСВИГ
+редактор с возможностью загружать изображения&lt;/p&gt;
+&lt;p&gt;Способ применения:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;устанавливаем &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/pyramid_promosite&quot;&gt;pyramid_promosite&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;создаем свой проект&lt;/li&gt;
+&lt;li&gt;включаем &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/pyramid_promosite&quot;&gt;pyramid_promosite&lt;/a&gt; в свой проект через &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;include&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;делаем свои шаблоны&lt;/li&gt;
+&lt;li&gt;пишем свои страницы со вьюхами (если нужны)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;все...&lt;/p&gt;
+&lt;p&gt;Пример сайта &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/platonaps.ru&quot;&gt;https://github.com/uralbash/platonaps.ru&lt;/a&gt;:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/platon.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/platon.png&quot; /&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;Подробнее на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/pyramid_promosite&quot;&gt;https://github.com/uralbash/pyramid_promosite&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Документация в планах, если что то непонятно то отвечу здесь либо в github&amp;#8217;е&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/cms/atom.xml">
+    <title type="text">CMS на Pyramid фреймворке</title>
+    <id>http://uralbash.ru/articles/2012/cms_pyramid/</id>
+    <updated>2012-09-26T15:30:00Z</updated>
+    <published>2012-09-26T15:30:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/cms_pyramid/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;cms-pyramid&quot;&gt;
+
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://www.nive.co/cms/root.html&quot;&gt;Poolyx CMS&lt;/a&gt; - малоизвестная система
+управления сайтом написанная на Python с применением &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; немецкими
+кодерами.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/poolyx.jpeg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/poolyx.jpeg&quot; /&gt;
+&lt;p&gt;В будущем будет называться &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/nive&quot;&gt;nive&lt;/a&gt;. Советую попробовать, по крайне мере
+мне показалась намного удобнее &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/Kotti&quot;&gt;Kotti&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

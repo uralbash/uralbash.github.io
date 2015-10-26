@@ -1,0 +1,590 @@
+
+
+    
+
+
+    
+
+
+    
+
+
+    
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <title>Сборка libprotobuf под Windows &mdash; Ural penguins</title>
+    
+
+    
+        <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    
+
+    
+        
+    
+            <link rel="index" title="Алфавитный указатель" href="../../../genindex/"/>
+            <link rel="search" title="Поиск" href="../../../search/"/>
+
+        <link rel="top" title="Ural penguins" href="../../../"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300&subset=latin,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+
+    <link href="../../../_static/css/badge_only.css" type="text/css" rel="stylesheet" />
+    <link href="../../../_static/css/__theme.css" type="text/css" rel="stylesheet" />
+
+    
+            <script type="text/javascript" src="../../../_static/jquery.js"></script>
+            <script type="text/javascript" src="../../../_static/underscore.js"></script>
+            <script type="text/javascript" src="../../../_static/doctools.js"></script>
+            <script type="text/javascript" src="../../../_static/metrika.js"></script>
+            <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+  
+  <style type="text/css">
+    html, body {
+      background: #545d5c !important;
+    }
+    .page__left .menu {
+        width: 0px;
+    }
+    .page__right {
+      background-color: #e7e7e7;
+      margin: 0 0 0 30px;
+    }
+    .rst-content {
+      padding: 13px;
+    }
+    .footer {
+      padding: 13px;
+    }
+    /* unvisited link */
+    ul.postlist-style-none a:link, .head a:link {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* visited link */
+    ul.postlist-style-none a:visited, .head a:visited {
+        color: #222;
+        text-decoration: none;
+    }
+
+    /* mouse over link */
+    ul.postlist-style-none a:hover, .head a:hover {
+        color: #222;
+        text-decoration: none;
+    }
+
+    ul.postlist-style-none a:active, .head a:active {
+        color: #222;
+        text-decoration: none;
+    }
+    ul.postlist-style-none li {
+        list-style-type: none;
+    }
+    ul.postlist-style-none li p.first {
+      color: red !important;
+      font: 1.8em "Open Sans",Arial,sans-serif !important;
+    }
+    .first a {
+      font-weight: bold;
+    }
+    .first em {
+      font-style: normal !important;
+    }
+    .wrapper__inner {
+      padding: 0px 30px 0 0 !important;
+    }
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
+
+  
+  
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.post-list-style-disc {list-style-type: disc;}
+    ul.post-list-style-none {list-style-type: none;}
+    ul.post-list-style-circle {list-style-type: circle;}
+  </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper__inner">
+            <div class="page
+                ">
+                <div class="page__left">
+                  
+                    <nav class="menu" id="menu" data-state="expand">
+                        <div class="menu-inner">
+                            
+                                <div class="menu-project">
+                                    <a href="../../../" class="menu-project__link">Ural penguins</a>
+                                </div>
+                            
+                            <div class="tree">
+                                
+                                
+                                    <ul>
+<li><a class="reference internal" href="#">Сборка libprotobuf под Windows</a></li>
+</ul>
+
+                                
+                            </div>
+                            <div class="menu-search search">
+                                <div class="search-title">Quick search</div>
+                                <form id="search-form" class="search-form" action="../../../search/" method="GET">
+                                    <input type="text" name="q" placeholder="Search docs" />
+                                    <input type="hidden" name="check_keywords" value="yes" />
+                                    <input type="hidden" name="area" value="default" />
+                                </form>
+                                <div class="search-desc">Enter search terms or a module, class or function name.</div>
+                            </div>
+                            <nav class="wy-nav-side">&nbsp;</nav>
+                        </div>
+                        <div class="menu-switch">
+                            <div class="menu-switch__arrow">«</div>
+                        </div>
+                    </nav>
+                  
+                </div>
+
+                <section class="page__right">
+                    
+  <div class="head" style="background-image: url('/_static/bg.jpg');
+                  background-size: 100%;
+                  background-repeat: no-repeat;
+                  height: 200px">
+    <a href="/">
+      <div style="width:100%; height: 75%">
+        <h1 style="padding-top:15px;padding-left:15px;font-size:60px">Ural penguins</h1>
+      </div>
+    </a>
+    <table style="
+        border-collapse: unset !important;
+        border-spacing: 1 !important;">
+        <tr>
+            <td style="padding-right: 2px">
+                <a href="/pages/pyramid/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        Pyramid
+                    </div>
+                </a>
+            </td>
+            <td>
+                <a href="/pages/nixos/index.html">
+                    <div style="background: white;width:100px;height:50px;line-height:50px;text-align:center;"
+                        onmouseover="this.style.background='lightgrey';" onmouseout="this.style.background='white';">
+                        NixOS
+                    </div>
+                </a>
+            </td>
+        </tr>
+    </table>
+  </div>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <div class="badge" style="width:100%;height:80px">
+    <!-- uralbash.ru -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2884502571619359"
+         data-ad-slot="9876011339"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    </div>
+
+                    <div class="badge">
+                        
+                        
+                    </div>
+
+                    <div class="rst-content">
+                        
+  <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+  <table>
+    <tr>
+      <td>
+        <div class="yashare-auto-init" data-yashareL10n="ru"
+          data-yashareType="medium"
+          data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus"
+          data-yashareTheme="counter"></div>
+      </td>
+      <td>
+        
+  
+  
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+        Aug 10, 2017
+      </div>
+    
+    
+      <div style="fint-size: 14pt;padding-left: 10pt;display:inline;">
+      
+        
+          <i class="fa-fw fa fa-tags"></i>
+        
+        
+      
+        
+        <a href="../../../blog/tag/c/">C++</a>,
+        
+      
+        
+        <a href="../../../blog/tag/mingw/">mingw</a>,
+        
+      
+        
+        <a href="../../../blog/tag/windows/">Windows</a>,
+        
+      
+        
+        <a href="../../../blog/tag/protobuf/">protobuf</a>
+        
+      
+      </div>
+    
+
+      </td>
+    </tr>
+  </table>
+  <div class="section" id="libprotobuf-windows">
+<h1>Сборка libprotobuf под Windows<a class="headerlink" href="#libprotobuf-windows" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Сборка сей библиотеки из исходников под Windows не такая уж простая задача, как
+может показаться на первый взгляд. Ее можно осуществлять при помощи Visual
+Studio (cl.exe) или компилятора mingw.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">См.также</p>
+<p class="last"><a class="reference external" href="https://developers.google.com/protocol-buffers/">Protobuf</a></p>
+</div>
+<p>Вариант с mingw мне показался более родной и простой, поэтому начнем с установки MSYS2.</p>
+<div class="admonition note">
+<p class="first admonition-title">Примечание</p>
+<p class="last">Скачать MSYS2 можно по адресу <a class="reference external" href="http://msys2.org">http://msys2.org</a></p>
+</div>
+<p>После установки в открывшейся консоле устанавливаем все необходимое. Protobuf
+из пакетов нужен потому, что при сборке из исходных кодов будет использоваться
+утилита <code class="docutils literal"><span class="pre">protoc.exe</span></code>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ pacman -S vim binutils base-devel unzip
+$ pacman -S mingw-w64-i686-toolchain mingw-w64-i686-protobuf
+</pre></div>
+</div>
+<p>Пропишем компилятор в окружение и симлинк на <code class="docutils literal"><span class="pre">protoc.exe</span></code>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">PATH</span><span class="o">=</span>/mingw32/bin/:<span class="nv">$PATH</span>
+$ ln -s /mingw32/bin/protoc.exe /usr/bin/protoc.exe
+</pre></div>
+</div>
+<p>Готовый пакет для pacman&#8217;а позаимствуем у ArchLinux из AUR
+(<a class="reference external" href="https://aur.archlinux.org/packages/mingw-w64-protobuf/">https://aur.archlinux.org/packages/mingw-w64-protobuf/</a>).</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ wget https://aur.archlinux.org/cgit/aur.git/snapshot/mingw-w64-protobuf.tar.gz
+$ tar -zxf mingw-w64-protobuf.tar.gz
+$ <span class="nb">cd</span> mingw-w64-protobuf
+$ vim PKGBUILD
+</pre></div>
+</div>
+<p>Закомментим зависимости из файла сборки PKGBUILD и переименуем
+<code class="docutils literal"><span class="pre">${_arch}-strip</span></code> в <code class="docutils literal"><span class="pre">strip</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">PKGBUILD</span><a class="headerlink" href="#id1" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Contributor: Benoit Favre &lt;benoit.favre@gmail.com&gt;</span>
+
+<span class="nv">pkgname</span><span class="o">=(</span><span class="s1">&#39;mingw-w64-protobuf&#39;</span><span class="o">)</span>
+<span class="nv">_pkgname</span><span class="o">=</span>protobuf
+<span class="nv">pkgver</span><span class="o">=</span><span class="m">3</span>.3.1
+<span class="nv">pkgrel</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">pkgdesc</span><span class="o">=</span><span class="s2">&quot;Protocol Buffers - Google&#39;s data interchange format (mingw-w64)&quot;</span>
+<span class="nv">arch</span><span class="o">=(</span><span class="s1">&#39;any&#39;</span><span class="o">)</span>
+<span class="nv">url</span><span class="o">=</span><span class="s1">&#39;https://developers.google.com/protocol-buffers/&#39;</span>
+<span class="nv">license</span><span class="o">=(</span><span class="s1">&#39;BSD&#39;</span><span class="o">)</span>
+<span class="hll"><span class="c1">#depends=(&#39;mingw-w64-crt&#39; &#39;mingw-w64-zlib&#39;)</span>
+</span><span class="hll"><span class="c1">#makedepends=(&#39;mingw-w64-configure&#39; &#39;protobuf&#39;)</span>
+</span><span class="nv">options</span><span class="o">=(</span>!strip !buildflags staticlibs<span class="o">)</span>
+<span class="nv">source</span><span class="o">=(</span><span class="s2">&quot;https://github.com/google/protobuf/archive/v</span><span class="si">${</span><span class="nv">pkgver</span><span class="si">}</span><span class="s2">.tar.gz&quot;</span><span class="o">)</span>
+<span class="nv">md5sums</span><span class="o">=(</span><span class="s1">&#39;20c685147753b515ce380421442044b5&#39;</span><span class="o">)</span>
+
+<span class="nv">_architectures</span><span class="o">=</span><span class="s2">&quot;i686-w64-mingw32 x86_64-w64-mingw32&quot;</span>
+
+build<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">cd</span> <span class="si">${</span><span class="nv">srcdir</span><span class="si">}</span>/<span class="si">${</span><span class="nv">_pkgname</span><span class="si">}</span>-<span class="si">${</span><span class="nv">pkgver</span><span class="si">}</span>
+  ./autogen.sh
+  <span class="k">for</span> _arch in <span class="si">${</span><span class="nv">_architectures</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+    mkdir -p build-<span class="si">${</span><span class="nv">_arch</span><span class="si">}</span> <span class="o">&amp;&amp;</span> <span class="nb">pushd</span> build-<span class="si">${</span><span class="nv">_arch</span><span class="si">}</span>
+    <span class="si">${</span><span class="nv">_arch</span><span class="si">}</span>-configure --with-protoc<span class="o">=</span>/usr/bin/protoc ..
+    make
+    <span class="nb">popd</span>
+  <span class="k">done</span>
+<span class="o">}</span>
+
+package<span class="o">()</span> <span class="o">{</span>
+  <span class="k">for</span> _arch in <span class="si">${</span><span class="nv">_architectures</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+    <span class="nb">cd</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">srcdir</span><span class="si">}</span><span class="s2">&quot;</span>/<span class="si">${</span><span class="nv">_pkgname</span><span class="si">}</span>-<span class="si">${</span><span class="nv">pkgver</span><span class="si">}</span>/build-<span class="si">${</span><span class="nv">_arch</span><span class="si">}</span>
+    make <span class="nv">DESTDIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$pkgdir</span><span class="s2">&quot;</span> install
+    rm <span class="s2">&quot;</span><span class="si">${</span><span class="nv">pkgdir</span><span class="si">}</span><span class="s2">&quot;</span>/usr/<span class="si">${</span><span class="nv">_arch</span><span class="si">}</span>/bin/*.exe
+<span class="hll">    strip --strip-unneeded <span class="s2">&quot;</span><span class="nv">$pkgdir</span><span class="s2">&quot;</span>/usr/<span class="si">${</span><span class="nv">_arch</span><span class="si">}</span>/bin/*.dll
+</span><span class="hll">    strip -g <span class="s2">&quot;</span><span class="nv">$pkgdir</span><span class="s2">&quot;</span>/usr/<span class="si">${</span><span class="nv">_arch</span><span class="si">}</span>/lib/*.a
+</span>  <span class="k">done</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<p>Собираем пакет утилитой <a class="reference external" href="https://www.archlinux.org/pacman/makepkg.8.html">makepkg</a>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">CARCH</span><span class="o">=</span>i686 makepkg -Acs
+<span class="o">==</span>&gt; Сборка пакета mingw-w64-protobuf <span class="m">3</span>.3.1-1 <span class="o">(</span><span class="m">10</span> авг <span class="m">2017</span> г. <span class="m">19</span>:03:34<span class="o">)</span>
+<span class="o">==</span>&gt; Проверка зависимостей для запуска...
+<span class="o">==</span>&gt; Проверка зависимостей для сборки...
+<span class="o">==</span>&gt; Получение исходных файлов...
+  -&gt; Найден v3.3.1.tar.gz
+<span class="o">==</span>&gt; Проверка файлов <span class="nb">source</span> с использованием md5sums...
+    v3.3.1.tar.gz ... <span class="nv">Готово</span>
+<span class="o">==</span>&gt; Распаковка исходных файлов...
+  -&gt; Распаковка <span class="s1">&#39;v3.3.1.tar.gz&#39;</span> с помощью <span class="nv">bsdtar</span>
+<span class="o">==</span>&gt; Удаление директории <span class="s1">&#39;$pkgdir/&#39;</span>...
+<span class="o">==</span>&gt; Запускается build<span class="o">()</span>...
+Google Mock not present.  Fetching gmock-1.7.0 from the web...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+<span class="m">100</span>   <span class="m">129</span>    <span class="m">0</span>   <span class="m">129</span>    <span class="m">0</span>     <span class="m">0</span>    <span class="m">153</span>      <span class="m">0</span> --:--:-- --:--:-- --:--:--   <span class="m">163</span>
+<span class="m">100</span>  362k  <span class="m">100</span>  362k    <span class="m">0</span>     <span class="m">0</span>   160k      <span class="m">0</span>  <span class="m">0</span>:00:02  <span class="m">0</span>:00:02 --:--:--  603k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+<span class="m">100</span>   <span class="m">129</span>    <span class="m">0</span>   <span class="m">129</span>    <span class="m">0</span>     <span class="m">0</span>    <span class="m">145</span>      <span class="m">0</span> --:--:-- --:--:-- --:--:--   <span class="m">145</span>
+<span class="m">100</span>  618k  <span class="m">100</span>  618k    <span class="m">0</span>     <span class="m">0</span>   195k      <span class="m">0</span>  <span class="m">0</span>:00:03  <span class="m">0</span>:00:03 --:--:--  355k
++ autoreconf -f -i -Wall,no-obsolete
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, <span class="s1">&#39;build-aux&#39;</span>.
+libtoolize: copying file <span class="s1">&#39;build-aux/ltmain.sh&#39;</span>
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, <span class="s1">&#39;m4&#39;</span>.
+libtoolize: copying file <span class="s1">&#39;m4/libtool.m4&#39;</span>
+libtoolize: copying file <span class="s1">&#39;m4/ltoptions.m4&#39;</span>
+libtoolize: copying file <span class="s1">&#39;m4/ltsugar.m4&#39;</span>
+libtoolize: copying file <span class="s1">&#39;m4/ltversion.m4&#39;</span>
+libtoolize: copying file <span class="s1">&#39;m4/lt~obsolete.m4&#39;</span>
+configure.ac:27: installing <span class="s1">&#39;build-aux/compile&#39;</span>
+configure.ac:30: installing <span class="s1">&#39;build-aux/config.guess&#39;</span>
+configure.ac:30: installing <span class="s1">&#39;build-aux/config.sub&#39;</span>
+configure.ac:24: installing <span class="s1">&#39;build-aux/install-sh&#39;</span>
+configure.ac:24: installing <span class="s1">&#39;build-aux/missing&#39;</span>
+Makefile.am: installing <span class="s1">&#39;build-aux/depcomp&#39;</span>
+parallel-tests: installing <span class="s1">&#39;build-aux/test-driver&#39;</span>
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, <span class="s1">&#39;build-aux&#39;</span>.
+libtoolize: copying file <span class="s1">&#39;build-aux/ltmain.sh&#39;</span>
+libtoolize: Consider adding <span class="s1">&#39;AC_CONFIG_MACRO_DIRS([m4])&#39;</span> to configure.ac,
+libtoolize: and rerunning libtoolize and aclocal.
+libtoolize: Consider adding <span class="s1">&#39;-I m4&#39;</span> to ACLOCAL_AMFLAGS in Makefile.am.
+configure.ac:22: installing <span class="s1">&#39;build-aux/compile&#39;</span>
+configure.ac:25: installing <span class="s1">&#39;build-aux/config.guess&#39;</span>
+configure.ac:25: installing <span class="s1">&#39;build-aux/config.sub&#39;</span>
+configure.ac:19: installing <span class="s1">&#39;build-aux/install-sh&#39;</span>
+configure.ac:19: installing <span class="s1">&#39;build-aux/missing&#39;</span>
+Makefile.am: installing <span class="s1">&#39;build-aux/depcomp&#39;</span>
+parallel-tests: installing <span class="s1">&#39;build-aux/test-driver&#39;</span>
+libtoolize: putting auxiliary files in <span class="s1">&#39;.&#39;</span>.
+libtoolize: copying file <span class="s1">&#39;./ltmain.sh&#39;</span>
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, <span class="s1">&#39;m4&#39;</span>.
+libtoolize: copying file <span class="s1">&#39;m4/libtool.m4&#39;</span>
+libtoolize: copying file <span class="s1">&#39;m4/ltoptions.m4&#39;</span>
+libtoolize: copying file <span class="s1">&#39;m4/ltsugar.m4&#39;</span>
+libtoolize: copying file <span class="s1">&#39;m4/ltversion.m4&#39;</span>
+libtoolize: copying file <span class="s1">&#39;m4/lt~obsolete.m4&#39;</span>
+configure.ac:66: installing <span class="s1">&#39;./ar-lib&#39;</span>
+configure.ac:61: installing <span class="s1">&#39;./compile&#39;</span>
+configure.ac:46: installing <span class="s1">&#39;./config.guess&#39;</span>
+configure.ac:46: installing <span class="s1">&#39;./config.sub&#39;</span>
+configure.ac:48: installing <span class="s1">&#39;./install-sh&#39;</span>
+configure.ac:48: installing <span class="s1">&#39;./missing&#39;</span>
+benchmarks/Makefile.am: installing <span class="s1">&#39;./depcomp&#39;</span>
+parallel-tests: installing <span class="s1">&#39;./test-driver&#39;</span>
++ rm -rf autom4te.cache config.h.in~
++ <span class="nb">exit</span> <span class="m">0</span>
+~/mingw-w64-protobuf/src/protobuf-3.3.1/build-i686-w64-mingw32 ~/mingw-w64-protobuf/src/protobuf-3.3.1
+/home/user/mingw-w64-protobuf/PKGBUILD: line <span class="m">24</span>: i686-w64-mingw32-configure: команда не <span class="nv">найдена</span>
+<span class="o">==</span>&gt; ОШИБКА: Произошел сбой в build<span class="o">()</span>.
+    Прерывание...
+</pre></div>
+</div>
+<p>Для сборки требуется скрипт <code class="docutils literal"><span class="pre">configure</span></code> как его поставить в MinGW из оф. реп
+я не знаю, поэтому ставим по тому же принципу из исходников (<a class="reference external" href="https://aur.archlinux.org/packages/mingw-w64-configure/">https://aur.archlinux.org/packages/mingw-w64-configure/</a>).</p>
+<p>Перед сборкой также важно закомментировать зависимости:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">PKGBUILD</span><a class="headerlink" href="#id2" title="Постоянная ссылка на код">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">pkgname</span><span class="o">=</span>mingw-w64-configure
+<span class="nv">pkgver</span><span class="o">=</span><span class="m">0</span>.1
+<span class="nv">pkgrel</span><span class="o">=</span><span class="m">1</span>
+<span class="nv">arch</span><span class="o">=(</span>any<span class="o">)</span>
+<span class="nv">pkgdesc</span><span class="o">=</span><span class="s2">&quot;configure wrapper for MinGW (mingw-w64)&quot;</span>
+<span class="c1">#depends=(&#39;mingw-w64-gcc&#39; &#39;mingw-w64-pkg-config&#39;)</span>
+<span class="nv">license</span><span class="o">=(</span><span class="s2">&quot;GPL&quot;</span><span class="o">)</span>
+<span class="nv">url</span><span class="o">=</span><span class="s2">&quot;http://fedoraproject.org/wiki/MinGW&quot;</span>
+<span class="nv">source</span><span class="o">=(</span><span class="s2">&quot;mingw-configure.sh&quot;</span><span class="o">)</span>
+<span class="nv">md5sums</span><span class="o">=(</span><span class="s1">&#39;SKIP&#39;</span><span class="o">)</span>
+
+<span class="nv">_architectures</span><span class="o">=</span><span class="s2">&quot;i686-w64-mingw32 x86_64-w64-mingw32&quot;</span>
+
+build<span class="o">()</span> <span class="o">{</span>
+  <span class="k">for</span> _arch in <span class="si">${</span><span class="nv">_architectures</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+    sed <span class="s2">&quot;s|@TRIPLE@|</span><span class="si">${</span><span class="nv">_arch</span><span class="si">}</span><span class="s2">|g&quot;</span> mingw-configure.sh &gt; <span class="si">${</span><span class="nv">_arch</span><span class="si">}</span>-configure
+  <span class="k">done</span>
+<span class="o">}</span>
+
+package<span class="o">()</span> <span class="o">{</span>
+  install -d <span class="s2">&quot;</span><span class="si">${</span><span class="nv">pkgdir</span><span class="si">}</span><span class="s2">&quot;</span>/usr/bin
+  <span class="k">for</span> _arch in <span class="si">${</span><span class="nv">_architectures</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+    install -m <span class="m">755</span> <span class="si">${</span><span class="nv">_arch</span><span class="si">}</span>-configure <span class="s2">&quot;</span><span class="si">${</span><span class="nv">pkgdir</span><span class="si">}</span><span class="s2">&quot;</span>/usr/bin/
+  <span class="k">done</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<p>Сборка <code class="docutils literal"><span class="pre">configure</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ../
+$ wget https://aur.archlinux.org/cgit/aur.git/snapshot/mingw-w64-configure.tar.gz
+$ tar -zxf mingw-w64-configure.tar.gz
+$ <span class="nb">cd</span> mingw-w64-configure/
+$ <span class="nv">CARCH</span><span class="o">=</span>i686 makepkg -Acs
+$ pacman -U mingw-w64-configure-0.1-1-any.pkg.tar.xz
+</pre></div>
+</div>
+<p>Теперь все готово для сборки Protobuf:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ../mingw-w64-protobuf/
+$ <span class="nv">CARCH</span><span class="o">=</span>i686 makepkg -Acs
+</pre></div>
+</div>
+<p>В результате получим архив с dll-ками и заголовочными файлами. Вот так просто и
+лаконично, хотя лучше поставить ArchLinux в виртуалку и собрать там тоже самое
+без лишних хлопот.</p>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../../2016/ibexpert/">
+    <i class="fa fa-arrow-circle-left"></i>
+    Firebird Developmen Studio на Linux
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../cpp-enum/">
+    C++: Приведение Enum структур к общему виду в шаблонах
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  </span>
+  
+</div>
+
+  
+  
+    <div class="section">
+    <br />
+    <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="medium" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,gplus" data-yashareTheme="counter"></div>
+    <h2>Comments</h2>
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'uralbash'; // required: replace example with your forum shortname
+        var disqus_identifier = '/articles/2017/protobuf-mingw/';
+        var disqus_title = 'Сборка libprotobuf под Windows';
+        
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+                    </div>
+                    <footer class="footer">
+                      
+  
+                        
+    <div class="footer__copyright">
+            
+                &copy; Copyright 2015, uralbash.
+            
+    </div>
+<div class="footer__theme">
+    <a href="https://github.com/ITCase/itcase_sphinx_theme" class="footer__theme-link">
+      ITCase Sphinx Theme
+    </a>
+      <span class="footer__theme-text">
+          | version: 0.2.0
+      </span>
+</div>
+                      
+  <div class="footer__theme">
+      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+        Ablog powered.
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="http://uralbash.ru/blog/atom.xml" class="footer__theme-link">
+        RSS/Atom
+      </a>
+  </div>
+  <div class="footer__theme">
+      <a href="https://uralbash.blogspot.com" class="footer__theme-link">
+        Старый блог
+      </a>
+  </div>
+
+                    </footer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        
+            var STICKY_MENU = true;
+        
+    </script>
+
+    <script type="text/javascript" src="../../../_static/js/__theme.js"></script>
+
+    
+        <script type="text/javascript">
+            var DOCUMENTATION_OPTIONS = {
+                    URL_ROOT: '../../../',
+                    VERSION: '',
+                    COLLAPSE_INDEX: false,
+                    FILE_SUFFIX: '',
+                    HAS_SOURCE: true
+            };
+        </script>
+    
+
+    
+</body>
+</html>

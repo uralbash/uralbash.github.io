@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом red</title>
+  <id>http://uralbash.ru/blog/tag/red/atom.xml</id>
+  <updated>2017-08-28T19:33:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/red/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/red/atom.xml">
+    <title type="text">Сборка пакета для Nix</title>
+    <id>http://uralbash.ru/articles/2017/nixpkgs-contribute/</id>
+    <updated>2017-08-28T19:33:00Z</updated>
+    <published>2017-08-28T19:33:00Z</published>
+    <link href="http://uralbash.ru/articles/2017/nixpkgs-contribute/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;nix&quot;&gt;
+
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nixpkgs/&quot;&gt;Nix&lt;/a&gt; - замечательный пакетный менеджер, который
+работает на &lt;cite&gt;MacOS&lt;/cite&gt; и любом дистрибутиве &lt;cite&gt;Linux&lt;/cite&gt;, причем из-за своей
+функциональной чистоты и изоляции зависимостей, гарантировано выдает всегда
+одинаковый результат.&lt;/p&gt;
+&lt;p&gt;На сегодняшний день &lt;cite&gt;Nix&lt;/cite&gt; имеет огромную базу пакетов, которая ежедневно
+пополняется. Для сборки своего пакета потребуется знание языка &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/manual/#chap-writing-nix-expressions&quot;&gt;Nix
+expression&lt;/a&gt;. Это
+чистый функциональный язык созданный специально для пакетного менеджера &lt;cite&gt;Nix&lt;/cite&gt; и
+операционной системы &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;ul class=&quot;last simple&quot;&gt;
+&lt;li&gt;Ресурсы по &lt;a class=&quot;reference internal&quot; href=&quot;../../../pages/nixos/#nixos&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;NixOS&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Статьи &lt;a class=&quot;reference external&quot; href=&quot;http://uralbash.ru/blog/tag/nix/&quot;&gt;http://uralbash.ru/blog/tag/nix/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;Для примера создадим сборку пакета языка программирования &lt;a class=&quot;reference external&quot; href=&quot;http://www.red-lang.org/&quot;&gt;Red&lt;/a&gt;. Будем следовать оф. документации
+&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nixpkgs/manual/#chap-quick-start&quot;&gt;https://nixos.org/nixpkgs/manual/#chap-quick-start&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;1. Скачиваем исходники&lt;/h2&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone git://github.com/NixOS/nixpkgs.git
+$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; nixpkgs
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h2&gt;2. Добавляем директорию с новым пакетом&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Правила именования файлов
+&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nixpkgs/manual/#sec-organisation&quot;&gt;https://nixos.org/nixpkgs/manual/#sec-organisation&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir pkgs/development/interpreters/red/
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;default-nix&quot;&gt;
+&lt;h2&gt;3. Создаем файл описания пакета &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;default.nix&lt;/span&gt;&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;Заготовка для нашего пакета будет выглядеть так:&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;table class=&quot;highlighttable&quot;&gt;&lt;tr&gt;&lt;td class=&quot;linenos&quot;&gt;&lt;div class=&quot;linenodiv&quot;&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; stdenv&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fetchFromGitHub &lt;span class=&quot;p&quot;&gt;}:&lt;/span&gt;
+
+stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;mkDerivation &lt;span class=&quot;k&quot;&gt;rec&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;src =&lt;/span&gt; fetchFromGitHub &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;rev =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;6a43c767fa2e85d668b83f749158a18e62c30f70&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;owner =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;repo =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;sha256 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1zh6xc728bs7r4v5jz1jjrdk0xd838xsxmvy9gfg75a3zffm0slr&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;configurePhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;buildPhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;installPhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;meta =&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;lib&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;description =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      New programming language strongly inspired by Rebol, but with a&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      broader field of usage thanks to its native-code compiler, from system&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      programming to high-level scripting, while providing modern support for&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      concurrency and multi-core CPUs&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;maintainers =&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; maintainers&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; uralbash &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;platforms =&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;i686-linux&amp;quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;x86_64-linux&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;license =&lt;/span&gt; licenses&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;bsd3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;homepage =&lt;/span&gt; &lt;span class=&quot;l&quot;&gt;http://www.red-lang.org/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;В первой строке указан импорт необходимых нам функций.&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; stdenv&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fetchFromGitHub &lt;span class=&quot;p&quot;&gt;}:&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Далее забираем исходники с &lt;cite&gt;GitHub&lt;/cite&gt; при помощи функции &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;fetchFromGitHub&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;src =&lt;/span&gt; fetchFromGitHub &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;rev =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;6a43c767fa2e85d668b83f749158a18e62c30f70&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;owner =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;repo =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;sha256 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1zh6xc728bs7r4v5jz1jjrdk0xd838xsxmvy9gfg75a3zffm0slr&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Что бы посчитать хэш (sha256) нам потребуется утилита &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix-prefetch-git&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-prefetch-git https://github.com/red/red 6a43c767fa2e85d668b83f749158a18e62c30f70
+Initialized empty Git repository in /tmp/git-checkout-tmp-Jzca0REG/red-6a43c76/.git/
+fatal: Invalid refspec &amp;#39;+refs/tags/v0.6.3^{}&amp;#39;
+remote: Counting objects: 52473, done.
+remote: Total 52473 (delta 0), reused 0 (delta 0), pack-reused 52473
+Receiving objects: 100% (52473/52473), 20.39 MiB | 1.50 MiB/s, done.
+Resolving deltas: 100% (35793/35793), done.
+From https://github.com/red/red
+Switched to a new branch &amp;#39;fetchgit&amp;#39;
+removing `.git&amp;#39;...
+
+git revision is 6a43c767fa2e85d668b83f749158a18e62c30f70
+path is /nix/store/qp10dy2plvskbv0zjpcg9mmrsszd1a6i-red-6a43c76
+git human-readable version is v0.6.3
+Commit date is 2017-07-17 21:25:27 +0800
+hash is 1zh6xc728bs7r4v5jz1jjrdk0xd838xsxmvy9gfg75a3zffm0slr
+{
+  &amp;quot;url&amp;quot;: &amp;quot;https://github.com/red/red&amp;quot;,
+  &amp;quot;rev&amp;quot;: &amp;quot;6a43c767fa2e85d668b83f749158a18e62c30f70&amp;quot;,
+  &amp;quot;date&amp;quot;: &amp;quot;2017-07-17T21:25:27+08:00&amp;quot;,
+&lt;span class=&quot;hll&quot;&gt;  &amp;quot;sha256&amp;quot;: &amp;quot;1zh6xc728bs7r4v5jz1jjrdk0xd838xsxmvy9gfg75a3zffm0slr&amp;quot;,
+&lt;/span&gt;  &amp;quot;fetchSubmodules&amp;quot;: true
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В конце файла указывается мета информация:&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;meta =&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;lib&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;description =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    New programming language strongly inspired by Rebol, but with a&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    broader field of usage thanks to its native-code compiler, from system&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    programming to high-level scripting, while providing modern support for&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    concurrency and multi-core CPUs&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;maintainers =&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; maintainers&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; uralbash &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;platforms =&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;i686-linux&amp;quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;x86_64-linux&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;license =&lt;/span&gt; licenses&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;bsd3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;homepage =&lt;/span&gt; &lt;span class=&quot;l&quot;&gt;http://www.red-lang.org/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Сама сборка происходит в 3 директивах &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;configurePhase&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;buildPhase&lt;/span&gt;&lt;/code&gt;,
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;installPhase&lt;/span&gt;&lt;/code&gt;. Если их не указывать, то по умолчанию будут выполняться
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;./configure&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;make&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;make&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;install&lt;/span&gt;&lt;/code&gt; соответственно. Т.к. &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Red&lt;/span&gt;&lt;/code&gt; не
+использует &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;autotools&lt;/span&gt;&lt;/code&gt; для сборки, то нам придется вручную прописать все
+необходимые шаги. Что бы не изобретать велосипед возьмем за основу пакет из
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Arch&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Linux&lt;/span&gt;&lt;/code&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=red&quot;&gt;https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=red&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Red&lt;/span&gt;&lt;/code&gt; требует 32х битный &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;curl&lt;/span&gt;&lt;/code&gt;, добавим его в окружение сборки:&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; stdenv&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; stdenv_32bit&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; pkgsi686Linux&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fetchFromGitHub&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fetchurl &lt;span class=&quot;p&quot;&gt;}:&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;ss&quot;&gt;buildInputs =&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; pkgsi686Linux&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;curl stdenv_32bit &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Скачаем &lt;a class=&quot;reference external&quot; href=&quot;http://www.rebol.com/&quot;&gt;Rebol&lt;/a&gt;. При помощи него собирается
+интерпретатор &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Red&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;ss&quot;&gt;rebol =&lt;/span&gt; fetchurl &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;url =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;http://www.rebol.com/downloads/v278/rebol-core-278-4-2.tar.gz&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;sha256 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1c1v0pyhf3d8z98qc93a5zmx0bbl0qq5lr8mbkdgygqsq2bv2xbz&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;ss&quot;&gt;r2 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;./rebol/releases/rebol-core/rebol&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В нашем случае, что добавлять в фазы установки имеет очень условных характер.
+Поделим следующим образом - в фазу конфигурации добавим распаковку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Rebol&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;configurePhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  # Download rebol&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  mkdir rebol/&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  tar -xzvf &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;rebol&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -C rebol/&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  patchelf --set-interpreter \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;stdenv_32bit&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;cc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;libc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib/32/ld-linux.so.2 \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Заметьте &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;r2&lt;/span&gt;&lt;/code&gt; это переменная, которую мы объявили выше. А &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/patchelf.html&quot;&gt;PatchELF&lt;/a&gt; это мега крутая утилита, которой можно
+подменять динамические зависимости в бинарниках, не пересобирая их. Мы изменили
+путь до &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ld-linux.so.2&lt;/span&gt;&lt;/code&gt; файла, т.к. в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NixOS&lt;/span&gt;&lt;/code&gt; он имеет нестандартный путь.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;При этом если такой пакет собирать в Ubuntu то патчить rebol нет
+необходимости, он подхватит зависимость из стандартного пути. Но для
+большей универсальности это необходимо.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;После условной конфигурации приступим к сборке интерпретатора &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Red&lt;/span&gt;&lt;/code&gt;. Все шаги
+выполняются относительно директории с исходными кодами с GitHub:&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;buildPhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  # Do tests&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  #&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw run-all.r&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  # Build test&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw red.r tests/hello.red&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  # Compiling the Red console...&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw red.r -r environment/console/console.red&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  # Generating docs...&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  cd docs&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  ../&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw makedoc2.r red-system-specs.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  ../&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw makedoc2.r red-system-quick-test.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  cd ../&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Установка:&lt;/p&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;installPhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  mkdir $out&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  # Install&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  install -d $out/opt/red&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  find quick-test -type f -executable -print0 | xargs -0 rm&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  cp -R * $out/opt/red/&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  rm -rf $out/opt/red/rebol&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  install -Dm755 console $out/bin/red&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  install -Dm644 BSD-3-License.txt                          \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/share/licenses/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/BSD-3-License.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  install -Dm644 BSL-License.txt                            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/share/licenses/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/BSL-License.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  install -Dm644 docs/red-system-quick-test.html            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/share/doc/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/red-system-quick-test.html&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  install -Dm644 docs/red-system-specs.html                 \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/share/doc/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/red-system-specs.html&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  # PathElf&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  patchelf --set-interpreter                            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;stdenv_32bit&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;cc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;libc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib/32/ld-linux.so.2  \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/opt/red/console&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  patchelf --set-rpath &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;pkgsi686Linux&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;curl&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/opt/red/console&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  patchelf --set-interpreter                            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;stdenv_32bit&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;cc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;libc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib/32/ld-linux.so.2  \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/bin/red&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  patchelf --set-rpath &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;pkgsi686Linux&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;curl&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      $out/bin/red&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id4&quot;&gt;
+&lt;h2&gt;4. Добавление в общий список пакетов&lt;/h2&gt;
+&lt;p&gt;Почти все готово, осталось добавить новый пакет в общий список и собрать.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ vim pkgs/top-level/all-packages.nix
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;ss&quot;&gt;rascal =&lt;/span&gt; callPackage &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;l&quot;&gt;/development/interpreters/rascal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;hll&quot;&gt;&lt;span class=&quot;ss&quot;&gt;red =&lt;/span&gt; callPackage &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;l&quot;&gt;/development/interpreters/red&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;regina =&lt;/span&gt; callPackage &lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;l&quot;&gt;/development/interpreters/regina&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id5&quot;&gt;
+&lt;h2&gt;5. Сборка&lt;/h2&gt;
+&lt;p&gt;Сборка пакета выполняется командой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix-build&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-build -A red
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Или если необходимо его сразу установить в окружение:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-build -f . -iA red
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Полный исходник выглядит так:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id6&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;default.nix&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-nix&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; stdenv&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; stdenv_32bit&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; pkgsi686Linux&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fetchFromGitHub&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; fetchurl &lt;span class=&quot;p&quot;&gt;}:&lt;/span&gt;
+
+stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;mkDerivation &lt;span class=&quot;k&quot;&gt;rec&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;name =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red-v&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;version&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;version =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.6.3&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;src =&lt;/span&gt; fetchFromGitHub &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;rev =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;6a43c767fa2e85d668b83f749158a18e62c30f70&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;owner =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;repo =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;red&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;sha256 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1zh6xc728bs7r4v5jz1jjrdk0xd838xsxmvy9gfg75a3zffm0slr&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;rebol =&lt;/span&gt; fetchurl &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;url =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;http://www.rebol.com/downloads/v278/rebol-core-278-4-2.tar.gz&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;sha256 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1c1v0pyhf3d8z98qc93a5zmx0bbl0qq5lr8mbkdgygqsq2bv2xbz&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;buildInputs =&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; pkgsi686Linux&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;curl stdenv_32bit &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;r2 =&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;./rebol/releases/rebol-core/rebol&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;configurePhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    # Download rebol&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    mkdir rebol/&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    tar -xzvf &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;rebol&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -C rebol/&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    patchelf --set-interpreter \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;stdenv_32bit&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;cc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;libc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib/32/ld-linux.so.2 \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;buildPhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    # Do tests&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    #&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw run-all.r&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;    # Build test&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw red.r tests/hello.red&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;    # Compiling the Red console...&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw red.r -r environment/console/console.red&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;    # Generating docs...&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    cd docs&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    ../&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw makedoc2.r red-system-specs.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    ../&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;r2&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt; -qw makedoc2.r red-system-quick-test.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    cd ../&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;installPhase =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    mkdir $out&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;    # Install&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    install -d $out/opt/red&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    find quick-test -type f -executable -print0 | xargs -0 rm&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    cp -R * $out/opt/red/&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    rm -rf $out/opt/red/rebol&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    install -Dm755 console $out/bin/red&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    install -Dm644 BSD-3-License.txt                          \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/share/licenses/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/BSD-3-License.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    install -Dm644 BSL-License.txt                            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/share/licenses/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/BSL-License.txt&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    install -Dm644 docs/red-system-quick-test.html            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/share/doc/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/red-system-quick-test.html&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    install -Dm644 docs/red-system-specs.html                 \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/share/doc/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;name&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/red-system-specs.html&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;    # PathElf&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    patchelf --set-interpreter                            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;stdenv_32bit&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;cc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;libc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib/32/ld-linux.so.2  \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/opt/red/console&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    patchelf --set-rpath &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;pkgsi686Linux&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;curl&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/opt/red/console&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    patchelf --set-interpreter                            \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;stdenv_32bit&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;cc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;libc&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib/32/ld-linux.so.2  \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/bin/red&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    patchelf --set-rpath &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;pkgsi686Linux&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;curl&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;out&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/lib \&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;        $out/bin/red&lt;/span&gt;
+
+&lt;span class=&quot;s1&quot;&gt;  &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;ss&quot;&gt;meta =&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;lib&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;description =&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      New programming language strongly inspired by Rebol, but with a&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      broader field of usage thanks to its native-code compiler, from system&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      programming to high-level scripting, while providing modern support for&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;      concurrency and multi-core CPUs&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;    &amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;maintainers =&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; maintainers&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; uralbash &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;platforms =&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;i686-linux&amp;quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;x86_64-linux&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;license =&lt;/span&gt; licenses&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;bsd3&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;ss&quot;&gt;homepage =&lt;/span&gt; &lt;span class=&quot;l&quot;&gt;http://www.red-lang.org/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Готовый пакет можно отправить в основную ветку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nixpkgs&lt;/span&gt;&lt;/code&gt;. Перед этим лучше
+почитать как правильно делать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pull&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;request&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nixpkgs/manual/#idm140737317358720&quot;&gt;https://nixos.org/nixpkgs/manual/#idm140737317358720&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nixpkgs/manual/#sec-reviewing-contributions&quot;&gt;https://nixos.org/nixpkgs/manual/#sec-reviewing-contributions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;В следующей статье я постараюсь описать как собирать свой собственный &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NixOS&lt;/span&gt;&lt;/code&gt;
+дистрибутив с шахматами и балеринами.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

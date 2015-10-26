@@ -1,0 +1,75 @@
+.. post:: 21 Nov, 2015 18:06
+   :tags: Python, Pyramid
+   :category: Python
+   :author: Uralbash
+   :language: ru
+
+Pyramid фреймворк
+=================
+
+Здесь я буду собирать разные полезные ресурсы по фреймворку :l:`Pyramid`. Если
+вы что то не нашли, пишите в комментах.
+
+Оф. ресурсы
+-----------
+
+* Официальный сайт фреймворка Pyramid http://trypyramid.com
+* Официальный сайт сообщества Pylons  http://www.pylonsproject.org/
+* Документация http://docs.pylonsproject.org/en/latest/docs/pyramid.html
+* Список туториалов http://docs.pylonsproject.org/projects/pyramid-tutorials/en/latest/index.html
+* Рецепты http://docs.pylonsproject.org/projects/pyramid-cookbook/en/latest/index.html
+* Код https://github.com/Pylons
+* Донэйт https://gratipay.com/pylonsproject/
+
+Полезные ссылки
+---------------
+
+* `Awesome список батареек на гитхабе <https://github.com/uralbash/awesome-pyramid>`_
+
+Сообщество
+----------
+
+Перечислю источники по степени активности:
+
+* ``#pyramid`` irc канал на freenode имеет очень высокую активность,
+  разработчики фреймворка и все что с ним связанно не брезгают отвечать на
+  вопросы новичков.
+
+  .. image:: https://img.shields.io/badge/irc-freenode-blue.svg
+    :target: https://webchat.freenode.net/?channels=pyramid
+    :alt: irc freenode
+
+* Гугл группы, если хочется сформулировать вопрос/предложение или попиариться
+  не в чате.
+
+  * https://groups.google.com/forum/#!forum/pylons-discuss
+  * https://groups.google.com/forum/#!forum/pylons-devel
+
+* StackOverflow то же весьма активен, много людей из рассылки.
+
+  * http://stackoverflow.com/questions/tagged/pyramid
+
+* Reddit, полумертвый источник, но разработчики на него подписанны.
+
+  * https://www.reddit.com/r/Pyramid/
+
+На русском
+----------
+
+* Попытка создать тоже самое на русском https://groups.google.com/forum/#!forum/pyramid-ru
+* ``#pyramid-ru`` irc канал на freenode.
+
+  .. image:: https://img.shields.io/badge/irc-freenode-blue.svg
+    :target: https://webchat.freenode.net/?channels=pyramid-ru
+    :alt: irc freenode
+* StackOverflow http://ru.stackoverflow.com/questions/tagged/pyramid
+
+* `Лекции Python/Pyramid
+  <http://lectureswww.readthedocs.io/6.www.sync/3.framework/pyramid/index.html>`_
+
+* Wikipedia `<https://ru.wikipedia.org/wiki/Pyramid_(программный_каркас)>`_
+
+Блоги на русском
+----------------
+
+* http://faq1c.gorbunov.ru/node/85

@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом vim</title>
+  <id>http://uralbash.ru/blog/tag/vim/atom.xml</id>
+  <updated>2014-04-06T00:58:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/vim/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/vim/atom.xml">
+    <title type="text">Пишем на Go (Golang)</title>
+    <id>http://uralbash.ru/articles/2014/go/</id>
+    <updated>2014-04-06T00:58:00Z</updated>
+    <published>2014-04-06T00:58:00Z</published>
+    <link href="http://uralbash.ru/articles/2014/go/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;go-golang&quot;&gt;
+
+&lt;img alt=&quot;../../../_images/go.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/go.png&quot; /&gt;
+&lt;p&gt;Go замечательный язык программирования, который можно компилировать,
+компилировать под разные платформы (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ARM&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;x86&lt;/span&gt;&lt;/code&gt;), распараллеливать. Он
+проще &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C/C++&lt;/span&gt;&lt;/code&gt; и уже сформировавшийся язык в отличии от &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Rust&lt;/span&gt;&lt;/code&gt; который
+ломает программы с каждым обновлением. Область применения самая разная начиная
+от консольных утилит, всяких парсеров, системного, сетевого ПО, связи с
+физическими устройствами и заканчивая веб приложениями, &lt;span class=&quot;strike&quot;&gt;разве что пока нету
+реализаций под смартфоны&lt;/span&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.google.com/document/d/1N3XyVkAP8nmWjASz8L_OjjnjVKxgeVBjIsTr5qIUcA4/edit&quot;&gt;android&lt;/a&gt;).&lt;/p&gt;
+&lt;br clear=&quot;both&quot;/&gt;&lt;p&gt;На Go уже написаны:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docker.io/&quot;&gt;Docker&lt;/a&gt; - система легковесных контейнеров (переписан с &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://drone.io&quot;&gt;http://drone.io&lt;/a&gt; - система непрерывного тестирования, поддерживающая
+&lt;a class=&quot;reference external&quot; href=&quot;http://docker.io/&quot;&gt;Docker&lt;/a&gt; (о ней я напишу отдельно скорее всего) и огромное количество
+других проектов, что удивительно ведь &lt;a class=&quot;reference external&quot; href=&quot;https://golang.org/&quot;&gt;go&lt;/a&gt; очень молодой проект, а ещё гугл&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Здесь я опишу процесс одной из возможных реализаций установки &lt;a class=&quot;reference external&quot; href=&quot;https://golang.org/&quot;&gt;Go&lt;/a&gt; под
+&lt;a class=&quot;reference external&quot; href=&quot;https://www.kernel.org/&quot;&gt;Linux&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;УСТАНОВКА&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Более простой способ &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/moovweb/gvm&quot;&gt;moovweb/gvm&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;описано подробно в оф. документации &lt;a class=&quot;reference external&quot; href=&quot;http://golang.org/doc/install&quot;&gt;http://golang.org/doc/install&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://code.google.com/p/go/downloads/list?q=OpSys-FreeBSD+OR+OpSys-Linux+OR+OpSys-OSX+Type-Archive&quot;&gt;Скачать архив&lt;/a&gt; и распаковать в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;~/golang&lt;/span&gt;&lt;/code&gt; например:&lt;/div&gt;
+&lt;/div&gt;
+&lt;br&gt;&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ tar -C ~/golang -xzf go1.2.1.linux-amd64.tar.gz
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Добавляем в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;~/.bashrc&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id5&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;~/.bashrc&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Go lang&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;GOROOT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/golang
+&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:&lt;span class=&quot;nv&quot;&gt;$GOROOT&lt;/span&gt;/bin
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;создаем файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello.go&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id6&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;hello.go&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-go&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;main&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;fmt&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;fmt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;hello, world\n&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;и выполняем так:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ go run hello.go
+hello, world
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;или компилируем:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ go build hello.go
+$ ./hello
+hello, world
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;теперь у нас установлен &lt;a class=&quot;reference external&quot; href=&quot;https://golang.org/&quot;&gt;go&lt;/a&gt; в системе. Если вам нужно свои пакеты хранить в
+другой директории (не &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;$HOME/golang&lt;/span&gt;&lt;/code&gt;), но при этом что бы они находились в
+общем окружении, то можно задать переменную окружения &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;GOPATH&lt;/span&gt;&lt;/code&gt;. У меня всё
+вместе выглядит так:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Go lang&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;GOPATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/Projects/go
+&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;GOROOT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/golang
+&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:&lt;span class=&quot;nv&quot;&gt;$GOROOT&lt;/span&gt;/bin:&lt;span class=&quot;nv&quot;&gt;$GOPATH&lt;/span&gt;/bin
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;vim&quot;&gt;
+&lt;h2&gt;VIM&lt;/h2&gt;
+&lt;p&gt;есть много дополнений для go но самая крутое из них это &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/fatih/vim-go&quot;&gt;https://github.com/fatih/vim-go&lt;/a&gt;
+пример &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.vimrc&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;au&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;BufNewFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;BufRead&lt;/span&gt; *.&lt;span class=&quot;k&quot;&gt;go&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;go&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;nu&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;au&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;FileType&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;go&lt;/span&gt; map &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;leader&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;r&lt;/span&gt; :&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;go&lt;/span&gt; run %&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+Bundle &lt;span class=&quot;s2&quot;&gt;&amp;quot;fatih/vim-go&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vim-go&lt;/span&gt;&lt;/code&gt; умеет:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;подсветка синтаксиса&lt;/li&gt;
+&lt;li&gt;автодополнение кода gocode&lt;/li&gt;
+&lt;li&gt;автоформатирование кода через gofmt&lt;/li&gt;
+&lt;li&gt;автоимпорт недостающих библиотек goimports&lt;/li&gt;
+&lt;li&gt;проверять код на наличие ошибок с помощью golint&lt;/li&gt;
+&lt;li&gt;поддерживает снипеты ultisnips or neosnippet&lt;/li&gt;
+&lt;li&gt;и многое другое&lt;/li&gt;
+&lt;/ul&gt;
+&lt;iframe width=&quot;420&quot; height=&quot;315&quot;
+src=&quot;https://www.youtube.com/embed/rD11pEx5h8c&quot; frameborder=&quot;0&quot;
+allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h2&gt;КНИГИ&lt;/h2&gt;
+&lt;p&gt;книг много, но на великом только одна от издательства ДМК пресс, к счастью есть
+эл.вариант книги хоть и в pdf.&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://dmkpress.com/catalog/computer/programming/978-5-94074-854-0/&quot;&gt;&lt;img alt=&quot;../../../_images/go_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/go_book.jpg&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id4&quot;&gt;
+&lt;h2&gt;Ресурсы&lt;/h2&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://4gophers.com/&quot;&gt;http://4gophers.com/&lt;/a&gt; (ru)&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;#go-nuts in the irc.freenode.org network.&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://blog.golang.org/&quot;&gt;http://blog.golang.org/&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;google group&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;reddit&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;anykey&quot;&gt;
+&lt;h2&gt;AnyKey&lt;/h2&gt;
+&lt;div class=&quot;line-block&quot;&gt;
+&lt;div class=&quot;line&quot;&gt;Использование Си в Гоу&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://zacg.github.io/blog/2013/06/06/calling-c-plus-plus-code-from-go-with-swig/&quot;&gt;http://zacg.github.io/blog/2013/06/06/calling-c-plus-plus-code-from-go-with-swig/&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;ORM&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/eaigner/hood&quot;&gt;https://github.com/eaigner/hood&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/jinzhu/gorm&quot;&gt;https://github.com/jinzhu/gorm&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Web&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Revel&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Gorilla&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;net/http&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Список пакетов&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.google.com/p/go-wiki/wiki/Projects&quot;&gt;https://code.google.com/p/go-wiki/wiki/Projects&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Go для программистов C++&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://netsago.org/ru/docs/1/16/&quot;&gt;http://netsago.org/ru/docs/1/16/&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://eao197.narod.ru/desc/short_effective_go.html&quot;&gt;http://eao197.narod.ru/desc/short_effective_go.html&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Calling Go from Python via JSON-RPC&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;www.artima.com/weblogs/viewpost.jsp?thread=333589&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Go для Python программистов&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://www.slideshare.net/kcherkasoff/go-for&quot;&gt;http://www.slideshare.net/kcherkasoff/go-for&lt;/a&gt;-pythonistas#&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Тесты&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://smartystreets.github.io/goconvey/&quot;&gt;http://smartystreets.github.io/goconvey/&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Примеры&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://gobyexample.com/&quot;&gt;https://gobyexample.com/&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;CI&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/drone/drone&quot;&gt;https://github.com/drone/drone&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Хайлод++&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://www.youtube.com/watch?v=bqtN6XViejE&quot;&gt;http://www.youtube.com/watch?v=bqtN6XViejE&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;Туториал&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://tour.golang.org/&quot;&gt;http://tour.golang.org/&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;img alt=&quot;../../../_images/gopher.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/gopher.png&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/vim/atom.xml">
+    <title type="text">Python'им в Vim</title>
+    <id>http://uralbash.ru/articles/2013/python_vim/</id>
+    <updated>2013-11-23T02:20:00Z</updated>
+    <published>2013-11-23T02:20:00Z</published>
+    <link href="http://uralbash.ru/articles/2013/python_vim/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;python-vim&quot;&gt;
+
+&lt;img alt=&quot;../../../_images/vim-cheat-sheet-en.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vim-cheat-sheet-en.png&quot; /&gt;
+&lt;p&gt;В продолжение статьи о рабочем окружении (&lt;a class=&quot;reference internal&quot; href=&quot;../../../articles/2013/where_to_start/#were-to-start&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;С чего начать?©&lt;/span&gt;&lt;/a&gt;), по просьбам
+трудящихся и во благо партии пишу о текстовом редакторе &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Думаю в лишнем представлении &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt; не нуждается, это очень популярный
+редактор, которым пользуется огромное количество программистов. Посмотрим, чем
+он так хорош:&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;Консоль&lt;/h2&gt;
+&lt;p&gt;Реально же круто писать код в консоле, не отвлекаясь на X окна!? Пишешь код,
+тут же смотришь логи сервера, тут же запускаешь тесты, дебажишь, комитишь, ну и
+т.д. Что бы бысто выйти в консоль из &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;vim&lt;/a&gt; можно нажать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctr^z&lt;/span&gt;&lt;/code&gt;, вернуться
+выполнив команду &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=fg&quot;&gt;fg&lt;/a&gt;. Или можно ввести команду &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;:sh&lt;/span&gt;&lt;/code&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt;, что бы
+вернуться просто закрыть консоль командой &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=exit&quot;&gt;exit&lt;/a&gt;. Для бОльших благ есть
+&lt;a class=&quot;reference external&quot; href=&quot;https://tmux.github.io/&quot;&gt;tmux&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;Основные настройки&lt;/h2&gt;
+&lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt; настройки хранятся в файле &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;~/.vimrc&lt;/span&gt;&lt;/code&gt;, а плагины в директории
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;~/.vim&lt;/span&gt;&lt;/code&gt;. Для начальных настроек добавьте в ваш &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;~/.vimrc&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Other settings&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; подстройка под разные типы файлов&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;filetype&lt;/span&gt; plugin indent &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Use &amp;lt;leader&amp;gt;l to toggle display of whitespace&lt;/span&gt;
+    nmap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;leader&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;l&lt;/span&gt; :&lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; And set some nice chars to do it with&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;listchars&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;tab&lt;/span&gt;:»\ &lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;eol&lt;/span&gt;:¬
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; automatically change window&amp;#39;s cwd to file&amp;#39;s dir&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;autochdir&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; I&amp;#39;m prefer spaces to tabs&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tabstop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;shiftwidth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;expandtab&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Backspace key won&amp;#39;t move from current line&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;backspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;indent&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;eol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;start&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; folding&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;foldenable&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;foldmethod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;indent
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;foldlevel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;99&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; disable F1&lt;/span&gt;
+    imap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F1&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;nop&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    nmap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F1&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;nop&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; 256 colors&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;syntax&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;on&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; $COLORTERM &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;gnome-terminal&amp;#39;&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;t_Co&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;256&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Подсветка 80й колонки в *.py файлах&lt;/span&gt;
+    autocmd &lt;span class=&quot;nb&quot;&gt;FileType&lt;/span&gt; python &lt;span class=&quot;k&quot;&gt;setlocal&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;colorcolumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; отключаем режим совместимости с Vi&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;nocompatible&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;filetype&lt;/span&gt; off
+
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mousehide&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;quot;Спрятать курсор мыши когда набираем текст&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;mouse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;quot;Включить поддержку мыши&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;termencoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;utf&lt;span class=&quot;m&quot;&gt;-8&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;quot;Кодировка терминала&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;novisualbell&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;quot;Не мигать&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;t_vb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;quot;Не пищать! (Опции &amp;#39;не портить текст&amp;#39;, к сожалению, нету)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Курсор&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cuc&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cul&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;highlight&lt;/span&gt; CursorLine                    cterm&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;none ctermbg&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;235&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;highlight&lt;/span&gt; CursorColumn                  cterm&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;none ctermbg&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;235&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Здесь думаю все понятно, объясню разве что фолдинг. Он у меня включен, но по
+умолчанию все развернуто. Что бы сфолдить/разфолдить я иногда пользуюсь
+командой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;za&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h2&gt;Пакетный менеджер&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;vim&lt;/a&gt; имеет множество дополнений, раньше приходилось их скачивать и
+рассовывать файлы по папкам вручную, сейчас есть &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/VundleVim/Vundle.vim&quot;&gt;VundleVim/Vundle.vim&lt;/a&gt;
+(а ещё лучше &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/junegunn/vim-plug&quot;&gt;junegunn/vim-plug&lt;/a&gt;) пакетный менеджер который делает это
+за вас, аля &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=apt-get&quot;&gt;apt-get&lt;/a&gt; (для любителей экзотики &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/egalpin/apt-vim&quot;&gt;egalpin/apt-vim&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Установка:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Настройка (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;~/.vimrc&lt;/span&gt;&lt;/code&gt;):&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Vundle - packages control&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;rtp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;+=~&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/.vim/&lt;/span&gt;bundle&lt;span class=&quot;sr&quot;&gt;/vundle/&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; vundle#rc&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; let Vundle manage Vundle&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; required!&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;gmarik/vundle&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь посмотрим в действии, перезагрузим конфиг открытого &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;vim&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;:source&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;$MYVIMRC&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Установим все пакеты:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;:BundleInstall&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Обновим пакеты:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;:BundleUpdate&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Через директиву &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Bundle&lt;/span&gt;&lt;/code&gt; добавляются пакеты, причем ищутся они автоматически
+на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt; или &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vimscripts&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;vimcommander&quot;&gt;
+&lt;h2&gt;VimCommander&lt;/h2&gt;
+&lt;p&gt;для перемещения, удаления файлов и директорий я использую
+&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/lpenz/VimCommander&quot;&gt;lpenz/VimCommander&lt;/a&gt;, это аналог &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;MidnightCommander&lt;/span&gt;&lt;/code&gt;. Мне удобнее
+прямо в &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;vim&lt;/a&gt; нажать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;F9&amp;gt;&lt;/span&gt;&lt;/code&gt; (открыть &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;VimComander&lt;/span&gt;&lt;/code&gt;), выделить файлы и
+нажать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;F5&amp;gt;&lt;/span&gt;&lt;/code&gt; или &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;F8&amp;gt;&lt;/span&gt;&lt;/code&gt;, чем переключаться в другое окно и запускать
+&lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=mc&quot;&gt;mc&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;figure align-center&quot; id=&quot;id15&quot;&gt;
+&lt;img alt=&quot;../../../_images/vimcommander.png&quot; src=&quot;../../../_images/vimcommander.png&quot; /&gt;
+&lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;VimCommander&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Конфиг:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; VimCommander&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;lpenz/vimcommander&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;noremap&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;silent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F9&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; :&lt;span class=&quot;k&quot;&gt;cal&lt;/span&gt; VimCommanderToggle&lt;span class=&quot;p&quot;&gt;()&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Установка:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;:BundleInstall&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;nerdtree&quot;&gt;
+&lt;h2&gt;NERDTree&lt;/h2&gt;
+&lt;p&gt;Левое окошко на картинке выше это &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/scrooloose/NERDTree&quot;&gt;scrooloose/NERDTree&lt;/a&gt;, в нем можно
+перемещаться по каталогам, открывать файлы в текущем буфере или в виде вкладки
+итд. Вкладки и файлы можно тыкать мышью. Что бы открыть файл в текущем окне,
+просто кликните по нему мышью или нажмите &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;ENTER&amp;gt;&lt;/span&gt;&lt;/code&gt; или &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;o&lt;/span&gt;&lt;/code&gt;. Для открытия в
+новой вкладке нажмите &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;t&lt;/span&gt;&lt;/code&gt;. Для отображения скрытых файлов (начинаются с
+точки), нажмите &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Shift+i&lt;/span&gt;&lt;/code&gt;. Для доп. информации &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;?&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Конфиг:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; NerdTree&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;scrooloose/nerdtree&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot;map &amp;lt;F2&amp;gt; :NERDTreeToggle&amp;lt;CR&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Автоматическое закрытие с последним окном&lt;/span&gt;
+    autocmd bufenter * &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;winnr&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;$&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &amp;amp;&amp;amp; exists&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;b:NERDTreeType&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &amp;amp;&amp;amp; &lt;span class=&quot;k&quot;&gt;b&lt;/span&gt;:NERDTreeType &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;primary&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Убираем в табах путь у файлу (только название файла)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;tabline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;%&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;MyTabLine&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; MyTabLine&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; s &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; range&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;tabpagenr&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;            &amp;quot; select the highlighting&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; tabpagenr&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; s .&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;%#TabLineSel#&amp;#39;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; s .&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;%#TabLine#&amp;#39;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;            &amp;quot; set the tab page number (for mouse clicks)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; s .&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;%&amp;#39;&lt;/span&gt; . &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; . &lt;span class=&quot;s1&quot;&gt;&amp;#39;T&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;            &amp;quot; the label is made by MyTabLabel()&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; s .&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39; %{MyTabLabel(&amp;#39;&lt;/span&gt; . &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; . &lt;span class=&quot;s1&quot;&gt;&amp;#39;)} |&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;endfor&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;        &amp;quot; after the last tab fill with TabLineFill and reset tab page nr&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; s .&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;%#TabLineFill#%T&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&amp;quot;        &amp;quot; right-align the label to close the current tab page&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; tabpagenr&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; s .&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;%=%#TabLine#%999X X&amp;#39;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;        &amp;quot;echomsg &amp;#39;s:&amp;#39; . s&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; s
+    &lt;span class=&quot;k&quot;&gt;endfunction&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; MyTabLabel&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; buflist &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; tabpagebuflist&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;a&lt;/span&gt;:&lt;span class=&quot;k&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; winnr &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; tabpagewinnr&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;a&lt;/span&gt;:&lt;span class=&quot;k&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; numtabs &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; tabpagenr&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;        &amp;quot; account for space padding between tabs, and the &amp;quot;close&amp;quot; button&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; maxlen &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &amp;amp;&lt;span class=&quot;nb&quot;&gt;columns&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; numtabs * &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; / numtabs
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; tablabel &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; bufname&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;buflist[winnr &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;]&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; strlen&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; tablabel &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; tablabel &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; tablabel . &lt;span class=&quot;s2&quot;&gt;&amp;quot; &amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;endwhile&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; tablabel &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; fnamemodify&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; tablabel&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;:t&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; tablabel &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; strpart&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; tablabel&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  maxlen &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; tablabel
+    &lt;span class=&quot;k&quot;&gt;endfunction&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; NerdTree-Tabs&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;jistr/vim-nerdtree-tabs&amp;#39;&lt;/span&gt;
+    map &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F2&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; :NERDTreeTabsToggle&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; NERDTreeIgnore &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; [&lt;span class=&quot;s1&quot;&gt;&amp;#39;\.pyc$&amp;#39;&lt;/span&gt;]
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/jistr/vim-nerdtree-tabs&quot;&gt;jistr/vim-nerdtree-tabs&lt;/a&gt; нужен для зацикленного открытия/закрытия по
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;F2&amp;gt;&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;klen-python-mode&quot;&gt;
+&lt;h2&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/klen/python-mode&quot;&gt;klen/python-mode&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;отличная штука которая подсвечивает ошибки, следит за &lt;span class=&quot;target&quot; id=&quot;index-0&quot;&gt;&lt;/span&gt;&lt;a class=&quot;pep reference external&quot; href=&quot;https://www.python.org/dev/peps/pep-0008&quot;&gt;&lt;strong&gt;PEP 8&lt;/strong&gt;&lt;/a&gt;, позволят делать
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;breakpoint'ы&lt;/span&gt;&lt;/code&gt; для дебага, ну и еще &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/klen/python-mode&quot;&gt;многое другое&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Конфиг:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Python mode&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;klen/python-mode&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Python-mode&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Activate rope&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Keys:&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; K             Show python docs&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; &amp;lt;Ctrl-Space&amp;gt;  Rope autocomplete&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; &amp;lt;Ctrl-c&amp;gt;g     Rope goto definition&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; &amp;lt;Ctrl-c&amp;gt;d     Rope show documentation&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; &amp;lt;Ctrl-c&amp;gt;f     Rope find occurrences&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; &amp;lt;Leader&amp;gt;b     Set, unset breakpoint (g:pymode_breakpoint enabled)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; [[            Jump on previous class or function (normal, visual, operator modes)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; ]]            Jump on next class or function (normal, visual, operator modes)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; [M            Jump on previous class or method (normal, visual, operator modes)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; ]M            Jump on next class or method (normal, visual, operator modes)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_rope &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_lint_ignore &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;E501,C0110,W0102,F0401,C0301&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Documentation&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_doc &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_doc_key &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;F1&amp;gt;&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot;Linting&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_lint &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_lint_checker &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;pyflakes,pep8&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Auto check on save&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_lint_write &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Support virtualenv&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_virtualenv &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Enable breakpoints plugin&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_breakpoint &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_breakpoint_key &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;lt;leader&amp;gt;b&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; syntax highlighting&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_syntax &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_syntax_all &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_syntax_indent_errors &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_syntax_all
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_syntax_space_errors &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_syntax_all
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Don&amp;#39;t autofold code&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:pymode_folding &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; replace pdb to ipdb&lt;/span&gt;
+    iab ipdb import ipdb; ipdb.set_trace&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Для создания &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;breackpoint'а&lt;/span&gt;&lt;/code&gt; нажимаем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;leader&amp;gt;b&lt;/span&gt;&lt;/code&gt;, остальное думаю и так
+понятно по коментам.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id5&quot;&gt;
+&lt;h2&gt;Автодополнение кода&lt;/h2&gt;
+&lt;p&gt;для автодополнения я использую &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/davidhalter/jedi-vim&quot;&gt;davidhalter/jedi-vim&lt;/a&gt; и
+&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Valloric/YouCompleteMe&quot;&gt;Valloric/YouCompleteMe&lt;/a&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/ycm.gif&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ycm.gif&quot; /&gt;
+&lt;p&gt;Конфиг:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot; Jedi - autocomplete&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;davidhalter/jedi-vim&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:jedi#show_call_signatures &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; YouCompleteMe&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;Valloric/YouCompleteMe&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; SuperTab&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;ervandew/supertab&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Установка:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install jedi
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;YoCompleteMe&lt;/span&gt;&lt;/code&gt; требует минимум &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;7.3&lt;/span&gt;&lt;/code&gt; версию &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt;, поэтому его нужно
+будет пересобрать. Это очень просто, &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source&quot;&gt;инструкция здесь&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/ervandew/SuperTab&quot;&gt;ervandew/SuperTab&lt;/a&gt; включает дополнение по &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;Tab&amp;gt;&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;tagbar&quot;&gt;
+&lt;h2&gt;TagBar&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/majutsushi/tagbar&quot;&gt;majutsushi/tagbar&lt;/a&gt; это правое окошко на рисунке:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/tagbar.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/tagbar.png&quot; /&gt;
+&lt;p&gt;По сути это навигация по классам и функциям, очень удобно переходить к классу
+просто по нему кликнув. На рисунке видно что он подсвечивает функцию в которой
+я нахожусь.&lt;/p&gt;
+&lt;p&gt;Конфиг:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; TagBar&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;majutsushi/tagbar&amp;#39;&lt;/span&gt;
+    nmap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F8&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; :TagbarToggle&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id7&quot;&gt;
+&lt;h2&gt;Подсветка синтаксиса&lt;/h2&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Color&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;jonathanfilip/vim-lucius&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;color&lt;/span&gt; lucius
+    map &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F5&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; :&lt;span class=&quot;k&quot;&gt;call&lt;/span&gt; ToggleBg&lt;span class=&quot;p&quot;&gt;()&amp;lt;&lt;/span&gt;CR&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dark&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt; ToggleBg&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &amp;amp;&lt;span class=&quot;nb&quot;&gt;background&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;dark&amp;#39;&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;light&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dark&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;endif&lt;/span&gt;
+    endfunc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Тема &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/jonathanfilip/vim-lucius&quot;&gt;jonathanfilip/vim-lucius&lt;/a&gt;. Можно по &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;F5&amp;gt;&lt;/span&gt;&lt;/code&gt; переключаться с светлой, на
+темную :)&lt;/p&gt;
+&lt;p&gt;Подсветка различных типов:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Syntax file&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;me-vlad/python-syntax.vim&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;  sophacles / vim-bundle-mako&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s2&quot;&gt;&amp;quot;sophacles/vim-bundle-mako&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;au&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;BufNewFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;BufRead&lt;/span&gt; *.mako &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;mako
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;  tmux syntax&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s2&quot;&gt;&amp;quot;tejr/vim-tmux&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Vim-Jinja2&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;Glench/Vim-Jinja2-Syntax&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;au&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;BufRead&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;BufNewFile&lt;/span&gt; *.jinja2 &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;filetype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;jinja
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Jinja2&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Works with http://www.vim.org/scripts/script.php?script_id=2075&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; indent/htm.vim&lt;/span&gt;
+    Bundle &lt;span class=&quot;s2&quot;&gt;&amp;quot;lepture/vim-jinja&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;au&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;BufNewFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;BufRead&lt;/span&gt; *.html&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;*.htm&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;*.shtml&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;*.stm&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;*.jinja2 &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;jinja
+    &lt;span class=&quot;k&quot;&gt;au&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;FileType&lt;/span&gt; jinja &lt;span class=&quot;k&quot;&gt;setl&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;sw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;et&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;nu&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;au&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;FileType&lt;/span&gt; jinja &lt;span class=&quot;k&quot;&gt;hi&lt;/span&gt; link htmlLink &lt;span class=&quot;nb&quot;&gt;NONE&lt;/span&gt;
+    autocmd Filetype jinja :normal gg&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;G
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Подсветка для &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;Jinja2&lt;/a&gt; отлично подходит к &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; шаблонам.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id8&quot;&gt;
+&lt;h2&gt;Автосохранение&lt;/h2&gt;
+&lt;p&gt;я не использую &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;swp&lt;/span&gt;&lt;/code&gt; файлы для восстановления файлов, вместо этого файл
+автосохраняется каждую секунду.&lt;/p&gt;
+&lt;p&gt;Конфиг:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Autosave&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s2&quot;&gt;&amp;quot;vim-auto-save&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:auto_save &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;&amp;quot; enable AutoSave on Vim startup&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;noswapfile&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id9&quot;&gt;
+&lt;h2&gt;Шаблоны&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/aperezdc/vim-template&quot;&gt;aperezdc/vim-template&lt;/a&gt; имеет заготовки для разных типов файлов.
+Например для файлов &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;*.py&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Makefile&lt;/span&gt;&lt;/code&gt; и т.д. Если я создам новый файл
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;my.py&lt;/span&gt;&lt;/code&gt;, то у меня сразу появится следующий текст в нем:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id16&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;my.py&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#! /usr/bin/env python&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# vim:fenc=utf-8&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Copyright © 2013 uralbash &amp;lt;root@uralbash.ru&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Distributed under terms of the MIT license.&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Или &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Makefile&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Makefile&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# uralbash, 2013-11-23 01:01&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+
+all:
+ @echo &lt;span class=&quot;s2&quot;&gt;&amp;quot;Makefile needs your attention&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# vim:ft=make&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Конфиг:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Template&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;aperezdc/vim-template&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:email &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;root@uralbash.ru&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В непустой файл можно добавить шапку так:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;:Template&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;py&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;powerline&quot;&gt;
+&lt;h2&gt;Powerline&lt;/h2&gt;
+&lt;img alt=&quot;../../../_images/powerline.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/powerline.png&quot; /&gt;
+&lt;p&gt;Божественно красивая статусная строка, как установить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;powerline&lt;/span&gt;&lt;/code&gt; шыкарно
+&lt;a class=&quot;reference external&quot; href=&quot;http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin&quot;&gt;описано здесь&lt;/a&gt;.
+Но я рекомендую &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/bling/vim-airline&quot;&gt;bling/vim-airline&lt;/a&gt;, в нем больше фич, в частности совместимость с
+популярными плагинами.&lt;/p&gt;
+&lt;p&gt;Конфиг:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; Powerline - status bar&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;quot;    Bundle &amp;#39;Lokaltog/powerline&amp;#39;, {&amp;#39;rtp&amp;#39;: &amp;#39;powerline/bindings/vim/&amp;#39;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Powerline setup&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;    set encoding=utf-8 &amp;quot; Necessary to show Unicode glyphs&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;    set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;    &amp;quot; Always show statusline&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;    set laststatus=2&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;    set t_Co=256v&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;    let g:Powerline_symbols = &amp;#39;fancy&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;    set laststatus=2&lt;/span&gt;
+
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;bling/vim-airline&amp;#39;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:airline_theme&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;powerlineish&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:airline_powerline_fonts
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;git&quot;&gt;
+&lt;h2&gt;Git&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/airblade/vim-gitgutter&quot;&gt;airblade/vim-gitgutter&lt;/a&gt; отображает текущую ветку и показывает внесенные
+изменения по сравнению с предыдущим коммитом.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/vim_git1.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vim_git1.png&quot; /&gt;
+&lt;img alt=&quot;../../../_images/vim_git2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vim_git2.png&quot; /&gt;
+&lt;p&gt;Конфиг:&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot; A Vim plugin which shows a git diff in the &amp;#39;gutter&amp;#39; (sign column).&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
+    Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;airblade/vim-gitgutter&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id11&quot;&gt;
+&lt;h2&gt;Что еще?&lt;/h2&gt;
+&lt;p&gt;Есть еще огромное количество плагинов, которые невозможно описать в одной
+статье. Если вы настроите то что я описал, то вам не составит труда добавить
+что то самостоятельно. Например мой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;:BundleList&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot; My Bundles&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;gmarik/vundle&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;bling/vim-airline&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;airblade/vim-gitgutter&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;tpope/vim-fugitive&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;scrooloose/nerdtree&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;jistr/vim-nerdtree-tabs&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;klen/python-mode&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;davidhalter/jedi-vim&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;spf13/vim-colors&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;tpope/vim-vividchalk&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;morhetz/gruvbox&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;jonathanfilip/vim-lucius&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;flazz/vim-colorschemes&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;majutsushi/tagbar&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;aperezdc/vim-template&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;me-vlad/python-syntax.vim&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;ervandew/supertab&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;lpenz/vimcommander&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;Glench/Vim-Jinja2-Syntax&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;lepture/vim-jinja&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-auto-save&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;sophacles/vim-bundle-mako&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;tejr/vim-tmux&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;lyokha/vim-xkbswitch&amp;#39;&lt;/span&gt;
+Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-scripts/vim-punto-switcher&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id12&quot;&gt;
+&lt;h2&gt;Книги&lt;/h2&gt;
+&lt;p&gt;В этом году вышли аж 2 книги на русском языке:&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-fail-3579382/?show=1&amp;amp;partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/vi_book.jpg&quot; src=&quot;../../../_images/vi_book.jpg&quot; style=&quot;width: 200px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.дмк.рф/catalog/computer/programming/978-5-94074-972-1/&quot;&gt;&lt;img alt=&quot;../../../_images/vim.jpg&quot; src=&quot;../../../_images/vim.jpg&quot; style=&quot;width: 200px;&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;anykey&quot;&gt;
+&lt;h2&gt;AnyKey&lt;/h2&gt;
+&lt;p&gt;для практики конечно же &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vimtutor&lt;/span&gt;&lt;/code&gt;, для фана следующие ресурсы:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://www.openvim.com/tutorial.html&quot;&gt;http://www.openvim.com/tutorial.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://vim-adventures.com/&quot;&gt;http://vim-adventures.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://ru.wikipedia.org/wiki/Vimperator&quot;&gt;http://ru.wikipedia.org/wiki/Vimperator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim&quot;&gt;http://stackoverflow.com/questions/1218390/what-is-your-most-productive-shortcut-with-vim&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id13&quot;&gt;
+&lt;h2&gt;Другие статьи&lt;/h2&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://blog.sontek.net/blog/detail/turning-vim-into-a-modern-python-ide&quot;&gt;http://blog.sontek.net/blog/detail/turning-vim-into-a-modern-python-ide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://unlogic.co.uk/posts/vim-python-ide.html&quot;&gt;http://unlogic.co.uk/posts/vim-python-ide.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://pep8.ru/blog/tag/vim&quot;&gt;http://pep8.ru/blog/tag/vim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Супер инструкция &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/joedicastro/dotfiles/tree/master/vim&quot;&gt;https://github.com/joedicastro/dotfiles/tree/master/vim&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id14&quot;&gt;
+&lt;h2&gt;Итого&lt;/h2&gt;
+&lt;p&gt;Таких заметок как эта несчетное множество и все равно они вызывают интерес,
+потому что в мире нет двух одинаковых конфигов Vim. Вы можете подсмотреть здесь
+какие-то идеи, но ваша конфигурация не будет один в один совпадать, у вас
+наверняка есть разногласия со мной и вы захотите сделать Vim удобным для себя.
+Тем самым конфиг Vim&amp;#8217;а является отображением стиля программирования. По этой
+причине я не выкладываю свой конфиг в чистом виде, для типовых вещей есть IDE -
+это как костюм пошитый на заказ по вашим размерам и пеплос 52 размера купленный
+на рынке.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/vim/atom.xml">
+    <title type="text">Практическое использование Vim</title>
+    <id>http://uralbash.ru/articles/2013/vim_book/</id>
+    <updated>2013-09-07T14:02:00Z</updated>
+    <published>2013-09-07T14:02:00Z</published>
+    <link href="http://uralbash.ru/articles/2013/vim_book/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;vim&quot;&gt;
+
+&lt;p&gt;Еще одна книга по &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Vim&lt;/span&gt;&lt;/code&gt; на русском языке готовится к выходу. ДМК - это всегда
+прекрасный перевод тех. литературы, но ксожалению  отсутствие эл.форматов.&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.дмк.рф/catalog/computer/programming/978-5-94074-972-1/&quot;&gt;&lt;img alt=&quot;../../../_images/vim.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vim.jpg&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/vim/atom.xml">
+    <title type="text">Изучаем редакторы vi и Vim, epub + pdf</title>
+    <id>http://uralbash.ru/articles/2013/vi_book/</id>
+    <updated>2013-09-05T19:32:00Z</updated>
+    <published>2013-09-05T19:32:00Z</published>
+    <link href="http://uralbash.ru/articles/2013/vi_book/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;vi-vim-epub-pdf&quot;&gt;
+
+&lt;p&gt;Уже упоминал эту замечательную книгу (&lt;a class=&quot;reference internal&quot; href=&quot;../../../articles/2013/vi_book/#vi_book&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;Изучаем редакторы vi и Vim, epub + pdf&lt;/span&gt;&lt;/a&gt;). Теперь в epub&amp;#8217;е, вобщем зачёт.&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-fail-3579382/?show=1&amp;amp;partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/vi_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vi_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/tag/vim/atom.xml">
+    <title type="text">Изучаем редакторы vi и Vim, книга на Русском</title>
+    <id>http://uralbash.ru/articles/2012/vi_book/</id>
+    <updated>2012-12-07T16:56:00Z</updated>
+    <published>2012-12-07T16:56:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/vi_book/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;vi-vim&quot;&gt;
+&lt;span id=&quot;vi-book&quot;&gt;&lt;/span&gt;
+&lt;p&gt;Издательство &amp;#8220;Символ&amp;#8221; радует последнее время годной литературой. Для предзаказа
+представлена ПЕРВАЯ книга на Русском языке по &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vi&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vim&lt;/span&gt;&lt;/code&gt;. Я конечно
+понимаю что можно прочитать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vimtutor&lt;/span&gt;&lt;/code&gt;, но когда это все в картинках и со
+стрелками то въезжаешь намного быстрее. В общем заказал, для меня очередной
+хэндбук.&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-827256/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/vi_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vi_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

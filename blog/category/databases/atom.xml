@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщений в Databases</title>
+  <id>http://uralbash.ru/blog/category/databases/atom.xml</id>
+  <updated>2016-11-16T21:25:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/category/databases/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/category/databases/atom.xml">
+    <title type="text">Firebird Developmen Studio на Linux</title>
+    <id>http://uralbash.ru/articles/2016/ibexpert/</id>
+    <updated>2016-11-16T21:25:00Z</updated>
+    <published>2016-11-16T21:25:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/ibexpert/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;firebird-developmen-studio-linux&quot;&gt;
+
+&lt;p&gt;&lt;cite&gt;Firebird&lt;/cite&gt; - это опенсорс, версионная СУБД, с регистронезависимыми названиями
+таблиц и полей (как у &lt;cite&gt;Oracle&lt;/cite&gt;), которая хранит каждую базу в одном отдельном
+файле (как sqlite, но требует наличия сервера, хотя бы embeded). Из минусов
+можно отметить довольно скудную систему типов, индексов и по сути отсутствие
+возможности горизонтального масштабирования. Также многие библиотеки, ОРМ и
+прочее игнорируют поддержку этой СУБД, однако &lt;cite&gt;FireBird&lt;/cite&gt; сильно популярен
+(был?) на территории СНГ, поэтому довольно часто приходится с ним работать.&lt;/p&gt;
+&lt;p&gt;Из GUI инструментов есть &lt;cite&gt;FlameRobin&lt;/cite&gt; с простым интерфейсом, &lt;cite&gt;SQL&lt;/cite&gt; редактором,
+просмотром &lt;cite&gt;DDL&lt;/cite&gt; и пожалуй всё, любое редактирование таблиц запросами.&lt;/p&gt;
+&lt;p&gt;Более мощный (но не безглючный) инструмент это
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.sqlly.com/index.html&quot;&gt;Firebird SQL Studio&lt;/a&gt;, в нем можно даже
+ER-модели рисовать и делать diff между двух баз.&lt;/p&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Ссылка на скачку бесплатной версии для постсоветского пространства:
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.sqlly.com/files/ibds_Setup_rus.exe&quot;&gt;http://www.sqlly.com/files/ibds_Setup_rus.exe&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Итак, наша задача завести его на Linux. Естественно, как и всё что пришло из
+&lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/Interbase&quot;&gt;Delphi&lt;/a&gt; работает только под
+Windows, поэтому рассмотрим вариант запуска сего продукта в &lt;cite&gt;Wine&lt;/cite&gt;.&lt;/p&gt;
+&lt;p&gt;Запускаем команду &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;winecfg&lt;/span&gt;&lt;/code&gt; и устанавливаем совместимость с &lt;cite&gt;Windows 98&lt;/cite&gt; (и
+это в 2016 году!):&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/wine_ibexpert.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/wine_ibexpert.png&quot; /&gt;
+&lt;p&gt;Затем прописываем нужные &lt;cite&gt;dll&lt;/cite&gt;-ки:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/wine_ibexpert_lib.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/wine_ibexpert_lib.png&quot; /&gt;
+&lt;p&gt;Теперь ВАЖНЫЙ момент, если у вас не &lt;cite&gt;ru_RU.cp1251&lt;/cite&gt; локаль. Именно по локале
+софт определяет, что вы из СНГ и делает его бесплатным. Поэтому, прежде чем
+запустить установщик нужно эту локаль добавить:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo locale-gen ru_RU.cp1251
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;И переконфигурировать окружение поставив напротив &lt;cite&gt;ru_RU.cp1251&lt;/cite&gt; галочку:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo dpkg-reconfigure locales
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Вот теперь можно запускать установщик, а так-как у меня по умолчанию стоит
+локаль &lt;cite&gt;en_US.UTF-8&lt;/cite&gt;, то предварительно передав ему флаг &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;LC_ALL&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nv&quot;&gt;LC_ALL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ru_RU.CP1251 wine ibds_Setup_rus.exe
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Устанавливается в папку
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;~/.wine/drive_c/Program\&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Files/IB-FB\&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Development\&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Studio/&lt;/span&gt;&lt;/code&gt;, запускается
+командой:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nv&quot;&gt;LC_ALL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ru_RU.cp1251 wine &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+~/.wine/drive_c/Program&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Files/IB-FB&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Development&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Studio/ControlCenter.exe
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После чего вы увидите интерфейс программы на русском языке.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/ibexpert_main.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ibexpert_main.png&quot; /&gt;
+&lt;p&gt;Но это ещё не всё, что бы программа заработала ей нужна библиотеке &lt;cite&gt;gds32.dll&lt;/cite&gt;,
+ее необходимо подложить в директорию &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;~/.wine/drive_c/windows/system32/&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Обычно библиотека называется &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;libfbclient.dll&lt;/span&gt;&lt;/code&gt;, просто скопируйте её и
+переименуйте в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;gds32.dll&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Но мне это делать лень поэтому, как обычно, из пушки по воробьям. Берем
+скачиваем &lt;cite&gt;FireBird&lt;/cite&gt; и тупо устанавливаем его в &lt;cite&gt;Wine&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nv&quot;&gt;LC_ALL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ru_RU.CP1251 wine ./Firebird-2.5.6.27020_0_Win32.exe
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;На этом все, теперь осталось только создать подключение к базе, программа
+виндовая и будет прописывать путь типа &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Z:\opt\firebird\alembic_test.fdb&lt;/span&gt;&lt;/code&gt;,
+что естественно не верно если вы сервер запустили на Линуксе, поэтому нужно его
+поменять вручную на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;localhost:/opt/firebird/alembic_test.fdb&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/ibexpert_db_path.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ibexpert_db_path.png&quot; /&gt;
+&lt;p&gt;На этом считаю наше собрание закрытым, всем спасибо, расходимся.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

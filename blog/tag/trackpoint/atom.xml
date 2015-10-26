@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщения с тегом TrackPoint</title>
+  <id>http://uralbash.ru/blog/tag/trackpoint/atom.xml</id>
+  <updated>2011-10-17T23:22:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/tag/trackpoint/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/tag/trackpoint/atom.xml">
+    <title type="text">ThinkPad TrackPoint настройка в Linux</title>
+    <id>http://uralbash.ru/articles/2011/thinkpad_trackpoint/</id>
+    <updated>2011-10-17T23:22:00Z</updated>
+    <published>2011-10-17T23:22:00Z</published>
+    <link href="http://uralbash.ru/articles/2011/thinkpad_trackpoint/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;thinkpad-trackpoint-linux&quot;&gt;
+
+&lt;p&gt;Вообще всю информацию по настройке &lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/Тензометрический_джойстик&quot;&gt;trackpoint&lt;/a&gt; можно взять здесь: &lt;a class=&quot;reference external&quot; href=&quot;http://www.thinkwiki.org/wiki/How_to_configure_the_TrackPoint&quot;&gt;How to
+configure the TrackPoint&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Но для ленивых ниже скрипт для автозагрузки:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#!/bin/sh&lt;/span&gt;
+xinput list &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sed -ne &lt;span class=&quot;s1&quot;&gt;&amp;#39;s/^[^ ][^V].*id=\([0-9]*\).*/\1/p&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; id
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;xinput list-props &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; in
+        *&lt;span class=&quot;s2&quot;&gt;&amp;quot;Middle Button Emulation&amp;quot;&lt;/span&gt;*&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                xinput set-int-prop &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Evdev Wheel Emulation&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+                xinput set-int-prop &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Evdev Wheel Emulation Button&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;
+                xinput set-int-prop &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Evdev Wheel Emulation Timeout&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;200&lt;/span&gt;
+                xinput set-int-prop &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Evdev Wheel Emulation Axes&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;
+                xinput set-int-prop &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Evdev Middle Button Emulation&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+                xinput set-int-prop &lt;span class=&quot;nv&quot;&gt;$id&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Evdev Middle Button Timeout&amp;quot;&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# disable middle button&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#xmodmap -e &amp;quot;pointer = 1 9 3 4 5 6 7 8 2&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

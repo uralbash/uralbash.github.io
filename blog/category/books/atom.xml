@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Сообщений в Books</title>
+  <id>http://uralbash.ru/blog/category/books/atom.xml</id>
+  <updated>2014-06-06T22:44:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/category/books/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/category/books/atom.xml">
+    <title type="text">Scrum и XP: заметки с передовой</title>
+    <id>http://uralbash.ru/articles/2014/scrum/</id>
+    <updated>2014-06-06T22:44:00Z</updated>
+    <published>2014-06-06T22:44:00Z</published>
+    <link href="http://uralbash.ru/articles/2014/scrum/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;scrum-xp&quot;&gt;
+
+&lt;img alt=&quot;../../../_images/scrum.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/scrum.png&quot; /&gt;
+&lt;p&gt;Старая, но очень полезная книга по &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Agile&lt;/span&gt;&lt;/code&gt;. Довольно редкий случай когда вся
+книга описывает рабочие процессы реальной организации, никакой воды, никакой
+зауми и вялой теории. Очень рекомендую. Тем более книга в свободном доступе и
+переведена на русский язык (лучи добра и счастья переводчикам).&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://scrum.org.ua/wp-content/uploads/2008/12/scrum_xp-from-the-trenches-rus-final.pdf&quot;&gt;http://scrum.org.ua/wp-content/uploads/2008/12/scrum_xp-from-the-trenches-rus-final.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Дальше несколько интересных цитат из книги:&lt;/p&gt;
+&lt;p&gt;По правде говоря, у системы с высоким внутренним качеством иногда может быть
+довольно низкое внешнее. Но наоборот бывает крайне редко. Сложно построить
+что-то хорошее на прогнившем фундаменте.&lt;/p&gt;
+&lt;p&gt;По моему личному опыту, жертвовать внутренним качеством – это практически
+всегда очень и очень плохая идея. Сэкономленное время ничтожно мало по
+сравнению с той ценой, которую вам придётся заплатить как в ближайшем будущем,
+так и в перспективе. Как только
+качество вашего кода ухудшится, восстановить его будет очень тяжело.&lt;/p&gt;
+&lt;p&gt;Учитесь оставаться в рамках установленного времени, учитесь давать реалистичные
+оценки. Это касается как продолжительности встреч, так и продолжительности
+спринта.&lt;/p&gt;
+&lt;p&gt;А различие очень простое: истории это нечто, что можно продемонстрировать, что
+представляет ценность для product owner’а, а задачи либо нельзя
+продемонстрировать, либо они не представляют ценности для product owner’a.&lt;/p&gt;
+&lt;p&gt;Пример разбиения истории на более мелкие:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/scrum2.png&quot; src=&quot;../../../_images/scrum2.png&quot; /&gt;
+&lt;p&gt;Пример разбиения истории на задачи:&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/scrum3.png&quot; src=&quot;../../../_images/scrum3.png&quot; /&gt;
+&lt;p&gt;Мы попробовали различные варианты работы с техническими историями. Мы пробовали
+считать их самыми обычными user story. Это была неудачная идея: для product
+owner&amp;#8217;а приоритезировать их в product backlog&amp;#8217;е было всё равно, что сравнить
+тёплое с мягким. По очевидным причинам технические истории получали самый
+низкий приоритет с объяснением: &amp;#8220;Да, ребята, несомненно, ваш сервер непрерывной
+интеграции – очень важная штука, но давайте сперва реализуем кое-какие
+прибыльные функции? После этого вы можете прикрутить вашу техническую конфетку,
+окей?&amp;#8221;&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/scrum4.png&quot; src=&quot;../../../_images/scrum4.png&quot; /&gt;
+&lt;p&gt;если вы пользуетесь стикерами для задач, не забудьте прикрепить их скотчем, или
+же в один &amp;#8220;прекрасный&amp;#8221; день вы найдете их аккуратной кучкой на полу.&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/scrum5.png&quot; src=&quot;../../../_images/scrum5.png&quot; /&gt;
+&lt;p&gt;Как быть с опоздавшими?&lt;/p&gt;
+&lt;p&gt;Некоторые команды заводят специальную копилку. Если вы опоздали, даже на
+минуту, вы кидаете в копилку определённую сумму. Без вариантов. Даже если вы
+позвонили перед началом ежедневного Scrum&amp;#8217;а и предупредили, заплатить всё равно
+придётся :o)&lt;/p&gt;
+&lt;p&gt;Деньги из копилки используются на общественные нужды. Например, на них можно заказать пиццу&lt;/p&gt;
+&lt;img alt=&quot;../../../_images/scrum6.png&quot; src=&quot;../../../_images/scrum6.png&quot; /&gt;
+&lt;p&gt;Если вы действительно хотите разобраться, как планировать релиз, советую
+пропустить эту главу и купить книгу Майка Кона &amp;#8220;Agile Estimating and Planning&amp;#8221;.
+Эх, прочитать бы мне эту книгу раньше... (она попалась мне уже после того, как
+мы на собственном опыте поняли, что к чему...). Мой способ планирования
+простой, как угол дома, но может послужить вам хорошей отправной точкой.&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/scrum-gibkaya-razrabotka-po-signature-series-3643772/?show=1&amp;amp;bkrand=1ncaafgaia8ck1qvpo5u9nklk0/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/scrum_book.jpg&quot; class=&quot;align-left&quot; src=&quot;../../../_images/scrum_book.jpg&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;Вот эта книга, кстати тоже переведена на русский&lt;/p&gt;
+&lt;br clear=&quot;both&quot;/&gt;&lt;p&gt;Scrum решает вопросы управления и организации, тогда как XP специализируется на
+инженерных практиках. Вот почему эти две технологии хорошо работают вместе,
+дополняя друг друга.&lt;/p&gt;
+&lt;p&gt;Работка через тестирование (TDD)&lt;/p&gt;
+&lt;p&gt;Наконец-то! Разработка через тестирование для меня важнее, чем Scrum и XP
+вместе взятые. Можете отнять у меня дом, телевизор, собаку, но только
+попробуйте запретить использование TDD! Если вам не нравится TDD, тогда просто
+не подпускайте меня близко, иначе я всё равно привнесу его в проект втихую :)&lt;/p&gt;
+&lt;p&gt;Мы столкнулись с ситуацией, когда было невозможно внедрить Scrum в большом
+проекте из-за того, что его команда постоянно тушила пожары, т.е. в панике
+устраняла дефекты преждевременно выпущенной системы. Это был порочный круг:
+из-за того, что всё время уходило на постоянную борьбу с пожарами, не было
+времени на их предотвращение (т.е. на улучшение архитектуры, внедрение
+автоматического тестирования, создание систем мониторинга и оповещения, и т.п.)&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/category/books/atom.xml">
+    <title type="text">Мифический человеко месяц</title>
+    <id>http://uralbash.ru/articles/2014/man_month_book/</id>
+    <updated>2014-02-16T02:47:00Z</updated>
+    <published>2014-02-16T02:47:00Z</published>
+    <link href="http://uralbash.ru/articles/2014/man_month_book/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+
+&lt;p&gt;Я прочитал этот шедевр довольно давно, но всё же раз начал писать про книги,
+то напишу отзыв. Книга просто необходима для прочтения, в первую очередь
+руководителям и разработчикам с опытом решения разных проблем в области IT и
+возможно HR в той же области. В этой книге главное осилить первую половину,
+вторая читается на одном дыхании (а почему так это лучше узнать из контекста).
+Брукс крут! &lt;strong&gt;Реально крут!&lt;/strong&gt;&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/mificheskii-cheloveko-mesyats-ili-kak-sozdayutsya-programmnye-sistemy-3626/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/bruks.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/bruks.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/category/books/atom.xml">
+    <title type="text">Практическое использование Vim</title>
+    <id>http://uralbash.ru/articles/2013/vim_book/</id>
+    <updated>2013-09-07T14:02:00Z</updated>
+    <published>2013-09-07T14:02:00Z</published>
+    <link href="http://uralbash.ru/articles/2013/vim_book/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;vim&quot;&gt;
+
+&lt;p&gt;Еще одна книга по &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Vim&lt;/span&gt;&lt;/code&gt; на русском языке готовится к выходу. ДМК - это всегда
+прекрасный перевод тех. литературы, но ксожалению  отсутствие эл.форматов.&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.дмк.рф/catalog/computer/programming/978-5-94074-972-1/&quot;&gt;&lt;img alt=&quot;../../../_images/vim.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vim.jpg&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/category/books/atom.xml">
+    <title type="text">Изучаем редакторы vi и Vim, epub + pdf</title>
+    <id>http://uralbash.ru/articles/2013/vi_book/</id>
+    <updated>2013-09-05T19:32:00Z</updated>
+    <published>2013-09-05T19:32:00Z</published>
+    <link href="http://uralbash.ru/articles/2013/vi_book/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;vi-vim-epub-pdf&quot;&gt;
+
+&lt;p&gt;Уже упоминал эту замечательную книгу (&lt;a class=&quot;reference internal&quot; href=&quot;../../../articles/2013/vi_book/#vi_book&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;Изучаем редакторы vi и Vim, epub + pdf&lt;/span&gt;&lt;/a&gt;). Теперь в epub&amp;#8217;е, вобщем зачёт.&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-fail-3579382/?show=1&amp;amp;partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/vi_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vi_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/category/books/atom.xml">
+    <title type="text">Изучаем редакторы vi и Vim, книга на Русском</title>
+    <id>http://uralbash.ru/articles/2012/vi_book/</id>
+    <updated>2012-12-07T16:56:00Z</updated>
+    <published>2012-12-07T16:56:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/vi_book/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;vi-vim&quot;&gt;
+&lt;span id=&quot;vi-book&quot;&gt;&lt;/span&gt;
+&lt;p&gt;Издательство &amp;#8220;Символ&amp;#8221; радует последнее время годной литературой. Для предзаказа
+представлена ПЕРВАЯ книга на Русском языке по &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vi&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vim&lt;/span&gt;&lt;/code&gt;. Я конечно
+понимаю что можно прочитать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vimtutor&lt;/span&gt;&lt;/code&gt;, но когда это все в картинках и со
+стрелками то въезжаешь намного быстрее. В общем заказал, для меня очередной
+хэндбук.&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-827256/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/vi_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vi_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/category/books/atom.xml">
+    <title type="text">Работа с PostgreSQL настройка и масштабирование</title>
+    <id>http://uralbash.ru/articles/2012/pg_book/</id>
+    <updated>2012-11-16T14:08:00Z</updated>
+    <published>2012-11-16T14:08:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/pg_book/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;postgresql&quot;&gt;
+
+&lt;p&gt;Шыкарная книга по &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt;. Много умных и полезных мыслей в одном месте.
+Хорошо написано про репликацию и настройку производительности. Книга на
+гитхабе в свободном доступе! Автору лучи добра и счастья, пиши исчо!&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://postgresql.leopard.in.ua/&quot;&gt;&lt;img alt=&quot;../../../_images/pg_book.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/pg_book.png&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/category/books/atom.xml">
+    <title type="text">Идеальная архитектура. Ведущие специалисты о красоте программных архитектур</title>
+    <id>http://uralbash.ru/articles/2012/arch_book/</id>
+    <updated>2012-11-14T01:17:00Z</updated>
+    <published>2012-11-14T01:17:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/arch_book/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+
+&lt;p&gt;Т.к. я читаю много техлитературы, то периодически буду писать мысли о ней.&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/idealnaya-arkhitektura-vedushchie-spetsialisty-o-krasote-programmnykh-arkhitektur-761783/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/ideal_arch.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ideal_arch.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;Книга поделена на 5 больших частей: про Архитектуру в целом, архитектуру в
+продакшине, на железе, приложений пользователя и ЯП. Сразу скажу что букв много
+аж 500 в страницах, много воды и откровенно запихнутого текста для объема. А из
+закона Архимеда мы знаем что больший объем вытесняет больше нашего бабла!
+Перевод местами тоже весьма неайс например &amp;#8220;уборщик мусора&amp;#8221;. Если не обращать
+на это внимание то есть главы которые доставляют и читаются на одном дыхании,
+потому что часто описывается ситуация с которой ты сам сталкивался и толкуется
+как нужно было поступить - это очень круто.&lt;/p&gt;
+&lt;p&gt;Советую прочитать главы &amp;#8220;2 Повесть о двух системах&amp;#8221;, 7 про виртуализацию, 3 про
+гэймдев и особенно доставляет 11 про Emacs (про архитектуру Emacs). Остальное я
+читал между строк и между абзацев, а иногда только номера страниц. Не советую
+читать книгу если нет опыта. Именно опыта проектирования и внедрения, а не
+рутины или написания сайтов визиток за две недели. Без опыта это будет не
+интересно, нес чем будет сравнивать и чтение превратится в усыпляющий процесс.
+Остальным один раз прочитать, вспомнить свои ошибки, прослезиться, усвоить и
+положить на полку, поэтому лучше брать PDF он значительно дешевле и не собирает
+пыль и еще бережет лес.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/category/books/atom.xml">
+    <title type="text">Книга по Lisp на русском</title>
+    <id>http://uralbash.ru/articles/2012/lisp_book/</id>
+    <updated>2012-11-10T21:26:00Z</updated>
+    <published>2012-11-10T21:26:00Z</published>
+    <link href="http://uralbash.ru/articles/2012/lisp_book/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;lisp&quot;&gt;
+
+&lt;p&gt;Внезапно, вышла книга НА РУССКОМ по кошерному, более чем, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Лиспу&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/ansi-common-lisp-827258/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/lisp_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/lisp_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;p&gt;Хорошая новость для любителей &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;шыфт90&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

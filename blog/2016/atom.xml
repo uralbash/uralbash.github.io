@@ -1,0 +1,1824 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Ural penguins - Опубликовано в 2016</title>
+  <id>http://uralbash.ru/blog/2016/atom.xml</id>
+  <updated>2016-11-16T21:25:00Z</updated>
+  <link href="http://uralbash.ru/" />
+  <link href="http://uralbash.ru/blog/2016/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/2016/atom.xml">
+    <title type="text">Firebird Developmen Studio на Linux</title>
+    <id>http://uralbash.ru/articles/2016/ibexpert/</id>
+    <updated>2016-11-16T21:25:00Z</updated>
+    <published>2016-11-16T21:25:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/ibexpert/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;firebird-developmen-studio-linux&quot;&gt;
+
+&lt;p&gt;&lt;cite&gt;Firebird&lt;/cite&gt; - это опенсорс, версионная СУБД, с регистронезависимыми названиями
+таблиц и полей (как у &lt;cite&gt;Oracle&lt;/cite&gt;), которая хранит каждую базу в одном отдельном
+файле (как sqlite, но требует наличия сервера, хотя бы embeded). Из минусов
+можно отметить довольно скудную систему типов, индексов и по сути отсутствие
+возможности горизонтального масштабирования. Также многие библиотеки, ОРМ и
+прочее игнорируют поддержку этой СУБД, однако &lt;cite&gt;FireBird&lt;/cite&gt; сильно популярен
+(был?) на территории СНГ, поэтому довольно часто приходится с ним работать.&lt;/p&gt;
+&lt;p&gt;Из GUI инструментов есть &lt;cite&gt;FlameRobin&lt;/cite&gt; с простым интерфейсом, &lt;cite&gt;SQL&lt;/cite&gt; редактором,
+просмотром &lt;cite&gt;DDL&lt;/cite&gt; и пожалуй всё, любое редактирование таблиц запросами.&lt;/p&gt;
+&lt;p&gt;Более мощный (но не безглючный) инструмент это
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.sqlly.com/index.html&quot;&gt;Firebird SQL Studio&lt;/a&gt;, в нем можно даже
+ER-модели рисовать и делать diff между двух баз.&lt;/p&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Ссылка на скачку бесплатной версии для постсоветского пространства:
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.sqlly.com/files/ibds_Setup_rus.exe&quot;&gt;http://www.sqlly.com/files/ibds_Setup_rus.exe&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Итак, наша задача завести его на Linux. Естественно, как и всё что пришло из
+&lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/Interbase&quot;&gt;Delphi&lt;/a&gt; работает только под
+Windows, поэтому рассмотрим вариант запуска сего продукта в &lt;cite&gt;Wine&lt;/cite&gt;.&lt;/p&gt;
+&lt;p&gt;Запускаем команду &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;winecfg&lt;/span&gt;&lt;/code&gt; и устанавливаем совместимость с &lt;cite&gt;Windows 98&lt;/cite&gt; (и
+это в 2016 году!):&lt;/p&gt;
+&lt;img alt=&quot;../../_images/wine_ibexpert.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/wine_ibexpert.png&quot; /&gt;
+&lt;p&gt;Затем прописываем нужные &lt;cite&gt;dll&lt;/cite&gt;-ки:&lt;/p&gt;
+&lt;img alt=&quot;../../_images/wine_ibexpert_lib.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/wine_ibexpert_lib.png&quot; /&gt;
+&lt;p&gt;Теперь ВАЖНЫЙ момент, если у вас не &lt;cite&gt;ru_RU.cp1251&lt;/cite&gt; локаль. Именно по локале
+софт определяет, что вы из СНГ и делает его бесплатным. Поэтому, прежде чем
+запустить установщик нужно эту локаль добавить:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo locale-gen ru_RU.cp1251
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;И переконфигурировать окружение поставив напротив &lt;cite&gt;ru_RU.cp1251&lt;/cite&gt; галочку:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo dpkg-reconfigure locales
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Вот теперь можно запускать установщик, а так-как у меня по умолчанию стоит
+локаль &lt;cite&gt;en_US.UTF-8&lt;/cite&gt;, то предварительно передав ему флаг &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;LC_ALL&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nv&quot;&gt;LC_ALL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ru_RU.CP1251 wine ibds_Setup_rus.exe
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Устанавливается в папку
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;~/.wine/drive_c/Program\&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Files/IB-FB\&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Development\&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Studio/&lt;/span&gt;&lt;/code&gt;, запускается
+командой:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nv&quot;&gt;LC_ALL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ru_RU.cp1251 wine &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+~/.wine/drive_c/Program&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Files/IB-FB&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Development&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;Studio/ControlCenter.exe
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После чего вы увидите интерфейс программы на русском языке.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/ibexpert_main.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/ibexpert_main.png&quot; /&gt;
+&lt;p&gt;Но это ещё не всё, что бы программа заработала ей нужна библиотеке &lt;cite&gt;gds32.dll&lt;/cite&gt;,
+ее необходимо подложить в директорию &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;~/.wine/drive_c/windows/system32/&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Обычно библиотека называется &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;libfbclient.dll&lt;/span&gt;&lt;/code&gt;, просто скопируйте её и
+переименуйте в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;gds32.dll&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Но мне это делать лень поэтому, как обычно, из пушки по воробьям. Берем
+скачиваем &lt;cite&gt;FireBird&lt;/cite&gt; и тупо устанавливаем его в &lt;cite&gt;Wine&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nv&quot;&gt;LC_ALL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ru_RU.CP1251 wine ./Firebird-2.5.6.27020_0_Win32.exe
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;На этом все, теперь осталось только создать подключение к базе, программа
+виндовая и будет прописывать путь типа &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Z:\opt\firebird\alembic_test.fdb&lt;/span&gt;&lt;/code&gt;,
+что естественно не верно если вы сервер запустили на Линуксе, поэтому нужно его
+поменять вручную на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;localhost:/opt/firebird/alembic_test.fdb&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/ibexpert_db_path.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/ibexpert_db_path.png&quot; /&gt;
+&lt;p&gt;На этом считаю наше собрание закрытым, всем спасибо, расходимся.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2016/atom.xml">
+    <title type="text">SETI@home в Docker</title>
+    <id>http://uralbash.ru/articles/2016/boinc-seti-home/</id>
+    <updated>2016-10-31T20:04:00Z</updated>
+    <published>2016-10-31T20:04:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/boinc-seti-home/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;seti-home-docker&quot;&gt;
+
+&lt;p&gt;&lt;cite&gt;BOINC&lt;/cite&gt; - платформа, которая позволяет выполнять &lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B2%D0%BE%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5_%D0%B2%D1%8B%D1%87%D0%B8%D1%81%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F&quot;&gt;добровольные вычисления&lt;/a&gt;
+для различных проектов. Изначально создавался для проекта &lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/SETI&amp;#64;home&quot;&gt;SETI&amp;#64;home&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;ul class=&quot;last simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://boinc.berkeley.edu/&quot;&gt;https://boinc.berkeley.edu/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/BOINC&quot;&gt;https://ru.wikipedia.org/wiki/BOINC&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/SETI&amp;#64;home&quot;&gt;https://ru.wikipedia.org/wiki/SETI&amp;#64;home&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;Идея заключается в том, что можно задействовать часть ресурсов своей машины для
+распределенных вычислений некого проекта, например &lt;cite&gt;SETI&amp;#64;home&lt;/cite&gt; обрабатывает
+сигналы с радиотелескопа (&lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/Обсерватория_Аресибо&quot;&gt;Аресибо&lt;/a&gt;) в поисках внеземной
+цивилизации, &lt;cite&gt;Rosetta&amp;#64;home&lt;/cite&gt; вычисляет структуру белков и таких проектов
+огромное множество в самых разных
+областях. Обычно домашний/рабочий компьютер не загружен на 100% и какую то
+часть, к примеру 20% одного ядра можно спокойно отвести на эту задачу.&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;ul class=&quot;last simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/laurent-malvert/docker-boinc&quot;&gt;https://github.com/laurent-malvert/docker-boinc&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/laurent-malvert/docker-boinccmd&quot;&gt;https://github.com/laurent-malvert/docker-boinccmd&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;Что-бы не захламлять систему я ставлю &lt;cite&gt;boinc&lt;/cite&gt; в виде &lt;cite&gt;Docker&lt;/cite&gt; контейнеров.
+Вначале установим клиента-демона, который умеет принимать внешние команды:&lt;/p&gt;
+&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;При помощи флагов &lt;cite&gt;Docker&lt;/cite&gt; можно ограничить контейнер на использование только
+одного ядра на 50% загрузки &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--cpu-period=50000&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--cpu-quota=25000&lt;/span&gt;&lt;/code&gt;,
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;--cpuset-cpus=&amp;quot;0,1&amp;quot;&lt;/span&gt;&lt;/code&gt;. По умолчанию &lt;cite&gt;Boinc&lt;/cite&gt; забирает все ресурсы.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker run                &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+       --name boinc         &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+       -d                   &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+       --cpu-period&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;50000&lt;/span&gt;   &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+       --cpu-quota&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;25000&lt;/span&gt;    &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+       --cpuset-cpus&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;0,1&amp;quot;&lt;/span&gt;  &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+       laurentmalvert/docker-boinc --allow_remote_gui_rpc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После этого можно останавливать/запускать &lt;cite&gt;Boinc&lt;/cite&gt;, как обычный &lt;cite&gt;Docker&lt;/cite&gt;
+контейнер по его имени:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker stop boinc
+$ docker start boinc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь нужно подключиться к проекту указав свой ключ, в моем случае это
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;13e79a77503e10517358c18698717413&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker run --rm --link boinc:boinc laurentmalvert/docker-boinccmd &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    --host boinc &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    --project_attach http://setiathome.berkeley.edu/ &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    13e79a77503e10517358c18698717413
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Что бы получить ключ, нужно сначала зарегистрироваться на сайте проекта
+&lt;a class=&quot;reference external&quot; href=&quot;http://setiathome.berkeley.edu&quot;&gt;http://setiathome.berkeley.edu&lt;/a&gt;, а затем выполнить команду:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker run --rm --link boinc:boinc laurentmalvert/docker-boinccmd &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    --host boinc --lookup_account http://setiathome.berkeley.edu &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &amp;lt;email-address&amp;gt; &amp;lt;password&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Отключиться от проекта можно командой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;detach&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker run --rm --link boinc:boinc laurentmalvert/docker-boinccmd &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    --host boinc --project http://setiathome.berkeley.edu/ detach
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Посмотреть статус вашего профиля:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker run --rm --link boinc:boinc laurentmalvert/docker-boinccmd &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    --host boinc &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    --get_project_status
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2016/atom.xml">
+    <title type="text">Visual Studio Code для Python</title>
+    <id>http://uralbash.ru/articles/2016/visualstudiocode/</id>
+    <updated>2016-09-07T20:48:00Z</updated>
+    <published>2016-09-07T20:48:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/visualstudiocode/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Это статья из лекций
+&lt;a class=&quot;reference external&quot; href=&quot;http://lectureswww.readthedocs.io/999.additions/texteditors/vscode.html&quot;&gt;http://lectureswww.readthedocs.io/999.additions/texteditors/vscode.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;visual-studio-code-python&quot;&gt;
+
+&lt;div class=&quot;section&quot; id=&quot;visual-studio-code&quot;&gt;
+&lt;h2&gt;Visual Studio Code&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.visualstudio.com/ru-ru/products/code-vs.aspx&quot;&gt;https://www.visualstudio.com/ru-ru/products/code-vs.aspx&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; отличный выбор для начинающего программиста,
+имеет необходимый минимум:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;неплохую документацию&lt;/li&gt;
+&lt;li&gt;автодополнение кода (с использованием &lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/IntelliSense&quot;&gt;IntelliSense&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;подсветка синтаксиса&lt;/li&gt;
+&lt;li&gt;встроенный отладчик&lt;/li&gt;
+&lt;li&gt;расширение функционала за счет плагинов&lt;/li&gt;
+&lt;li&gt;управление системой контроля версий git&lt;/li&gt;
+&lt;li&gt;кроссплатформенный&lt;/li&gt;
+&lt;li&gt;бесплатный, с открытым исходным кодом&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Также редактор адаптирован для Веб-разработки и вполне подойдет для серьезных
+проектов как основной инструмент редактирования кода.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h3&gt;Установка&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/setup/setup-overview&quot;&gt;https://code.visualstudio.com/docs/setup/setup-overview&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;linux&quot;&gt;
+&lt;h4&gt;Linux&lt;/h4&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/setup/linux&quot;&gt;https://code.visualstudio.com/docs/setup/linux&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Скачиваем дистрибутив для своей ОС &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/download&quot;&gt;https://code.visualstudio.com/download&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Для Linux существуют два типа пакетов, самых популярных форматов, rpm и deb.&lt;/p&gt;
+&lt;p&gt;Установка в Ubuntu/Debian:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo dpkg -i &amp;lt;file&amp;gt;.deb
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;CentOS/Fedora:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo yum install &amp;lt;file&amp;gt;.rpm
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Fedora &amp;gt; 22 версии:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo dnf install &amp;lt;file&amp;gt;.rpm
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;После установки можно запустить редактор следующей командой:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ code
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;nix&quot;&gt;
+&lt;h4&gt;Nix&lt;/h4&gt;
+&lt;p&gt;Пакетный менеджер &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/&quot;&gt;Nix&lt;/a&gt; работает на любом Linux дистрибутиве, содержит
+богатую базу уже готовых пакетов, в том числе и &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;vscode&lt;/a&gt;.&lt;/p&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Установка пакетного менеджера:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl https://nixos.org/nix/install &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sh
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Установка &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-env -i vscode
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h3&gt;Плагины&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/editor/extension-gallery&quot;&gt;https://code.visualstudio.com/docs/editor/extension-gallery&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Редактор имеет возможность расширения функционала за счет плагинов и удобный
+интерфейс их установки, доступный по нажатию кнопки:&lt;/p&gt;
+&lt;img alt=&quot;../../_images/extension-gallery_extensions-view-icon.png&quot; src=&quot;../../_images/extension-gallery_extensions-view-icon.png&quot; /&gt;
+&lt;p&gt;Из списка можно выбрать любой плагин и установить, после чего он применит свои
+настройки к редактору.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/extension-gallery_extensions-popular.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/extension-gallery_extensions-popular.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Расширения можно искать введя название или ключевые слова в строке поиска,
+например &lt;cite&gt;Python&lt;/cite&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/extension-gallery_extensions-python.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/extension-gallery_extensions-python.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Существует огромное количество расширений для &lt;cite&gt;Go&lt;/cite&gt;, &lt;cite&gt;C#&lt;/cite&gt;, &lt;cite&gt;C/C++&lt;/cite&gt;, &lt;cite&gt;Nix&lt;/cite&gt;,
+&lt;cite&gt;Haskell&lt;/cite&gt;, &lt;cite&gt;Python&lt;/cite&gt;, &lt;cite&gt;JS&lt;/cite&gt;, &lt;cite&gt;TypeScript&lt;/cite&gt; и др.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
+&lt;h3&gt;Python&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/languages/python&quot;&gt;https://code.visualstudio.com/docs/languages/python&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;После установки плагина &lt;cite&gt;Python&lt;/cite&gt; нам становятся доступны многие функции:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;Автодополнение кода&lt;/li&gt;
+&lt;li&gt;Проверка синтаксиса&lt;/li&gt;
+&lt;li&gt;Отладка&lt;/li&gt;
+&lt;li&gt;Подсказки&lt;/li&gt;
+&lt;li&gt;Переход к определению функции, класса и прочее&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h4&gt;Автодополнение&lt;/h4&gt;
+&lt;p&gt;Работает при наборе по нажатию &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctrl&lt;/span&gt;&lt;/code&gt; + &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Space&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;video muted=&quot;&quot; width=600px controls=&quot;&quot; loop=&quot;&quot; autoplay=&quot;&quot;
+poster=&quot;/images/python_python-linting-placeholder.png&quot;
+src=&quot;https://az754404.vo.msecnd.net/public/python-linting.mp4&quot;
+id=&quot;python-linting-video&quot;&gt;&lt;/video&gt;&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id4&quot;&gt;
+&lt;h4&gt;Проверка синтаксиса&lt;/h4&gt;
+&lt;p&gt;Показывает ошибки в коде:&lt;/p&gt;
+&lt;video muted=&quot;&quot; width=600px controls=&quot;&quot; loop=&quot;&quot; autoplay=&quot;&quot;
+poster=&quot;/images/python_python-linting-placeholder.png&quot;
+src=&quot;https://az754404.vo.msecnd.net/public/python-linting.mp4&quot;
+id=&quot;python-linting-video&quot;&gt;&lt;/video&gt;&lt;p&gt;Работает если установлены Python пакеты &lt;cite&gt;Pylint&lt;/cite&gt;, &lt;cite&gt;Pep8&lt;/cite&gt; или &lt;cite&gt;Flake8&lt;/cite&gt;.&lt;/p&gt;
+&lt;div class=&quot;admonition tip&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Совет&lt;/p&gt;
+&lt;div class=&quot;last highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install -U --user pylint pep8 flake8
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id5&quot;&gt;
+&lt;h4&gt;Отладка&lt;/h4&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/editor/debugging&quot;&gt;https://code.visualstudio.com/docs/editor/debugging&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Встроенный в редактор отладчик позволяет отлаживать код визуально,
+устанавливать точки останова мышкой и просматривать переменные в отдельном
+окне. Это похоже на отладку в различных IDE, таких как &lt;a class=&quot;reference external&quot; href=&quot;https://www.qt.io/ide/&quot;&gt;QtCreator&lt;/a&gt; или
+&lt;a class=&quot;reference external&quot; href=&quot;https://wingware.com/&quot;&gt;Wingware&lt;/a&gt;.&lt;/p&gt;
+&lt;video muted=&quot;&quot; width=600px controls=&quot;&quot; loop=&quot;&quot; autoplay=&quot;&quot;
+poster=&quot;/images/python_python-debugging-placeholder.png&quot;
+src=&quot;https://az754404.vo.msecnd.net/public/python-debugging.mp4&quot;
+id=&quot;python-debugging-video&quot;&gt;&lt;/video&gt;&lt;p&gt;Также избавляет программиста писать мучительные строки типа &lt;cite&gt;printf&lt;/cite&gt; или &lt;cite&gt;import
+pdb;pdb.set_trace();&lt;/cite&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id6&quot;&gt;
+&lt;h3&gt;Настройки&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/customization/userandworkspace&quot;&gt;https://code.visualstudio.com/docs/customization/userandworkspace&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Настройки хранятся в формате &lt;cite&gt;JSON&lt;/cite&gt; и доступны из меню
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;File-&amp;gt;Preferences-&amp;gt;User&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Settings&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id7&quot;&gt;
+&lt;h4&gt;Шрифт&lt;/h4&gt;
+&lt;p&gt;Шрифт задается в настройках &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;File-&amp;gt;Preferences-&amp;gt;User&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Settings&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;// Place your settings in this file to overwrite the default settings
+{
+    // Controls the font size.
+&lt;span class=&quot;hll&quot;&gt;    &amp;quot;editor.fontSize&amp;quot;: 16
+&lt;/span&gt;}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;tab&quot;&gt;
+&lt;h4&gt;Автодополнение через &amp;lt;Tab&amp;gt;&lt;/h4&gt;
+&lt;p&gt;Более привычно дополнять код по клавише &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;Tab&amp;gt;&lt;/span&gt;&lt;/code&gt;. Для этого необходимо
+открыть настройки пользователя &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;File-&amp;gt;Preferences-&amp;gt;User&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Settings&lt;/span&gt;&lt;/code&gt; и прописать
+опцию &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;editor.tabCompletion&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;// Place your settings in this file to overwrite the default settings
+{
+    // Controls the font size.
+    &amp;quot;editor.fontSize&amp;quot;: 16,
+    // Insert snippets when their prefix matches. Works best when &amp;#39;quickSuggestions&amp;#39; aren&amp;#39;t enabled.
+&lt;span class=&quot;hll&quot;&gt;    &amp;quot;editor.tabCompletion&amp;quot;: true
+&lt;/span&gt;}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id8&quot;&gt;
+&lt;h4&gt;Язык&lt;/h4&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/customization/locales&quot;&gt;https://code.visualstudio.com/docs/customization/locales&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Открываем командную строку &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctrl&lt;/span&gt;&lt;/code&gt; + &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Shift&lt;/span&gt;&lt;/code&gt; + &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;P&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Вводим команду &lt;cite&gt;Configure Language&lt;/cite&gt;&lt;/p&gt;
+&lt;img alt=&quot;../../_images/locales_configure-language-command.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/locales_configure-language-command.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Меняем локаль на нужную, например &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ru&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;img alt=&quot;../../_images/locales_locale-intellisense.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/locales_locale-intellisense.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{
+    // Defines VS Code&amp;#39;s display language.
+    &amp;quot;locale&amp;quot;: &amp;quot;ru&amp;quot;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id9&quot;&gt;
+&lt;h4&gt;Тема&lt;/h4&gt;
+&lt;p&gt;Цветовое оформление задается в настройках &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;File-&amp;gt;Preferences-&amp;gt;Color&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Theme&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;git&quot;&gt;
+&lt;h3&gt;Git&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/docs/editor/versioncontrol&quot;&gt;https://code.visualstudio.com/docs/editor/versioncontrol&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Умеет подсвечивать изменения в файлах с предыдущего коммита, выполнять команды
+&lt;cite&gt;git&lt;/cite&gt; и отслеживать состояние, например какая текущая ветка.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/versioncontrol_merge.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/versioncontrol_merge.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id10&quot;&gt;
+&lt;h3&gt;Python скрипты&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://trypyramid.com&quot;&gt;http://trypyramid.com&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; требует для отладки открывать не просто файл, а
+директорию. Это необходимо, что бы в этом каталоге сохранить локальные
+настройки редактора. Такая директория будет считаться проектом для редактора.&lt;/p&gt;
+&lt;p&gt;Для примера, создадим директорию &lt;cite&gt;hello1&lt;/cite&gt; и откроем в редакторе &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;File-&amp;gt;Open&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;Folder...&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Создадим в этой директории файл &lt;cite&gt;myapp.py&lt;/cite&gt;:&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_add_file.png&quot; src=&quot;../../_images/vscode_add_file.png&quot; /&gt;
+&lt;p&gt;Добавим в файл пример с сайта &lt;a class=&quot;reference external&quot; href=&quot;http://trypyramid.com&quot;&gt;http://trypyramid.com&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;wsgiref.simple_server&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_server&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.config&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configurator&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.response&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hello_world&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%(name)s&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;!&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matchdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configurator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/hello/{name}&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hello_world&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;route_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;make_wsgi_app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;serve_forever&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Для запуска приложения, заходим в режим отладки по нажатию на кнопку:&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_debugicon.png&quot; src=&quot;../../_images/vscode_debugicon.png&quot; /&gt;
+&lt;p&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_debug_noconfig.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_debug_noconfig.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Пока у нас нет никаких настроек отладки/запуска проекта, но при первом
+запуске редактор предложит их выбрать из существующих шаблонов.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_chose_dbg_template.png&quot; src=&quot;../../_images/vscode_chose_dbg_template.png&quot; /&gt;
+&lt;p&gt;Шаблон &lt;cite&gt;Python&lt;/cite&gt; создает настройки в файле &lt;cite&gt;launch.json&lt;/cite&gt; в локальной директории,
+которые выглядят примерно так:&lt;/p&gt;
+&lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.2.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;configurations&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;launch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;stopOnEntry&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;pythonPath&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${config.python.pythonPath}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;program&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${file}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;debugOptions&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnAbnormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnNormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;RedirectOutput&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Python Console App&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;launch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;stopOnEntry&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;pythonPath&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${config.python.pythonPath}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;program&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${file}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;externalConsole&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;debugOptions&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnAbnormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnNormalExit&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Django&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;launch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;stopOnEntry&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;pythonPath&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${config.python.pythonPath}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;program&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}/manage.py&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;args&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;runserver&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;--noreload&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;debugOptions&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnAbnormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnNormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;RedirectOutput&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;DjangoDebugging&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Watson&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;launch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;stopOnEntry&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;pythonPath&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${config.python.pythonPath}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;program&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}/console.py&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;args&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;dev&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;runserver&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;--noreload=True&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;debugOptions&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnAbnormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnNormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s2&quot;&gt;&amp;quot;RedirectOutput&amp;quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Attach&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;attach&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;localRoot&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;remoteRoot&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;port&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;secret&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;my_secret&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;host&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Это универсальный шаблон, который добавляет несколько вариантов запуска
+приложений. Нас будет интересовать первый вариант &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Python&lt;/span&gt;&lt;/code&gt;, просто
+запускающий python файл.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_python_dbg.png&quot; src=&quot;../../_images/vscode_python_dbg.png&quot; /&gt;
+&lt;p&gt;Запущенное приложение останавливается на первой строчке, что позволяет нам
+продолжать выполнение программы по шагам.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_python_run.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_python_run.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;После выполнения второй строки, интерпретатор выдаст ошибку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ImportError:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;No&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;named&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;pyramid.config&lt;/span&gt;&lt;/code&gt;. Это происходит из-за того что в нашем &lt;cite&gt;Python&lt;/cite&gt;
+окружении не установлен модуль &lt;cite&gt;pyramid&lt;/cite&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_python_dbg_import_error.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_python_dbg_import_error.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Решить эту проблему можно двумя способами:&lt;/p&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Установить &lt;cite&gt;Pyramid&lt;/cite&gt; в глобальное окружение.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install --user pyramid
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Создать виртуальное окружение, установить в нем &lt;cite&gt;Pyramid&lt;/cite&gt; и прописать его в
+настройках &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Как создать &lt;span class=&quot;xref std std-ref&quot;&gt;virtualenv&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Создаем виртуальное окружение:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /path/to/hello1/
+$ pyvenv hello1_env
+$ &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ./hello1_env/bin/activate
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Устанавливаем &lt;cite&gt;Pyramid&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;hello1_env&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;$ pip install pyramid
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Прописываем путь до виртуального окружения в настройках проекта
+&lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; (файл &lt;cite&gt;launch.json&lt;/cite&gt;):&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_python_venv.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_python_venv.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;PythonVenv&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;launch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;stopOnEntry&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;pythonPath&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}/hello1_env/bin/python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;program&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${file}&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;debugOptions&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnAbnormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnNormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&amp;quot;RedirectOutput&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;После этого появится возможность запускать наш скрипт в локальном виртуальном
+окружении. Запущенная программа будет доступна по адресу
+&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/hello/foo&quot;&gt;http://localhost:8080/hello/foo&lt;/a&gt;. В консоле отладчика можно наблюдать ее вывод.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_pyramid_run.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_pyramid_run.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Поставим точку останова внутри функции &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello_world&lt;/span&gt;&lt;/code&gt;, в строке 6. Это
+позволит нам остановить программу при запуске этой функции. После запуска,
+программа будет нормально работать, пока мы не зайдем по адресу
+&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/hello/foo&quot;&gt;http://localhost:8080/hello/foo&lt;/a&gt;, в этом случае запустится функция
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello_world&lt;/span&gt;&lt;/code&gt; и выполнение программы прервется, до тех пор пока мы ее не
+продолжим вручную.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_pyramid_breakpoint.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_pyramid_breakpoint.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Примерно так выглядит процесс разработки и отладки программ на &lt;cite&gt;Python&lt;/cite&gt;.
+Осталось только инициализировать &lt;cite&gt;git&lt;/cite&gt; репозиторий и выложить проект на
+&lt;a class=&quot;reference external&quot; href=&quot;https://github.com&quot;&gt;https://github.com&lt;/a&gt;.&lt;/p&gt;
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Инициализируем репозиторий:&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_git_init.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_git_init.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Добавим файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.gitignore&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Для этого нам потребуется скопировать содержимое
+&lt;a class=&quot;reference external&quot; href=&quot;https://www.gitignore.io/api/visualstudiocode,python&quot;&gt;https://www.gitignore.io/api/visualstudiocode,python&lt;/a&gt; в файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.gitignore&lt;/span&gt;&lt;/code&gt;
+и добавить туда директорию &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello1_env&lt;/span&gt;&lt;/code&gt;, что бы она не участвовала в
+процессе создания версий.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_gitignore.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_gitignore.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Created by https://www.gitignore.io/api/visualstudiocode,python
+
+&lt;span class=&quot;hll&quot;&gt;hello1_env
+&lt;/span&gt;
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+...
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Создаем первый коммит&lt;/p&gt;
+&lt;p&gt;Для создания коммита требуется ввести комментарий и нажать на кнопку в виде
+галочки.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_git_commit.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_git_commit.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Отправляем изменения на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com&quot;&gt;https://github.com&lt;/a&gt;&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;Добавляем плагин &lt;cite&gt;Git Easy&lt;/cite&gt; в проект&lt;/li&gt;
+&lt;li&gt;Создаем репозиторий на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;img alt=&quot;../../_images/github_create_repo.png&quot; src=&quot;../../_images/github_create_repo.png&quot; /&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Прописываем путь до гитхаба в нашем проекте, при помощи команды &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Git&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;Easy:Add&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Orign&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_giteasy_add_orign.png&quot; src=&quot;../../_images/vscode_giteasy_add_orign.png&quot; /&gt;
+&lt;img alt=&quot;../../_images/vscode_git_origin.png&quot; src=&quot;../../_images/vscode_git_origin.png&quot; /&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Отправляем изменения на &lt;cite&gt;GitHub&lt;/cite&gt;, при помощи команды
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Git&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Easy:Push&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Current&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Branch&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Origin&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_git_push.png&quot; src=&quot;../../_images/vscode_git_push.png&quot; /&gt;
+&lt;p&gt;При успешном выполнении команды, мы должны увидеть сообщение типа:&lt;/p&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;To github.com:uralbash/hello1.git
+* [new branch]      master -&amp;gt; master
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;img alt=&quot;../../_images/vscode_git_push_ok.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_git_push_ok.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Файлы будут доступны по адресу &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/hello1&quot;&gt;https://github.com/uralbash/hello1&lt;/a&gt;&lt;/p&gt;
+&lt;img alt=&quot;../../_images/github_hello1.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/github_hello1.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Для того что бы проверка синтаксиса заработала, необходимо создать файл
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.vscode/settings.json&lt;/span&gt;&lt;/code&gt; и переопределить в нем глобальные настройки для
+нашего проекта:&lt;/p&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{
+    &amp;quot;editor.fontSize&amp;quot;: 18,
+
+    //Python
+    &amp;quot;python.pythonPath&amp;quot;: &amp;quot;${workspaceRoot}/hello1_env/bin/python&amp;quot;,
+
+    // Whether to lint Python files using pylint.
+    &amp;quot;python.linting.pylintEnabled&amp;quot;: true,
+
+    // Whether to lint Python files using pep8
+    &amp;quot;python.linting.pep8Enabled&amp;quot;: true,
+
+    // Whether to lint Python files using flake8
+    &amp;quot;python.linting.flake8Enabled&amp;quot;: true
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;pyramid&quot;&gt;
+&lt;h3&gt;Pyramid&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/project.html&quot;&gt;http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/project.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Фреймворк &lt;cite&gt;Pyramid&lt;/cite&gt; имеет несколько стартовых шаблонов, которые нужны для того,
+что бы не начинать писать код с нуля. Рассмотрим как создать шаблон с БД
+&lt;cite&gt;sqlite&lt;/cite&gt; + &lt;cite&gt;SQLAlchemy&lt;/cite&gt; и настроить его в &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Для начала создадим директорию &lt;cite&gt;hello2&lt;/cite&gt; и виртуальное окружение &lt;cite&gt;hello2_env&lt;/cite&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ mkdir hello2
+$ &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; hello2/
+$ pyvenv hello2_env
+$ &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; hello2_env/bin/activate
+$ pip install pyramid
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pyramid/en/latest/pscripts/index.html&quot;&gt;http://docs.pylonsproject.org/projects/pyramid/en/latest/pscripts/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;После установки &lt;cite&gt;Pyramid&lt;/cite&gt;, в окружении появляется команда &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pcreate&lt;/span&gt;&lt;/code&gt;. С ее
+помощью создадим проект по шаблону:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pcreate -t alchemy .
+$ ls
+CHANGES.txt  development.ini  hello2  hello2_env  MANIFEST.in  production.ini  pytest.ini  README.txt  setup.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Устанавливаем его как &lt;cite&gt;Python&lt;/cite&gt; пакет:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pip install -e .
+$ pserve development.ini
+Starting server in PID &lt;span class=&quot;m&quot;&gt;17311&lt;/span&gt;.
+Serving on http://localhost:6543
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После запуска, становится доступен адрес &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543&quot;&gt;http://localhost:6543&lt;/a&gt;&lt;/p&gt;
+&lt;img alt=&quot;../../_images/pyramid_home.png&quot; src=&quot;../../_images/pyramid_home.png&quot; /&gt;
+&lt;p&gt;Но так-как БД еще не создана, отображается страница с подсказкой как ее
+инициализировать:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ initialize_hello2_db development.ini
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь мы увидим стартовую страницу шаблона &lt;cite&gt;alchemy&lt;/cite&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/pyramid_home2.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/pyramid_home2.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Проект на пирамиде запускается при помощи утилиты &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pserve&lt;/span&gt;&lt;/code&gt;. Добавим
+конфигурацию для &lt;cite&gt;Pyramid&lt;/cite&gt; в файл настроек &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;launch.json&lt;/span&gt;&lt;/code&gt;, что бы можно было
+запускать/отлаживать приложение из редактора:&lt;/p&gt;
+&lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.2.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;configurations&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Pyramid&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;request&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;launch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;stopOnEntry&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;pythonPath&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}/hello2_env/bin/python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;program&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}/hello2_env/bin/pserve&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;args&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;${workspaceRoot}/development.ini&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;nt&quot;&gt;&amp;quot;debugOptions&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;            &lt;span class=&quot;s2&quot;&gt;&amp;quot;WaitOnNormalExit&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;            &lt;span class=&quot;s2&quot;&gt;&amp;quot;RedirectOutput&amp;quot;&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;        &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Попробуем запустить:&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_pserve_run.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_pserve_run.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;Поставим точку останова в функции &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;my_view&lt;/span&gt;&lt;/code&gt; в файле
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello2/views/default.py&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/vscode_pyramid_dbg.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_pyramid_dbg.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;p&gt;После обновления страницы &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543&quot;&gt;http://localhost:6543&lt;/a&gt; в браузере, программа остановит
+свое выполнение в этой точке, а браузер будет ждать пока мы не закончим отладку
+и не продолжим выполнение вручную.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;javascript&quot;&gt;
+&lt;h3&gt;JavaScript&lt;/h3&gt;
+&lt;img alt=&quot;../../_images/vscode_js.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vscode_js.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id11&quot;&gt;
+&lt;h2&gt;Итог&lt;/h2&gt;
+&lt;p&gt;Я, конечно, использую &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt;, но советую &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt;, особенно тем
+кто не знает что выбрать. Очень, оказался, самодостаточный редактор, &lt;cite&gt;git&lt;/cite&gt;,
+дбаггер, плагины, vi-мод. Ай да Микрософт!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2016/atom.xml">
+    <title type="text">IronLogic Z-2 USB на Linux</title>
+    <id>http://uralbash.ru/articles/2016/il-z2usb-linux/</id>
+    <updated>2016-08-31T20:02:00Z</updated>
+    <published>2016-08-31T20:02:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/il-z2usb-linux/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;ironlogic-z-2-usb-linux&quot;&gt;
+
+&lt;img alt=&quot;../../_images/z2usb.png&quot; class=&quot;align-left&quot; src=&quot;../../_images/z2usb.png&quot; style=&quot;width: 300px;&quot; /&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Z-2&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;USB&lt;/span&gt;&lt;/code&gt; всеядный считыватель, который умеет работать на двух частотах 13,56
+МГц и 125 кГц одновременно.  Поддерживаемые форматы карт &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;EM-Marine&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;HID&lt;/span&gt;
+&lt;span class=&quot;pre&quot;&gt;ProxCard&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;II&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Mifare&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Mifare&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Plus&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Mifare-UL&lt;/span&gt;&lt;/code&gt; (чтение/запись),
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Temic&lt;/span&gt;&lt;/code&gt; (чтение/запись), &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Cotag&lt;/span&gt;&lt;/code&gt; (опционально).&lt;/p&gt;
+&lt;p&gt;Работает по USB через &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;FTDI&lt;/span&gt;&lt;/code&gt; преобразователь, т.е. в компе видится как COM
+порт. В ядре Linux есть модуль &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ftdi_sio&lt;/span&gt;&lt;/code&gt; для работы с такими устройствами.
+Что бы система увидела ридер нужно подключить этот модуль и указать ему какое
+устройство является &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;FTDI&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Подключаем устройство и находим его в списке:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ lsusb
+Bus &lt;span class=&quot;m&quot;&gt;002&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;002&lt;/span&gt;: ID &lt;span class=&quot;m&quot;&gt;8087&lt;/span&gt;:8001 Intel Corp.
+Bus &lt;span class=&quot;m&quot;&gt;002&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;001&lt;/span&gt;: ID 1d6b:0002 Linux Foundation &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;.0 root hub
+Bus &lt;span class=&quot;m&quot;&gt;001&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;002&lt;/span&gt;: ID &lt;span class=&quot;m&quot;&gt;8087&lt;/span&gt;:8009 Intel Corp.
+Bus &lt;span class=&quot;m&quot;&gt;001&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;001&lt;/span&gt;: ID 1d6b:0002 Linux Foundation &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;.0 root hub
+Bus &lt;span class=&quot;m&quot;&gt;004&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;001&lt;/span&gt;: ID 1d6b:0003 Linux Foundation &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;.0 root hub
+Bus &lt;span class=&quot;m&quot;&gt;003&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;011&lt;/span&gt;: ID 046d:c050 Logitech, Inc. RX &lt;span class=&quot;m&quot;&gt;250&lt;/span&gt; Optical Mouse
+&lt;span class=&quot;hll&quot;&gt;Bus &lt;span class=&quot;m&quot;&gt;003&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;016&lt;/span&gt;: ID &lt;span class=&quot;m&quot;&gt;0403&lt;/span&gt;:1234 Future Technology Devices International, Ltd IronLogic RFID Adapter &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Z-2 USB&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+&lt;/span&gt;Bus &lt;span class=&quot;m&quot;&gt;003&lt;/span&gt; Device &lt;span class=&quot;m&quot;&gt;001&lt;/span&gt;: ID 1d6b:0002 Linux Foundation &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;.0 root hub
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Отключаем ридер и добавляем модуль ядра &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ftdi_sio&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo modprobe ftdi_sio
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Указываем драйверу какое устройство является &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;FTDI&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0403&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1234&lt;/span&gt; &amp;gt; /sys/bus/usb-serial/drivers/ftdi_sio/new_id
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ubuntu&lt;/span&gt;&lt;/code&gt; без root пользователя можно сделать так:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo bash -c &lt;span class=&quot;s2&quot;&gt;&amp;quot;echo 0403 1234 &amp;gt; /sys/bus/usb-serial/drivers/ftdi_sio/new_id&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Подключаем устройство, смотри что система его видит:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ dmesg &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; tail
+
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793134&lt;/span&gt;.996159&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: new full-speed USB device number &lt;span class=&quot;m&quot;&gt;20&lt;/span&gt; using xhci_hcd
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.131301&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: New USB device found, &lt;span class=&quot;nv&quot;&gt;idVendor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0403&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;idProduct&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1234&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.131303&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: New USB device strings: &lt;span class=&quot;nv&quot;&gt;Mfr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;nv&quot;&gt;SerialNumber&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.131305&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: Product: USB IronLogic RFID Adapter
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.131306&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: Manufacturer: ILogic
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.131307&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: SerialNumber: IL02KQQ9
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.135463&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; ftdi_sio &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1:1.0: FTDI USB Serial Device converter detected
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.135502&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: Detected FT232RL
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;793135&lt;/span&gt;.135641&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; usb &lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;-1: FTDI USB Serial Device converter now attached to ttyUSB0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Проверяем что драйвер привязался к устройству:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ usb-devices &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep ftdi
+I:  If#&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;Alt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#EPs= 2 Cls=ff(vend.) Sub=ff Prot=ff Driver=ftdi_sio&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Для работы с устройством без &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sudo&lt;/span&gt;&lt;/code&gt; добавим прав:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo chown username:usergroup /dev/ttyUSB0
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Далее настраиваем ридер, как обычный COM порт:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ stty -F /dev/ttyUSB0 cs8 cstopb -ixon raw speed &lt;span class=&quot;m&quot;&gt;9600&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Считываем данные:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ cat /dev/ttyUSB0
+Em-Marine&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;125&lt;/span&gt;,59903
+No card
+Em-Marine&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;125&lt;/span&gt;,59904
+No card
+Em-Marine&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0000&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;125&lt;/span&gt;,59904
+No card
+Em-Marine&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;7900&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;108&lt;/span&gt;,19751
+No card
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После перезагрузки все настройки сбиваются. Что бы это исправить нужно
+подключить кардридер и запустить скрипт один раз под суперпользователем:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#! /bin/bash&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# z2usb_install.sh&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Copyright (C) 2017 uralbash &amp;lt;root@uralbash.ru&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# Distributed under terms of the MIT license.&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+
+
+&lt;span class=&quot;c1&quot;&gt;# https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-kernel-modules-persistant.html&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; modprobe ftdi_sio &amp;gt;&amp;gt; /etc/rc.modules
+chmod +x /etc/rc.modules
+
+&lt;span class=&quot;c1&quot;&gt;# Make rules file&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;rules_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/etc/udev/rules.d/40-persistent-ftdi.rules
+touch &lt;span class=&quot;nv&quot;&gt;$rules_file&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Set FTDI devices&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; device in &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;
+  lsusb &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; awk &lt;span class=&quot;s1&quot;&gt;&amp;#39;/FT232&amp;#39;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;|Future Technology Devices International&amp;#39;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;|Z-2 USB&amp;#39;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;|Ltd IronLogic RFID Adapter/ &amp;#39;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+  &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;{print $6}&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;vendor_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;product_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;bash -c \&amp;quot;echo &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;vendor_id&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;product_id&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; &amp;gt; &amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;/sys/bus/usb-serial/drivers/ftdi_sio/new_id\&amp;quot;&amp;quot;&lt;/span&gt;   &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &amp;gt;&amp;gt; /etc/rc.modules
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;ATTRS{idVendor}==\&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;vendor_id&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;\&amp;quot;,&amp;quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;ATTRS{idProduct}==\&amp;quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;product_id&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;\&amp;quot;,&amp;quot;&lt;/span&gt;  &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;MODE=\&amp;quot;0666\&amp;quot;,GROUP=\&amp;quot;dialout\&amp;quot;&amp;quot;&lt;/span&gt;       &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &amp;gt;&amp;gt; &lt;span class=&quot;nv&quot;&gt;$rules_file&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Add user to dialout group&lt;/span&gt;
+usermod -aG tty user
+usermod -aG dialout user
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;user&lt;/span&gt;&lt;/code&gt; нужно поменять на имя вашего пользователя. Проверялось на &lt;cite&gt;CentOS&lt;/cite&gt;,
+для &lt;cite&gt;Ubuntu&lt;/cite&gt; возможно нужно поменять &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rc.modules&lt;/span&gt;&lt;/code&gt; на просто &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;modules&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2016/atom.xml">
+    <title type="text">Пропал доступ в Интернет в Docker контейнерах</title>
+    <id>http://uralbash.ru/articles/2016/docker-mtu/</id>
+    <updated>2016-07-13T23:13:00Z</updated>
+    <published>2016-07-13T23:13:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/docker-mtu/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;docker&quot;&gt;
+
+&lt;p&gt;Docker начиная с версии &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;1.10&lt;/span&gt;&lt;/code&gt; и выше, перестал брать значение &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;MTU&lt;/span&gt;&lt;/code&gt; от
+сетевого интерфейса. Теперь его нужно указывать явно:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ docker daemon --mtu&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1372&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Это может быть причиной отсутствия Интернет.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2016/atom.xml">
+    <title type="text">Пакетный менеджер Nix</title>
+    <id>http://uralbash.ru/articles/2016/nixpkgs/</id>
+    <updated>2016-07-06T22:24:00Z</updated>
+    <published>2016-07-06T22:24:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/nixpkgs/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;nix&quot;&gt;
+
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/nix/&quot;&gt;http://nixos.org/nix/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/&quot;&gt;Nix&lt;/a&gt; - пакетный менеджер, который устанавливает пакеты изолированно друг от
+друга. Изначально появился в процессе научной работы &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/~eelco/&quot;&gt;Eelco Dolstra&lt;/a&gt; и позже обрел огромную популярность и сторонников
+данной идеи, что в итоге сформировало очень активное сообщество, ссылки на
+которое можно найти здесь &lt;a class=&quot;reference internal&quot; href=&quot;../../pages/nixos/#nixos&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;NixOS&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://rhodecode.com/blog/61/rhodecode-and-nix-package-manager&quot;&gt;https://rhodecode.com/blog/61/rhodecode-and-nix-package-manager&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/&quot;&gt;Nix&lt;/a&gt; в отличии от других UNIX дистрибутивов устанавливает пакеты всегда в
+одно и то же место &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/nix/store/&lt;/span&gt;&lt;/code&gt;. Внутри каждого пакета создается необходимая
+структура директорий &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;bin&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;etc&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lib&lt;/span&gt;&lt;/code&gt;, и прочее. Пользователь видит
+это все у себя за счет симлинков, которые прописываются при установке, см.
+рисунок:&lt;/p&gt;
+&lt;img alt=&quot;../../_images/nix_fs.png&quot; src=&quot;../../_images/nix_fs.png&quot; /&gt;
+&lt;p&gt;Это позволяет избежать конфликта имен, при установке пакетов и иметь в системе
+несколько версий одной и той же программы собранной по разному.&lt;/p&gt;
+&lt;p&gt;Отличительной особенностью &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/&quot;&gt;nix&lt;/a&gt;, является то, что он не зависит от
+дистрибутива. Единственным требованием является поддержка &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;POSIX&lt;/span&gt;&lt;/code&gt; потоков и
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C++&lt;/span&gt;&lt;/code&gt; компилятор. Все пакеты из реп запускаются, без проблем, на любом Linux
+дистрибутиве и многие платформонезависимые пакеты работают в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;MacOS&lt;/span&gt;&lt;/code&gt;. Есть
+инструкции как установить &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/&quot;&gt;nix&lt;/a&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Cygwin&lt;/span&gt;&lt;/code&gt; под &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Windows&lt;/span&gt;&lt;/code&gt;. Я пользуюсь
+&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/&quot;&gt;nix&lt;/a&gt; под &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CentOS6&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CentOS7&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ubuntu&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NixOS&lt;/span&gt;&lt;/code&gt; и это работает
+везде одинаково хорошо.&lt;/p&gt;
+&lt;p&gt;Из плюсов можно отметить:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;везде одинаковый интерфейс, не нужно запоминать как работает &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;yum&lt;/span&gt;&lt;/code&gt;,
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;apt&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;apk&lt;/span&gt;&lt;/code&gt;, ...&lt;/li&gt;
+&lt;li&gt;одна репа для всех дистрибутивов, везде одинаковые версии программ&lt;/li&gt;
+&lt;li&gt;репа на гитхабе, это очень удобно (&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/NixOS/nixpkgs&quot;&gt;https://github.com/NixOS/nixpkgs&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;изолированная установка, новый пакет не может сломать остальные&lt;/li&gt;
+&lt;li&gt;возможность установки нескольких версий одного пакета, например &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;glibc&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;транзакционность - развитая модель откатки состояния&lt;/li&gt;
+&lt;li&gt;огромное количество пакетов, самых свежих версий&lt;/li&gt;
+&lt;li&gt;хранит все в одной директории &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/nix&lt;/span&gt;&lt;/code&gt;, не захламляет систему, удаляется
+одной командой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-rf&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;/nix&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Из минусов:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;чуть больший размер пакетов, из-за того что могут использоваться разные
+версии одной и той же зависимости в разных пакетах&lt;/li&gt;
+&lt;li&gt;сервисы и демоны устанавливаются в виде бинарников, прописывать их в
+автозапуск и систему инициализации придется вручную. Это не относится к
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NixOS&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h2&gt;Установка&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/nix/manual/#ch-installing-binary&quot;&gt;http://nixos.org/nix/manual/#ch-installing-binary&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Установка крайне простая, делается одной командой:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl https://nixos.org/nix/install &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sh
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;Команды&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;ul class=&quot;last simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/wiki/Cheatsheet&quot;&gt;https://nixos.org/wiki/Cheatsheet&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/nix/manual/#chap-package-management&quot;&gt;http://nixos.org/nix/manual/#chap-package-management&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/&quot;&gt;NixOS&lt;/a&gt; удивительный проект с очень хорошей документацией и большим
+мега-активным сообществом (&lt;a class=&quot;reference internal&quot; href=&quot;../../pages/nixos/#nixos&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;NixOS&lt;/span&gt;&lt;/a&gt;). Поэтому нет смысла дублировать
+документацию, опишу лишь некоторые команды в сравнении с пакетным менеджером
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;apt&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h3&gt;Установка пакетов:&lt;/h3&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id10&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;apt&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install firefox python vim
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id11&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;nix&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-env -i firefox python vim
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id4&quot;&gt;
+&lt;h3&gt;Удаление:&lt;/h3&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id12&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;apt&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get remove python
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id13&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;nix&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-env -e python
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id5&quot;&gt;
+&lt;h3&gt;Обновление реп:&lt;/h3&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id14&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;apt&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get update
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id15&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;nix&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-channel --update
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id6&quot;&gt;
+&lt;h3&gt;Обновление пакетов:&lt;/h3&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id16&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;apt&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get upgrade
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id17&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;nix&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-env -u
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id7&quot;&gt;
+&lt;h3&gt;Информация о пакете:&lt;/h3&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id18&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;apt&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ apt-cache search vim
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id19&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;nix&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-env -qaP &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep vim
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id8&quot;&gt;
+&lt;h3&gt;Описание пакета:&lt;/h3&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id20&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;apt&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ apt-cache show vim
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id21&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;nix&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-env -qaP --description &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep vim
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;nix-shell&quot;&gt;
+&lt;h2&gt;nix-shell&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;ul class=&quot;last simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/nix/manual/#sec-nix-shell&quot;&gt;http://nixos.org/nix/manual/#sec-nix-shell&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://habrahabr.ru/post/281611/&quot;&gt;Nix как менеджер зависимостей для C++&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix-shell&lt;/span&gt;&lt;/code&gt; создает изолированное окружение (наподобие &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;virtualenv&lt;/span&gt;&lt;/code&gt; в
+питоне) и позволяет запускать в нем команды или выполнять &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix&lt;/span&gt;&lt;/code&gt; скрипты.&lt;/p&gt;
+&lt;p&gt;Пример как создать окружение с &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nodejs&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;python3&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;gnumake&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ nix-shell -p nodejs python3 gnumake
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;После этого &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nodejs&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;python3&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;gnumake&lt;/span&gt;&lt;/code&gt; появятся в нашем окружении.
+Выйти из окружения можно так-же как и из bash оболочки &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctrl&lt;/span&gt;&lt;/code&gt; + &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;D&lt;/span&gt;&lt;/code&gt;
+или командой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;exit&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Понять что мы находимся в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix-shell&lt;/span&gt;&lt;/code&gt; сессии можно при помощи переменной
+окружения:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ env &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; grep IN_NIX_SHELL
+&lt;span class=&quot;nv&quot;&gt;IN_NIX_SHELL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Я добавил отображение символа снежинки &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;❄&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PS1&lt;/span&gt;&lt;/code&gt;, если &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix-shell&lt;/span&gt;&lt;/code&gt;
+сессия активна.&lt;/p&gt;
+&lt;img alt=&quot;../../_images/nix_shell.png&quot; src=&quot;../../_images/nix_shell.png&quot; /&gt;
+&lt;p&gt;Очень удобно создавать окружение для скриптов через shebang:&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id22&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;shebang создает окружение для python2 и запускает в нем скрипт&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#! /usr/bin/env nix-shell&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;#! nix-shell -i python -p python pythonPackages.prettytable&lt;/span&gt;
+
+ &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;prettytable&lt;/span&gt;
+
+ &lt;span class=&quot;c1&quot;&gt;# Print a simple table.&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prettytable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PrettyTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;N&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;N^2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id23&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;shebang создает окружение с утилитой cowsay и запускает в баше скрипт&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#! /usr/bin/env nix-shell&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;#! nix-shell -i bash -p cowsay&lt;/span&gt;
+
+ cowsay &lt;span class=&quot;s2&quot;&gt;&amp;quot;Превед nix-shell!!!&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;По умолчанию команда &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix-shell&lt;/span&gt;&lt;/code&gt; ищет файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;default.nix&lt;/span&gt;&lt;/code&gt; в текущей
+директории и пытается его выполнить, таким образом мы можем создавать для своих
+проектов своеобразное виртуальное окружение, просто положив этот файл в корень
+проекта и прописав в нем необходимые пакеты и правила сборки. Такой проект
+легко будет развернуть на любой системе. Отличной демонстрацией этого является
+проект &lt;a class=&quot;reference external&quot; href=&quot;https://rhodecode.com/&quot;&gt;RhodeCode&lt;/a&gt; (позволяет управлять кодом как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;GitLab&lt;/span&gt;&lt;/code&gt;, но при этом
+может использовать разные системы контроля версий &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;git&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hg&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;svn&lt;/span&gt;&lt;/code&gt; и
+интегрируется с разными треккерами задач вплоть до &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Trello&lt;/span&gt;&lt;/code&gt;), который можно
+развернуть у себя за 5 мин при помощи команды &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix-shell&lt;/span&gt;&lt;/code&gt;
+(&lt;a class=&quot;reference external&quot; href=&quot;https://docs.rhodecode.com/RhodeCode-Enterprise/contributing/dev-setup.html&quot;&gt;https://docs.rhodecode.com/RhodeCode-Enterprise/contributing/dev-setup.html&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Также &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix-shell&lt;/span&gt;&lt;/code&gt; позволяет присваивать имена окружениям и запускать
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix&lt;/span&gt;&lt;/code&gt; выражения, например что бы собрать приложение изолированно от общих
+установленных пакетов.&lt;/p&gt;
+&lt;p&gt;Более подробно, что такое язык &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nixexpr&lt;/span&gt;&lt;/code&gt; и как при помощи его собирать
+пакеты и даже ОС &lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, я постараюсь описать в отдельной статье.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;home-user&quot;&gt;
+&lt;h2&gt;/home/user Окружение&lt;/h2&gt;
+&lt;p&gt;Что бы &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ubuntu&lt;/span&gt;&lt;/code&gt; знала о наших приложениях нужно прописать симлинк:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;ln -s &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/.nix-profile/share/applications/ &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;/.local/share/applications/
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id9&quot;&gt;
+&lt;h2&gt;Резюме&lt;/h2&gt;
+&lt;p&gt;Пакетный менеджер &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Nix&lt;/span&gt;&lt;/code&gt; имеет огромное количество преимуществ, которые
+упрощают процессы администрирования, программирования, сборки и тестирования
+ПО. Теперь на разных Линуксах все работает одинаково! А в CentOS6 есть gcc6.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2016/atom.xml">
+    <title type="text">NixOS</title>
+    <id>http://uralbash.ru/pages/nixos/</id>
+    <updated>2016-07-06T18:06:00Z</updated>
+    <published>2016-07-06T18:06:00Z</published>
+    <link href="http://uralbash.ru/pages/nixos/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;nixos&quot;&gt;
+&lt;span id=&quot;id1&quot;&gt;&lt;/span&gt;
+&lt;p&gt;Здесь я буду собирать разные полезные ресурсы по ОС &lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/&quot;&gt;NixOS&lt;/a&gt; и пакетному
+менеджеру &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/&quot;&gt;nix&lt;/a&gt;. Если вы, что то не нашли пишите в комментах.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h2&gt;Оф. ресурсы&lt;/h2&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;Официальный сайт &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/&quot;&gt;https://nixos.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Документация &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nixos/manual/&quot;&gt;https://nixos.org/nixos/manual/&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/manual/&quot;&gt;https://nixos.org/nix/manual/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;dl class=&quot;first docutils&quot;&gt;
+&lt;dt&gt;Wiki &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/wiki/Main_Page&quot;&gt;https://nixos.org/wiki/Main_Page&lt;/a&gt; (устарела)&lt;/dt&gt;
+&lt;dd&gt;&lt;ul class=&quot;first last&quot;&gt;
+&lt;li&gt;Новая Wiki &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.wiki/wiki/Main_Page&quot;&gt;https://nixos.wiki/wiki/Main_Page&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/li&gt;
+&lt;li&gt;Mail рассылки &lt;a class=&quot;reference external&quot; href=&quot;http://lists.science.uu.nl/mailman/listinfo/nix-dev&quot;&gt;http://lists.science.uu.nl/mailman/listinfo/nix-dev&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Код &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/NixOS/nixpkgs/&quot;&gt;https://github.com/NixOS/nixpkgs/&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/NixOS/nix/&quot;&gt;https://github.com/NixOS/nix/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Донэйт &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nixos/foundation.html&quot;&gt;https://nixos.org/nixos/foundation.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Еженедельная рассылка: &lt;a class=&quot;reference external&quot; href=&quot;http://weekly.nixos.org/&quot;&gt;http://weekly.nixos.org/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
+&lt;h2&gt;Полезные ссылки&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nixcloud.io/tour/&quot;&gt;https://nixcloud.io/tour/&lt;/a&gt; - восхитительный курс по языку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://learnxinyminutes.com/docs/nix/&quot;&gt;https://learnxinyminutes.com/docs/nix/&lt;/a&gt; - учим синтаксис языка &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://medium.com/&amp;#64;MrJamesFisher/nix-by-example-a0063a1a4c55&quot;&gt;https://medium.com/&amp;#64;MrJamesFisher/nix-by-example-a0063a1a4c55&lt;/a&gt;  - еще про язык &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://nixpaste.lbr.uno/&quot;&gt;http://nixpaste.lbr.uno/&lt;/a&gt; - сервис на подобии &lt;cite&gt;pastebin&lt;/cite&gt;, но есть подсветка
+синтаксиса &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nixexpr&lt;/span&gt;&lt;/code&gt; и удобная утилита для командной строки.&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nb&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;nixpaste&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;curl -F &amp;#39;text=&amp;lt;-&amp;#39; http://nixpaste.lbr.uno&amp;quot;&lt;/span&gt;
+$ &lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; nixpaste
+$ nixpaste &amp;lt; ./myexpr.nix
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id4&quot;&gt;
+&lt;h2&gt;Сообщество&lt;/h2&gt;
+&lt;p&gt;Перечислю источники по степени активности:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;#nixos&lt;/span&gt;&lt;/code&gt; irc канал на freenode имеет очень высокую активность,
+разработчики &lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/&quot;&gt;NixOS&lt;/a&gt; и все что с ней связанно в основном общаются здесь.&lt;/p&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;https://webchat.freenode.net/?channels=nixos&quot;&gt;&lt;img alt=&quot;irc freenode&quot; src=&quot;https://img.shields.io/badge/irc-freenode-blue.svg&quot; /&gt;&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;StackOverflow то же весьма активен, много людей из рассылки.&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://stackoverflow.com/questions/tagged/nix&quot;&gt;http://stackoverflow.com/questions/tagged/nix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://stackoverflow.com/questions/tagged/nixos&quot;&gt;http://stackoverflow.com/questions/tagged/nixos&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Рассылки&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://twitter.com/nixos_org&quot;&gt;https://twitter.com/nixos_org&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.reddit.com/r/nixos&quot;&gt;https://www.reddit.com/r/nixos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://groups.google.com/forum/#!forum/nix-devel&quot;&gt;https://groups.google.com/forum/#!forum/nix-devel&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id5&quot;&gt;
+&lt;h2&gt;Блоги&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://typing-nix.regnat.ovh/&quot;&gt;https://typing-nix.regnat.ovh/&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2016/atom.xml">
+    <title type="text">gcc для C++11 из реп в CentOS6</title>
+    <id>http://uralbash.ru/articles/2016/centos6-gcc-cpp11/</id>
+    <updated>2016-06-05T23:45:00Z</updated>
+    <published>2016-06-05T23:45:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/centos6-gcc-cpp11/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;gcc-c-11-centos6&quot;&gt;
+
+&lt;p&gt;C++11 в &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=gcc&quot;&gt;gcc&lt;/a&gt; появился, начиная с версии 4.7, но в CentOS6 естественно
+более старая версия без С++11. Как вариант, можно собрать из исходников, но я
+опишу способ установки из дополнительных реп.&lt;/p&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://gcc.gnu.org/projects/cxx-status.html#cxx11&quot;&gt;https://gcc.gnu.org/projects/cxx-status.html#cxx11&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Добавляем репу:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo yum install centos-release-scl
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Устанавливаем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;devtoolset-3-toolchain&lt;/span&gt;&lt;/code&gt;, который включает в себя &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=gcc&quot;&gt;gcc&lt;/a&gt;,
+&lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=gdb&quot;&gt;gdb&lt;/a&gt;, &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=binutils&quot;&gt;binutils&lt;/a&gt;, &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=elfutils&quot;&gt;elfutils&lt;/a&gt;, &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=dwz&quot;&gt;dwz&lt;/a&gt;, &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=memstomp&quot;&gt;memstomp&lt;/a&gt;,
+&lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=strace&quot;&gt;strace&lt;/a&gt;, &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=ltrace&quot;&gt;ltrace&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo yum install devtoolset-3-toolchain
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Прописываем &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=gcc&quot;&gt;gcc&lt;/a&gt; в окружение пользователя:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ scl &lt;span class=&quot;nb&quot;&gt;enable&lt;/span&gt; devtoolset-3 bash
+
+или
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;source /opt/rh/devtoolset-3/enable&amp;quot;&lt;/span&gt; &amp;gt;&amp;gt; ~/.bashrc
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Профит!&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2016/atom.xml">
+    <title type="text">REST API в Pyramid</title>
+    <id>http://uralbash.ru/articles/2016/pyramid-restapi/</id>
+    <updated>2016-05-31T14:49:00Z</updated>
+    <published>2016-05-31T14:49:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/pyramid-restapi/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Это статья из лекций
+&lt;a class=&quot;reference external&quot; href=&quot;http://lectureswww.readthedocs.io/6.www.sync/3.framework/pyramid/5.1.rest.html&quot;&gt;http://lectureswww.readthedocs.io/6.www.sync/3.framework/pyramid/5.1.rest.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;rest-api-pyramid&quot;&gt;
+
+&lt;div class=&quot;section&quot; id=&quot;rest-api&quot;&gt;
+&lt;h2&gt;REST API&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;ul class=&quot;last simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/REST&quot;&gt;https://ru.wikipedia.org/wiki/REST&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://blog.delaguardia.com.mx/pyramid-view-configuration-let-me-count-the-ways.html&quot;&gt;Для тех кто в Djang&amp;#8217;е
+(http://blog.delaguardia.com.mx/pyramid-view-configuration-let-me-count-the-ways.html)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pyramid_cookbook/en/latest/testing/testing_post_curl.html&quot;&gt;http://docs.pylonsproject.org/projects/pyramid_cookbook/en/latest/testing/testing_post_curl.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;REST&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;API&lt;/span&gt;&lt;/code&gt; подразумевает под собой простые правила:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;Каждый URL является ресурсом&lt;/li&gt;
+&lt;li&gt;При обращении к ресурсу методом &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;GET&lt;/span&gt;&lt;/code&gt; возвращается описание этого
+ресурса&lt;/li&gt;
+&lt;li&gt;Метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;POST&lt;/span&gt;&lt;/code&gt; добавляет новый ресурс&lt;/li&gt;
+&lt;li&gt;Метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PUT&lt;/span&gt;&lt;/code&gt; изменяет ресурс&lt;/li&gt;
+&lt;li&gt;Метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DELETE&lt;/span&gt;&lt;/code&gt; удаляет ресурс&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Эти правила предоставляют простой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; интерфейс для других приложений,
+взаимодействие с которым происходит через протокол &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;HTTP&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Соответствие &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; операций и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;HTTP&lt;/span&gt;&lt;/code&gt; методов:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;strong&gt;CREATE&lt;/strong&gt; - &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;POST&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;READ&lt;/strong&gt; - &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;GET&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;UPDATE&lt;/strong&gt; - &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PUT&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DELETE&lt;/strong&gt; - &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DELETE&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;REST&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;API&lt;/span&gt;&lt;/code&gt; интерфейс очень удобен для межпрограммного взаимодействия,
+например мобильное приложение может выступать в роли клиента, который
+манипулирует данными посредством &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;REST&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;pattern-matching&quot;&gt;
+&lt;h3&gt;Pattern matching&lt;/h3&gt;
+&lt;p&gt;Пример выше добавляет View с тремя методами, каждый из которых вызывается при
+соответствующем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;GET&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;POST&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DELETE&lt;/span&gt;&lt;/code&gt; запросе.
+Ресурсом здесь является конкретный человек, получить которого можно по URL
+&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/api/v1/people/123&quot;&gt;http://localhost:8080/api/v1/people/123&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Результатом запроса будет:&lt;/p&gt;
+&lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;get&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;123&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;quot;method&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;GET&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Для отправки &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;POST&lt;/span&gt;&lt;/code&gt; запроса воспользуемся консольной утилитой &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=curl&quot;&gt;curl&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl -X POST -d &lt;span class=&quot;s1&quot;&gt;&amp;#39;param1=value1&amp;amp;param2=value2&amp;#39;&lt;/span&gt; http://localhost:8080/api/v1/people/1
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Результат запроса:&lt;/p&gt;
+&lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;quot;post&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;param1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;value1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;quot;param2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;value2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;quot;method&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DELETE&lt;/span&gt;&lt;/code&gt; запрос выполняется по аналогии:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl -X DELETE http://localhost:8080/api/v1/people/1
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Результат запроса:&lt;/p&gt;
+&lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;status&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;success&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;traversal&quot;&gt;
+&lt;h3&gt;Traversal&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Метод URL диспетчеризации &lt;a class=&quot;reference internal&quot; href=&quot;../../articles/2016/pyramid-traversal/#traversal-routing&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;Traversal&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;В предыдущем примере показан только один ресурс - конкретный человек и
+в принципе все выглядит неплохо, пока не появится другой смежный ресурс,
+например список всех людей по адресу &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/api/v1/people&quot;&gt;http://localhost:8080/api/v1/people&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;В этом случае, придется добавлять новый путь (rout), привязывать его к
+представлению (View) и самое неприятное менять само представление, или еще
+хуже писать новое. Таким образом с увеличением ресурсов, сложность REST API
+растет не пропорционально и в какой то момент код становится не читаемым
+из-за больших размеров и постоянно меняющейся логики во View.&lt;/p&gt;
+&lt;p&gt;Выход из данной ситуации - отделить ресурсы от представлений, тем самым
+вынести часть логики и сделать представления более универсальными.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h4&gt;Ресурсы&lt;/h4&gt;
+&lt;p&gt;Ресурсы могут выглядеть так:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PeopleResource&lt;/span&gt;&lt;/code&gt; представляет список всех людей и будет доступен по
+адресу &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/api/v1/people&quot;&gt;http://localhost:8080/api/v1/people&lt;/a&gt;.
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PeopleResource&lt;/span&gt;&lt;/code&gt; имеет метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__getitem__&lt;/span&gt;&lt;/code&gt;, что делает его похожим на
+словарь. При обращении к объекту ресурса как к словарю, он вызовет
+эту функцию и передаст ключ в параметр &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;people_id&lt;/span&gt;&lt;/code&gt;, например:&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PeopleResource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;bar&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Вернет объект PersonResource(123)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__json__&lt;/span&gt;&lt;/code&gt; определяет каким образом преобразовывать ресурс в json.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PersonResource&lt;/span&gt;&lt;/code&gt; представляет конкретного человека и будет доступен по
+адресу &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/api/v1/people/{id}&quot;&gt;http://localhost:8080/api/v1/people/{id}&lt;/a&gt;. Здесь отличительной
+особенностью является то, что метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__json__&lt;/span&gt;&lt;/code&gt; наследует часть словаря из
+класса &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PeopleResource&lt;/span&gt;&lt;/code&gt;, при помощи конструкции &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;super&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;view&quot;&gt;
+&lt;h4&gt;View&lt;/h4&gt;
+&lt;p&gt;Перепишем View таким образом, что бы она возвращала только ресурс, а так-как
+ресурс уже содержит в себе информацию как отдавать json, то это представление
+будет универсальным как для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PeopleResource&lt;/span&gt;&lt;/code&gt;, так и для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PersonResource&lt;/span&gt;&lt;/code&gt;
+и возможно подойдет другим ресурсам которые мы будем писать в будущем.&lt;/p&gt;
+&lt;p&gt;Рендерер &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;json&lt;/span&gt;&lt;/code&gt; по умолчанию ищет метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__json__&lt;/span&gt;&lt;/code&gt; и если он есть то
+возвращает его результат вызова.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;route&quot;&gt;
+&lt;h4&gt;Route&lt;/h4&gt;
+&lt;p&gt;Путь, в нашем случае, будет один, так-как вся структура вынесена в ресурсы
+(метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__getitem__&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;rest_api&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/api/v1/*traverse&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rest_factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
+&lt;h4&gt;Полный пример&lt;/h4&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry xml:base="http://uralbash.ru/blog/2016/atom.xml">
+    <title type="text">Traversal роутинг в Pyramid</title>
+    <id>http://uralbash.ru/articles/2016/pyramid-traversal/</id>
+    <updated>2016-05-30T14:49:00Z</updated>
+    <published>2016-05-30T14:49:00Z</published>
+    <link href="http://uralbash.ru/articles/2016/pyramid-traversal/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;admonition note&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Примечание&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;Это статья из лекций
+&lt;a class=&quot;reference external&quot; href=&quot;http://lectureswww.readthedocs.io/6.www.sync/3.framework/pyramid/5.urldispatch.html&quot;&gt;http://lectureswww.readthedocs.io/6.www.sync/3.framework/pyramid/5.urldispatch.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;traversal-pyramid&quot;&gt;
+
+&lt;div class=&quot;section&quot; id=&quot;url&quot;&gt;
+&lt;h2&gt;Диспетчеризация URL&lt;/h2&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;ul class=&quot;last simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pyramid/en/1.6-branch/narr/urldispatch.html&quot;&gt;http://docs.pylonsproject.org/projects/pyramid/en/1.6-branch/narr/urldispatch.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://pyramid-cookbook.readthedocs.org/en/latest/routing/index.html&quot;&gt;http://pyramid-cookbook.readthedocs.org/en/latest/routing/index.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://blog.delaguardia.com.mx/pyramid-view-configuration-let-me-count-the-ways.html&quot;&gt;Для тех кто в Djang&amp;#8217;е
+(http://blog.delaguardia.com.mx/pyramid-view-configuration-let-me-count-the-ways.html)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;Каждый поступающий на сервер приложений Pyramid запрос (&lt;strong&gt;request&lt;/strong&gt;) должен
+найти вид (&lt;strong&gt;view&lt;/strong&gt;), который и будет его обрабатывать.&lt;/p&gt;
+&lt;p&gt;В Pyramid имеется два базовых подхода к поиску нужного вида для обрабатываемого
+запроса: на основе сопоставления (&lt;strong&gt;matching&lt;/strong&gt;), как в большинстве подобных
+фреймворков, и обхода (&lt;strong&gt;traversal&lt;/strong&gt;), как в &lt;a class=&quot;reference external&quot; href=&quot;http://www.zope.org/&quot;&gt;Zope&lt;/a&gt;. Кроме того, в одном
+приложении можно с успехом сочетать оба подхода.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;pattern-matching&quot;&gt;
+&lt;h3&gt;Pattern Matching&lt;/h3&gt;
+&lt;p&gt;Простейший пример с заданием маршрута (заимствован из документации):&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Здесь config - экземпляр pyramid.config.Configurator&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;idea&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;site/{id}&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;mypackage.views.site_view&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;route_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;idea&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;traversal&quot;&gt;
+&lt;span id=&quot;traversal-routing&quot;&gt;&lt;/span&gt;&lt;h3&gt;Traversal&lt;/h3&gt;
+&lt;div class=&quot;admonition seealso&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;См.также&lt;/p&gt;
+&lt;ul class=&quot;last simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/traversal.html&quot;&gt;http://docs.pylonsproject.org/projects/pyramid/en/latest/narr/traversal.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;Использование обхода лучше проиллюстрировать на небольшом примере:&lt;/p&gt;
+&lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;wsgiref.simple_server&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_server&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.config&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configurator&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.response&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Класс некоторого ресурса&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Дерево ресурсов (жёстко закодированное) в фабрике корня&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()})})})&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Вид-для-вызова, который умеет показывать ресурс Resource (в context)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hello_world_of_resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Ресурс и его дети: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;vm&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configurator&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;root_factory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_root&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hello_world_of_resources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;make_wsgi_app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;serve_forever&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В этом примере иерархия для обхода жестко задана в методе &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;get_root&lt;/span&gt;&lt;/code&gt; с
+помощью вложенных словарей, тогда как реальные приложения должны сами
+определять необходимый доступ по ключам (метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__getitem__&lt;/span&gt;&lt;/code&gt; помогает
+организовать такой доступ). В коде также присутствует корневая фабрика, с
+которой собственно и начинается обход узлов (node) дерева ресурсов.
+Вид-для-вызова (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-view-callable&quot; title=&quot;(в The Pyramid Web Framework v1.9.1)&quot;&gt;&lt;span class=&quot;xref std std-term&quot;&gt;view callable&lt;/span&gt;&lt;/a&gt;) представлен функцией
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello_world_of_resources&lt;/span&gt;&lt;/code&gt;. Говоря несколько упрощённо, на основе URL запроса
+в результате обхода иерархии Pyramid находит ресурс и применяет к нему
+«наилучший» вид-для-вызова (в нашем примере — он единственный).&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
+&lt;h4&gt;Обход словаря&lt;/h4&gt;
+&lt;div class=&quot;admonition warning&quot;&gt;
+&lt;p class=&quot;first admonition-title&quot;&gt;Предупреждение&lt;/p&gt;
+&lt;p class=&quot;last&quot;&gt;В примерах используется Python3&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Метод обхода дерева (traversal), позволяет находить ресурсы во вложенных структурах.
+Такой механизм хорошо применим для некоторых практических задач, например
+список всех URL маршрутов сайта является деревом, в котором каждый конечный URL
+это отдельная ветка дерева. Поэтому всю структуру сайта можно поместить в словарь.&lt;/p&gt;
+&lt;p&gt;К примеру, известно, что смерь сказочного персонажа &amp;#8220;кащея&amp;#8221; находится в яйце,
+которое в свою очередь в утке, которая в зайце и т.д. В сумме получается
+вложенная структура, которую можно описать так:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;остров&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;дуб&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;сундук&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;заяц&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;утка&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;яйцо&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;игла&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;СмертьКощея&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Мы можем такую, плоскую, вложенную структуру легко представить в виде URL:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;А так-как любой URL является веткой дерева, то несложно описать это в Python:&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;s1&quot;&gt;&amp;#39;остров&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;s1&quot;&gt;&amp;#39;дуб&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+             &lt;span class=&quot;s1&quot;&gt;&amp;#39;сундук&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                 &lt;span class=&quot;s1&quot;&gt;&amp;#39;заяц&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                     &lt;span class=&quot;s1&quot;&gt;&amp;#39;утка&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                         &lt;span class=&quot;s1&quot;&gt;&amp;#39;яйцо&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                             &lt;span class=&quot;s1&quot;&gt;&amp;#39;игла&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;СмертьКощея&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;СмертьКощея()&lt;/span&gt;&lt;/code&gt; - это объект класса &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;СмертьКощея&lt;/span&gt;&lt;/code&gt;, который может выглядеть к примеру так:&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;СмертьКощея&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__json__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;&amp;#39;имя&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;кощей&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;&amp;#39;статус&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;мертв&amp;#39;&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;жив ещё&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;В принципе, этого достаточно что бы наш сайт-убийца &amp;#8220;кощея&amp;#8221; заработал.
+Осталось лишь прописать пути и добавить представление (view).&lt;/p&gt;
+&lt;p&gt;View будет просто возвращать объект, например, если мы ввели:&lt;/p&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;URL: &amp;#39;остров&amp;#39;
+объект: {&amp;#39;дуб&amp;#39;: {
+            &amp;#39;сундук&amp;#39;: {
+                &amp;#39;заяц&amp;#39;: {
+                    &amp;#39;утка&amp;#39;: {
+                        &amp;#39;яйцо&amp;#39;: {
+                            &amp;#39;игла&amp;#39;: СмертьКощея()
+                        }
+                    }
+                }
+            }
+        }}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;URL: &amp;#39;остров/дуб&amp;#39;
+объект: {&amp;#39;сундук&amp;#39;: {
+            &amp;#39;заяц&amp;#39;: {
+                &amp;#39;утка&amp;#39;: {
+                    &amp;#39;яйцо&amp;#39;: {
+                        &amp;#39;игла&amp;#39;: СмертьКощея()
+                    }
+                }
+            }
+        }}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;URL: &amp;#39;остров/дуб/сундук&amp;#39;
+объект: {&amp;#39;заяц&amp;#39;: {
+            &amp;#39;утка&amp;#39;: {
+                &amp;#39;яйцо&amp;#39;: {
+                    &amp;#39;игла&amp;#39;: СмертьКощея()
+                }
+            }
+        }}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;URL: &amp;#39;остров/дуб/сундук/заяц&amp;#39;
+объект: {&amp;#39;утка&amp;#39;: {
+            &amp;#39;яйцо&amp;#39;: {
+                &amp;#39;игла&amp;#39;: СмертьКощея()
+            }
+        }}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;URL: &amp;#39;остров/дуб/сундук/заяц/утка&amp;#39;
+объект: {&amp;#39;яйцо&amp;#39;: {
+            &amp;#39;игла&amp;#39;: СмертьКощея()
+        }}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;URL: &amp;#39;остров/дуб/сундук/заяц/утка/яйцо&amp;#39;
+объект: {&amp;#39;игла&amp;#39;: СмертьКощея()}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;URL: &amp;#39;остров/дуб/сундук/заяц/утка/яйцо/игла&amp;#39;
+объект: СмертьКощея()
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Такие функции-представления (View) должны принимать 2 параметра, где первый
+параметр будет являться объектом, обычно именуемым &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;context&lt;/span&gt;&lt;/code&gt;, а второй
+параметр &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;request&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;traverse_koshey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# Наш объект&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Роуты создаются почти так же как в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pattern&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;matching&lt;/span&gt;&lt;/code&gt;, за исключением того,
+что структура путей передается в виде &amp;#8220;фабрики&amp;#8221;, которая возвращает словарь или
+ему подобный (dict-like) объект. Путь указывается в виде статической и
+динамической части, например &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/fixedpath/*traverse&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;koshey&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/mytraversal/*traverse&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Фабрика, которая возвращает структуру сайта:&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;my_factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;остров&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;&amp;#39;дуб&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;s1&quot;&gt;&amp;#39;сундук&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;заяц&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                        &lt;span class=&quot;s1&quot;&gt;&amp;#39;утка&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&amp;#39;яйцо&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                                &lt;span class=&quot;s1&quot;&gt;&amp;#39;игла&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;СмертьКощея&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;View добавляется стандартно:&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;traverse_koshey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;route_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;koshey&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;renderer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;json&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Все готово, можно перемещаться по объектам:&lt;/p&gt;
+&lt;ul class=&quot;simple&quot;&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/&quot;&gt;http://localhost:8080/mytraversal/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/остров&quot;&gt;http://localhost:8080/mytraversal/остров&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/остров/дуб&quot;&gt;http://localhost:8080/mytraversal/остров/дуб&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/остров/дуб/сундук&quot;&gt;http://localhost:8080/mytraversal/остров/дуб/сундук&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц&quot;&gt;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка&quot;&gt;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо&quot;&gt;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла&quot;&gt;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Полный пример:&lt;/p&gt;
+&lt;p&gt;Есть один нюанс, json renderer, по умолчанию, все не латинские символы отображает
+как UTF коды &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;\uxxxx&lt;/span&gt;&lt;/code&gt;, поэтому мы увидим следующий вывод:&lt;/p&gt;
+&lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;\u043e\u0441\u0442\u0440\u043e\u0432&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;\u0434\u0443\u0431&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;\u0441\u0443\u043d\u0434\u0443\u043a&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;\u0437\u0430\u044f\u0446&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;\u0443\u0442\u043a\u0430&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;\u044f\u0439\u0446\u043e&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;\u0438\u0433\u043b\u0430&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;quot;\u0441\u0442\u0430\u0442\u0443\u0441&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;\u0436\u0438\u0432 \u0435\u0449\u0451&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;&amp;quot;\u0438\u043c\u044f&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;\u043a\u043e\u0449\u0435\u0439&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}}}}}}}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Но можно изменить его поведение следующим образом:&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.renderers&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JSON&lt;/span&gt;
+ &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_renderer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myjson&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;indent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ensure_ascii&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;traverse_koshey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;route_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;koshey&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;renderer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myjson&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Результат:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/&quot;&gt;http://localhost:8080/mytraversal/&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;остров&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;quot;дуб&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;quot;сундук&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;quot;заяц&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;quot;утка&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                        &lt;span class=&quot;nt&quot;&gt;&amp;quot;яйцо&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;nt&quot;&gt;&amp;quot;игла&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                                &lt;span class=&quot;nt&quot;&gt;&amp;quot;имя&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;кощей&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                                &lt;span class=&quot;nt&quot;&gt;&amp;quot;статус&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;жив ещё&amp;quot;&lt;/span&gt;
+                            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла&quot;&gt;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;имя&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;кощей&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;статус&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;мертв&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Полный код:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;view&quot;&gt;
+&lt;h4&gt;Привязка View к ресурсам&lt;/h4&gt;
+&lt;p&gt;В Пирамиде объект (context) который передается во вью, именуют еще как &amp;#8220;ресурс&amp;#8221;.
+Есть возможность жестко привязать View к типу ресурса. Например, наше
+представление &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;traverse_koshey&lt;/span&gt;&lt;/code&gt; должно вызываться, только когда пришел объект
+класса &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;СмертьКощея&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;traverse_koshey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;route_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;koshey_context&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;renderer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myjson&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;hll&quot;&gt;                &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;СмертьКощея&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Параметр &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;context&lt;/span&gt;&lt;/code&gt; указывает на то, что это View принадлежит ТОЛЬКО объектам
+класса &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;СмертьКащея&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Все пути, кроме полного (который возвращает нужный объект), вернут 404 код ответа.
+Полный путь &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла&quot;&gt;http://localhost:8080/mytraversal/остров/дуб/сундук/заяц/утка/яйцо/игла&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Добавим в нашу структуру еще ресурсов:&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;my_factory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;превед&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Человек&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;остров&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;&amp;#39;ясень&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;s1&quot;&gt;&amp;#39;что то здесь&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;не так!&amp;#39;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;s1&quot;&gt;&amp;#39;дуб&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;s1&quot;&gt;&amp;#39;сундук&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;заяц&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                        &lt;span class=&quot;s1&quot;&gt;&amp;#39;утка&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                            &lt;span class=&quot;s1&quot;&gt;&amp;#39;яйцо&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                                &lt;span class=&quot;s1&quot;&gt;&amp;#39;игла&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;СмертьКощея&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+                            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Здесь &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Человек()&lt;/span&gt;&lt;/code&gt; это новый тип ресурса, который имеет метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__getitem__&lt;/span&gt;&lt;/code&gt;
+как у словаря и при обращении по ключу возвращает другой ресурс:&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Человек&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;Человек&amp;#39;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__getitem__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Имя&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Имя&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;__parent__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Человек&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Например мы обращаемся по URL &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/превед/Пирамид&quot;&gt;http://localhost:8080/mytraversal/превед/Пирамид&lt;/a&gt;.
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;превед&lt;/span&gt;&lt;/code&gt; вернет ресурс &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Человек&lt;/span&gt;&lt;/code&gt;, а &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Пирамид&lt;/span&gt;&lt;/code&gt; вызовет метод
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__getitem__&lt;/span&gt;&lt;/code&gt;, который вернет ресурс &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Имя('Пирамид')&lt;/span&gt;&lt;/code&gt;. Таким образом мы
+можем строить дерево динамически при помощи dict-like объектов.&lt;/p&gt;
+&lt;p&gt;Для ресурса &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Имя&lt;/span&gt;&lt;/code&gt; мы можем создать отдельное представление и жестко привязать
+его к этому типу.&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;traverse_hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    http://localhost:8080/mytraversal/первед/Пирамид&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Превед &amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__parent__&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39; &amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;traverse_hello&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;route_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;koshey_context&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;renderer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;text&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Имя&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Результат вывода по адресу
+&lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/mytraversal/превед/Пирамид&quot;&gt;http://localhost:8080/mytraversal/превед/Пирамид&lt;/a&gt;, будет обычный текст
+(&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Content-Type:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;plain/text&lt;/span&gt;&lt;/code&gt;):&lt;/p&gt;
+&lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Превед Человек Пирамид
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Полный пример:&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;id14&quot;&gt;
+&lt;h3&gt;Комбинация обоих методов&lt;/h3&gt;
+&lt;p&gt;Фреймворк &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Pyramid&lt;/span&gt;&lt;/code&gt; позволяет использовать оба способа URL маршрутизации
+одновременно.&lt;/p&gt;
+&lt;p&gt;Добавим к примеру с &amp;#8220;кащеем&amp;#8221; hello world с использованием pattern matching:&lt;/p&gt;
+&lt;div class=&quot;highlight-python3&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;hello_world&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Hello &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%(name)s&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;!&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matchdict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Pattern matching routes&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_route&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;/hello/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{name}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hello_world&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;route_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;hello&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Полный пример:&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

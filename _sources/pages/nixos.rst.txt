@@ -1,0 +1,68 @@
+.. post:: 06 Jul, 2016 18:06
+   :tags: Linux, nix, NixOS
+   :category: Python
+   :author: Uralbash
+   :language: ru
+
+.. _nixos:
+
+NixOS
+=====
+
+Здесь я буду собирать разные полезные ресурсы по ОС :l:`NixOS` и пакетному
+менеджеру :l:`nix`. Если вы, что то не нашли пишите в комментах.
+
+Оф. ресурсы
+-----------
+
+* Официальный сайт https://nixos.org/
+* Документация https://nixos.org/nixos/manual/ и https://nixos.org/nix/manual/
+* Wiki https://nixos.org/wiki/Main_Page (устарела)
+    * Новая Wiki https://nixos.wiki/wiki/Main_Page
+* Mail рассылки http://lists.science.uu.nl/mailman/listinfo/nix-dev
+* Код https://github.com/NixOS/nixpkgs/ и https://github.com/NixOS/nix/
+* Донэйт https://nixos.org/nixos/foundation.html
+* Еженедельная рассылка: http://weekly.nixos.org/
+
+Полезные ссылки
+---------------
+
+* https://nixcloud.io/tour/ - восхитительный курс по языку ``nix``.
+* https://learnxinyminutes.com/docs/nix/ - учим синтаксис языка ``nix``.
+* https://medium.com/@MrJamesFisher/nix-by-example-a0063a1a4c55  - еще про язык ``nix``.
+* http://nixpaste.lbr.uno/ - сервис на подобии `pastebin`, но есть подсветка
+  синтаксиса ``nixexpr`` и удобная утилита для командной строки.
+
+  .. code-block:: bash
+
+    $ alias nixpaste="curl -F 'text=<-' http://nixpaste.lbr.uno"
+    $ command | nixpaste
+    $ nixpaste < ./myexpr.nix
+
+Сообщество
+----------
+
+Перечислю источники по степени активности:
+
+* ``#nixos`` irc канал на freenode имеет очень высокую активность,
+  разработчики :l:`NixOS` и все что с ней связанно в основном общаются здесь.
+
+  .. image:: https://img.shields.io/badge/irc-freenode-blue.svg
+    :target: https://webchat.freenode.net/?channels=nixos
+    :alt: irc freenode
+
+* StackOverflow то же весьма активен, много людей из рассылки.
+
+  * http://stackoverflow.com/questions/tagged/nix
+  * http://stackoverflow.com/questions/tagged/nixos
+
+* Рассылки
+
+  * https://twitter.com/nixos_org
+  * https://www.reddit.com/r/nixos
+  * https://groups.google.com/forum/#!forum/nix-devel
+
+Блоги
+-----
+
+https://typing-nix.regnat.ovh/
