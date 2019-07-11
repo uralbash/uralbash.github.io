@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;jinja-pylons&quot;&gt;
 
-&lt;p&gt;Все точно также как и с &lt;a class=&quot;reference external&quot; href=&quot;http://docs.makotemplates.org/en/latest/&quot;&gt;mako&lt;/a&gt;, &amp;#8220;Но есть нюансы&amp;#8221;©&lt;/p&gt;
+&lt;p&gt;Все точно также как и с &lt;a class=&quot;reference external&quot; href=&quot;http://www.makotemplates.org/&quot;&gt;mako&lt;/a&gt;, &amp;#8220;Но есть нюансы&amp;#8221;©&lt;/p&gt;
 &lt;p&gt;Добавьте в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;setup.py&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;package_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myproject&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;i18n/*/LC_MESSAGES/*.mo&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;message_extractors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myproject&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
@@ -626,7 +626,7 @@ Creating yourproj/yourproj/tests/functional/test_admin_trackbacks.py
 &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/formalchemy/ext/pylons.html&quot;&gt;formalchemy.ext.pylons&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Рассмотрим &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;. Вообще как обычно можно прочитать документацию, но я
 опишу еще как это все состыковать с шаблонами на &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;Jinja&lt;/a&gt; и поддержкой полей
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;MAC&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CIDR&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NET&lt;/span&gt;&lt;/code&gt; и т.д..&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;MAC&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CIDR&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NET&lt;/span&gt;&lt;/code&gt; и т.д..&lt;/p&gt;
 &lt;p&gt;Создаем контроллер &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;admin&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ paster controller admin
 &lt;/pre&gt;&lt;/div&gt;
@@ -736,7 +736,7 @@ Creating yourproj/yourproj/tests/functional/test_admin_trackbacks.py
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;http://localhost:5000/admin&lt;/span&gt;&lt;/code&gt; попадете в админку! Но только если вы не
 используете особенностей БД, например &lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sqlalchemy.databases.postgresql&lt;/span&gt;&lt;/code&gt;.
 Вторая проблема в том что шаблоны админки не встроены в ваши шаблоны.&lt;/p&gt;
-&lt;p&gt;Для поддержки &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; полей в &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; необходимо добавить:&lt;/p&gt;
+&lt;p&gt;Для поддержки &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; полей в &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; необходимо добавить:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id4&quot;&gt;
 &lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;lib/base.py&lt;/span&gt;&lt;/div&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;formalchemy.fields&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FieldRenderer&lt;/span&gt;
@@ -815,7 +815,7 @@ Creating yourproj/yourproj/tests/functional/test_admin_trackbacks.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;В целом &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; довольно мощная штука, но очень сильно привязана к
-&lt;a class=&quot;reference external&quot; href=&quot;http://docs.makotemplates.org/en/latest/&quot;&gt;mako&lt;/a&gt;, поэтому пользоваться ей не удобно и к сожалению придется искать что
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.makotemplates.org/&quot;&gt;mako&lt;/a&gt;, поэтому пользоваться ей не удобно и к сожалению придется искать что
 то другое.&lt;/p&gt;
 &lt;/div&gt;
 </content>

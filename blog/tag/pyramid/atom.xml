@@ -814,7 +814,7 @@ Serving on http://localhost:6543
 определять необходимый доступ по ключам (метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__getitem__&lt;/span&gt;&lt;/code&gt; помогает
 организовать такой доступ). В коде также присутствует корневая фабрика, с
 которой собственно и начинается обход узлов (node) дерева ресурсов.
-Вид-для-вызова (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-view-callable&quot; title=&quot;(в The Pyramid Web Framework v1.9.1)&quot;&gt;&lt;span class=&quot;xref std std-term&quot;&gt;view callable&lt;/span&gt;&lt;/a&gt;) представлен функцией
+Вид-для-вызова (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-view-callable&quot; title=&quot;(в The Pyramid Web Framework v1.10.4)&quot;&gt;&lt;span class=&quot;xref std std-term&quot;&gt;view callable&lt;/span&gt;&lt;/a&gt;) представлен функцией
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello_world_of_resources&lt;/span&gt;&lt;/code&gt;. Говоря несколько упрощённо, на основе URL запроса
 в результате обхода иерархии Pyramid находит ресурс и применяет к нему
 «наилучший» вид-для-вызова (в нашем примере — он единственный).&lt;/p&gt;
@@ -1132,7 +1132,7 @@ Serving on http://localhost:6543
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid-sacrud&quot;&gt;
 
-&lt;p&gt;pyramid_sacrud_example - пример работы &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; вместе с
+&lt;p&gt;pyramid_sacrud_example - пример работы &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; вместе с
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PostgreSQL&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;img alt=&quot;../../../_images/sacrud_demo.png&quot; src=&quot;../../../_images/sacrud_demo.png&quot; /&gt;
 &lt;/div&gt;
@@ -1150,7 +1150,7 @@ Serving on http://localhost:6543
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-sqlalchemy-session&quot;&gt;
 
 &lt;p&gt;Для простых &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; действий с БД, можно воспользоваться модулем
-&lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
+&lt;a class=&quot;reference external&quot; href=&quot;https://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
 некоторой универсальности в ПО со сложной логикой.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sacrud&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
@@ -1200,7 +1200,7 @@ Serving on http://localhost:6543
 добавлены &lt;span class=&quot;strike&quot;&gt;нескучные обои&lt;/span&gt; элементы дизайна в расширении для
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Pyramid&lt;/span&gt;&lt;/code&gt; и создан отдельный репозитарий с примерами работы разных типов
 полей (pyramid_sacrud_example). Pyramid_sacrud_example работает только с
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
+&lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
 БД (таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hstore&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
 &lt;img alt=&quot;../../../_images/sacrud_0_0_3.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sacrud_0_0_3.png&quot; /&gt;
 &lt;/div&gt;

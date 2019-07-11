@@ -2,10 +2,69 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">Ural penguins - Опубликованно Uralbash</title>
   <id>http://uralbash.ru/blog/author/uralbash/atom.xml</id>
-  <updated>2017-09-19T21:41:00Z</updated>
+  <updated>2019-07-11T15:23:00Z</updated>
   <link href="http://uralbash.ru/" />
   <link href="http://uralbash.ru/blog/author/uralbash/atom.xml" rel="self" />
   <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://uralbash.ru/blog/author/uralbash/atom.xml">
+    <title type="text">Ошибка fatal error: stdlib.h: No such file or directory</title>
+    <id>http://uralbash.ru/articles/2019/stdlib-error/</id>
+    <updated>2019-07-11T15:23:00Z</updated>
+    <published>2019-07-11T15:23:00Z</published>
+    <link href="http://uralbash.ru/articles/2019/stdlib-error/" />
+    <author>
+      <name>Uralbash</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;fatal-error-stdlib-h-no-such-file-or-directory&quot;&gt;
+
+&lt;p&gt;Такая ошибка может возникнуть при компиляции программ на &lt;cite&gt;C++&lt;/cite&gt; в &lt;cite&gt;Linux&lt;/cite&gt;.
+В моем случае это была библиотека на &lt;cite&gt;Qt&lt;/cite&gt;.&lt;/p&gt;
+&lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
+&lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Ошибка компиляции Qt модуля&lt;/span&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ g++ -c -pipe -g -std&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;gnu++11 -Wall -W -D_REENTRANT -fPIC -DQT_BLUETOOTH_LIB -DQT_CORE_LIB -I. -isystem /usr/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtBluetooth -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o main.o src/main.cpp
+In file included from /usr/include/c++/7/bits/stl_algo.h:59:0,
+                 from /usr/include/c++/7/algorithm:62,
+                 from /usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h:109,
+                 from /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h:43,
+                 from /usr/include/x86_64-linux-gnu/qt5/QtCore/QCoreApplication:1,
+                 from src/main.cpp:6:
+/usr/include/c++/7/cstdlib:75:15: fatal error: stdlib.h: No such file or directory
+ &lt;span class=&quot;c1&quot;&gt;#include_next &amp;lt;stdlib.h&amp;gt;&lt;/span&gt;
+               ^~~~~~~~~~
+compilation terminated.
+Makefile:497: recipe &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; target &lt;span class=&quot;s1&quot;&gt;&amp;#39;main.o&amp;#39;&lt;/span&gt; failed
+make: *** &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;main.o&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Error &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Возникает только в последних версиях &lt;cite&gt;gcc&lt;/cite&gt;, видимо заголовки как то не
+правильно собраны в дистрибутиве &lt;cite&gt;Ubuntu 18.04&lt;/cite&gt;. Поэтому для решения установим
+по умолчанию компилятор &lt;cite&gt;gcc&lt;/cite&gt; 5-ой версии.&lt;/p&gt;
+&lt;p&gt;Установка:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt install gcc-5 g++-5
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Добавим его в список:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 &lt;span class=&quot;m&quot;&gt;50&lt;/span&gt; --slave /usr/bin/g++ g++ /usr/bin/g++-5
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;И поменяем значение дефолтного компилятора:&lt;/p&gt;
+&lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo update-alternatives --config gcc
+There are &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; choices &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; the alternative gcc &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;providing /usr/bin/gcc&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.
+
+  Selection    Path            Priority   Status
+------------------------------------------------------------
+  &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;            /usr/bin/gcc-8   &lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;        auto mode
+* &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;            /usr/bin/gcc-5   &lt;span class=&quot;m&quot;&gt;50&lt;/span&gt;        manual mode
+  &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;            /usr/bin/gcc-8   &lt;span class=&quot;m&quot;&gt;80&lt;/span&gt;        manual mode
+
+Press &amp;lt;enter&amp;gt; to keep the current choice&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;*&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;, or &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; selection number: &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Теперь в системе используется по умолчанию &lt;cite&gt;gcc&lt;/cite&gt; 5-ой версии и все собирается без ошибок.&lt;/p&gt;
+&lt;/div&gt;
+</content>
+  </entry>
   <entry xml:base="http://uralbash.ru/blog/author/uralbash/atom.xml">
     <title type="text">Python инфографика</title>
     <id>http://uralbash.ru/articles/2017/python/</id>
@@ -2028,7 +2087,7 @@ usermod -aG dialout user
 &lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/nix/manual/#chap-package-management&quot;&gt;http://nixos.org/nix/manual/#chap-package-management&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/&quot;&gt;NixOS&lt;/a&gt; удивительный проект с очень хорошей документацией и большим
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt; удивительный проект с очень хорошей документацией и большим
 мега-активным сообществом (&lt;a class=&quot;reference internal&quot; href=&quot;../../../pages/nixos/#nixos&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;NixOS&lt;/span&gt;&lt;/a&gt;). Поэтому нет смысла дублировать
 документацию, опишу лишь некоторые команды в сравнении с пакетным менеджером
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;apt&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
@@ -2188,7 +2247,7 @@ usermod -aG dialout user
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix&lt;/span&gt;&lt;/code&gt; выражения, например что бы собрать приложение изолированно от общих
 установленных пакетов.&lt;/p&gt;
 &lt;p&gt;Более подробно, что такое язык &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nixexpr&lt;/span&gt;&lt;/code&gt; и как при помощи его собирать
-пакеты и даже ОС &lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, я постараюсь описать в отдельной статье.&lt;/p&gt;
+пакеты и даже ОС &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, я постараюсь описать в отдельной статье.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;home-user&quot;&gt;
 &lt;h2&gt;/home/user Окружение&lt;/h2&gt;
@@ -2218,7 +2277,7 @@ usermod -aG dialout user
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;nixos&quot;&gt;
 &lt;span id=&quot;id1&quot;&gt;&lt;/span&gt;
-&lt;p&gt;Здесь я буду собирать разные полезные ресурсы по ОС &lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/&quot;&gt;NixOS&lt;/a&gt; и пакетному
+&lt;p&gt;Здесь я буду собирать разные полезные ресурсы по ОС &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt; и пакетному
 менеджеру &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/&quot;&gt;nix&lt;/a&gt;. Если вы, что то не нашли пишите в комментах.&lt;/p&gt;
 &lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
 &lt;h2&gt;Оф. ресурсы&lt;/h2&gt;
@@ -2262,8 +2321,10 @@ $ nixpaste &amp;lt; ./myexpr.nix
 &lt;h2&gt;Сообщество&lt;/h2&gt;
 &lt;p&gt;Перечислю источники по степени активности:&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Форум &lt;a class=&quot;reference external&quot; href=&quot;https://discourse.nixos.org/&quot;&gt;https://discourse.nixos.org/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;#nixos&lt;/span&gt;&lt;/code&gt; irc канал на freenode имеет очень высокую активность,
-разработчики &lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/&quot;&gt;NixOS&lt;/a&gt; и все что с ней связанно в основном общаются здесь.&lt;/p&gt;
+разработчики &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt; и все что с ней связанно в основном общаются здесь.&lt;/p&gt;
 &lt;a class=&quot;reference external image-reference&quot; href=&quot;https://webchat.freenode.net/?channels=nixos&quot;&gt;&lt;img alt=&quot;irc freenode&quot; src=&quot;https://img.shields.io/badge/irc-freenode-blue.svg&quot; /&gt;&lt;/a&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;StackOverflow то же весьма активен, много людей из рассылки.&lt;/p&gt;
@@ -2544,7 +2605,7 @@ $ nixpaste &amp;lt; ./myexpr.nix
 определять необходимый доступ по ключам (метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__getitem__&lt;/span&gt;&lt;/code&gt; помогает
 организовать такой доступ). В коде также присутствует корневая фабрика, с
 которой собственно и начинается обход узлов (node) дерева ресурсов.
-Вид-для-вызова (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-view-callable&quot; title=&quot;(в The Pyramid Web Framework v1.9.1)&quot;&gt;&lt;span class=&quot;xref std std-term&quot;&gt;view callable&lt;/span&gt;&lt;/a&gt;) представлен функцией
+Вид-для-вызова (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-view-callable&quot; title=&quot;(в The Pyramid Web Framework v1.10.4)&quot;&gt;&lt;span class=&quot;xref std std-term&quot;&gt;view callable&lt;/span&gt;&lt;/a&gt;) представлен функцией
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello_world_of_resources&lt;/span&gt;&lt;/code&gt;. Говоря несколько упрощённо, на основе URL запроса
 в результате обхода иерархии Pyramid находит ресурс и применяет к нему
 «наилучший» вид-для-вызова (в нашем примере — он единственный).&lt;/p&gt;
@@ -2862,7 +2923,7 @@ $ nixpaste &amp;lt; ./myexpr.nix
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid&quot;&gt;
 
-&lt;p&gt;Здесь я буду собирать разные полезные ресурсы по фреймворку &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;. Если
+&lt;p&gt;Здесь я буду собирать разные полезные ресурсы по фреймворку &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;. Если
 вы что то не нашли, пишите в комментах.&lt;/p&gt;
 &lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
 &lt;h2&gt;Оф. ресурсы&lt;/h2&gt;
@@ -3089,7 +3150,7 @@ $ nixpaste &amp;lt; ./myexpr.nix
    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;World&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Класс &lt;a class=&quot;reference external&quot; href=&quot;http://aiohttp.readthedocs.io/en/stable/web_reference.html#aiohttp.web.Response&quot; title=&quot;(в aiohttp v2.2)&quot;&gt;&lt;code class=&quot;xref py py-class docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;aiohttp.web.Response&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; позволяет задавать различные параметры типа
+&lt;p&gt;Класс &lt;a class=&quot;reference external&quot; href=&quot;https://aiohttp.readthedocs.io/en/stable/web_reference.html#aiohttp.web.Response&quot; title=&quot;(в aiohttp v3.5)&quot;&gt;&lt;code class=&quot;xref py py-class docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;aiohttp.web.Response&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; позволяет задавать различные параметры типа
 заголовков и статуса ответа. Перепишем наш декоратор таким образом что бы он
 умел принимать эти параметры:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;json_view_arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -3399,7 +3460,7 @@ RivShiftLeft            RivTitle1               RivVimTest
 &lt;li&gt;Python&lt;/li&gt;
 &lt;li&gt;reStructuredText&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Например я допустил ошибку в коде на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Например я допустил ошибку в коде на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-rst&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;gh&quot;&gt;====&lt;/span&gt;
 &lt;span class=&quot;gh&quot;&gt;Test&lt;/span&gt;
 &lt;span class=&quot;gh&quot;&gt;====&lt;/span&gt;
@@ -3468,7 +3529,7 @@ bad_rst.rst:1: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SEVERE/4&lt;span cl
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
 &lt;h3&gt;Модуль для Python&lt;/h3&gt;
-&lt;p&gt;Т.к. &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/rstcheck&quot;&gt;rstcheck&lt;/a&gt; это &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt; модуль, его можно использовать в своих
+&lt;p&gt;Т.к. &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/rstcheck&quot;&gt;rstcheck&lt;/a&gt; это &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt; модуль, его можно использовать в своих
 скриптах:&lt;/p&gt;
 &lt;div class=&quot;highlight-ipython&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; import rstcheck
 &amp;gt;&amp;gt;&amp;gt; list(rstcheck.check(&amp;#39;Example\n===&amp;#39;))
@@ -4262,7 +4323,7 @@ DISQUS ставится просто:
 &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;block&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;footer&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
   &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://github.com/abakan/ablog&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme-link&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://github.com/sunpy/ablog&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme-link&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
         Ablog powered.
       &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
@@ -4436,7 +4497,7 @@ DISQUS ставится просто:
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
 
-&lt;p&gt;Документация в &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt; проектах пишется при помощи &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sphinx&quot;&gt;sphinx&lt;/a&gt;, он умеет
+&lt;p&gt;Документация в &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt; проектах пишется при помощи &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sphinx&quot;&gt;sphinx&lt;/a&gt;, он умеет
 используя расширение &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;automodule&lt;/span&gt;&lt;/code&gt; читать докстринги и формировать
 документацию из кода.&lt;/p&gt;
 &lt;p&gt;Создать проект можно ответив на вопросы через &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sphinx-quickstart&lt;/span&gt;&lt;/code&gt; или
@@ -4650,7 +4711,7 @@ readme_html: html readme
 копипаститься &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;readme&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Конфиг для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sphinx&lt;/span&gt;&lt;/code&gt; лежит в папке документации с названием &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;conf.py&lt;/span&gt;&lt;/code&gt;. В нем
 можно настраивать документацию как угодно, к примеру оформим тему как у проекта
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;.&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Добавим в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;conf.py&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id4&quot;&gt;
 &lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;conf.py&lt;/span&gt;&lt;/div&gt;
@@ -4689,7 +4750,7 @@ readme_html: html readme
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Этот код я скопировал из проекта &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;, он просто выкачивает их тему с
+&lt;p&gt;Этот код я скопировал из проекта &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;, он просто выкачивает их тему с
 &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt; в директорию &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;_themes&lt;/span&gt;&lt;/code&gt;. Далее укажем в конфиге название темы и где их искать.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# -- Options for HTML output ----------------------------------------------&lt;/span&gt;
 
@@ -4748,7 +4809,7 @@ readme_html: html readme
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;rest-api-pyramid-cornice-sacrud&quot;&gt;
 
-&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Mozilla&quot;&gt;Mozilla&lt;/a&gt; использует в своих проектах &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; и у них есть
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Mozilla&quot;&gt;Mozilla&lt;/a&gt; использует в своих проектах &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; и у них есть
 отличный модуль для создания &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;REST&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;API&lt;/span&gt;&lt;/code&gt;
 &lt;a class=&quot;reference external&quot; href=&quot;https://cornice.readthedocs.org/en/latest/&quot;&gt;https://cornice.readthedocs.org/en/latest/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;REST&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;API&lt;/span&gt;&lt;/code&gt; обычно меняет, создает и удаляет записи, которые хранятся в БД.
@@ -4772,7 +4833,7 @@ readme_html: html readme
                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Создадим отдельную папку в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; проекте с названием &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rest&lt;/span&gt;&lt;/code&gt;, где будут
+&lt;p&gt;Создадим отдельную папку в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; проекте с названием &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rest&lt;/span&gt;&lt;/code&gt;, где будут
 храниться функции api, и пропишем это в основном конфиге.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# REST API&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cornice&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -5623,7 +5684,7 @@ slave в контейнеры, но написан на старой верси�
 реализаций под смартфоны&lt;/span&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.google.com/document/d/1N3XyVkAP8nmWjASz8L_OjjnjVKxgeVBjIsTr5qIUcA4/edit&quot;&gt;android&lt;/a&gt;).&lt;/p&gt;
 &lt;br clear=&quot;both&quot;/&gt;&lt;p&gt;На Go уже написаны:&lt;/p&gt;
 &lt;ul class=&quot;simple&quot;&gt;
-&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docker.io/&quot;&gt;Docker&lt;/a&gt; - система легковесных контейнеров (переписан с &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docker.io/&quot;&gt;Docker&lt;/a&gt; - система легковесных контейнеров (переписан с &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://drone.io&quot;&gt;http://drone.io&lt;/a&gt; - система непрерывного тестирования, поддерживающая
 &lt;a class=&quot;reference external&quot; href=&quot;http://docker.io/&quot;&gt;Docker&lt;/a&gt; (о ней я напишу отдельно скорее всего) и огромное количество
 других проектов, что удивительно ведь &lt;a class=&quot;reference external&quot; href=&quot;https://golang.org/&quot;&gt;go&lt;/a&gt; очень молодой проект, а ещё гугл&lt;/li&gt;
@@ -5788,7 +5849,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ORM&lt;/span&gt;&lt;/code&gt; позволяет быстро переключатся между БД не учитывая их диалект
 (практически).  Но данные хранятся физически в разных местах и естественно их
-надо переносить, например при переключении с &lt;a class=&quot;reference external&quot; href=&quot;http://sqlite.org/&quot;&gt;sqlite&lt;/a&gt; на &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;PostgreSQL&lt;/a&gt;. В
+надо переносить, например при переключении с &lt;a class=&quot;reference external&quot; href=&quot;http://sqlite.org/&quot;&gt;sqlite&lt;/a&gt; на &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;PostgreSQL&lt;/a&gt;. В
 &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; есть встроенный функционал в виде:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# Выгрузка в JSON&lt;/span&gt;
 $ python manage.py dumpdata myapp.A &amp;gt; a.json
@@ -5798,7 +5859,7 @@ $ python manage.py loaddata a.json
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Т.е. мы выгружаем данные из &lt;a class=&quot;reference external&quot; href=&quot;http://sqlite.org/&quot;&gt;sqlite&lt;/a&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;JSON&lt;/span&gt;&lt;/code&gt; формат, затем меняем строку
-подключения на &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;postgres&lt;/a&gt; и выполняем загрузку из &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;JSON&lt;/span&gt;&lt;/code&gt;. Очень удобно, но
+подключения на &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;postgres&lt;/a&gt; и выполняем загрузку из &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;JSON&lt;/span&gt;&lt;/code&gt;. Очень удобно, но
 почему то этот метод не работает, либо работает только при переносе из &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sqlite&lt;/span&gt;
 &lt;span class=&quot;pre&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;sqlite&lt;/span&gt;&lt;/code&gt;, что в принципе не очень интересно, точнее бессмысленно. Есть какие
 то решений с бубном как это вот:&lt;/p&gt;
@@ -5847,7 +5908,7 @@ $ python manage.py loaddata a.json
 &lt;/div&gt;
 &lt;p&gt;Дальше получаем все таблицы:&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;tables&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Base.classes&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Создаем такую же структуру БД в &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;postgres&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Создаем такую же структуру БД в &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;postgres&lt;/a&gt;:&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;metadata.create_all(self.engine_dst)&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;По очереди проходим каждую таблицу и переносим из нее данные в новую БД:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tables&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
@@ -5863,7 +5924,7 @@ $ python manage.py loaddata a.json
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Если возникли конфликты можно их решить переопределением типов полей. Например
-при переносе из &lt;a class=&quot;reference external&quot; href=&quot;http://sqlite.org/&quot;&gt;sqlite&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;postgres&lt;/a&gt; тип полей &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DATETIME&lt;/span&gt;&lt;/code&gt; нужно
+при переносе из &lt;a class=&quot;reference external&quot; href=&quot;http://sqlite.org/&quot;&gt;sqlite&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;postgres&lt;/a&gt; тип полей &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DATETIME&lt;/span&gt;&lt;/code&gt; нужно
 заменить на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;DateTime&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dialect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dialect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;dialect_dst&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;engine_dst&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dialect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
@@ -6196,7 +6257,7 @@ link: &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;в словаре можно поделить модели на группы&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class=&quot;first&quot;&gt;тесты исправлены для &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;1.5&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;тесты исправлены для &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;1.5&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;deprecated&quot;&gt;
 &lt;p&gt;&lt;span class=&quot;versionmodified&quot;&gt;Не рекомендуется, начиная с версии pyramid: &lt;/span&gt;1.5&lt;/p&gt;
 &lt;p&gt;Removed the ability to influence and query a pyramid.request.Request object as
@@ -6243,7 +6304,7 @@ methods of request.environ (a real dictionary) instead.&lt;/p&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid&quot;&gt;
 
 &lt;p&gt;Пример миграций в пирамиде:&lt;/p&gt;
-&lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/south&quot;&gt;south&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/alembic&quot;&gt;alembic&lt;/a&gt;. Создаём файл
+&lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/south&quot;&gt;south&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/alembic&quot;&gt;alembic&lt;/a&gt;. Создаём файл
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;alembic.ini&lt;/span&gt;&lt;/code&gt; и указываем путь до настроек :, т.е. &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;имя&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;проекта&amp;gt;:&amp;lt;название&lt;/span&gt;
 &lt;span class=&quot;pre&quot;&gt;папки&amp;gt;&lt;/span&gt;&lt;/code&gt; например &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hlp:alembic&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
@@ -6478,7 +6539,7 @@ $ alembic current
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;нельзя сделать так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;dir(foo)&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class=&quot;first&quot;&gt;как узнать длину &lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/itertools.html#module-itertools&quot; title=&quot;(в Python v3.6)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;itertools&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;? в &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;jinja&lt;/a&gt; делается так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;list(foo).length&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;как узнать длину &lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/itertools.html#module-itertools&quot; title=&quot;(в Python v3.7)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;itertools&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;? в &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;jinja&lt;/a&gt; делается так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;list(foo).length&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -7202,7 +7263,7 @@ Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-scripts/vim-punto-switcher&
 &lt;p&gt;Элементарно же: написать ТЗ, выбрать фреймворк, спроектировать базу, написать
 функцию, написать тест... Ну или какой-нибудь ваш ответ, здесь всё равно что то
 тормозит, а именно окружение, именно про него все забывают. Попробую описать
-один из возможных вариантов для &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;.&lt;/p&gt;
+один из возможных вариантов для &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&quot;section&quot; id=&quot;virtualenv&quot;&gt;
 &lt;h2&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/Virtualenv&quot;&gt;Virtualenv&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;замечательная штука, позволяет под каждый проект создать свое окружение
@@ -7311,7 +7372,7 @@ Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-scripts/vim-punto-switcher&
 придется лишь дать наставление использовать продвинутый едитор с множеством
 фич, например &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vim&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;emacs&lt;/span&gt;&lt;/code&gt;, &lt;span class=&quot;strike&quot;&gt;sublime text&lt;/span&gt;. Плохая идея
 использовать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;gedit&lt;/span&gt;&lt;/code&gt; или &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ms&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;notepad&lt;/span&gt;&lt;/code&gt;. Мой выбор определен на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Vim&lt;/span&gt;&lt;/code&gt;,
-обязательно напишу про него отдельную заметку как использую с &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;, а
+обязательно напишу про него отдельную заметку как использую с &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;, а
 пока скриншот:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id7&quot;&gt;
 &lt;img alt=&quot;../../../_images/vim.png&quot; src=&quot;../../../_images/vim.png&quot; /&gt;
@@ -7347,7 +7408,7 @@ Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-scripts/vim-punto-switcher&
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;здесь он присоединится к существующей сессии или откроет новую. Далее запустим
-сервер &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/waitress&quot;&gt;waitress&lt;/a&gt;):&lt;/p&gt;
+сервер &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/waitress&quot;&gt;waitress&lt;/a&gt;):&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pserve development.ini.example start --reload
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -7491,7 +7552,7 @@ shell:
 &lt;h2&gt;jsFiddle&lt;/h2&gt;
 &lt;p&gt;jsFiddle это такой сервис который позволяет нахаляву написать js код, тут же
 его отладить, расшарить и дать кому-нибудь ссылку. Про него все знают и многие
-пользуются. Но есть и для &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt; такой сервис, вот &lt;a class=&quot;reference external&quot; href=&quot;http://codebunk.com&quot;&gt;http://codebunk.com&lt;/a&gt;
+пользуются. Но есть и для &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt; такой сервис, вот &lt;a class=&quot;reference external&quot; href=&quot;http://codebunk.com&quot;&gt;http://codebunk.com&lt;/a&gt;
 Можно выбрать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;python&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;js&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ruby&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;perl&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;php&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lua&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C&lt;/span&gt;&lt;/code&gt;,
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C++&lt;/span&gt;&lt;/code&gt; разве что Лиспа нету, но все равно потрясает.&lt;/p&gt;
 &lt;p&gt;В заключение могу сказать что это только мое видение окружения, у других людей
@@ -7550,7 +7611,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid-sacrud&quot;&gt;
 
-&lt;p&gt;pyramid_sacrud_example - пример работы &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; вместе с
+&lt;p&gt;pyramid_sacrud_example - пример работы &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; вместе с
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PostgreSQL&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;img alt=&quot;../../../_images/sacrud_demo.png&quot; src=&quot;../../../_images/sacrud_demo.png&quot; /&gt;
 &lt;/div&gt;
@@ -7629,7 +7690,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-sqlalchemy-session&quot;&gt;
 
 &lt;p&gt;Для простых &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; действий с БД, можно воспользоваться модулем
-&lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
+&lt;a class=&quot;reference external&quot; href=&quot;https://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
 некоторой универсальности в ПО со сложной логикой.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sacrud&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
@@ -7679,7 +7740,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 добавлены &lt;span class=&quot;strike&quot;&gt;нескучные обои&lt;/span&gt; элементы дизайна в расширении для
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Pyramid&lt;/span&gt;&lt;/code&gt; и создан отдельный репозитарий с примерами работы разных типов
 полей (pyramid_sacrud_example). Pyramid_sacrud_example работает только с
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
+&lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
 БД (таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hstore&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
 &lt;img alt=&quot;../../../_images/sacrud_0_0_3.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sacrud_0_0_3.png&quot; /&gt;
 &lt;/div&gt;
@@ -7728,7 +7789,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; админки или &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;, но ОЧЕНЬ сильно упрощенный, ничего
 лишнего. Есть поддержка большинства полей + кастомные поля типа файл (для
 загрузки файлов, изображений) и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;GUID&lt;/span&gt;&lt;/code&gt;. Довольно просто подключить к
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
+&lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
 &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543/sacrud&quot;&gt;http://localhost:6543/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Проект доступен на github &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;В след. релизах планирую добавить новые типы полей, кастомные поля типа
@@ -7874,7 +7935,7 @@ Cursus non morbi non proin, porttitor consequat eget ac eget netus penatibus, eg
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sqlalchemy-pyramid&quot;&gt;
 
 &lt;p&gt;У меня есть дополнение к pyramid которое я включаю почти в каждый проект при
-помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;includeme&lt;/span&gt;&lt;/code&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html#pyramid.config.Configurator.include&quot; title=&quot;(в The Pyramid Web Framework v1.9.1)&quot;&gt;&lt;code class=&quot;xref py py-meth docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;include()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;). Приложение
+помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;includeme&lt;/span&gt;&lt;/code&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html#pyramid.config.Configurator.include&quot; title=&quot;(в The Pyramid Web Framework v1.10.4)&quot;&gt;&lt;code class=&quot;xref py py-meth docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;include()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;). Приложение
 это дает мне простой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; интерфейс с &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;Jinja&lt;/a&gt; шаблонами малой кровью.
 Что позволяет избавиться от монстра &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;.  Естественно каждый
 проект имеет свое название поэтому пришлось применить немного магии что бы
@@ -7943,7 +8004,7 @@ Cursus non morbi non proin, porttitor consequat eget ac eget netus penatibus, eg
 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;471&lt;/span&gt;,504&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;И запустим следующий скрипт на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;И запустим следующий скрипт на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Orientation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -8292,7 +8353,7 @@ Content-Type text/html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span cl
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Для &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; можно обойтись без &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;WSGI&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Для &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; можно обойтись без &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;WSGI&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
 &lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;view.py&lt;/span&gt;&lt;/div&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.events&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subscriber&lt;/span&gt;
@@ -8423,7 +8484,7 @@ rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span cla
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;postgresql&quot;&gt;
 
-&lt;p&gt;Шыкарная книга по &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt;. Много умных и полезных мыслей в одном месте.
+&lt;p&gt;Шыкарная книга по &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt;. Много умных и полезных мыслей в одном месте.
 Хорошо написано про репликацию и настройку производительности. Книга на
 гитхабе в свободном доступе! Автору лучи добра и счастья, пиши исчо!&lt;/p&gt;
 &lt;a class=&quot;reference external image-reference&quot; href=&quot;http://postgresql.leopard.in.ua/&quot;&gt;&lt;img alt=&quot;../../../_images/pg_book.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/pg_book.png&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
@@ -8644,7 +8705,7 @@ fortune &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; cowsay -f &lt;span class=
 &lt;p&gt;Как сочленить это с &lt;a class=&quot;reference external&quot; href=&quot;http://php.net/&quot;&gt;php&lt;/a&gt; можно прочитать из документации
 &lt;a class=&quot;reference external&quot; href=&quot;http://imperavi.com/redactor/docs/images/&quot;&gt;http://imperavi.com/redactor/docs/images/&lt;/a&gt;. Там же есть ссылка на &lt;a class=&quot;reference external&quot; href=&quot;http://paltman.com/2012/08/15/how-to-setup-upload-handler-for-redactor/&quot;&gt;пример с
 Django от Patrick Altman&lt;/a&gt;. Я
-же постараюсь описать как загружать картинки при помощи &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; фреймворка,
+же постараюсь описать как загружать картинки при помощи &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; фреймворка,
 думаю переписать на что то другое не составит труда.&lt;/p&gt;
 &lt;p&gt;js функция redactor&amp;#8217;а у меня выглядит вот так:&lt;/p&gt;
 &lt;div class=&quot;highlight-html&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Redactor is here --&amp;gt;&lt;/span&gt;
@@ -8823,7 +8884,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;jinja-pylons&quot;&gt;
 
-&lt;p&gt;Все точно также как и с &lt;a class=&quot;reference external&quot; href=&quot;http://docs.makotemplates.org/en/latest/&quot;&gt;mako&lt;/a&gt;, &amp;#8220;Но есть нюансы&amp;#8221;©&lt;/p&gt;
+&lt;p&gt;Все точно также как и с &lt;a class=&quot;reference external&quot; href=&quot;http://www.makotemplates.org/&quot;&gt;mako&lt;/a&gt;, &amp;#8220;Но есть нюансы&amp;#8221;©&lt;/p&gt;
 &lt;p&gt;Добавьте в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;setup.py&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;package_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myproject&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;i18n/*/LC_MESSAGES/*.mo&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;message_extractors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myproject&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
@@ -8863,7 +8924,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;cms-pyramid&quot;&gt;
 
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://www.nive.co/cms/root.html&quot;&gt;Poolyx CMS&lt;/a&gt; - малоизвестная система
-управления сайтом написанная на Python с применением &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; немецкими
+управления сайтом написанная на Python с применением &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; немецкими
 кодерами.&lt;/p&gt;
 &lt;img alt=&quot;../../../_images/poolyx.jpeg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/poolyx.jpeg&quot; /&gt;
 &lt;p&gt;В будущем будет называться &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/nive&quot;&gt;nive&lt;/a&gt;. Советую попробовать, по крайне мере
@@ -8997,12 +9058,12 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Разработчики не стали менять архитектуру &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt; и создавать Pylons 2.0, а
-начали развивать новый проект &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; с похожей на &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; структурой
+начали развивать новый проект &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; с похожей на &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; структурой
 проекта. При этом &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt; не считается устаревшим, а просто имеет немного
 другой подход к разработке.&lt;/p&gt;
 &lt;p&gt;Стоит ли сейчас выбирать &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt;? Да, если вы его хорошо знаете и не
 планируете создавать слишком масштабное приложение, иначе лучше все таки
-выбрать &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;.&lt;/p&gt;
+выбрать &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Посмотрим как в нем организовать структуру проекта:&lt;/p&gt;
 &lt;p&gt;После создания проект выглядит так:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MyProject/
@@ -9808,7 +9869,7 @@ automake, libtool). Имеется также поддержка tcl и python. 
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;qtile&quot;&gt;
 
-&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://qtile.org&quot;&gt;Qtile&lt;/a&gt; - это тайловый оконный менеджер написанный на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;. Последний
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://qtile.org&quot;&gt;Qtile&lt;/a&gt; - это тайловый оконный менеджер написанный на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;. Последний
 месяц активно коммитится на github&amp;#8217;е. Свежая инфа здесь
 &lt;a class=&quot;reference external&quot; href=&quot;http://qtile.readthedocs.org/en/latest/&quot;&gt;http://qtile.readthedocs.org/en/latest/&lt;/a&gt; (&lt;a class=&quot;reference external&quot; href=&quot;http://Qtile.org&quot;&gt;http://Qtile.org&lt;/a&gt; обновляется редко.)&lt;/p&gt;
 &lt;/div&gt;
@@ -10933,7 +10994,7 @@ Storing &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; log in /home/ural
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Это возникает из-за утилиты &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; которая требуется для установки &lt;a class=&quot;reference external&quot; href=&quot;http://initd.org/psycopg/&quot;&gt;psycopg&lt;/a&gt;.
-В случае если у Вас &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; 8.4 нужно добавить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH&lt;/span&gt;&lt;/code&gt; (как то
+В случае если у Вас &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; 8.4 нужно добавить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH&lt;/span&gt;&lt;/code&gt; (как то
 так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH=$PATH:/usr/bin/&lt;/span&gt;&lt;/code&gt;). Путь до &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; можно узнать:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ whereis pg_config
 pg_config: /usr/bin/pg_config
@@ -11006,7 +11067,7 @@ E: Broken packages
 сайте &lt;a class=&quot;reference external&quot; href=&quot;http://oss.oetiker.ch/rrdtool/&quot;&gt;rrdtool&lt;/a&gt; можно найти скрипт на &lt;a class=&quot;reference external&quot; href=&quot;http://perl.org/&quot;&gt;perl&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;removespikes&lt;/span&gt;&lt;/code&gt; и на
 &lt;a class=&quot;reference external&quot; href=&quot;http://php.net/&quot;&gt;php&lt;/a&gt; для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;cacti&lt;/span&gt;&lt;/code&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;spikekill&lt;/span&gt;&lt;/code&gt;.  &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;removespike&lt;/span&gt;&lt;/code&gt; работает не всегда
 корректно, поэтому рассмотрим как можно обрезать графики при помощи скрипта на
-&lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;:&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#!/usr/bin/env python&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;shutil&lt;/span&gt;
@@ -11066,7 +11127,7 @@ E: Broken packages
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Для того что бы парсить параметры командной строки воспользуемся модулем
-&lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/optparse.html#module-optparse&quot; title=&quot;(в Python v3.6)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;optparse&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/optparse.html#module-optparse&quot; title=&quot;(в Python v3.7)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;optparse&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_configuration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OptionParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;%prog v&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__version__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                           &lt;span class=&quot;n&quot;&gt;usage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;%prog &amp;lt;filename&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -11468,7 +11529,7 @@ MAC адреса.&lt;/p&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;peyote&quot;&gt;
 
 &lt;p&gt;Плеер который в Линуксе нормально отображает кодировки и читает на ура
-&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lossless&lt;/span&gt;&lt;/code&gt;, написан на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;, работает в консоле. Интерфейс как в
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lossless&lt;/span&gt;&lt;/code&gt;, написан на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;, работает в консоле. Интерфейс как в
 &lt;a class=&quot;reference external&quot; href=&quot;http://www.midnight-commander.org/&quot;&gt;mc&lt;/a&gt; - очень удобно музыку перемещать + поддержка мышки.
 &lt;a class=&quot;reference external&quot; href=&quot;http://peyote.sourceforge.net/about.rus.html&quot;&gt;http://peyote.sourceforge.net/about.rus.html&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
@@ -11805,7 +11866,7 @@ $ update-alternatives --config java
 &lt;/div&gt;
 &lt;p&gt;Здесь если GET переменная &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ip_type=4&lt;/span&gt;&lt;/code&gt; то выбираются все строки где &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;cidr&lt;/span&gt;&lt;/code&gt;
 IPv4, если 6 то все стоки где &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;cidr&lt;/span&gt;&lt;/code&gt; IPv6, иначе просто отдается все. Для
-фильтрации используется стандартная функция &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;family&lt;/span&gt;&lt;/code&gt;. Пример
+фильтрации используется стандартная функция &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;family&lt;/span&gt;&lt;/code&gt;. Пример
 был так расписан для наглядности, теперь сократим:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nets&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;ip_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;ip_type&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -12390,7 +12451,7 @@ CRT1 connected 1920x1080+1280+0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;no
 &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/formalchemy/ext/pylons.html&quot;&gt;formalchemy.ext.pylons&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Рассмотрим &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;. Вообще как обычно можно прочитать документацию, но я
 опишу еще как это все состыковать с шаблонами на &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;Jinja&lt;/a&gt; и поддержкой полей
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;MAC&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CIDR&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NET&lt;/span&gt;&lt;/code&gt; и т.д..&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;MAC&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CIDR&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NET&lt;/span&gt;&lt;/code&gt; и т.д..&lt;/p&gt;
 &lt;p&gt;Создаем контроллер &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;admin&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ paster controller admin
 &lt;/pre&gt;&lt;/div&gt;
@@ -12500,7 +12561,7 @@ CRT1 connected 1920x1080+1280+0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;no
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;http://localhost:5000/admin&lt;/span&gt;&lt;/code&gt; попадете в админку! Но только если вы не
 используете особенностей БД, например &lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sqlalchemy.databases.postgresql&lt;/span&gt;&lt;/code&gt;.
 Вторая проблема в том что шаблоны админки не встроены в ваши шаблоны.&lt;/p&gt;
-&lt;p&gt;Для поддержки &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; полей в &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; необходимо добавить:&lt;/p&gt;
+&lt;p&gt;Для поддержки &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; полей в &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; необходимо добавить:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id4&quot;&gt;
 &lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;lib/base.py&lt;/span&gt;&lt;/div&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;formalchemy.fields&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FieldRenderer&lt;/span&gt;
@@ -12579,7 +12640,7 @@ CRT1 connected 1920x1080+1280+0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;no
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;В целом &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; довольно мощная штука, но очень сильно привязана к
-&lt;a class=&quot;reference external&quot; href=&quot;http://docs.makotemplates.org/en/latest/&quot;&gt;mako&lt;/a&gt;, поэтому пользоваться ей не удобно и к сожалению придется искать что
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.makotemplates.org/&quot;&gt;mako&lt;/a&gt;, поэтому пользоваться ей не удобно и к сожалению придется искать что
 то другое.&lt;/p&gt;
 &lt;/div&gt;
 </content>

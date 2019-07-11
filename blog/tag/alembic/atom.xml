@@ -18,7 +18,7 @@
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid&quot;&gt;
 
 &lt;p&gt;Пример миграций в пирамиде:&lt;/p&gt;
-&lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/south&quot;&gt;south&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/alembic&quot;&gt;alembic&lt;/a&gt;. Создаём файл
+&lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/south&quot;&gt;south&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/alembic&quot;&gt;alembic&lt;/a&gt;. Создаём файл
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;alembic.ini&lt;/span&gt;&lt;/code&gt; и указываем путь до настроек :, т.е. &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;имя&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;проекта&amp;gt;:&amp;lt;название&lt;/span&gt;
 &lt;span class=&quot;pre&quot;&gt;папки&amp;gt;&lt;/span&gt;&lt;/code&gt; например &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hlp:alembic&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;

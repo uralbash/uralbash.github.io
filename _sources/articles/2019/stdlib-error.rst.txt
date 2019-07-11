@@ -1,0 +1,62 @@
+.. post:: 11 Jul, 2019 15:23
+   :tags: C++, c++11, Qt, gcc
+   :category: C++, Qt
+   :author: Uralbash
+   :language: ru
+
+#######################################################
+Ошибка fatal error: stdlib.h: No such file or directory
+#######################################################
+
+Такая ошибка может возникнуть при компиляции программ на `C++` в `Linux`.
+В моем случае это была библиотека на `Qt`.
+
+.. code-block:: bash
+    :caption: Ошибка компиляции Qt модуля
+
+    $ g++ -c -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC -DQT_BLUETOOTH_LIB -DQT_CORE_LIB -I. -isystem /usr/include -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtBluetooth -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o main.o src/main.cpp
+    In file included from /usr/include/c++/7/bits/stl_algo.h:59:0,
+                     from /usr/include/c++/7/algorithm:62,
+                     from /usr/include/x86_64-linux-gnu/qt5/QtCore/qglobal.h:109,
+                     from /usr/include/x86_64-linux-gnu/qt5/QtCore/qcoreapplication.h:43,
+                     from /usr/include/x86_64-linux-gnu/qt5/QtCore/QCoreApplication:1,
+                     from src/main.cpp:6:
+    /usr/include/c++/7/cstdlib:75:15: fatal error: stdlib.h: No such file or directory
+     #include_next <stdlib.h>
+                   ^~~~~~~~~~
+    compilation terminated.
+    Makefile:497: recipe for target 'main.o' failed
+    make: *** [main.o] Error 1
+
+Возникает только в последних версиях `gcc`, видимо заголовки как то не
+правильно собраны в дистрибутиве `Ubuntu 18.04`. Поэтому для решения установим
+по умолчанию компилятор `gcc` 5-ой версии.
+
+Установка:
+
+.. code-block:: bash
+
+    $ sudo apt install gcc-5 g++-5
+
+Добавим его в список:
+
+.. code-block:: bash
+
+    $ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 50 --slave /usr/bin/g++ g++ /usr/bin/g++-5
+
+И поменяем значение дефолтного компилятора:
+
+.. code-block:: bash
+
+    $ sudo update-alternatives --config gcc
+    There are 2 choices for the alternative gcc (providing /usr/bin/gcc).
+
+      Selection    Path            Priority   Status
+    ------------------------------------------------------------
+      0            /usr/bin/gcc-8   80        auto mode
+    * 1            /usr/bin/gcc-5   50        manual mode
+      2            /usr/bin/gcc-8   80        manual mode
+
+    Press <enter> to keep the current choice[*], or type selection number: 1
+
+Теперь в системе используется по умолчанию `gcc` 5-ой версии и все собирается без ошибок.

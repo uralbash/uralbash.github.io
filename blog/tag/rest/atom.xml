@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;rest-api-pyramid-cornice-sacrud&quot;&gt;
 
-&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Mozilla&quot;&gt;Mozilla&lt;/a&gt; использует в своих проектах &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; и у них есть
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Mozilla&quot;&gt;Mozilla&lt;/a&gt; использует в своих проектах &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; и у них есть
 отличный модуль для создания &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;REST&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;API&lt;/span&gt;&lt;/code&gt;
 &lt;a class=&quot;reference external&quot; href=&quot;https://cornice.readthedocs.org/en/latest/&quot;&gt;https://cornice.readthedocs.org/en/latest/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;REST&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;API&lt;/span&gt;&lt;/code&gt; обычно меняет, создает и удаляет записи, которые хранятся в БД.
@@ -41,7 +41,7 @@
                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Создадим отдельную папку в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; проекте с названием &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rest&lt;/span&gt;&lt;/code&gt;, где будут
+&lt;p&gt;Создадим отдельную папку в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; проекте с названием &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rest&lt;/span&gt;&lt;/code&gt;, где будут
 храниться функции api, и пропишем это в основном конфиге.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# REST API&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cornice&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;

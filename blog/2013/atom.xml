@@ -624,7 +624,7 @@ Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-scripts/vim-punto-switcher&
 &lt;p&gt;Элементарно же: написать ТЗ, выбрать фреймворк, спроектировать базу, написать
 функцию, написать тест... Ну или какой-нибудь ваш ответ, здесь всё равно что то
 тормозит, а именно окружение, именно про него все забывают. Попробую описать
-один из возможных вариантов для &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;.&lt;/p&gt;
+один из возможных вариантов для &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&quot;section&quot; id=&quot;virtualenv&quot;&gt;
 &lt;h2&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/Virtualenv&quot;&gt;Virtualenv&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;замечательная штука, позволяет под каждый проект создать свое окружение
@@ -733,7 +733,7 @@ Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-scripts/vim-punto-switcher&
 придется лишь дать наставление использовать продвинутый едитор с множеством
 фич, например &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vim&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;emacs&lt;/span&gt;&lt;/code&gt;, &lt;span class=&quot;strike&quot;&gt;sublime text&lt;/span&gt;. Плохая идея
 использовать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;gedit&lt;/span&gt;&lt;/code&gt; или &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ms&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;notepad&lt;/span&gt;&lt;/code&gt;. Мой выбор определен на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Vim&lt;/span&gt;&lt;/code&gt;,
-обязательно напишу про него отдельную заметку как использую с &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;, а
+обязательно напишу про него отдельную заметку как использую с &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;, а
 пока скриншот:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id7&quot;&gt;
 &lt;img alt=&quot;../../_images/vim.png&quot; src=&quot;../../_images/vim.png&quot; /&gt;
@@ -769,7 +769,7 @@ Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-scripts/vim-punto-switcher&
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;здесь он присоединится к существующей сессии или откроет новую. Далее запустим
-сервер &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/waitress&quot;&gt;waitress&lt;/a&gt;):&lt;/p&gt;
+сервер &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/waitress&quot;&gt;waitress&lt;/a&gt;):&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pserve development.ini.example start --reload
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -913,7 +913,7 @@ shell:
 &lt;h2&gt;jsFiddle&lt;/h2&gt;
 &lt;p&gt;jsFiddle это такой сервис который позволяет нахаляву написать js код, тут же
 его отладить, расшарить и дать кому-нибудь ссылку. Про него все знают и многие
-пользуются. Но есть и для &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt; такой сервис, вот &lt;a class=&quot;reference external&quot; href=&quot;http://codebunk.com&quot;&gt;http://codebunk.com&lt;/a&gt;
+пользуются. Но есть и для &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt; такой сервис, вот &lt;a class=&quot;reference external&quot; href=&quot;http://codebunk.com&quot;&gt;http://codebunk.com&lt;/a&gt;
 Можно выбрать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;python&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;js&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ruby&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;perl&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;php&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lua&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C&lt;/span&gt;&lt;/code&gt;,
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C++&lt;/span&gt;&lt;/code&gt; разве что Лиспа нету, но все равно потрясает.&lt;/p&gt;
 &lt;p&gt;В заключение могу сказать что это только мое видение окружения, у других людей
@@ -972,7 +972,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid-sacrud&quot;&gt;
 
-&lt;p&gt;pyramid_sacrud_example - пример работы &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; вместе с
+&lt;p&gt;pyramid_sacrud_example - пример работы &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; вместе с
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PostgreSQL&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;img alt=&quot;../../_images/sacrud_demo.png&quot; src=&quot;../../_images/sacrud_demo.png&quot; /&gt;
 &lt;/div&gt;
@@ -1051,7 +1051,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-sqlalchemy-session&quot;&gt;
 
 &lt;p&gt;Для простых &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; действий с БД, можно воспользоваться модулем
-&lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
+&lt;a class=&quot;reference external&quot; href=&quot;https://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
 некоторой универсальности в ПО со сложной логикой.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sacrud&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
@@ -1101,7 +1101,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 добавлены &lt;span class=&quot;strike&quot;&gt;нескучные обои&lt;/span&gt; элементы дизайна в расширении для
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Pyramid&lt;/span&gt;&lt;/code&gt; и создан отдельный репозитарий с примерами работы разных типов
 полей (pyramid_sacrud_example). Pyramid_sacrud_example работает только с
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
+&lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
 БД (таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hstore&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
 &lt;img alt=&quot;../../_images/sacrud_0_0_3.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/sacrud_0_0_3.png&quot; /&gt;
 &lt;/div&gt;
@@ -1150,7 +1150,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; админки или &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;, но ОЧЕНЬ сильно упрощенный, ничего
 лишнего. Есть поддержка большинства полей + кастомные поля типа файл (для
 загрузки файлов, изображений) и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;GUID&lt;/span&gt;&lt;/code&gt;. Довольно просто подключить к
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
+&lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
 &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543/sacrud&quot;&gt;http://localhost:6543/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Проект доступен на github &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;В след. релизах планирую добавить новые типы полей, кастомные поля типа
@@ -1296,7 +1296,7 @@ Cursus non morbi non proin, porttitor consequat eget ac eget netus penatibus, eg
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sqlalchemy-pyramid&quot;&gt;
 
 &lt;p&gt;У меня есть дополнение к pyramid которое я включаю почти в каждый проект при
-помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;includeme&lt;/span&gt;&lt;/code&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html#pyramid.config.Configurator.include&quot; title=&quot;(в The Pyramid Web Framework v1.9.1)&quot;&gt;&lt;code class=&quot;xref py py-meth docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;include()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;). Приложение
+помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;includeme&lt;/span&gt;&lt;/code&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html#pyramid.config.Configurator.include&quot; title=&quot;(в The Pyramid Web Framework v1.10.4)&quot;&gt;&lt;code class=&quot;xref py py-meth docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;include()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;). Приложение
 это дает мне простой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; интерфейс с &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;Jinja&lt;/a&gt; шаблонами малой кровью.
 Что позволяет избавиться от монстра &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;.  Естественно каждый
 проект имеет свое название поэтому пришлось применить немного магии что бы
@@ -1365,7 +1365,7 @@ Cursus non morbi non proin, porttitor consequat eget ac eget netus penatibus, eg
 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;471&lt;/span&gt;,504&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;И запустим следующий скрипт на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;И запустим следующий скрипт на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Orientation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
