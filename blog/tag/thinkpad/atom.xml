@@ -30,7 +30,7 @@
 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;471&lt;/span&gt;,504&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;И запустим следующий скрипт на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;И запустим следующий скрипт на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Orientation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -150,7 +150,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;x220-tablet-linux&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/x220t.jpg&quot; class=&quot;align-left&quot; src=&quot;../../../_images/x220t.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2012/x220t.jpg&quot; class=&quot;align-left&quot; src=&quot;_static/2012/x220t.jpg&quot; /&gt;
 &lt;p&gt;В принципе мой &lt;a class=&quot;reference external&quot; href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; Wheezy определил почти все системные клавиши кроме 2х
 справа на картинке (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctr+Alt+Del&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;поворот&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;экрана&lt;/span&gt;&lt;/code&gt;), микрофон и zoom по
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Fn+пробел&lt;/span&gt;&lt;/code&gt;. &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctr+Alt+Del&lt;/span&gt;&lt;/code&gt; не нужен, микрофон и зум это повод написать

@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;scrum-xp&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/scrum.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/scrum.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/scrum.png&quot; class=&quot;align-left&quot; src=&quot;_static/2014/scrum.png&quot; /&gt;
 &lt;p&gt;Старая, но очень полезная книга по &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Agile&lt;/span&gt;&lt;/code&gt;. Довольно редкий случай когда вся
 книга описывает рабочие процессы реальной организации, никакой воды, никакой
 зауми и вялой теории. Очень рекомендую. Тем более книга в свободном доступе и
@@ -39,9 +39,9 @@
 представляет ценность для product owner’а, а задачи либо нельзя
 продемонстрировать, либо они не представляют ценности для product owner’a.&lt;/p&gt;
 &lt;p&gt;Пример разбиения истории на более мелкие:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/scrum2.png&quot; src=&quot;../../../_images/scrum2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/scrum2.png&quot; src=&quot;_static/2014/scrum2.png&quot; /&gt;
 &lt;p&gt;Пример разбиения истории на задачи:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/scrum3.png&quot; src=&quot;../../../_images/scrum3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/scrum3.png&quot; src=&quot;_static/2014/scrum3.png&quot; /&gt;
 &lt;p&gt;Мы попробовали различные варианты работы с техническими историями. Мы пробовали
 считать их самыми обычными user story. Это была неудачная идея: для product
 owner&amp;#8217;а приоритезировать их в product backlog&amp;#8217;е было всё равно, что сравнить
@@ -50,23 +50,23 @@ owner&amp;#8217;а приоритезировать их в product backlog&amp;
 интеграции – очень важная штука, но давайте сперва реализуем кое-какие
 прибыльные функции? После этого вы можете прикрутить вашу техническую конфетку,
 окей?&amp;#8221;&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/scrum4.png&quot; src=&quot;../../../_images/scrum4.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/scrum4.png&quot; src=&quot;_static/2014/scrum4.png&quot; /&gt;
 &lt;p&gt;если вы пользуетесь стикерами для задач, не забудьте прикрепить их скотчем, или
 же в один &amp;#8220;прекрасный&amp;#8221; день вы найдете их аккуратной кучкой на полу.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/scrum5.png&quot; src=&quot;../../../_images/scrum5.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/scrum5.png&quot; src=&quot;_static/2014/scrum5.png&quot; /&gt;
 &lt;p&gt;Как быть с опоздавшими?&lt;/p&gt;
 &lt;p&gt;Некоторые команды заводят специальную копилку. Если вы опоздали, даже на
 минуту, вы кидаете в копилку определённую сумму. Без вариантов. Даже если вы
 позвонили перед началом ежедневного Scrum&amp;#8217;а и предупредили, заплатить всё равно
 придётся :o)&lt;/p&gt;
 &lt;p&gt;Деньги из копилки используются на общественные нужды. Например, на них можно заказать пиццу&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/scrum6.png&quot; src=&quot;../../../_images/scrum6.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/scrum6.png&quot; src=&quot;_static/2014/scrum6.png&quot; /&gt;
 &lt;p&gt;Если вы действительно хотите разобраться, как планировать релиз, советую
 пропустить эту главу и купить книгу Майка Кона &amp;#8220;Agile Estimating and Planning&amp;#8221;.
 Эх, прочитать бы мне эту книгу раньше... (она попалась мне уже после того, как
 мы на собственном опыте поняли, что к чему...). Мой способ планирования
 простой, как угол дома, но может послужить вам хорошей отправной точкой.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/scrum-gibkaya-razrabotka-po-signature-series-3643772/?show=1&amp;amp;bkrand=1ncaafgaia8ck1qvpo5u9nklk0/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/scrum_book.jpg&quot; class=&quot;align-left&quot; src=&quot;../../../_images/scrum_book.jpg&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/scrum-gibkaya-razrabotka-po-signature-series-3643772/?show=1&amp;amp;bkrand=1ncaafgaia8ck1qvpo5u9nklk0/?partner=490327&quot;&gt;&lt;img alt=&quot;_static/2014/scrum_book.jpg&quot; class=&quot;align-left&quot; src=&quot;_static/2014/scrum_book.jpg&quot; /&gt;&lt;/a&gt;
 &lt;p&gt;Вот эта книга, кстати тоже переведена на русский&lt;/p&gt;
 &lt;br clear=&quot;both&quot;/&gt;&lt;p&gt;Scrum решает вопросы управления и организации, тогда как XP специализируется на
 инженерных практиках. Вот почему эти две технологии хорошо работают вместе,
@@ -102,7 +102,7 @@ owner&amp;#8217;а приоритезировать их в product backlog&amp;
 возможно HR в той же области. В этой книге главное осилить первую половину,
 вторая читается на одном дыхании (а почему так это лучше узнать из контекста).
 Брукс крут! &lt;strong&gt;Реально крут!&lt;/strong&gt;&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/mificheskii-cheloveko-mesyats-ili-kak-sozdayutsya-programmnye-sistemy-3626/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/bruks.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/bruks.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/mificheskii-cheloveko-mesyats-ili-kak-sozdayutsya-programmnye-sistemy-3626/?partner=490327&quot;&gt;&lt;img alt=&quot;_static/2014/bruks.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2014/bruks.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -119,7 +119,7 @@ owner&amp;#8217;а приоритезировать их в product backlog&amp;
 
 &lt;p&gt;Еще одна книга по &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Vim&lt;/span&gt;&lt;/code&gt; на русском языке готовится к выходу. ДМК - это всегда
 прекрасный перевод тех. литературы, но ксожалению  отсутствие эл.форматов.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.дмк.рф/catalog/computer/programming/978-5-94074-972-1/&quot;&gt;&lt;img alt=&quot;../../../_images/vim.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vim.jpg&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.дмк.рф/catalog/computer/programming/978-5-94074-972-1/&quot;&gt;&lt;img alt=&quot;_static/2013/vim.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2013/vim.jpg&quot; /&gt;&lt;/a&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -135,7 +135,7 @@ owner&amp;#8217;а приоритезировать их в product backlog&amp;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;vi-vim-epub-pdf&quot;&gt;
 
 &lt;p&gt;Уже упоминал эту замечательную книгу (&lt;a class=&quot;reference internal&quot; href=&quot;../../../articles/2013/vi_book/#vi_book&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;Изучаем редакторы vi и Vim, epub + pdf&lt;/span&gt;&lt;/a&gt;). Теперь в epub&amp;#8217;е, вобщем зачёт.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-fail-3579382/?show=1&amp;amp;partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/vi_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vi_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-fail-3579382/?show=1&amp;amp;partner=490327&quot;&gt;&lt;img alt=&quot;_static/2012/vi_book.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/vi_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -155,7 +155,7 @@ owner&amp;#8217;а приоритезировать их в product backlog&amp;
 понимаю что можно прочитать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vimtutor&lt;/span&gt;&lt;/code&gt;, но когда это все в картинках и со
 стрелками то въезжаешь намного быстрее. В общем заказал, для меня очередной
 хэндбук.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-827256/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/vi_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vi_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-827256/?partner=490327&quot;&gt;&lt;img alt=&quot;_static/2012/vi_book.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/vi_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -170,10 +170,10 @@ owner&amp;#8217;а приоритезировать их в product backlog&amp;
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;postgresql&quot;&gt;
 
-&lt;p&gt;Шыкарная книга по &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt;. Много умных и полезных мыслей в одном месте.
+&lt;p&gt;Шыкарная книга по &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt;. Много умных и полезных мыслей в одном месте.
 Хорошо написано про репликацию и настройку производительности. Книга на
 гитхабе в свободном доступе! Автору лучи добра и счастья, пиши исчо!&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://postgresql.leopard.in.ua/&quot;&gt;&lt;img alt=&quot;../../../_images/pg_book.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/pg_book.png&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://postgresql.leopard.in.ua/&quot;&gt;&lt;img alt=&quot;_static/2012/pg_book.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/pg_book.png&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -189,7 +189,7 @@ owner&amp;#8217;а приоритезировать их в product backlog&amp;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
 
 &lt;p&gt;Т.к. я читаю много техлитературы, то периодически буду писать мысли о ней.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/idealnaya-arkhitektura-vedushchie-spetsialisty-o-krasote-programmnykh-arkhitektur-761783/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/ideal_arch.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ideal_arch.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/idealnaya-arkhitektura-vedushchie-spetsialisty-o-krasote-programmnykh-arkhitektur-761783/?partner=490327&quot;&gt;&lt;img alt=&quot;_static/2012/ideal_arch.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/ideal_arch.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
 &lt;p&gt;Книга поделена на 5 больших частей: про Архитектуру в целом, архитектуру в
 продакшине, на железе, приложений пользователя и ЯП. Сразу скажу что букв много
 аж 500 в страницах, много воды и откровенно запихнутого текста для объема. А из
@@ -222,7 +222,7 @@ owner&amp;#8217;а приоритезировать их в product backlog&amp;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;lisp&quot;&gt;
 
 &lt;p&gt;Внезапно, вышла книга НА РУССКОМ по кошерному, более чем, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Лиспу&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/ansi-common-lisp-827258/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/lisp_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/lisp_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/ansi-common-lisp-827258/?partner=490327&quot;&gt;&lt;img alt=&quot;_static/2012/lisp_book.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/lisp_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
 &lt;p&gt;Хорошая новость для любителей &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;шыфт90&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </content>

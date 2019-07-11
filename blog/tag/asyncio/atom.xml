@@ -160,7 +160,7 @@
    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;World&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Класс &lt;a class=&quot;reference external&quot; href=&quot;http://aiohttp.readthedocs.io/en/stable/web_reference.html#aiohttp.web.Response&quot; title=&quot;(в aiohttp v2.2)&quot;&gt;&lt;code class=&quot;xref py py-class docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;aiohttp.web.Response&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; позволяет задавать различные параметры типа
+&lt;p&gt;Класс &lt;a class=&quot;reference external&quot; href=&quot;https://docs.aiohttp.org/en/stable/web_reference.html#aiohttp.web.Response&quot; title=&quot;(в aiohttp v3.8)&quot;&gt;&lt;code class=&quot;xref py py-class docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;aiohttp.web.Response&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; позволяет задавать различные параметры типа
 заголовков и статуса ответа. Перепишем наш декоратор таким образом что бы он
 умел принимать эти параметры:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;json_view_arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -177,7 +177,7 @@
    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;World&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;img alt=&quot;../../../_images/header-server-nginx.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/header-server-nginx.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/python/header-server-nginx.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/python/header-server-nginx.png&quot; /&gt;
 &lt;p&gt;И в заключение то же в виде класса-декоратора:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JsonView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
 

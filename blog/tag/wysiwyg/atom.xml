@@ -19,7 +19,7 @@
 
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/dybskiy/redactor-js&quot;&gt;Redactor-js&lt;/a&gt; - это простой вайсвиг с
 возможностью загрузки изображений.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/redactor-js.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/redactor-js.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/redactor-js.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/redactor-js.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;demo: &lt;a class=&quot;reference external&quot; href=&quot;http://imperavi.com/redactor/&quot;&gt;http://imperavi.com/redactor/&lt;/a&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;github: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/dybskiy/redactor-js&quot;&gt;https://github.com/dybskiy/redactor-js&lt;/a&gt;&lt;/div&gt;
@@ -27,7 +27,7 @@
 &lt;p&gt;Как сочленить это с &lt;a class=&quot;reference external&quot; href=&quot;http://php.net/&quot;&gt;php&lt;/a&gt; можно прочитать из документации
 &lt;a class=&quot;reference external&quot; href=&quot;http://imperavi.com/redactor/docs/images/&quot;&gt;http://imperavi.com/redactor/docs/images/&lt;/a&gt;. Там же есть ссылка на &lt;a class=&quot;reference external&quot; href=&quot;http://paltman.com/2012/08/15/how-to-setup-upload-handler-for-redactor/&quot;&gt;пример с
 Django от Patrick Altman&lt;/a&gt;. Я
-же постараюсь описать как загружать картинки при помощи &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; фреймворка,
+же постараюсь описать как загружать картинки при помощи &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; фреймворка,
 думаю переписать на что то другое не составит труда.&lt;/p&gt;
 &lt;p&gt;js функция redactor&amp;#8217;а у меня выглядит вот так:&lt;/p&gt;
 &lt;div class=&quot;highlight-html&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Redactor is here --&amp;gt;&lt;/span&gt;

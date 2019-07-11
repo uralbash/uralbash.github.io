@@ -264,7 +264,7 @@
 <a class="reference external" href="http://docs.formalchemy.org/formalchemy/ext/pylons.html">formalchemy.ext.pylons</a>.</p>
 <p>Рассмотрим <a class="reference external" href="http://docs.formalchemy.org/">FormAlchemy</a>. Вообще как обычно можно прочитать документацию, но я
 опишу еще как это все состыковать с шаблонами на <a class="reference external" href="http://jinja.pocoo.org/">Jinja</a> и поддержкой полей
-<a class="reference external" href="http://www.postgresql.org/">Postgres</a> таких как <code class="docutils literal"><span class="pre">MAC</span></code>, <code class="docutils literal"><span class="pre">CIDR</span></code>, <code class="docutils literal"><span class="pre">NET</span></code> и т.д..</p>
+<a class="reference external" href="http://postgresql.org">Postgres</a> таких как <code class="docutils literal"><span class="pre">MAC</span></code>, <code class="docutils literal"><span class="pre">CIDR</span></code>, <code class="docutils literal"><span class="pre">NET</span></code> и т.д..</p>
 <p>Создаем контроллер <code class="docutils literal"><span class="pre">admin</span></code>:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ paster controller admin
 </pre></div>
@@ -374,7 +374,7 @@
 <code class="docutils literal"><span class="pre">http://localhost:5000/admin</span></code> попадете в админку! Но только если вы не
 используете особенностей БД, например <code class="xref py py-mod docutils literal"><span class="pre">sqlalchemy.databases.postgresql</span></code>.
 Вторая проблема в том что шаблоны админки не встроены в ваши шаблоны.</p>
-<p>Для поддержки <a class="reference external" href="http://www.postgresql.org/">Postgres</a> полей в <a class="reference external" href="http://docs.formalchemy.org/">FormAlchemy</a> необходимо добавить:</p>
+<p>Для поддержки <a class="reference external" href="http://postgresql.org">Postgres</a> полей в <a class="reference external" href="http://docs.formalchemy.org/">FormAlchemy</a> необходимо добавить:</p>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">lib/base.py</span><a class="headerlink" href="#id4" title="Постоянная ссылка на код">¶</a></div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">formalchemy.fields</span> <span class="kn">import</span> <span class="n">FieldRenderer</span>
@@ -453,7 +453,7 @@
 </pre></div>
 </div>
 <p>В целом <a class="reference external" href="http://docs.formalchemy.org/">FormAlchemy</a> довольно мощная штука, но очень сильно привязана к
-<a class="reference external" href="http://docs.makotemplates.org/en/latest/">mako</a>, поэтому пользоваться ей не удобно и к сожалению придется искать что
+<a class="reference external" href="http://www.makotemplates.org/">mako</a>, поэтому пользоваться ей не удобно и к сожалению придется искать что
 то другое.</p>
 </div>
 
@@ -518,7 +518,7 @@
                         
     <div class="footer__copyright">
             
-                &copy; Copyright 2015, uralbash.
+                &copy; Copyright 2022, uralbash.
             
     </div>
 <div class="footer__theme">
@@ -531,7 +531,7 @@
 </div>
                       
   <div class="footer__theme">
-      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+      <a href="https://github.com/sunpy/ablog" class="footer__theme-link">
         Ablog powered.
       </a>
   </div>

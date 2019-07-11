@@ -24,7 +24,7 @@
 &lt;p&gt;Я создал небольшой пример, как это сделать на примере &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sadisplay&quot;&gt;sadisplay&lt;/a&gt;.
 &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sadisplay&quot;&gt;sadisplay&lt;/a&gt; - это модуль который отображает модели &lt;a class=&quot;reference external&quot; href=&quot;http://sqlalchemy.org/&quot;&gt;SQLAlchemy&lt;/a&gt; в виде
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;UML&lt;/span&gt;&lt;/code&gt; диаграммы.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sadisplay.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sadisplay.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sadisplay.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/sadisplay.png&quot; /&gt;
 &lt;p&gt;Было бы удобно видеть схему БД проекта в дебаг панеле. Для этого создадим папку
 проекта &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pyramid_debugtoolbar_sadisplay&lt;/span&gt;&lt;/code&gt; со структурой:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;├── __init__.py
@@ -130,8 +130,8 @@ link: &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Результат:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/dt_sadisplay1.png&quot; src=&quot;../../../_images/dt_sadisplay1.png&quot; /&gt;
-&lt;img alt=&quot;../../../_images/dt_sadisplay2.png&quot; src=&quot;../../../_images/dt_sadisplay2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/dt_sadisplay1.png&quot; src=&quot;_static/2014/dt_sadisplay1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/dt_sadisplay2.png&quot; src=&quot;_static/2014/dt_sadisplay2.png&quot; /&gt;
 &lt;p&gt;Код примера здесь: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/pyramid_debugtoolbar_sadisplay&quot;&gt;https://github.com/uralbash/pyramid_debugtoolbar_sadisplay&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </content>
@@ -176,7 +176,7 @@ $ pip install sqlalchemy_schemadisplay
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../../_images/dbschema.png&quot; src=&quot;../../../_images/dbschema.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/dbschema.png&quot; src=&quot;_static/2011/dbschema.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Схема БД Postgres&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Схема UML строится по моделям проекта.&lt;/p&gt;
@@ -203,7 +203,7 @@ $ pip install sqlalchemy_schemadisplay
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../../_images/schema.png&quot; src=&quot;../../../_images/schema.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/schema.png&quot; src=&quot;_static/2011/schema.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Схема моделей в Pylons&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Для &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; кодеров есть модуль &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/django-extensions/django-extensions&quot;&gt;django-extension&lt;/a&gt; который добавляет
@@ -216,7 +216,7 @@ $ pip install sqlalchemy_schemadisplay
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id4&quot;&gt;
-&lt;img alt=&quot;../../../_images/django_uml.png&quot; src=&quot;../../../_images/django_uml.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/django_uml.png&quot; src=&quot;_static/2011/django_uml.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;пример django-extension + graphviz&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;

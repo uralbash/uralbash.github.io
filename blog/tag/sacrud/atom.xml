@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;rest-api-pyramid-cornice-sacrud&quot;&gt;
 
-&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Mozilla&quot;&gt;Mozilla&lt;/a&gt; использует в своих проектах &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; и у них есть
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Mozilla&quot;&gt;Mozilla&lt;/a&gt; использует в своих проектах &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; и у них есть
 отличный модуль для создания &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;REST&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;API&lt;/span&gt;&lt;/code&gt;
 &lt;a class=&quot;reference external&quot; href=&quot;https://cornice.readthedocs.org/en/latest/&quot;&gt;https://cornice.readthedocs.org/en/latest/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;REST&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;API&lt;/span&gt;&lt;/code&gt; обычно меняет, создает и удаляет записи, которые хранятся в БД.
@@ -41,7 +41,7 @@
                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Создадим отдельную папку в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; проекте с названием &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rest&lt;/span&gt;&lt;/code&gt;, где будут
+&lt;p&gt;Создадим отдельную папку в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; проекте с названием &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rest&lt;/span&gt;&lt;/code&gt;, где будут
 храниться функции api, и пропишем это в основном конфиге.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# REST API&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cornice&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -248,7 +248,7 @@ Cornice делает много за вас, создает вьюхи, пути
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-0-1-2&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/sacrud_0_1_2.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/sacrud_0_1_2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sacrud_0_1_2.png&quot; class=&quot;align-left&quot; src=&quot;_static/2014/sacrud_0_1_2.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;Код: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;Описание: &lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.org/&quot;&gt;http://sacrud.readthedocs.org/&lt;/a&gt;&lt;/div&gt;
@@ -365,7 +365,7 @@ Cornice делает много за вас, создает вьюхи, пути
 &lt;/div&gt;
 &lt;p&gt;Результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id3&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_0.1.2_example.png&quot; src=&quot;../../../_images/sacrud_0.1.2_example.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sacrud_0.1.2_example.png&quot; src=&quot;_static/2014/sacrud_0.1.2_example.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Пример кастомного CRUD интерфейса для SQLAlchemy&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Демо приложение: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/pyramid_sacrud_example&quot;&gt;https://github.com/uralbash/pyramid_sacrud_example&lt;/a&gt;&lt;/p&gt;
@@ -383,7 +383,7 @@ Cornice делает много за вас, создает вьюхи, пути
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-0-1-1&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/sacrud_0_1_1.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/sacrud_0_1_1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sacrud_0_1_1.png&quot; class=&quot;align-left&quot; src=&quot;_static/2014/sacrud_0_1_1.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;Код: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;Описание: &lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.org/&quot;&gt;http://sacrud.readthedocs.org/&lt;/a&gt;&lt;/div&gt;
@@ -407,7 +407,7 @@ Cornice делает много за вас, создает вьюхи, пути
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;в словаре можно поделить модели на группы&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class=&quot;first&quot;&gt;тесты исправлены для &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;1.5&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;тесты исправлены для &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;1.5&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;deprecated&quot;&gt;
 &lt;p&gt;&lt;span class=&quot;versionmodified&quot;&gt;Не рекомендуется, начиная с версии pyramid: &lt;/span&gt;1.5&lt;/p&gt;
 &lt;p&gt;Removed the ability to influence and query a pyramid.request.Request object as
@@ -433,7 +433,7 @@ methods of request.environ (a real dictionary) instead.&lt;/p&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-0-1-0&quot;&gt;
 
 &lt;p&gt;Обновил &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; до &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;0.1.0&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/crud_java_servlet_freemarker_2.png&quot; src=&quot;../../../_images/crud_java_servlet_freemarker_2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/crud_java_servlet_freemarker_2.png&quot; src=&quot;_static/2013/crud_java_servlet_freemarker_2.png&quot; /&gt;
 &lt;p&gt;Изменения:&lt;/p&gt;
 &lt;ul class=&quot;simple&quot;&gt;
 &lt;li&gt;исправлено куча ошибок&lt;/li&gt;
@@ -454,9 +454,9 @@ methods of request.environ (a real dictionary) instead.&lt;/p&gt;
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid-sacrud&quot;&gt;
 
-&lt;p&gt;pyramid_sacrud_example - пример работы &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; вместе с
+&lt;p&gt;pyramid_sacrud_example - пример работы &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; вместе с
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PostgreSQL&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sacrud_demo.png&quot; src=&quot;../../../_images/sacrud_demo.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_demo.png&quot; src=&quot;_static/2013/sacrud_demo.png&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -500,7 +500,7 @@ methods of request.environ (a real dictionary) instead.&lt;/p&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-sqlalchemy-session&quot;&gt;
 
 &lt;p&gt;Для простых &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; действий с БД, можно воспользоваться модулем
-&lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
+&lt;a class=&quot;reference external&quot; href=&quot;https://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
 некоторой универсальности в ПО со сложной логикой.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sacrud&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
@@ -550,9 +550,9 @@ methods of request.environ (a real dictionary) instead.&lt;/p&gt;
 добавлены &lt;span class=&quot;strike&quot;&gt;нескучные обои&lt;/span&gt; элементы дизайна в расширении для
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Pyramid&lt;/span&gt;&lt;/code&gt; и создан отдельный репозитарий с примерами работы разных типов
 полей (pyramid_sacrud_example). Pyramid_sacrud_example работает только с
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
+&lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
 БД (таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hstore&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sacrud_0_0_3.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sacrud_0_0_3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_0_0_3.png&quot; class=&quot;align-center&quot; src=&quot;_static/2013/sacrud_0_0_3.png&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -571,7 +571,7 @@ methods of request.environ (a real dictionary) instead.&lt;/p&gt;
 &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; админки или &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;, но ОЧЕНЬ сильно упрощенный, ничего
 лишнего. Есть поддержка большинства полей + кастомные поля типа файл (для
 загрузки файлов, изображений) и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;GUID&lt;/span&gt;&lt;/code&gt;. Довольно просто подключить к
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
+&lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
 &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543/sacrud&quot;&gt;http://localhost:6543/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Проект доступен на github &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;В след. релизах планирую добавить новые типы полей, кастомные поля типа
@@ -611,15 +611,15 @@ methods of request.environ (a real dictionary) instead.&lt;/p&gt;
 &lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
 &lt;h2&gt;Скриншоты&lt;/h2&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id5&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_index.png&quot; src=&quot;../../../_images/sacrud_index.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_index.png&quot; src=&quot;_static/2013/sacrud_index.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;список таблиц&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id6&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_rows.png&quot; src=&quot;../../../_images/sacrud_rows.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_rows.png&quot; src=&quot;_static/2013/sacrud_rows.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;список записей в таблице&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id7&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_edit.png&quot; src=&quot;../../../_images/sacrud_edit.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_edit.png&quot; src=&quot;_static/2013/sacrud_edit.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;редактирование записи&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;

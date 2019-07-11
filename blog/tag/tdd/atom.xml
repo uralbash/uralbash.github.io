@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;continuous-integration&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/ci1.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ci1.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;img alt=&quot;_static/2014/ci1.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2014/ci1.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
 &lt;p&gt;Идея непрерывной интеграции заключается в том, что при любом изменении проекта
 он пересобирается в условиях приближенных к реальной эксплуатации и каждый раз
 запускает тесты. Это позволяет моментально отловить баги и исправить их не
@@ -48,17 +48,17 @@
 &lt;p&gt;Облачный &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CI&lt;/span&gt;&lt;/code&gt; отлично подойдет для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;OpenSource&lt;/span&gt;&lt;/code&gt; проектов, а остальное можно
 тестировать на локальном сервере.&lt;/p&gt;
 &lt;p&gt;Посмотрим как это работает на примере python + pyramid приложения.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/ci2.JPG&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ci2.JPG&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;img alt=&quot;_static/2014/ci2.JPG&quot; class=&quot;align-center&quot; src=&quot;_static/2014/ci2.JPG&quot; style=&quot;width: 400px;&quot; /&gt;
 &lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
 &lt;h2&gt;Начнём с Travis-ci&lt;/h2&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;https://travis-ci.org/&quot;&gt;&lt;img alt=&quot;../../../_images/travis.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/travis.png&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;https://travis-ci.org/&quot;&gt;&lt;img alt=&quot;_static/2014/travis.png&quot; class=&quot;align-left&quot; src=&quot;_static/2014/travis.png&quot; /&gt;&lt;/a&gt;
 &lt;p&gt;Следит за вашими репозитариями на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt;, выкачивает при каждом коммите,
 собирает окружение в индивидуальном контейнере каждый раз, имеет простой
 конфиг. Работает только с &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt;, закрытые репы за деньги.&lt;/p&gt;
 &lt;br clear=&quot;both&quot;/&gt;&lt;p&gt;Авторизация через гитхаб аккаунт, дальше указываем что будем тестировать&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/travis1.png&quot; src=&quot;../../../_images/travis1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/travis1.png&quot; src=&quot;_static/2014/travis1.png&quot; /&gt;
 &lt;p&gt;Теперь положим в корень репы на гитхабе файл с настройками &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.travis.yml&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/travis3.png&quot; src=&quot;../../../_images/travis3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/travis3.png&quot; src=&quot;_static/2014/travis3.png&quot; /&gt;
 &lt;p&gt;В этом файле находятся инструкции, какое окружение нужно для вашего проекта,
 как его собирать, запускать тесты и куда слать уведомления.&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id3&quot;&gt;
@@ -98,7 +98,7 @@
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;drone-io&quot;&gt;
 &lt;h2&gt;drone.io&lt;/h2&gt;
-&lt;img alt=&quot;../../../_images/drone.io.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone.io.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/drone.io.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/drone.io.png&quot; /&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Drone&lt;/span&gt;&lt;/code&gt; похож на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;travis-ci&lt;/span&gt;&lt;/code&gt; но он дешевле, умеет &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;bitbucket&lt;/span&gt;&lt;/code&gt; и исходный
 код &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/drone/drone&quot;&gt;https://github.com/drone/drone&lt;/a&gt;. Очень удобно &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;OpenSource&lt;/span&gt;&lt;/code&gt; в облаке,
 приватные репы на локальном сервере и все это имеет одинаковый конфиг. Конфиг
@@ -132,18 +132,18 @@ upstart (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre
 &lt;p&gt;Для того что бы github или bitbucket слал уведомление вашему drone серверу
 нужен статический IP. Пробросим порты к виртуалке на роутере :) и укажем IP в
 настройках:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/drone1.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/drone1.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/drone1.png&quot; /&gt;
 &lt;p&gt;добавим репу:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/drone2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/drone2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/drone2.png&quot; /&gt;
 &lt;p&gt;После добавления в гитхаб появится новый аппликайшин:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/drone3.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/drone3.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/drone3.png&quot; /&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Client&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;ID&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Client&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Secret&lt;/span&gt;&lt;/code&gt; нужно указать в настройках drone. Теперь
 комитим и чиним.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/drone4.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone4.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/drone4.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/drone4.png&quot; /&gt;
 &lt;p&gt;Для приватных реп drone автоматически  прописывает RSA ключ. Его можно
 посмотреть в настройках репы и скопировать вручную например или поменять.&lt;/p&gt;
 &lt;p&gt;Вывод похож на travis:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/drone5.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone5.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/drone5.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/drone5.png&quot; /&gt;
 &lt;p&gt;Пару слов почему не другие системы. Во первых &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;drone&lt;/span&gt;&lt;/code&gt; это и облако и локалхост,
 дальше bitbucket+github, контейнеры docker из коробки, иконка-статус сборки в
 Markdown, написан на Go как и Docker. Из недостатков пока мало свистелок и
@@ -162,11 +162,11 @@ slave в контейнеры, но написан на старой верси�
 &lt;div class=&quot;section&quot; id=&quot;coveralls&quot;&gt;
 &lt;h2&gt;Coveralls&lt;/h2&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id5&quot;&gt;
-&lt;img alt=&quot;../../../_images/coverrals1.png&quot; src=&quot;../../../_images/coverrals1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/coverrals1.png&quot; src=&quot;_static/2014/coverrals1.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://coveralls.io/r/ITCase/sacrud&quot;&gt;https://coveralls.io/r/ITCase/sacrud&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot;&gt;
-&lt;img alt=&quot;../../../_images/coverrals2.png&quot; src=&quot;../../../_images/coverrals2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/coverrals2.png&quot; src=&quot;_static/2014/coverrals2.png&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt;Coveralls отличное дополнение, в котором можно визуально отследить что ещё не
 покрыто тестами. Из минусов, нет bitbucket, мне показался он дороговатым для
@@ -185,7 +185,7 @@ slave в контейнеры, но написан на старой верси�
 &lt;p&gt;В этом обзоре показан простой пример как можно настроить непрерывную интеграцию
 проекта на python и pyramid. Но по аналогии можно поднять любой другой проект.
 Думаю вам эта статья поможет, хотя бы начать писать тесты :)&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/ci_end.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ci_end.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2014/ci_end.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2014/ci_end.jpg&quot; /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </content>

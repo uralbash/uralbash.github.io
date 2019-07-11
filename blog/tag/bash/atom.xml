@@ -55,8 +55,8 @@ fortune &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; cowsay -f &lt;span class=
 &lt;/div&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;fortune&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;cowsay&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;$cowperson&lt;/span&gt;&lt;/code&gt; рисует случайного персонажа с цитатой переданной из фортуне&lt;/p&gt;
 &lt;p&gt;Иногда случаются довольно забавные сочетания :)&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/fortune1.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/fortune1.png&quot; /&gt;
-&lt;img alt=&quot;../../../_images/fortune2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/fortune2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/fortune1.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/fortune1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/fortune2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/fortune2.png&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>

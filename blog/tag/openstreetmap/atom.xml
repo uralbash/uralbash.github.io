@@ -132,7 +132,7 @@ HTTP-протоколу ответ может быть сформирован л
 &lt;/div&gt;
 &lt;p&gt;Результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id8&quot;&gt;
-&lt;img alt=&quot;../../../_images/osm_geotagging.png&quot; src=&quot;../../../_images/osm_geotagging.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm_geotagging.png&quot; src=&quot;_static/2012/osm_geotagging.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Яндекс Карты автодополнение через геокодинг&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -227,7 +227,7 @@ HTTP-протоколу ответ может быть сформирован л
 &lt;p&gt;И в тег &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;/code&gt; добавляем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;onload=&amp;quot;GetMap();&amp;quot;&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../../_images/osm.png&quot; src=&quot;../../../_images/osm.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm.png&quot; src=&quot;_static/2012/osm.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;OpenStreeMap пример&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://habrahabr.ru/post/145117/&quot;&gt;Хорошая статья на Хабре&lt;/a&gt;&lt;/p&gt;

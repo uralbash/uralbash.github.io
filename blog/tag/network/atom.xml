@@ -22,7 +22,7 @@
 &lt;div class=&quot;line&quot;&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Надо&lt;/span&gt;&lt;/code&gt;: получить Интернет на другом компе (компах) через этот ноут&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;В ноутбук вставляем еще одну сетевую карту, например такую:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/USB+RJ45.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/USB+RJ45.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2012/USB+RJ45.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/USB+RJ45.jpg&quot; /&gt;
 &lt;p&gt;В итоге у нас в ноуте &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;eth0&lt;/span&gt;&lt;/code&gt; это Интернет, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;eth1&lt;/span&gt;&lt;/code&gt; это локалка. Для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;eth1&lt;/span&gt;&lt;/code&gt;
 делаем например такие настройки ip &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;10.0.0.100&lt;/span&gt;&lt;/code&gt; mask 24. Я делал через
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;networkmanager&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;

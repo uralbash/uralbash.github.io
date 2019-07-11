@@ -71,7 +71,7 @@ gvm gos &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;installed&lt;span class=&q
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;go-golang&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/go.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/go.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/go.png&quot; class=&quot;align-left&quot; src=&quot;_static/2014/go.png&quot; /&gt;
 &lt;p&gt;Go замечательный язык программирования, который можно компилировать,
 компилировать под разные платформы (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ARM&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;x86&lt;/span&gt;&lt;/code&gt;), распараллеливать. Он
 проще &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C/C++&lt;/span&gt;&lt;/code&gt; и уже сформировавшийся язык в отличии от &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Rust&lt;/span&gt;&lt;/code&gt; который
@@ -81,7 +81,7 @@ gvm gos &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;installed&lt;span class=&q
 реализаций под смартфоны&lt;/span&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.google.com/document/d/1N3XyVkAP8nmWjASz8L_OjjnjVKxgeVBjIsTr5qIUcA4/edit&quot;&gt;android&lt;/a&gt;).&lt;/p&gt;
 &lt;br clear=&quot;both&quot;/&gt;&lt;p&gt;На Go уже написаны:&lt;/p&gt;
 &lt;ul class=&quot;simple&quot;&gt;
-&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docker.io/&quot;&gt;Docker&lt;/a&gt; - система легковесных контейнеров (переписан с &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://docker.io/&quot;&gt;Docker&lt;/a&gt; - система легковесных контейнеров (переписан с &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://drone.io&quot;&gt;http://drone.io&lt;/a&gt; - система непрерывного тестирования, поддерживающая
 &lt;a class=&quot;reference external&quot; href=&quot;http://docker.io/&quot;&gt;Docker&lt;/a&gt; (о ней я напишу отдельно скорее всего) и огромное количество
 других проектов, что удивительно ведь &lt;a class=&quot;reference external&quot; href=&quot;https://golang.org/&quot;&gt;go&lt;/a&gt; очень молодой проект, а ещё гугл&lt;/li&gt;
@@ -171,7 +171,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;h2&gt;КНИГИ&lt;/h2&gt;
 &lt;p&gt;книг много, но на великом только одна от издательства ДМК пресс, к счастью есть
 эл.вариант книги хоть и в pdf.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://dmkpress.com/catalog/computer/programming/978-5-94074-854-0/&quot;&gt;&lt;img alt=&quot;../../../_images/go_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/go_book.jpg&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://dmkpress.com/catalog/computer/programming/978-5-94074-854-0/&quot;&gt;&lt;img alt=&quot;_static/2014/go_book.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2014/go_book.jpg&quot; /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;id4&quot;&gt;
 &lt;h2&gt;Ресурсы&lt;/h2&gt;
@@ -228,7 +228,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://tour.golang.org/&quot;&gt;http://tour.golang.org/&lt;/a&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;&lt;br /&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;img alt=&quot;../../../_images/gopher.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/gopher.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/gopher.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/gopher.png&quot; /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </content>

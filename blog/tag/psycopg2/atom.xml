@@ -49,7 +49,7 @@ Storing &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; log in /home/ural
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Это возникает из-за утилиты &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; которая требуется для установки &lt;a class=&quot;reference external&quot; href=&quot;http://initd.org/psycopg/&quot;&gt;psycopg&lt;/a&gt;.
-В случае если у Вас &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; 8.4 нужно добавить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH&lt;/span&gt;&lt;/code&gt; (как то
+В случае если у Вас &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; 8.4 нужно добавить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH&lt;/span&gt;&lt;/code&gt; (как то
 так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH=$PATH:/usr/bin/&lt;/span&gt;&lt;/code&gt;). Путь до &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; можно узнать:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ whereis pg_config
 pg_config: /usr/bin/pg_config

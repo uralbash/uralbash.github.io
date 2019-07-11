@@ -21,11 +21,11 @@
 довольно простой: подключаем датчик температуры к компу, пишем скрипт который
 снимает данные с датчика, записываем данные и отдаем по запросу пользователю.
 Результат будет выглядеть так:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/rrdtool_example.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/rrdtool_example.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/rrdtool_example.png&quot; class=&quot;align-center&quot; src=&quot;_static/2011/rrdtool_example.png&quot; /&gt;
 &lt;p&gt;Датчик температуры можно выбрать любой. Я сделал для COM порта по схеме
 &lt;a class=&quot;reference external&quot; href=&quot;http://msevm.com/main/therm/ds18b20t.htm&quot;&gt;&amp;#8220;Электронный термометр на DS-18B20&amp;#8221;&lt;/a&gt;. Стоимось вышла около 450р., без
 кожуха и разъемов раза в 2 дешевле.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/rs232.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/rs232.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/rs232.png&quot; class=&quot;align-center&quot; src=&quot;_static/2011/rs232.png&quot; /&gt;
 &lt;p&gt;Сам датчик температуры (&lt;a class=&quot;reference external&quot; href=&quot;http://www.maximintegrated.com/en/products/analog/sensors-and-sensor-interface/DS18B20.html&quot;&gt;DS-18B20&lt;/a&gt;) можно соединять параллельно с другими (до
 100шт.) и он будет нормально работать на одной шине длиной до 300м. После
 подключения скорей всего он определится на последовательном порту &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/dev/ttyS0&lt;/span&gt;&lt;/code&gt;.

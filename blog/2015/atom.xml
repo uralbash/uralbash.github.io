@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid&quot;&gt;
 
-&lt;p&gt;Здесь я буду собирать разные полезные ресурсы по фреймворку &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;. Если
+&lt;p&gt;Здесь я буду собирать разные полезные ресурсы по фреймворку &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;. Если
 вы что то не нашли, пишите в комментах.&lt;/p&gt;
 &lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
 &lt;h2&gt;Оф. ресурсы&lt;/h2&gt;
@@ -244,7 +244,7 @@
    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;World&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Класс &lt;a class=&quot;reference external&quot; href=&quot;http://aiohttp.readthedocs.io/en/stable/web_reference.html#aiohttp.web.Response&quot; title=&quot;(в aiohttp v2.2)&quot;&gt;&lt;code class=&quot;xref py py-class docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;aiohttp.web.Response&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; позволяет задавать различные параметры типа
+&lt;p&gt;Класс &lt;a class=&quot;reference external&quot; href=&quot;https://docs.aiohttp.org/en/stable/web_reference.html#aiohttp.web.Response&quot; title=&quot;(в aiohttp v3.8)&quot;&gt;&lt;code class=&quot;xref py py-class docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;aiohttp.web.Response&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; позволяет задавать различные параметры типа
 заголовков и статуса ответа. Перепишем наш декоратор таким образом что бы он
 умел принимать эти параметры:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;json_view_arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -261,7 +261,7 @@
    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;World&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;img alt=&quot;../../_images/header-server-nginx.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/header-server-nginx.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/python/header-server-nginx.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/python/header-server-nginx.png&quot; /&gt;
 &lt;p&gt;И в заключение то же в виде класса-декоратора:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JsonView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
 
@@ -469,11 +469,11 @@ nmap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F8&lt;span class=&quot
 &lt;p&gt;После этого по нажатию &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;F8&lt;/span&gt;&lt;/code&gt; будет открываться &amp;#8220;содержание&amp;#8221; вашего
 документа, как показано на рисунках ниже.&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id9&quot;&gt;
-&lt;img alt=&quot;../../_images/rst2ctags.png&quot; src=&quot;../../_images/rst2ctags.png&quot; /&gt;
+&lt;img alt=&quot;_static/2015/rst2ctags.png&quot; src=&quot;_static/2015/rst2ctags.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Пример &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/jszakmeister/rst2ctags&quot;&gt;jszakmeister/rst2ctags&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id10&quot;&gt;
-&lt;img alt=&quot;../../_images/rst2ctags2.png&quot; src=&quot;../../_images/rst2ctags2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2015/rst2ctags2.png&quot; src=&quot;_static/2015/rst2ctags2.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Пример &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/jszakmeister/rst2ctags&quot;&gt;jszakmeister/rst2ctags&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt; с более простой структурой
 разделов&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
@@ -554,7 +554,7 @@ RivShiftLeft            RivTitle1               RivVimTest
 &lt;li&gt;Python&lt;/li&gt;
 &lt;li&gt;reStructuredText&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Например я допустил ошибку в коде на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Например я допустил ошибку в коде на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-rst&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;gh&quot;&gt;====&lt;/span&gt;
 &lt;span class=&quot;gh&quot;&gt;Test&lt;/span&gt;
 &lt;span class=&quot;gh&quot;&gt;====&lt;/span&gt;
@@ -623,7 +623,7 @@ bad_rst.rst:1: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SEVERE/4&lt;span cl
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
 &lt;h3&gt;Модуль для Python&lt;/h3&gt;
-&lt;p&gt;Т.к. &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/rstcheck&quot;&gt;rstcheck&lt;/a&gt; это &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt; модуль, его можно использовать в своих
+&lt;p&gt;Т.к. &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/rstcheck&quot;&gt;rstcheck&lt;/a&gt; это &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt; модуль, его можно использовать в своих
 скриптах:&lt;/p&gt;
 &lt;div class=&quot;highlight-ipython&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; import rstcheck
 &amp;gt;&amp;gt;&amp;gt; list(rstcheck.check(&amp;#39;Example\n===&amp;#39;))
@@ -637,7 +637,7 @@ bad_rst.rst:1: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SEVERE/4&lt;span cl
 &lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:syntastic_rst_checkers &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; [&lt;span class=&quot;s1&quot;&gt;&amp;#39;rstcheck&amp;#39;&lt;/span&gt;]
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;img alt=&quot;../../_images/rstcheck_vim.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/rstcheck_vim.png&quot; /&gt;
+&lt;img alt=&quot;_static/2015/rstcheck_vim.png&quot; class=&quot;align-center&quot; src=&quot;_static/2015/rstcheck_vim.png&quot; /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;id6&quot;&gt;
@@ -659,7 +659,7 @@ bad_rst.rst:1: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SEVERE/4&lt;span cl
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;restructuredtext&quot;&gt;
 &lt;span id=&quot;ablog&quot;&gt;&lt;/span&gt;
-&lt;img alt=&quot;../../_images/uralbash.ru.png&quot; class=&quot;align-left&quot; src=&quot;../../_images/uralbash.ru.png&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2015/uralbash.ru.png&quot; class=&quot;align-left&quot; src=&quot;_static/2015/uralbash.ru.png&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Перевел тут блог с &lt;a class=&quot;reference external&quot; href=&quot;https://www.blogger.com/&quot;&gt;https://www.blogger.com/&lt;/a&gt; на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/abakan/ablog&quot;&gt;abakan/ablog&lt;/a&gt;. Блоггер
 это конечно хорошо, но у него крайне ограниченный WYSIWYG, тем более только из
 браузера. &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/abakan/ablog&quot;&gt;Ablog&lt;/a&gt; по сути это &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sphinx&quot;&gt;sphinx&lt;/a&gt; движок заточенный на блог со
@@ -1417,7 +1417,7 @@ DISQUS ставится просто:
 &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;block&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;footer&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
   &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://github.com/abakan/ablog&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme-link&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://github.com/sunpy/ablog&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme-link&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
         Ablog powered.
       &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;

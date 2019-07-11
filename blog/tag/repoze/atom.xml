@@ -30,7 +30,7 @@ Pylons apps&lt;/a&gt; с моими
 &lt;h2&gt;pylons_repoze_what&lt;/h2&gt;
 &lt;p&gt;Шаблон &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pylons_repoze_what&lt;/span&gt;&lt;/code&gt; добавляет систему авторизации основанную на
 &lt;a class=&quot;reference external&quot; href=&quot;http://what.repoze.org/docs/1.0/index.html#module-repoze.what&quot; title=&quot;(в repoze.what v1.0)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;repoze.what&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; и &lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;repoze.what.plugins.quickstart&lt;/span&gt;&lt;/code&gt;. (При этом аутентификация на
-&lt;a class=&quot;reference external&quot; href=&quot;https://repozewho.readthedocs.io/en/latest/index.html#module-repoze.who&quot; title=&quot;(в repoze.who v2.2)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;repoze.who&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; устанавливается автоматически.)&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;https://repoze.readthedocs.io/projects/repozewho/en/latest/index.html#module-repoze.who&quot; title=&quot;(в repoze.who v2.2)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;repoze.who&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; устанавливается автоматически.)&lt;/p&gt;
 &lt;p&gt;Шаблон включает в себя:&lt;/p&gt;
 &lt;ul class=&quot;simple&quot;&gt;
 &lt;li&gt;Модели &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;User&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Group&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Permission&lt;/span&gt;&lt;/code&gt; для &lt;a class=&quot;reference external&quot; href=&quot;http://sqlalchemy.org/&quot;&gt;SQLALchemy&lt;/a&gt;&lt;/li&gt;
@@ -128,11 +128,11 @@ Pylons apps&lt;/a&gt; с моими
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../../_images/header_login_logout.png&quot; src=&quot;../../../_images/header_login_logout.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/header_login_logout.png&quot; src=&quot;_static/2011/header_login_logout.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;отображение залогированного пользователя&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../../_images/login_form.png&quot; src=&quot;../../../_images/login_form.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/login_form.png&quot; src=&quot;_static/2011/login_form.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;форма авторизации&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;

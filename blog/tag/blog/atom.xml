@@ -24,7 +24,7 @@
 &lt;li&gt;загрузка изображений&lt;/li&gt;
 &lt;li&gt;мобайл фон реди&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img alt=&quot;../../../_images/blog1.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/blog1.png&quot; style=&quot;width: 300px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/blog1.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/blog1.png&quot; style=&quot;width: 300px;&quot; /&gt;
 &lt;p&gt;Туду:&lt;/p&gt;
 &lt;ul class=&quot;simple&quot;&gt;
 &lt;li&gt;коменты&lt;/li&gt;
@@ -32,7 +32,7 @@
 &lt;li&gt;удаление изображений (файл менеджер)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;пул реквест реди&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/blog2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/blog2.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/blog2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/blog2.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>

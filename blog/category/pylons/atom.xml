@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;jinja-pylons&quot;&gt;
 
-&lt;p&gt;Все точно также как и с &lt;a class=&quot;reference external&quot; href=&quot;http://docs.makotemplates.org/en/latest/&quot;&gt;mako&lt;/a&gt;, &amp;#8220;Но есть нюансы&amp;#8221;©&lt;/p&gt;
+&lt;p&gt;Все точно также как и с &lt;a class=&quot;reference external&quot; href=&quot;http://www.makotemplates.org/&quot;&gt;mako&lt;/a&gt;, &amp;#8220;Но есть нюансы&amp;#8221;©&lt;/p&gt;
 &lt;p&gt;Добавьте в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;setup.py&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;package_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myproject&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;i18n/*/LC_MESSAGES/*.mo&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;message_extractors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myproject&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
@@ -176,17 +176,17 @@
 &lt;p&gt;После старта проекта Вы увидите окно с картой и меню &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;about&amp;quot;&lt;/span&gt;&lt;/code&gt;. Наши плагины
 автоматически подгрузились.&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../../_images/osm_yapsy.png&quot; src=&quot;../../../_images/osm_yapsy.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm_yapsy.png&quot; src=&quot;_static/2012/osm_yapsy.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;yapsy plugin example&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Теперь перейдем на вкладку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;plugin&amp;quot;&lt;/span&gt;&lt;/code&gt; и отключим &lt;a class=&quot;reference external&quot; href=&quot;http://www.openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../../_images/osm_yapsy2.png&quot; src=&quot;../../../_images/osm_yapsy2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm_yapsy2.png&quot; src=&quot;_static/2012/osm_yapsy2.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;yapsy plugin deactivate&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Заходим во вкладку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;home&amp;quot;&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id3&quot;&gt;
-&lt;img alt=&quot;../../../_images/osm_yapsy3.png&quot; src=&quot;../../../_images/osm_yapsy3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm_yapsy3.png&quot; src=&quot;_static/2012/osm_yapsy3.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;yapsy plugin deactivated&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;И &amp;#8220;О черт Дэвид Блэйн! Верни ее на место!!!&amp;#8221;.&lt;/p&gt;
@@ -433,7 +433,7 @@ MAC адреса.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../../_images/wtforms_validation.png&quot; src=&quot;../../../_images/wtforms_validation.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/wtforms_validation.png&quot; src=&quot;_static/2011/wtforms_validation.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;WTForm валидация&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -563,7 +563,7 @@ MAC адреса.&lt;/p&gt;
 &lt;p&gt;Последние две строки возвращают пользователя обратно на страницу
 редактирования. Выглядит это как-то так:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../../_images/wtform_eq.png&quot; src=&quot;../../../_images/wtform_eq.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/wtform_eq.png&quot; src=&quot;_static/2011/wtform_eq.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Пример &lt;a class=&quot;reference external&quot; href=&quot;http://wtforms.simplecodes.com/&quot;&gt;WTForm&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -626,7 +626,7 @@ Creating yourproj/yourproj/tests/functional/test_admin_trackbacks.py
 &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/formalchemy/ext/pylons.html&quot;&gt;formalchemy.ext.pylons&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Рассмотрим &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;. Вообще как обычно можно прочитать документацию, но я
 опишу еще как это все состыковать с шаблонами на &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;Jinja&lt;/a&gt; и поддержкой полей
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;MAC&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CIDR&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NET&lt;/span&gt;&lt;/code&gt; и т.д..&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;MAC&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CIDR&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NET&lt;/span&gt;&lt;/code&gt; и т.д..&lt;/p&gt;
 &lt;p&gt;Создаем контроллер &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;admin&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ paster controller admin
 &lt;/pre&gt;&lt;/div&gt;
@@ -736,7 +736,7 @@ Creating yourproj/yourproj/tests/functional/test_admin_trackbacks.py
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;http://localhost:5000/admin&lt;/span&gt;&lt;/code&gt; попадете в админку! Но только если вы не
 используете особенностей БД, например &lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sqlalchemy.databases.postgresql&lt;/span&gt;&lt;/code&gt;.
 Вторая проблема в том что шаблоны админки не встроены в ваши шаблоны.&lt;/p&gt;
-&lt;p&gt;Для поддержки &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; полей в &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; необходимо добавить:&lt;/p&gt;
+&lt;p&gt;Для поддержки &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; полей в &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; необходимо добавить:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id4&quot;&gt;
 &lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;lib/base.py&lt;/span&gt;&lt;/div&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;formalchemy.fields&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FieldRenderer&lt;/span&gt;
@@ -815,7 +815,7 @@ Creating yourproj/yourproj/tests/functional/test_admin_trackbacks.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;В целом &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; довольно мощная штука, но очень сильно привязана к
-&lt;a class=&quot;reference external&quot; href=&quot;http://docs.makotemplates.org/en/latest/&quot;&gt;mako&lt;/a&gt;, поэтому пользоваться ей не удобно и к сожалению придется искать что
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.makotemplates.org/&quot;&gt;mako&lt;/a&gt;, поэтому пользоваться ей не удобно и к сожалению придется искать что
 то другое.&lt;/p&gt;
 &lt;/div&gt;
 </content>
@@ -876,7 +876,7 @@ Pylons apps&lt;/a&gt; с моими
 &lt;h2&gt;pylons_repoze_what&lt;/h2&gt;
 &lt;p&gt;Шаблон &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pylons_repoze_what&lt;/span&gt;&lt;/code&gt; добавляет систему авторизации основанную на
 &lt;a class=&quot;reference external&quot; href=&quot;http://what.repoze.org/docs/1.0/index.html#module-repoze.what&quot; title=&quot;(в repoze.what v1.0)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;repoze.what&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; и &lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;repoze.what.plugins.quickstart&lt;/span&gt;&lt;/code&gt;. (При этом аутентификация на
-&lt;a class=&quot;reference external&quot; href=&quot;https://repozewho.readthedocs.io/en/latest/index.html#module-repoze.who&quot; title=&quot;(в repoze.who v2.2)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;repoze.who&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; устанавливается автоматически.)&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;https://repoze.readthedocs.io/projects/repozewho/en/latest/index.html#module-repoze.who&quot; title=&quot;(в repoze.who v2.2)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;repoze.who&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; устанавливается автоматически.)&lt;/p&gt;
 &lt;p&gt;Шаблон включает в себя:&lt;/p&gt;
 &lt;ul class=&quot;simple&quot;&gt;
 &lt;li&gt;Модели &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;User&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Group&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Permission&lt;/span&gt;&lt;/code&gt; для &lt;a class=&quot;reference external&quot; href=&quot;http://sqlalchemy.org/&quot;&gt;SQLALchemy&lt;/a&gt;&lt;/li&gt;
@@ -974,11 +974,11 @@ Pylons apps&lt;/a&gt; с моими
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../../_images/header_login_logout.png&quot; src=&quot;../../../_images/header_login_logout.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/header_login_logout.png&quot; src=&quot;_static/2011/header_login_logout.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;отображение залогированного пользователя&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../../_images/login_form.png&quot; src=&quot;../../../_images/login_form.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/login_form.png&quot; src=&quot;_static/2011/login_form.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;форма авторизации&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -997,8 +997,8 @@ Pylons apps&lt;/a&gt; с моими
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pylons-javascript-css-link&quot;&gt;
 
 &lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt;, в шаблоны есть возможность вставить &lt;a class=&quot;reference external&quot; href=&quot;http://www.w3.org/Style/CSS/&quot;&gt;CSS&lt;/a&gt; или JS при помощи
-&lt;a class=&quot;reference external&quot; href=&quot;https://webhelpers.readthedocs.io/en/latest/modules/pylonslib/minify.html#webhelpers.pylonslib.minify.stylesheet_link&quot; title=&quot;(в WebHelpers v1.3)&quot;&gt;&lt;code class=&quot;xref py py-func docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;stylesheet_link()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; и
-&lt;a class=&quot;reference external&quot; href=&quot;https://webhelpers.readthedocs.io/en/latest/modules/pylonslib/minify.html#webhelpers.pylonslib.minify.javascript_link&quot; title=&quot;(в WebHelpers v1.3)&quot;&gt;&lt;code class=&quot;xref py py-func docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;javascript_link()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;. Но существует расширение
+&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/webhelpers/en/latest/modules/pylonslib/minify.html#webhelpers.pylonslib.minify.stylesheet_link&quot; title=&quot;(в WebHelpers v1.3)&quot;&gt;&lt;code class=&quot;xref py py-func docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;stylesheet_link()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; и
+&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/webhelpers/en/latest/modules/pylonslib/minify.html#webhelpers.pylonslib.minify.javascript_link&quot; title=&quot;(в WebHelpers v1.3)&quot;&gt;&lt;code class=&quot;xref py py-func docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;javascript_link()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;. Но существует расширение
 &lt;a class=&quot;reference external&quot; href=&quot;http://minification-webhelpers.readthedocs.org/en/latest/&quot;&gt;MinificationWebHelpers&lt;/a&gt; которое позволяет также удобно добавлять javascript
 файлы.&lt;/p&gt;
 &lt;p&gt;Установка:&lt;/p&gt;

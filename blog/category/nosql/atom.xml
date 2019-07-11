@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;couchdb&quot;&gt;
 &lt;span id=&quot;wtforms&quot;&gt;&lt;/span&gt;
-&lt;img alt=&quot;../../../_images/couchdb.jpg&quot; class=&quot;align-left&quot; src=&quot;../../../_images/couchdb.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2011/couchdb.jpg&quot; class=&quot;align-left&quot; src=&quot;_static/2011/couchdb.jpg&quot; /&gt;
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://couchdb.apache.org/&quot;&gt;CouchDB&lt;/a&gt; - документо-ориентированная СУБД, в которой удобно хранить разную
 информацию с изменяющимся количеством параметров. Например сущность товары
 могут иметь бесконечное количество параметров. Создавать в РСУБД миллионы
@@ -62,7 +62,7 @@ $ sudo make &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make
 запуска &lt;a class=&quot;reference external&quot; href=&quot;http://couchdb.apache.org/&quot;&gt;CouchDB&lt;/a&gt; появится доступ к &lt;a class=&quot;reference external&quot; href=&quot;https://couchdb.readthedocs.org/en/1.4.x/intro.html&quot;&gt;Futon&lt;/a&gt; по &lt;a class=&quot;reference external&quot; href=&quot;http://127.0.0.1:5984/&quot;&gt;http://127.0.0.1:5984/&lt;/a&gt;. Для того что
 бы увидеть инструменты Futon нужно перейти на &lt;a class=&quot;reference external&quot; href=&quot;http://127.0.0.1:5984/_utils/&quot;&gt;http://127.0.0.1:5984/_utils/&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id7&quot;&gt;
-&lt;img alt=&quot;../../../_images/couchdb1.png&quot; src=&quot;../../../_images/couchdb1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/couchdb1.png&quot; src=&quot;_static/2011/couchdb1.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Couchdb Futon&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Все манипуляции с базой происходят через http при помощи &lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/REST&quot;&gt;REST&lt;/a&gt; интерфейса.
@@ -80,7 +80,7 @@ python. &lt;a class=&quot;reference external&quot; href=&quot;https://couchdb.re
 &lt;p&gt;Вначале создадим базу (тоже кстати документ), нажимаем &amp;#8220;Create Database...&amp;#8221; и
 вводим название, дальше нажимаем &amp;#8220;New document&amp;#8221; и заводим значения:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id8&quot;&gt;
-&lt;img alt=&quot;../../../_images/couchdb2.png&quot; src=&quot;../../../_images/couchdb2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/couchdb2.png&quot; src=&quot;_static/2011/couchdb2.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;CouchDB создание документа&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Для сохранения нажимаем &amp;#8220;Save document&amp;#8221;. Как видно можно вводить русские
@@ -152,11 +152,11 @@ python. &lt;a class=&quot;reference external&quot; href=&quot;https://couchdb.re
 &lt;/div&gt;
 &lt;p&gt;Функции создаются в правом верхнем углу в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Temporary&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;View&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot;&gt;
-&lt;img alt=&quot;../../../_images/couchdb3.png&quot; src=&quot;../../../_images/couchdb3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/couchdb3.png&quot; src=&quot;_static/2011/couchdb3.png&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt;Сохраним view по нажатию &amp;#8220;Save As...&amp;#8221;&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot;&gt;
-&lt;img alt=&quot;../../../_images/couchdb4.png&quot; src=&quot;../../../_images/couchdb4.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/couchdb4.png&quot; src=&quot;_static/2011/couchdb4.png&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt;Вызовем из консоли:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl -X GET http://127.0.0.1:5984/test/_design/product/_view/bike

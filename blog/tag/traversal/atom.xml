@@ -221,7 +221,7 @@
 определять необходимый доступ по ключам (метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__getitem__&lt;/span&gt;&lt;/code&gt; помогает
 организовать такой доступ). В коде также присутствует корневая фабрика, с
 которой собственно и начинается обход узлов (node) дерева ресурсов.
-Вид-для-вызова (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-view-callable&quot; title=&quot;(в The Pyramid Web Framework v1.9.1)&quot;&gt;&lt;span class=&quot;xref std std-term&quot;&gt;view callable&lt;/span&gt;&lt;/a&gt;) представлен функцией
+Вид-для-вызова (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-view-callable&quot; title=&quot;(в The Pyramid Web Framework v2.0)&quot;&gt;&lt;span class=&quot;xref std std-term&quot;&gt;view callable&lt;/span&gt;&lt;/a&gt;) представлен функцией
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello_world_of_resources&lt;/span&gt;&lt;/code&gt;. Говоря несколько упрощённо, на основе URL запроса
 в результате обхода иерархии Pyramid находит ресурс и применяет к нему
 «наилучший» вид-для-вызова (в нашем примере — он единственный).&lt;/p&gt;

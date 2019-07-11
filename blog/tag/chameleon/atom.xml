@@ -34,7 +34,7 @@
 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;render_form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;img alt=&quot;../../../_images/chameleon_deform.png&quot; src=&quot;../../../_images/chameleon_deform.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/chameleon_deform.png&quot; src=&quot;_static/2014/chameleon_deform.png&quot; /&gt;
 &lt;p&gt;К полям можно добавлять описание, но если вставить html то он
 заэскапируется
 (&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Pylons/deform/blob/bb4fc86913884deafa9350de86d87fb5232263fa/deform/templates/form.pt#L42&quot;&gt;https://github.com/Pylons/deform/blob/bb4fc86913884deafa9350de86d87fb5232263fa/deform/templates/form.pt#L42&lt;/a&gt;).

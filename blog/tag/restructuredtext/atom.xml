@@ -65,11 +65,11 @@ nmap &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;F8&lt;span class=&quot
 &lt;p&gt;После этого по нажатию &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;F8&lt;/span&gt;&lt;/code&gt; будет открываться &amp;#8220;содержание&amp;#8221; вашего
 документа, как показано на рисунках ниже.&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id9&quot;&gt;
-&lt;img alt=&quot;../../../_images/rst2ctags.png&quot; src=&quot;../../../_images/rst2ctags.png&quot; /&gt;
+&lt;img alt=&quot;_static/2015/rst2ctags.png&quot; src=&quot;_static/2015/rst2ctags.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Пример &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/jszakmeister/rst2ctags&quot;&gt;jszakmeister/rst2ctags&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id10&quot;&gt;
-&lt;img alt=&quot;../../../_images/rst2ctags2.png&quot; src=&quot;../../../_images/rst2ctags2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2015/rst2ctags2.png&quot; src=&quot;_static/2015/rst2ctags2.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Пример &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/jszakmeister/rst2ctags&quot;&gt;jszakmeister/rst2ctags&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt; с более простой структурой
 разделов&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
@@ -150,7 +150,7 @@ RivShiftLeft            RivTitle1               RivVimTest
 &lt;li&gt;Python&lt;/li&gt;
 &lt;li&gt;reStructuredText&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Например я допустил ошибку в коде на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Например я допустил ошибку в коде на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-rst&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;gh&quot;&gt;====&lt;/span&gt;
 &lt;span class=&quot;gh&quot;&gt;Test&lt;/span&gt;
 &lt;span class=&quot;gh&quot;&gt;====&lt;/span&gt;
@@ -219,7 +219,7 @@ bad_rst.rst:1: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SEVERE/4&lt;span cl
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
 &lt;h3&gt;Модуль для Python&lt;/h3&gt;
-&lt;p&gt;Т.к. &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/rstcheck&quot;&gt;rstcheck&lt;/a&gt; это &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt; модуль, его можно использовать в своих
+&lt;p&gt;Т.к. &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/rstcheck&quot;&gt;rstcheck&lt;/a&gt; это &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt; модуль, его можно использовать в своих
 скриптах:&lt;/p&gt;
 &lt;div class=&quot;highlight-ipython&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&amp;gt;&amp;gt;&amp;gt; import rstcheck
 &amp;gt;&amp;gt;&amp;gt; list(rstcheck.check(&amp;#39;Example\n===&amp;#39;))
@@ -233,7 +233,7 @@ bad_rst.rst:1: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SEVERE/4&lt;span cl
 &lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;g&lt;/span&gt;:syntastic_rst_checkers &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; [&lt;span class=&quot;s1&quot;&gt;&amp;#39;rstcheck&amp;#39;&lt;/span&gt;]
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;img alt=&quot;../../../_images/rstcheck_vim.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/rstcheck_vim.png&quot; /&gt;
+&lt;img alt=&quot;_static/2015/rstcheck_vim.png&quot; class=&quot;align-center&quot; src=&quot;_static/2015/rstcheck_vim.png&quot; /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;id6&quot;&gt;
@@ -255,7 +255,7 @@ bad_rst.rst:1: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;SEVERE/4&lt;span cl
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;restructuredtext&quot;&gt;
 &lt;span id=&quot;ablog&quot;&gt;&lt;/span&gt;
-&lt;img alt=&quot;../../../_images/uralbash.ru.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/uralbash.ru.png&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2015/uralbash.ru.png&quot; class=&quot;align-left&quot; src=&quot;_static/2015/uralbash.ru.png&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Перевел тут блог с &lt;a class=&quot;reference external&quot; href=&quot;https://www.blogger.com/&quot;&gt;https://www.blogger.com/&lt;/a&gt; на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/abakan/ablog&quot;&gt;abakan/ablog&lt;/a&gt;. Блоггер
 это конечно хорошо, но у него крайне ограниченный WYSIWYG, тем более только из
 браузера. &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/abakan/ablog&quot;&gt;Ablog&lt;/a&gt; по сути это &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sphinx&quot;&gt;sphinx&lt;/a&gt; движок заточенный на блог со
@@ -1013,7 +1013,7 @@ DISQUS ставится просто:
 &lt;span class=&quot;cp&quot;&gt;{%&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;block&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;footer&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;%}&lt;/span&gt;
   &lt;span class=&quot;cp&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;}}&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://github.com/abakan/ablog&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme-link&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;https://github.com/sunpy/ablog&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;footer__theme-link&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
         Ablog powered.
       &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
@@ -1172,7 +1172,7 @@ DISQUS ставится просто:
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
 
-&lt;p&gt;Документация в &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt; проектах пишется при помощи &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sphinx&quot;&gt;sphinx&lt;/a&gt;, он умеет
+&lt;p&gt;Документация в &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt; проектах пишется при помощи &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sphinx&quot;&gt;sphinx&lt;/a&gt;, он умеет
 используя расширение &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;automodule&lt;/span&gt;&lt;/code&gt; читать докстринги и формировать
 документацию из кода.&lt;/p&gt;
 &lt;p&gt;Создать проект можно ответив на вопросы через &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sphinx-quickstart&lt;/span&gt;&lt;/code&gt; или
@@ -1190,7 +1190,7 @@ Creating file docs/make.bat.
 &lt;/div&gt;
 &lt;p&gt;Автогенератор API обычно создает много лишнего и далеко не идеально генерит
 названия, поэтому удалим API тестов и попереимеуем все остальное.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sphinx.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sphinx.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sphinx.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/sphinx.png&quot; /&gt;
 &lt;p&gt;Для сборки доков  нужно в папке docs выполнить make html. Ниже структура
 получившихся файлов:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;.
@@ -1308,7 +1308,7 @@ from pypi
 &lt;span class=&quot;pre&quot;&gt;code-block&lt;/span&gt;&lt;/code&gt; не указать язык или не дописывать &amp;#8220;=&amp;#8221; в заголовках то документация
 будет нормально генериться, но &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/&quot;&gt;PyPi&lt;/a&gt; её не поймет и выведет что-то типа
 этого:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sphinx2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sphinx2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sphinx2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/sphinx2.png&quot; /&gt;
 &lt;p&gt;Нужно быть внимательным и проверять как &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/&quot;&gt;PyPi&lt;/a&gt; подхватил &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;README.rst&lt;/span&gt;&lt;/code&gt;.
 Дальше в наш &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;index.rst&lt;/span&gt;&lt;/code&gt; добавим &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;readme.rst&lt;/span&gt;&lt;/code&gt; что бы он был по презентабельнее.&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id2&quot;&gt;
@@ -1336,7 +1336,7 @@ Contents:
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Теперь главная страница документации выглядит так:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sphinx3.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sphinx3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sphinx3.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/sphinx3.png&quot; /&gt;
 &lt;p&gt;В принципе уже хорошо, добавим это описание ещё для &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/&quot;&gt;PyPi&lt;/a&gt;.
 Они по умолчанию берут файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;README.rst&lt;/span&gt;&lt;/code&gt; из корня проекта и ничего про папку
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;docs&lt;/span&gt;&lt;/code&gt; не знают. Можно было бы заинклудить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;readme.rst&lt;/span&gt;&lt;/code&gt; в корневой
@@ -1386,7 +1386,7 @@ readme_html: html readme
 копипаститься &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;readme&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Конфиг для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sphinx&lt;/span&gt;&lt;/code&gt; лежит в папке документации с названием &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;conf.py&lt;/span&gt;&lt;/code&gt;. В нем
 можно настраивать документацию как угодно, к примеру оформим тему как у проекта
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;.&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Добавим в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;conf.py&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id4&quot;&gt;
 &lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;conf.py&lt;/span&gt;&lt;/div&gt;
@@ -1425,7 +1425,7 @@ readme_html: html readme
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Этот код я скопировал из проекта &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;, он просто выкачивает их тему с
+&lt;p&gt;Этот код я скопировал из проекта &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;, он просто выкачивает их тему с
 &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt; в директорию &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;_themes&lt;/span&gt;&lt;/code&gt;. Далее укажем в конфиге название темы и где их искать.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# -- Options for HTML output ----------------------------------------------&lt;/span&gt;
 
@@ -1441,7 +1441,7 @@ readme_html: html readme
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;После сборки проект будет выглядеть так:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sphinx4.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sphinx4.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sphinx4.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/sphinx4.png&quot; /&gt;
 &lt;p&gt;Вообщем конфиг умеет много чего, есть еще много разных расширений, можно писать
 свои, либо переопределять/добавлять директивы итд. Вот например как вставлять
 ссылки на сторонние проекты:&lt;/p&gt;
@@ -1467,7 +1467,7 @@ readme_html: html readme
 единственное что нужно отметить что если в документации используется automodule
 нужно ставить галку virtualenv (в настройках readthedocs) иначе он просто будет
 пустым.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sphinx5.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sphinx5.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sphinx5.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/sphinx5.png&quot; /&gt;
 &lt;p&gt;Готовый пример можно посмотреть здесь
 &lt;a class=&quot;reference external&quot; href=&quot;http://sacrud-deform.readthedocs.org/en/develop/&quot;&gt;http://sacrud-deform.readthedocs.org/en/develop/&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;

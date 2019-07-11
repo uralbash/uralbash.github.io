@@ -273,7 +273,7 @@
 <h1>Перенос БД с sqlite на postgres<a class="headerlink" href="#sqlite-postgres" title="Ссылка на этот заголовок">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">ORM</span></code> позволяет быстро переключатся между БД не учитывая их диалект
 (практически).  Но данные хранятся физически в разных местах и естественно их
-надо переносить, например при переключении с <a class="reference external" href="http://sqlite.org/">sqlite</a> на <a class="reference external" href="http://www.postgresql.org/">PostgreSQL</a>. В
+надо переносить, например при переключении с <a class="reference external" href="http://sqlite.org/">sqlite</a> на <a class="reference external" href="http://postgresql.org">PostgreSQL</a>. В
 <a class="reference external" href="https://www.djangoproject.com/">Django</a> есть встроенный функционал в виде:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># Выгрузка в JSON</span>
 $ python manage.py dumpdata myapp.A &gt; a.json
@@ -283,7 +283,7 @@ $ python manage.py loaddata a.json
 </pre></div>
 </div>
 <p>Т.е. мы выгружаем данные из <a class="reference external" href="http://sqlite.org/">sqlite</a> в <code class="docutils literal"><span class="pre">JSON</span></code> формат, затем меняем строку
-подключения на <a class="reference external" href="http://www.postgresql.org/">postgres</a> и выполняем загрузку из <code class="docutils literal"><span class="pre">JSON</span></code>. Очень удобно, но
+подключения на <a class="reference external" href="http://postgresql.org">postgres</a> и выполняем загрузку из <code class="docutils literal"><span class="pre">JSON</span></code>. Очень удобно, но
 почему то этот метод не работает, либо работает только при переносе из <code class="docutils literal"><span class="pre">sqlite</span>
 <span class="pre">-&gt;</span> <span class="pre">sqlite</span></code>, что в принципе не очень интересно, точнее бессмысленно. Есть какие
 то решений с бубном как это вот:</p>
@@ -332,7 +332,7 @@ $ python manage.py loaddata a.json
 </div>
 <p>Дальше получаем все таблицы:</p>
 <p><code class="docutils literal"><span class="pre">tables</span> <span class="pre">=</span> <span class="pre">Base.classes</span></code></p>
-<p>Создаем такую же структуру БД в <a class="reference external" href="http://www.postgresql.org/">postgres</a>:</p>
+<p>Создаем такую же структуру БД в <a class="reference external" href="http://postgresql.org">postgres</a>:</p>
 <p><code class="docutils literal"><span class="pre">metadata.create_all(self.engine_dst)</span></code></p>
 <p>По очереди проходим каждую таблицу и переносим из нее данные в новую БД:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
@@ -348,7 +348,7 @@ $ python manage.py loaddata a.json
 </pre></div>
 </div>
 <p>Если возникли конфликты можно их решить переопределением типов полей. Например
-при переносе из <a class="reference external" href="http://sqlite.org/">sqlite</a> в <a class="reference external" href="http://www.postgresql.org/">postgres</a> тип полей <code class="docutils literal"><span class="pre">DATETIME</span></code> нужно
+при переносе из <a class="reference external" href="http://sqlite.org/">sqlite</a> в <a class="reference external" href="http://postgresql.org">postgres</a> тип полей <code class="docutils literal"><span class="pre">DATETIME</span></code> нужно
 заменить на <code class="docutils literal"><span class="pre">DateTime</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dialect</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">dialect</span><span class="o">.</span><span class="n">name</span>
 <span class="n">dialect_dst</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine_dst</span><span class="o">.</span><span class="n">dialect</span><span class="o">.</span><span class="n">name</span>
@@ -441,7 +441,7 @@ $ python manage.py loaddata a.json
                         
     <div class="footer__copyright">
             
-                &copy; Copyright 2015, uralbash.
+                &copy; Copyright 2022, uralbash.
             
     </div>
 <div class="footer__theme">
@@ -454,7 +454,7 @@ $ python manage.py loaddata a.json
 </div>
                       
   <div class="footer__theme">
-      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+      <a href="https://github.com/sunpy/ablog" class="footer__theme-link">
         Ablog powered.
       </a>
   </div>

@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/penguin.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/penguin.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2014/penguin.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2014/penguin.jpg&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -34,7 +34,7 @@
 
 &lt;p&gt;Отличное приложение для создания лабиринтов. Написано на Python и доставляет
 много фана.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/maze.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/maze.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2012/maze.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/maze.jpg&quot; /&gt;
 &lt;p&gt;Вот ссылка на код &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/daleobrien/maze&quot;&gt;https://github.com/daleobrien/maze&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </content>

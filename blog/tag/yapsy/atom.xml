@@ -79,17 +79,17 @@
 &lt;p&gt;После старта проекта Вы увидите окно с картой и меню &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;about&amp;quot;&lt;/span&gt;&lt;/code&gt;. Наши плагины
 автоматически подгрузились.&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../../_images/osm_yapsy.png&quot; src=&quot;../../../_images/osm_yapsy.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm_yapsy.png&quot; src=&quot;_static/2012/osm_yapsy.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;yapsy plugin example&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Теперь перейдем на вкладку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;plugin&amp;quot;&lt;/span&gt;&lt;/code&gt; и отключим &lt;a class=&quot;reference external&quot; href=&quot;http://www.openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../../_images/osm_yapsy2.png&quot; src=&quot;../../../_images/osm_yapsy2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm_yapsy2.png&quot; src=&quot;_static/2012/osm_yapsy2.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;yapsy plugin deactivate&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Заходим во вкладку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;home&amp;quot;&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id3&quot;&gt;
-&lt;img alt=&quot;../../../_images/osm_yapsy3.png&quot; src=&quot;../../../_images/osm_yapsy3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm_yapsy3.png&quot; src=&quot;_static/2012/osm_yapsy3.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;yapsy plugin deactivated&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;И &amp;#8220;О черт Дэвид Блэйн! Верни ее на место!!!&amp;#8221;.&lt;/p&gt;

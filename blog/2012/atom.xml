@@ -19,9 +19,9 @@
 
 &lt;p&gt;В последнее время мне кажется что я пользователь &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Интернета&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Северной&lt;/span&gt;
 &lt;span class=&quot;pre&quot;&gt;Корее&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/sran1.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/sran1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/sran1.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/sran1.png&quot; /&gt;
 &lt;p&gt;UPD:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/sran2.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/sran2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/sran2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/sran2.png&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -41,7 +41,7 @@
 понимаю что можно прочитать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vimtutor&lt;/span&gt;&lt;/code&gt;, но когда это все в картинках и со
 стрелками то въезжаешь намного быстрее. В общем заказал, для меня очередной
 хэндбук.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-827256/?partner=490327&quot;&gt;&lt;img alt=&quot;../../_images/vi_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/vi_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-827256/?partner=490327&quot;&gt;&lt;img alt=&quot;_static/2012/vi_book.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/vi_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -81,7 +81,7 @@ Content-Type text/html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span cl
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Для &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; можно обойтись без &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;WSGI&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Для &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; можно обойтись без &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;WSGI&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
 &lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;view.py&lt;/span&gt;&lt;/div&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.events&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subscriber&lt;/span&gt;
@@ -127,7 +127,7 @@ Content-Type text/html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span cl
 &lt;/ul&gt;
 &lt;p&gt;все...&lt;/p&gt;
 &lt;p&gt;Пример сайта &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/platonaps.ru&quot;&gt;https://github.com/uralbash/platonaps.ru&lt;/a&gt;:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/platon.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/platon.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/platon.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/platon.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;Подробнее на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/pyramid_promosite&quot;&gt;https://github.com/uralbash/pyramid_promosite&lt;/a&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;Документация в планах, если что то непонятно то отвечу здесь либо в github&amp;#8217;е&lt;/div&gt;
@@ -151,7 +151,7 @@ Content-Type text/html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span cl
 &lt;div class=&quot;line&quot;&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Надо&lt;/span&gt;&lt;/code&gt;: получить Интернет на другом компе (компах) через этот ноут&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;В ноутбук вставляем еще одну сетевую карту, например такую:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/USB+RJ45.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/USB+RJ45.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2012/USB+RJ45.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/USB+RJ45.jpg&quot; /&gt;
 &lt;p&gt;В итоге у нас в ноуте &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;eth0&lt;/span&gt;&lt;/code&gt; это Интернет, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;eth1&lt;/span&gt;&lt;/code&gt; это локалка. Для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;eth1&lt;/span&gt;&lt;/code&gt;
 делаем например такие настройки ip &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;10.0.0.100&lt;/span&gt;&lt;/code&gt; mask 24. Я делал через
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;networkmanager&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
@@ -212,10 +212,10 @@ rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span cla
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;postgresql&quot;&gt;
 
-&lt;p&gt;Шыкарная книга по &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt;. Много умных и полезных мыслей в одном месте.
+&lt;p&gt;Шыкарная книга по &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt;. Много умных и полезных мыслей в одном месте.
 Хорошо написано про репликацию и настройку производительности. Книга на
 гитхабе в свободном доступе! Автору лучи добра и счастья, пиши исчо!&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://postgresql.leopard.in.ua/&quot;&gt;&lt;img alt=&quot;../../_images/pg_book.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/pg_book.png&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://postgresql.leopard.in.ua/&quot;&gt;&lt;img alt=&quot;_static/2012/pg_book.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/pg_book.png&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -231,7 +231,7 @@ rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span cla
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
 
 &lt;p&gt;Т.к. я читаю много техлитературы, то периодически буду писать мысли о ней.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/idealnaya-arkhitektura-vedushchie-spetsialisty-o-krasote-programmnykh-arkhitektur-761783/?partner=490327&quot;&gt;&lt;img alt=&quot;../../_images/ideal_arch.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ideal_arch.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/idealnaya-arkhitektura-vedushchie-spetsialisty-o-krasote-programmnykh-arkhitektur-761783/?partner=490327&quot;&gt;&lt;img alt=&quot;_static/2012/ideal_arch.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/ideal_arch.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
 &lt;p&gt;Книга поделена на 5 больших частей: про Архитектуру в целом, архитектуру в
 продакшине, на железе, приложений пользователя и ЯП. Сразу скажу что букв много
 аж 500 в страницах, много воды и откровенно запихнутого текста для объема. А из
@@ -263,15 +263,15 @@ rtt min/avg/max/mdev &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span cla
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;com-officeconnect-dual-speed-hub-8&quot;&gt;
 
-&lt;img alt=&quot;../../_images/3com1.jpg&quot; class=&quot;align-left&quot; src=&quot;../../_images/3com1.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/3com1.jpg&quot; class=&quot;align-left&quot; src=&quot;_static/2012/3com1.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
 &lt;p&gt;Если у вас засвистела электроника то 99% это схема питания, будь это нетбук
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;x100e&lt;/span&gt;&lt;/code&gt; или БП или коммутатор.&lt;/p&gt;
 &lt;br clear=&quot;both&quot;/&gt;&lt;p&gt;Для начала разберем:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/3com2.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/3com2.png&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/3com2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/3com2.png&quot; style=&quot;width: 400px;&quot; /&gt;
 &lt;p&gt;Стрелками указанны цилиндры которые надо выпаять:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/3com3.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/3com3.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/3com3.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/3com3.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
 &lt;p&gt;На фото видно что с ним стало, покупаем новые и впаеваем на место:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/3com4.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/3com4.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/3com4.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/3com4.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
 &lt;p&gt;Все, собираем, подключаем и радуемся тишине. Я конечно не электронщик, но
 объясните пожалуйста нахрена дросселя нужны в схеме которая питается от БП
 DC12В ???&lt;/p&gt;
@@ -290,7 +290,7 @@ DC12В ???&lt;/p&gt;
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;x220-tablet-linux&quot;&gt;
 
-&lt;img alt=&quot;../../_images/x220t.jpg&quot; class=&quot;align-left&quot; src=&quot;../../_images/x220t.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2012/x220t.jpg&quot; class=&quot;align-left&quot; src=&quot;_static/2012/x220t.jpg&quot; /&gt;
 &lt;p&gt;В принципе мой &lt;a class=&quot;reference external&quot; href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; Wheezy определил почти все системные клавиши кроме 2х
 справа на картинке (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctr+Alt+Del&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;поворот&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;экрана&lt;/span&gt;&lt;/code&gt;), микрофон и zoom по
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Fn+пробел&lt;/span&gt;&lt;/code&gt;. &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctr+Alt+Del&lt;/span&gt;&lt;/code&gt; не нужен, микрофон и зум это повод написать
@@ -390,8 +390,8 @@ fortune &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; cowsay -f &lt;span class=
 &lt;/div&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;fortune&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;cowsay&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;$cowperson&lt;/span&gt;&lt;/code&gt; рисует случайного персонажа с цитатой переданной из фортуне&lt;/p&gt;
 &lt;p&gt;Иногда случаются довольно забавные сочетания :)&lt;/p&gt;
-&lt;img alt=&quot;../../_images/fortune1.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/fortune1.png&quot; /&gt;
-&lt;img alt=&quot;../../_images/fortune2.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/fortune2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/fortune1.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/fortune1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/fortune2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/fortune2.png&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -407,7 +407,7 @@ fortune &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; cowsay -f &lt;span class=
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;lisp&quot;&gt;
 
 &lt;p&gt;Внезапно, вышла книга НА РУССКОМ по кошерному, более чем, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Лиспу&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/ansi-common-lisp-827258/?partner=490327&quot;&gt;&lt;img alt=&quot;../../_images/lisp_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/lisp_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/ansi-common-lisp-827258/?partner=490327&quot;&gt;&lt;img alt=&quot;_static/2012/lisp_book.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/lisp_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
 &lt;p&gt;Хорошая новость для любителей &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;шыфт90&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </content>
@@ -425,7 +425,7 @@ fortune &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; cowsay -f &lt;span class=
 
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/dybskiy/redactor-js&quot;&gt;Redactor-js&lt;/a&gt; - это простой вайсвиг с
 возможностью загрузки изображений.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/redactor-js.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/redactor-js.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/redactor-js.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/redactor-js.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;demo: &lt;a class=&quot;reference external&quot; href=&quot;http://imperavi.com/redactor/&quot;&gt;http://imperavi.com/redactor/&lt;/a&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;github: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/dybskiy/redactor-js&quot;&gt;https://github.com/dybskiy/redactor-js&lt;/a&gt;&lt;/div&gt;
@@ -433,7 +433,7 @@ fortune &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; cowsay -f &lt;span class=
 &lt;p&gt;Как сочленить это с &lt;a class=&quot;reference external&quot; href=&quot;http://php.net/&quot;&gt;php&lt;/a&gt; можно прочитать из документации
 &lt;a class=&quot;reference external&quot; href=&quot;http://imperavi.com/redactor/docs/images/&quot;&gt;http://imperavi.com/redactor/docs/images/&lt;/a&gt;. Там же есть ссылка на &lt;a class=&quot;reference external&quot; href=&quot;http://paltman.com/2012/08/15/how-to-setup-upload-handler-for-redactor/&quot;&gt;пример с
 Django от Patrick Altman&lt;/a&gt;. Я
-же постараюсь описать как загружать картинки при помощи &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; фреймворка,
+же постараюсь описать как загружать картинки при помощи &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; фреймворка,
 думаю переписать на что то другое не составит труда.&lt;/p&gt;
 &lt;p&gt;js функция redactor&amp;#8217;а у меня выглядит вот так:&lt;/p&gt;
 &lt;div class=&quot;highlight-html&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Redactor is here --&amp;gt;&lt;/span&gt;
@@ -517,7 +517,7 @@ Django от Patrick Altman&lt;/a&gt;. Я
 
 &lt;p&gt;Отличное приложение для создания лабиринтов. Написано на Python и доставляет
 много фана.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/maze.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/maze.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2012/maze.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/maze.jpg&quot; /&gt;
 &lt;p&gt;Вот ссылка на код &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/daleobrien/maze&quot;&gt;https://github.com/daleobrien/maze&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </content>
@@ -612,7 +612,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;jinja-pylons&quot;&gt;
 
-&lt;p&gt;Все точно также как и с &lt;a class=&quot;reference external&quot; href=&quot;http://docs.makotemplates.org/en/latest/&quot;&gt;mako&lt;/a&gt;, &amp;#8220;Но есть нюансы&amp;#8221;©&lt;/p&gt;
+&lt;p&gt;Все точно также как и с &lt;a class=&quot;reference external&quot; href=&quot;http://www.makotemplates.org/&quot;&gt;mako&lt;/a&gt;, &amp;#8220;Но есть нюансы&amp;#8221;©&lt;/p&gt;
 &lt;p&gt;Добавьте в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;setup.py&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;package_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myproject&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;i18n/*/LC_MESSAGES/*.mo&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]},&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;message_extractors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;myproject&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
@@ -652,9 +652,9 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;cms-pyramid&quot;&gt;
 
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://www.nive.co/cms/root.html&quot;&gt;Poolyx CMS&lt;/a&gt; - малоизвестная система
-управления сайтом написанная на Python с применением &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; немецкими
+управления сайтом написанная на Python с применением &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; немецкими
 кодерами.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/poolyx.jpeg&quot; class=&quot;align-center&quot; src=&quot;../../_images/poolyx.jpeg&quot; /&gt;
+&lt;img alt=&quot;_static/2012/poolyx.jpeg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/poolyx.jpeg&quot; /&gt;
 &lt;p&gt;В будущем будет называться &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/nive&quot;&gt;nive&lt;/a&gt;. Советую попробовать, по крайне мере
 мне показалась намного удобнее &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/Kotti&quot;&gt;Kotti&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -671,7 +671,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;lisp&quot;&gt;
 
-&lt;img alt=&quot;../../_images/Sicp_cover.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/Sicp_cover.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/Sicp_cover.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/Sicp_cover.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;На просторах рунета есть добрые люди уважающие &lt;a class=&quot;reference external&quot; href=&quot;http://lurkmore.to/SICP&quot;&gt;SICP&lt;/a&gt; и переводящие лекции.&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;За что посылаю им лучи добра и благополучия.&lt;/div&gt;
@@ -722,7 +722,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;li&gt;загрузка изображений&lt;/li&gt;
 &lt;li&gt;мобайл фон реди&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img alt=&quot;../../_images/blog1.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/blog1.png&quot; style=&quot;width: 300px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/blog1.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/blog1.png&quot; style=&quot;width: 300px;&quot; /&gt;
 &lt;p&gt;Туду:&lt;/p&gt;
 &lt;ul class=&quot;simple&quot;&gt;
 &lt;li&gt;коменты&lt;/li&gt;
@@ -730,7 +730,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;li&gt;удаление изображений (файл менеджер)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;пул реквест реди&lt;/p&gt;
-&lt;img alt=&quot;../../_images/blog2.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/blog2.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/blog2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/blog2.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -786,12 +786,12 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Разработчики не стали менять архитектуру &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt; и создавать Pylons 2.0, а
-начали развивать новый проект &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; с похожей на &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; структурой
+начали развивать новый проект &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; с похожей на &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; структурой
 проекта. При этом &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt; не считается устаревшим, а просто имеет немного
 другой подход к разработке.&lt;/p&gt;
 &lt;p&gt;Стоит ли сейчас выбирать &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt;? Да, если вы его хорошо знаете и не
 планируете создавать слишком масштабное приложение, иначе лучше все таки
-выбрать &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;.&lt;/p&gt;
+выбрать &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Посмотрим как в нем организовать структуру проекта:&lt;/p&gt;
 &lt;p&gt;После создания проект выглядит так:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MyProject/
@@ -1159,7 +1159,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Заходим в &lt;a class=&quot;reference external&quot; href=&quot;http://0.0.0.0:6543/admin/&quot;&gt;http://0.0.0.0:6543/admin/&lt;/a&gt; и радуемся.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/pyramid_formalchemy.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/pyramid_formalchemy.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/pyramid_formalchemy.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/pyramid_formalchemy.png&quot; /&gt;
 &lt;p&gt;Online демо находится &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/demo/admin/&quot;&gt;здесь&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </content>
@@ -1180,25 +1180,25 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;h2&gt;Шаг 1: создание загрузочной флешки&lt;/h2&gt;
 &lt;p&gt;Скачайте iso образ с сайта и установите его например при помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;UNetbootin&lt;/span&gt;&lt;/code&gt;.
 У вас должно получиться что то типа того на флешке:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/proxmox1.png&quot; src=&quot;../../_images/proxmox1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/proxmox1.png&quot; src=&quot;_static/2012/proxmox1.png&quot; /&gt;
 &lt;p&gt;Дальше удалите все катологи с флешки кроме boot и перенесите на нее iso образ
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;proxmox&lt;/span&gt;&lt;/code&gt; (в корень).&lt;/p&gt;
-&lt;img alt=&quot;../../_images/proxmox2.png&quot; src=&quot;../../_images/proxmox2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/proxmox2.png&quot; src=&quot;_static/2012/proxmox2.png&quot; /&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
 &lt;h2&gt;Шаг 2: загрузка в отладочном режиме&lt;/h2&gt;
 &lt;p&gt;Загрузитесь в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;debug&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;mode&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/proxmox3.png&quot; src=&quot;../../_images/proxmox3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/proxmox3.png&quot; src=&quot;_static/2012/proxmox3.png&quot; /&gt;
 &lt;p&gt;Вы должны увидеть что наша флешка обнаружена и увидеть следующую надпись:&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;no&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;cdrom&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;found&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;–&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;unable&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;continue&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;(type&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Ctrl-D&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;reboot)&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;id3&quot;&gt;
 &lt;h2&gt;Шаг 3: монтирование флешки&lt;/h2&gt;
 &lt;p&gt;Смотрим как называется наша флешка &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;fdisk&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;-l&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/proxmox4.png&quot; src=&quot;../../_images/proxmox4.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/proxmox4.png&quot; src=&quot;_static/2012/proxmox4.png&quot; /&gt;
 &lt;p&gt;У меня она называется &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/dev/sdb1&lt;/span&gt;&lt;/code&gt;. Монтируем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;mount&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;/dev/sdb1&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;/mnt&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Пишем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;mount&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/proxmox5.png&quot; src=&quot;../../_images/proxmox5.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/proxmox5.png&quot; src=&quot;_static/2012/proxmox5.png&quot; /&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;iso&quot;&gt;
 &lt;h2&gt;Шаг 4: монтируем ISO файл и запускаем установщик&lt;/h2&gt;
@@ -1208,7 +1208,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Заходим в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;mnt&lt;/span&gt;&lt;/code&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;/mnt&lt;/span&gt;&lt;/code&gt; и запускаем установщик &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;chroot&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;/mnt&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;sbin/unconfigured.sh&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Появится окошко:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/proxmox6.png&quot; src=&quot;../../_images/proxmox6.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/proxmox6.png&quot; src=&quot;_static/2012/proxmox6.png&quot; /&gt;
 &lt;p&gt;Удачи!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1537,7 +1537,7 @@ automake, libtool). Имеется также поддержка tcl и python. 
 &lt;/div&gt;
 &lt;p&gt;Результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id3&quot;&gt;
-&lt;img alt=&quot;../../_images/rrdtool.png&quot; src=&quot;../../_images/rrdtool.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/rrdtool.png&quot; src=&quot;_static/2012/rrdtool.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;rrdtool пример графика&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Для обучения лучше выбрать меньший интервал чем 1 день, например 2 мин (step = 120).&lt;/p&gt;
@@ -1597,7 +1597,7 @@ automake, libtool). Имеется также поддержка tcl и python. 
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;qtile&quot;&gt;
 
-&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://qtile.org&quot;&gt;Qtile&lt;/a&gt; - это тайловый оконный менеджер написанный на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;. Последний
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://qtile.org&quot;&gt;Qtile&lt;/a&gt; - это тайловый оконный менеджер написанный на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;. Последний
 месяц активно коммитится на github&amp;#8217;е. Свежая инфа здесь
 &lt;a class=&quot;reference external&quot; href=&quot;http://qtile.readthedocs.org/en/latest/&quot;&gt;http://qtile.readthedocs.org/en/latest/&lt;/a&gt; (&lt;a class=&quot;reference external&quot; href=&quot;http://Qtile.org&quot;&gt;http://Qtile.org&lt;/a&gt; обновляется редко.)&lt;/p&gt;
 &lt;/div&gt;
@@ -1782,17 +1782,17 @@ Cleaning up...
 &lt;p&gt;После старта проекта Вы увидите окно с картой и меню &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;about&amp;quot;&lt;/span&gt;&lt;/code&gt;. Наши плагины
 автоматически подгрузились.&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../_images/osm_yapsy.png&quot; src=&quot;../../_images/osm_yapsy.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm_yapsy.png&quot; src=&quot;_static/2012/osm_yapsy.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;yapsy plugin example&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Теперь перейдем на вкладку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;plugin&amp;quot;&lt;/span&gt;&lt;/code&gt; и отключим &lt;a class=&quot;reference external&quot; href=&quot;http://www.openstreetmap.org&quot;&gt;OpenStreetMap&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../_images/osm_yapsy2.png&quot; src=&quot;../../_images/osm_yapsy2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm_yapsy2.png&quot; src=&quot;_static/2012/osm_yapsy2.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;yapsy plugin deactivate&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Заходим во вкладку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;quot;home&amp;quot;&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id3&quot;&gt;
-&lt;img alt=&quot;../../_images/osm_yapsy3.png&quot; src=&quot;../../_images/osm_yapsy3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm_yapsy3.png&quot; src=&quot;_static/2012/osm_yapsy3.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;yapsy plugin deactivated&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;И &amp;#8220;О черт Дэвид Блэйн! Верни ее на место!!!&amp;#8221;.&lt;/p&gt;
@@ -2009,7 +2009,7 @@ html файл:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Выглядит это как-то так:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/triple_select.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/triple_select.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/triple_select.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/triple_select.png&quot; /&gt;
 &lt;p&gt;Думаю понятно, что функции должны быть доступны по адресам
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/ajax/get_ajax_street&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/ajax/get_ajax_build&lt;/span&gt;&lt;/code&gt; соответственно.&lt;/p&gt;
 &lt;p&gt;Пользуйтесь )&lt;/p&gt;
@@ -2393,7 +2393,7 @@ HTTP-протоколу ответ может быть сформирован л
 &lt;/div&gt;
 &lt;p&gt;Результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id8&quot;&gt;
-&lt;img alt=&quot;../../_images/osm_geotagging.png&quot; src=&quot;../../_images/osm_geotagging.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm_geotagging.png&quot; src=&quot;_static/2012/osm_geotagging.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Яндекс Карты автодополнение через геокодинг&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2488,7 +2488,7 @@ HTTP-протоколу ответ может быть сформирован л
 &lt;p&gt;И в тег &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;/code&gt; добавляем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;onload=&amp;quot;GetMap();&amp;quot;&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../_images/osm.png&quot; src=&quot;../../_images/osm.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm.png&quot; src=&quot;_static/2012/osm.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;OpenStreeMap пример&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://habrahabr.ru/post/145117/&quot;&gt;Хорошая статья на Хабре&lt;/a&gt;&lt;/p&gt;

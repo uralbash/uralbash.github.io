@@ -233,7 +233,7 @@ Storing &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; log in /home/ural
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Это возникает из-за утилиты &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; которая требуется для установки &lt;a class=&quot;reference external&quot; href=&quot;http://initd.org/psycopg/&quot;&gt;psycopg&lt;/a&gt;.
-В случае если у Вас &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; 8.4 нужно добавить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH&lt;/span&gt;&lt;/code&gt; (как то
+В случае если у Вас &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; 8.4 нужно добавить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH&lt;/span&gt;&lt;/code&gt; (как то
 так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH=$PATH:/usr/bin/&lt;/span&gt;&lt;/code&gt;). Путь до &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; можно узнать:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ whereis pg_config
 pg_config: /usr/bin/pg_config
@@ -297,7 +297,7 @@ E: Broken packages
 &lt;p&gt;В некоторых случаях на &lt;a class=&quot;reference external&quot; href=&quot;http://oss.oetiker.ch/rrdtool/&quot;&gt;rrd&lt;/a&gt; графиках появляются пики, как например после
 перезагрузки сетевой карты:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../_images/rrd_pick.png&quot; src=&quot;../../_images/rrd_pick.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/rrd_pick.png&quot; src=&quot;_static/2011/rrd_pick.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;пики в rrd&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Для их удаления нам нужно воспользоваться утилитой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;dump&lt;/span&gt;&lt;/code&gt; из &lt;a class=&quot;reference external&quot; href=&quot;http://oss.oetiker.ch/rrdtool/&quot;&gt;rrdtool&lt;/a&gt;,
@@ -306,7 +306,7 @@ E: Broken packages
 сайте &lt;a class=&quot;reference external&quot; href=&quot;http://oss.oetiker.ch/rrdtool/&quot;&gt;rrdtool&lt;/a&gt; можно найти скрипт на &lt;a class=&quot;reference external&quot; href=&quot;http://perl.org/&quot;&gt;perl&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;removespikes&lt;/span&gt;&lt;/code&gt; и на
 &lt;a class=&quot;reference external&quot; href=&quot;http://php.net/&quot;&gt;php&lt;/a&gt; для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;cacti&lt;/span&gt;&lt;/code&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;spikekill&lt;/span&gt;&lt;/code&gt;.  &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;removespike&lt;/span&gt;&lt;/code&gt; работает не всегда
 корректно, поэтому рассмотрим как можно обрезать графики при помощи скрипта на
-&lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;:&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#!/usr/bin/env python&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;shutil&lt;/span&gt;
@@ -366,7 +366,7 @@ E: Broken packages
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Для того что бы парсить параметры командной строки воспользуемся модулем
-&lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/optparse.html#module-optparse&quot; title=&quot;(в Python v3.6)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;optparse&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/optparse.html#module-optparse&quot; title=&quot;(в Python v3.10)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;optparse&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_configuration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OptionParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;%prog v&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__version__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                           &lt;span class=&quot;n&quot;&gt;usage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;%prog &amp;lt;filename&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -431,7 +431,7 @@ E: Broken packages
 &lt;/div&gt;
 &lt;p&gt;Полученный результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../_images/rrd_cut_pick.png&quot; src=&quot;../../_images/rrd_cut_pick.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/rrd_cut_pick.png&quot; src=&quot;_static/2011/rrd_cut_pick.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;rrd график без пиков&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Скрипт на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;bash&lt;/span&gt;&lt;/code&gt; для удаления пиков во всей директории:&lt;/p&gt;
@@ -475,7 +475,7 @@ peak detect in data/rrdfile/7890.rrd
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;couchdb&quot;&gt;
 &lt;span id=&quot;wtforms&quot;&gt;&lt;/span&gt;
-&lt;img alt=&quot;../../_images/couchdb.jpg&quot; class=&quot;align-left&quot; src=&quot;../../_images/couchdb.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2011/couchdb.jpg&quot; class=&quot;align-left&quot; src=&quot;_static/2011/couchdb.jpg&quot; /&gt;
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://couchdb.apache.org/&quot;&gt;CouchDB&lt;/a&gt; - документо-ориентированная СУБД, в которой удобно хранить разную
 информацию с изменяющимся количеством параметров. Например сущность товары
 могут иметь бесконечное количество параметров. Создавать в РСУБД миллионы
@@ -520,7 +520,7 @@ $ sudo make &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make
 запуска &lt;a class=&quot;reference external&quot; href=&quot;http://couchdb.apache.org/&quot;&gt;CouchDB&lt;/a&gt; появится доступ к &lt;a class=&quot;reference external&quot; href=&quot;https://couchdb.readthedocs.org/en/1.4.x/intro.html&quot;&gt;Futon&lt;/a&gt; по &lt;a class=&quot;reference external&quot; href=&quot;http://127.0.0.1:5984/&quot;&gt;http://127.0.0.1:5984/&lt;/a&gt;. Для того что
 бы увидеть инструменты Futon нужно перейти на &lt;a class=&quot;reference external&quot; href=&quot;http://127.0.0.1:5984/_utils/&quot;&gt;http://127.0.0.1:5984/_utils/&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id7&quot;&gt;
-&lt;img alt=&quot;../../_images/couchdb1.png&quot; src=&quot;../../_images/couchdb1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/couchdb1.png&quot; src=&quot;_static/2011/couchdb1.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Couchdb Futon&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Все манипуляции с базой происходят через http при помощи &lt;a class=&quot;reference external&quot; href=&quot;https://ru.wikipedia.org/wiki/REST&quot;&gt;REST&lt;/a&gt; интерфейса.
@@ -538,7 +538,7 @@ python. &lt;a class=&quot;reference external&quot; href=&quot;https://couchdb.re
 &lt;p&gt;Вначале создадим базу (тоже кстати документ), нажимаем &amp;#8220;Create Database...&amp;#8221; и
 вводим название, дальше нажимаем &amp;#8220;New document&amp;#8221; и заводим значения:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id8&quot;&gt;
-&lt;img alt=&quot;../../_images/couchdb2.png&quot; src=&quot;../../_images/couchdb2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/couchdb2.png&quot; src=&quot;_static/2011/couchdb2.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;CouchDB создание документа&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Для сохранения нажимаем &amp;#8220;Save document&amp;#8221;. Как видно можно вводить русские
@@ -610,11 +610,11 @@ python. &lt;a class=&quot;reference external&quot; href=&quot;https://couchdb.re
 &lt;/div&gt;
 &lt;p&gt;Функции создаются в правом верхнем углу в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Temporary&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;View&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot;&gt;
-&lt;img alt=&quot;../../_images/couchdb3.png&quot; src=&quot;../../_images/couchdb3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/couchdb3.png&quot; src=&quot;_static/2011/couchdb3.png&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt;Сохраним view по нажатию &amp;#8220;Save As...&amp;#8221;&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot;&gt;
-&lt;img alt=&quot;../../_images/couchdb4.png&quot; src=&quot;../../_images/couchdb4.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/couchdb4.png&quot; src=&quot;_static/2011/couchdb4.png&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt;Вызовем из консоли:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ curl -X GET http://127.0.0.1:5984/test/_design/product/_view/bike
@@ -750,7 +750,7 @@ MAC адреса.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../_images/wtforms_validation.png&quot; src=&quot;../../_images/wtforms_validation.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/wtforms_validation.png&quot; src=&quot;_static/2011/wtforms_validation.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;WTForm валидация&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -768,11 +768,11 @@ MAC адреса.&lt;/p&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;peyote&quot;&gt;
 
 &lt;p&gt;Плеер который в Линуксе нормально отображает кодировки и читает на ура
-&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lossless&lt;/span&gt;&lt;/code&gt;, написан на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;, работает в консоле. Интерфейс как в
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lossless&lt;/span&gt;&lt;/code&gt;, написан на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;, работает в консоле. Интерфейс как в
 &lt;a class=&quot;reference external&quot; href=&quot;http://www.midnight-commander.org/&quot;&gt;mc&lt;/a&gt; - очень удобно музыку перемещать + поддержка мышки.
 &lt;a class=&quot;reference external&quot; href=&quot;http://peyote.sourceforge.net/about.rus.html&quot;&gt;http://peyote.sourceforge.net/about.rus.html&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../_images/peyote.png&quot; src=&quot;../../_images/peyote.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/peyote.png&quot; src=&quot;_static/2011/peyote.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Peyote плеер для Linux&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Плюшки:&lt;/p&gt;
@@ -917,7 +917,7 @@ MAC адреса.&lt;/p&gt;
 &lt;p&gt;Последние две строки возвращают пользователя обратно на страницу
 редактирования. Выглядит это как-то так:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../_images/wtform_eq.png&quot; src=&quot;../../_images/wtform_eq.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/wtform_eq.png&quot; src=&quot;_static/2011/wtform_eq.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Пример &lt;a class=&quot;reference external&quot; href=&quot;http://wtforms.simplecodes.com/&quot;&gt;WTForm&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1105,7 +1105,7 @@ $ update-alternatives --config java
 &lt;/div&gt;
 &lt;p&gt;Здесь если GET переменная &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ip_type=4&lt;/span&gt;&lt;/code&gt; то выбираются все строки где &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;cidr&lt;/span&gt;&lt;/code&gt;
 IPv4, если 6 то все стоки где &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;cidr&lt;/span&gt;&lt;/code&gt; IPv6, иначе просто отдается все. Для
-фильтрации используется стандартная функция &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;family&lt;/span&gt;&lt;/code&gt;. Пример
+фильтрации используется стандартная функция &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;family&lt;/span&gt;&lt;/code&gt;. Пример
 был так расписан для наглядности, теперь сократим:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nets&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Net&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;ip_type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;ip_type&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -1116,7 +1116,7 @@ IPv4, если 6 то все стоки где &lt;code class=&quot;docutils lit
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;По моему это просто шЫкарно.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/awesome.jpeg&quot; src=&quot;../../_images/awesome.jpeg&quot; /&gt;
+&lt;img alt=&quot;_static/2011/awesome.jpeg&quot; src=&quot;_static/2011/awesome.jpeg&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -1134,7 +1134,7 @@ IPv4, если 6 то все стоки где &lt;code class=&quot;docutils lit
 &lt;p&gt;В продолжение статьи &lt;a class=&quot;reference internal&quot; href=&quot;../../articles/2011/rrdtool_ds18b20/#py-rrdtool-temp&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;Python + Tornado + RRDTool: температура на улице и в серверной&lt;/span&gt;&lt;/a&gt;: температура на улице и в
 серверной рассмотрим как можно рисовать &lt;a class=&quot;reference external&quot; href=&quot;http://oss.oetiker.ch/rrdtool/&quot;&gt;RRD&lt;/a&gt; используя только
 javascript на стороне клиента. Результат будет такой:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/js_rrd.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/js_rrd.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/js_rrd.png&quot; class=&quot;align-center&quot; src=&quot;_static/2011/js_rrd.png&quot; /&gt;
 &lt;p&gt;Используем библиотеку &lt;a class=&quot;reference external&quot; href=&quot;http://sourceforge.net/projects/javascriptrrd/&quot;&gt;javascriptrrd&lt;/a&gt;. Качаем и добавляем
 следующие файлы из нее в наш шаблон в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-html&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;media/js/lib/binaryXHR.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;
@@ -1282,11 +1282,11 @@ Creating yourproj/yourproj/tests/functional/test_admin_trackbacks.py
 довольно простой: подключаем датчик температуры к компу, пишем скрипт который
 снимает данные с датчика, записываем данные и отдаем по запросу пользователю.
 Результат будет выглядеть так:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/rrdtool_example.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/rrdtool_example.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/rrdtool_example.png&quot; class=&quot;align-center&quot; src=&quot;_static/2011/rrdtool_example.png&quot; /&gt;
 &lt;p&gt;Датчик температуры можно выбрать любой. Я сделал для COM порта по схеме
 &lt;a class=&quot;reference external&quot; href=&quot;http://msevm.com/main/therm/ds18b20t.htm&quot;&gt;&amp;#8220;Электронный термометр на DS-18B20&amp;#8221;&lt;/a&gt;. Стоимось вышла около 450р., без
 кожуха и разъемов раза в 2 дешевле.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/rs232.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/rs232.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/rs232.png&quot; class=&quot;align-center&quot; src=&quot;_static/2011/rs232.png&quot; /&gt;
 &lt;p&gt;Сам датчик температуры (&lt;a class=&quot;reference external&quot; href=&quot;http://www.maximintegrated.com/en/products/analog/sensors-and-sensor-interface/DS18B20.html&quot;&gt;DS-18B20&lt;/a&gt;) можно соединять параллельно с другими (до
 100шт.) и он будет нормально работать на одной шине длиной до 300м. После
 подключения скорей всего он определится на последовательном порту &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/dev/ttyS0&lt;/span&gt;&lt;/code&gt;.
@@ -1513,7 +1513,7 @@ Creating yourproj/yourproj/tests/functional/test_admin_trackbacks.py
 статьи будут раскрыты многие аспекты книги (автор имеет ввиду что после
 прочтения раскроются многие факты из книги и в последующем интерес к прочтению
 может пропасть).&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca1.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca1.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca1.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca1.jpg&quot; /&gt;
 &lt;p&gt;Мы еще вернемся к этой книге которую я сейчас держу в руках, но прежде я должен
 кое что рассказать. Насколько мне известно она когда-то принадлежала моим
 старикам и потом досталась мне уже от родителей. А до них книга принадлежала
@@ -1525,7 +1525,7 @@ Creating yourproj/yourproj/tests/functional/test_admin_trackbacks.py
 тот факт что &amp;#8220;Gwladys&amp;#8221; побеждает &amp;#8220;Gioladys&amp;#8221; в сервисе &lt;a class=&quot;reference external&quot; href=&quot;http://www.googlefight.com/index.php?lang=en_GB&amp;amp;word1=gioladys&amp;amp;word2=gwladys&quot;&gt;google fight&lt;/a&gt;,
 я подозреваю, что так оно и есть. На самом деле, теперь я не могу читать ее как
 что-нибудь кроме &amp;#8220;Gwladys&amp;#8221;.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca2.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca2.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca2.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca2.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Книга рассказывает как John, наш главный герой, обнаруживает объявление в
 газете, что мис Ellen Content вернулась в Нью-Йорк через океан. По причинам до
 сих пор необъяснимым, не теряет решимости добраться до Нью-Йорка за ней. Он
@@ -1539,46 +1539,46 @@ Content Assignment.&lt;/p&gt;
 Россия представляется не в лучшем свете. То что удосужило написать меня о, в
 противном случае забытой книге, это то что мисс Williams не остановилась на
 простом написании своего имени на обложке. Она сделала гораздо больше.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca3.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca3.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca3.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca3.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Очевидно что она не согласна с написанным, но восхищает что она продолжила читать...&lt;/p&gt;
 &lt;p&gt;Вначале я подумал это отрицательный образ Русских расстраивает ее, но дальше
 она показывает что не ограничивается только этим.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca4.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca4.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
-&lt;br/&gt;&lt;img alt=&quot;../../_images/ca5.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca5.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca4.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca4.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;br/&gt;&lt;img alt=&quot;_static/2011/ca5.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca5.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Имея ввиду что книга была написана от первого лица, трудно сказать кому
 адресуются комментарии автору или John главному герою.&lt;/p&gt;
 &lt;p&gt;До этого момента, все комментарии касались отдельных кусочков текста. Это
 продолжалось до стр. 38, мисс Williams невыдержала и начала писать то, что она
 действительно думает.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca6.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca6.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca6.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca6.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Бьюсь об заклад, после этого ей стало легче хотя это спорно судя по следующим
 комментариям. Замечу что ни кто не застрахован от ее записей. В первую очередь
 Британские спецслужбы и полиция.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca7.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca7.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
-&lt;br/&gt;&lt;img alt=&quot;../../_images/ca8.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca8.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca7.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca7.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;br/&gt;&lt;img alt=&quot;_static/2011/ca8.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca8.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Она имеет ввиду бизнес (я так понял продажные спецслужбы) и потом подписывается
 своим именем.&lt;/p&gt;
 &lt;p&gt;Шокирующий поворот событий, когда она согласится с чем то в книге.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca9.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca9.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca9.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca9.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Но она не может сдерживать себя. Здания Нью-Йорка преподносят сюрпризы в ее
 карательный список.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca10.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca10.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca10.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca10.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Должно быть, она устала в этот момент, так как ее следующий комментарий всего
 одно слово, которое не вполне очевидно объясняет ее точку зрения. Возможно
 ирония John как часть чего то странного в этой книге.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca11.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca11.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca11.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca11.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Снова мисс Williams не может до конца определиться в высказывании - характер
 оскорбительно плохово написания или плохово стиля написания.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca12.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca12.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca12.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca12.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Ближе к концу книги, она возвращается к своей любимой теме.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca13.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca13.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca13.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca13.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;и опять же плохой почерк. (здесь написано &amp;#8220;not all Russians&amp;#8221;)&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca14.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca14.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca14.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca14.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;В заключительных страницах, она решает сказать то, что действительно думает.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca15.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca15.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca15.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca15.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Я надеюсь они получат сообщение - мисс Williams это не нравится. Я почти жалею
 что это посление сообщение. Но на этом все.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ca16.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/ca16.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
+&lt;img alt=&quot;_static/2011/ca16.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2011/ca16.jpg&quot; style=&quot;width: 500px;&quot; /&gt;
 &lt;p&gt;Я слышу ее маниакально смеясь, она положила перо, закрыв книгу и почувствовала
 невероятное удовлетворение, направив мир в нужное русло.&lt;/p&gt;
 &lt;p&gt;Это то что люди делают пока имеют свое мнение.&lt;/p&gt;
@@ -1690,7 +1690,7 @@ CRT1 connected 1920x1080+1280+0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;no
 &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/formalchemy/ext/pylons.html&quot;&gt;formalchemy.ext.pylons&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Рассмотрим &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;. Вообще как обычно можно прочитать документацию, но я
 опишу еще как это все состыковать с шаблонами на &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;Jinja&lt;/a&gt; и поддержкой полей
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;MAC&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CIDR&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NET&lt;/span&gt;&lt;/code&gt; и т.д..&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;MAC&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CIDR&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NET&lt;/span&gt;&lt;/code&gt; и т.д..&lt;/p&gt;
 &lt;p&gt;Создаем контроллер &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;admin&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ paster controller admin
 &lt;/pre&gt;&lt;/div&gt;
@@ -1800,7 +1800,7 @@ CRT1 connected 1920x1080+1280+0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;no
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;http://localhost:5000/admin&lt;/span&gt;&lt;/code&gt; попадете в админку! Но только если вы не
 используете особенностей БД, например &lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;sqlalchemy.databases.postgresql&lt;/span&gt;&lt;/code&gt;.
 Вторая проблема в том что шаблоны админки не встроены в ваши шаблоны.&lt;/p&gt;
-&lt;p&gt;Для поддержки &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; полей в &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; необходимо добавить:&lt;/p&gt;
+&lt;p&gt;Для поддержки &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; полей в &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; необходимо добавить:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id4&quot;&gt;
 &lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;lib/base.py&lt;/span&gt;&lt;/div&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;formalchemy.fields&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FieldRenderer&lt;/span&gt;
@@ -1879,7 +1879,7 @@ CRT1 connected 1920x1080+1280+0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;no
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;В целом &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt; довольно мощная штука, но очень сильно привязана к
-&lt;a class=&quot;reference external&quot; href=&quot;http://docs.makotemplates.org/en/latest/&quot;&gt;mako&lt;/a&gt;, поэтому пользоваться ей не удобно и к сожалению придется искать что
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.makotemplates.org/&quot;&gt;mako&lt;/a&gt;, поэтому пользоваться ей не удобно и к сожалению придется искать что
 то другое.&lt;/p&gt;
 &lt;/div&gt;
 </content>
@@ -2231,7 +2231,7 @@ Pylons apps&lt;/a&gt; с моими
 &lt;h2&gt;pylons_repoze_what&lt;/h2&gt;
 &lt;p&gt;Шаблон &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pylons_repoze_what&lt;/span&gt;&lt;/code&gt; добавляет систему авторизации основанную на
 &lt;a class=&quot;reference external&quot; href=&quot;http://what.repoze.org/docs/1.0/index.html#module-repoze.what&quot; title=&quot;(в repoze.what v1.0)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;repoze.what&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; и &lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;repoze.what.plugins.quickstart&lt;/span&gt;&lt;/code&gt;. (При этом аутентификация на
-&lt;a class=&quot;reference external&quot; href=&quot;https://repozewho.readthedocs.io/en/latest/index.html#module-repoze.who&quot; title=&quot;(в repoze.who v2.2)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;repoze.who&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; устанавливается автоматически.)&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;https://repoze.readthedocs.io/projects/repozewho/en/latest/index.html#module-repoze.who&quot; title=&quot;(в repoze.who v2.2)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;repoze.who&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; устанавливается автоматически.)&lt;/p&gt;
 &lt;p&gt;Шаблон включает в себя:&lt;/p&gt;
 &lt;ul class=&quot;simple&quot;&gt;
 &lt;li&gt;Модели &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;User&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Group&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Permission&lt;/span&gt;&lt;/code&gt; для &lt;a class=&quot;reference external&quot; href=&quot;http://sqlalchemy.org/&quot;&gt;SQLALchemy&lt;/a&gt;&lt;/li&gt;
@@ -2329,11 +2329,11 @@ Pylons apps&lt;/a&gt; с моими
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../_images/header_login_logout.png&quot; src=&quot;../../_images/header_login_logout.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/header_login_logout.png&quot; src=&quot;_static/2011/header_login_logout.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;отображение залогированного пользователя&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../_images/login_form.png&quot; src=&quot;../../_images/login_form.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/login_form.png&quot; src=&quot;_static/2011/login_form.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;форма авторизации&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2409,7 +2409,7 @@ document.title. Это не очень удобно в некоторых слу
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../_images/breadcrumbs.png&quot; src=&quot;../../_images/breadcrumbs.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/breadcrumbs.png&quot; src=&quot;_static/2011/breadcrumbs.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;breadcrumbs + javascript&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2427,8 +2427,8 @@ document.title. Это не очень удобно в некоторых слу
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pylons-javascript-css-link&quot;&gt;
 
 &lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt;, в шаблоны есть возможность вставить &lt;a class=&quot;reference external&quot; href=&quot;http://www.w3.org/Style/CSS/&quot;&gt;CSS&lt;/a&gt; или JS при помощи
-&lt;a class=&quot;reference external&quot; href=&quot;https://webhelpers.readthedocs.io/en/latest/modules/pylonslib/minify.html#webhelpers.pylonslib.minify.stylesheet_link&quot; title=&quot;(в WebHelpers v1.3)&quot;&gt;&lt;code class=&quot;xref py py-func docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;stylesheet_link()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; и
-&lt;a class=&quot;reference external&quot; href=&quot;https://webhelpers.readthedocs.io/en/latest/modules/pylonslib/minify.html#webhelpers.pylonslib.minify.javascript_link&quot; title=&quot;(в WebHelpers v1.3)&quot;&gt;&lt;code class=&quot;xref py py-func docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;javascript_link()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;. Но существует расширение
+&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/webhelpers/en/latest/modules/pylonslib/minify.html#webhelpers.pylonslib.minify.stylesheet_link&quot; title=&quot;(в WebHelpers v1.3)&quot;&gt;&lt;code class=&quot;xref py py-func docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;stylesheet_link()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; и
+&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/webhelpers/en/latest/modules/pylonslib/minify.html#webhelpers.pylonslib.minify.javascript_link&quot; title=&quot;(в WebHelpers v1.3)&quot;&gt;&lt;code class=&quot;xref py py-func docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;javascript_link()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;. Но существует расширение
 &lt;a class=&quot;reference external&quot; href=&quot;http://minification-webhelpers.readthedocs.org/en/latest/&quot;&gt;MinificationWebHelpers&lt;/a&gt; которое позволяет также удобно добавлять javascript
 файлы.&lt;/p&gt;
 &lt;p&gt;Установка:&lt;/p&gt;
@@ -2493,7 +2493,7 @@ $ pip install sqlalchemy_schemadisplay
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../_images/dbschema.png&quot; src=&quot;../../_images/dbschema.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/dbschema.png&quot; src=&quot;_static/2011/dbschema.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Схема БД Postgres&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Схема UML строится по моделям проекта.&lt;/p&gt;
@@ -2520,7 +2520,7 @@ $ pip install sqlalchemy_schemadisplay
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../_images/schema.png&quot; src=&quot;../../_images/schema.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/schema.png&quot; src=&quot;_static/2011/schema.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Схема моделей в Pylons&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Для &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; кодеров есть модуль &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/django-extensions/django-extensions&quot;&gt;django-extension&lt;/a&gt; который добавляет
@@ -2533,7 +2533,7 @@ $ pip install sqlalchemy_schemadisplay
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id4&quot;&gt;
-&lt;img alt=&quot;../../_images/django_uml.png&quot; src=&quot;../../_images/django_uml.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/django_uml.png&quot; src=&quot;_static/2011/django_uml.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;пример django-extension + graphviz&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2616,7 +2616,7 @@ xinput list &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sed -ne &lt;span clas
 &lt;li&gt;Выбрать раздел &amp;#8220;окна&amp;#8221;&lt;/li&gt;
 &lt;li&gt;В разделе &amp;#8220;Расположения кнопок&amp;#8221; мышкой перенести кнопки&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img alt=&quot;../../_images/xfce_left_button_menu.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/xfce_left_button_menu.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/xfce_left_button_menu.png&quot; class=&quot;align-center&quot; src=&quot;_static/2011/xfce_left_button_menu.png&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>

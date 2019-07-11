@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;ironlogic-z-2-usb-linux&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/z2usb.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/z2usb.png&quot; style=&quot;width: 300px;&quot; /&gt;
+&lt;img alt=&quot;_static/2016/z2usb.png&quot; class=&quot;align-left&quot; src=&quot;_static/2016/z2usb.png&quot; style=&quot;width: 300px;&quot; /&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Z-2&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;USB&lt;/span&gt;&lt;/code&gt; всеядный считыватель, который умеет работать на двух частотах 13,56
 МГц и 125 кГц одновременно.  Поддерживаемые форматы карт &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;EM-Marine&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;HID&lt;/span&gt;
 &lt;span class=&quot;pre&quot;&gt;ProxCard&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;II&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Mifare&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Mifare&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Plus&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Mifare-UL&lt;/span&gt;&lt;/code&gt; (чтение/запись),

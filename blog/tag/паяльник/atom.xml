@@ -17,15 +17,15 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;com-officeconnect-dual-speed-hub-8&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/3com1.jpg&quot; class=&quot;align-left&quot; src=&quot;../../../_images/3com1.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/3com1.jpg&quot; class=&quot;align-left&quot; src=&quot;_static/2012/3com1.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
 &lt;p&gt;Если у вас засвистела электроника то 99% это схема питания, будь это нетбук
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;x100e&lt;/span&gt;&lt;/code&gt; или БП или коммутатор.&lt;/p&gt;
 &lt;br clear=&quot;both&quot;/&gt;&lt;p&gt;Для начала разберем:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/3com2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/3com2.png&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/3com2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/3com2.png&quot; style=&quot;width: 400px;&quot; /&gt;
 &lt;p&gt;Стрелками указанны цилиндры которые надо выпаять:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/3com3.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/3com3.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/3com3.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/3com3.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
 &lt;p&gt;На фото видно что с ним стало, покупаем новые и впаеваем на место:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/3com4.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/3com4.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/3com4.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/3com4.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
 &lt;p&gt;Все, собираем, подключаем и радуемся тишине. Я конечно не электронщик, но
 объясните пожалуйста нахрена дросселя нужны в схеме которая питается от БП
 DC12В ???&lt;/p&gt;

@@ -20,7 +20,7 @@
 &lt;p&gt;В некоторых случаях на &lt;a class=&quot;reference external&quot; href=&quot;http://oss.oetiker.ch/rrdtool/&quot;&gt;rrd&lt;/a&gt; графиках появляются пики, как например после
 перезагрузки сетевой карты:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../../_images/rrd_pick.png&quot; src=&quot;../../../_images/rrd_pick.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/rrd_pick.png&quot; src=&quot;_static/2011/rrd_pick.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;пики в rrd&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Для их удаления нам нужно воспользоваться утилитой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;dump&lt;/span&gt;&lt;/code&gt; из &lt;a class=&quot;reference external&quot; href=&quot;http://oss.oetiker.ch/rrdtool/&quot;&gt;rrdtool&lt;/a&gt;,
@@ -29,7 +29,7 @@
 сайте &lt;a class=&quot;reference external&quot; href=&quot;http://oss.oetiker.ch/rrdtool/&quot;&gt;rrdtool&lt;/a&gt; можно найти скрипт на &lt;a class=&quot;reference external&quot; href=&quot;http://perl.org/&quot;&gt;perl&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;removespikes&lt;/span&gt;&lt;/code&gt; и на
 &lt;a class=&quot;reference external&quot; href=&quot;http://php.net/&quot;&gt;php&lt;/a&gt; для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;cacti&lt;/span&gt;&lt;/code&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;spikekill&lt;/span&gt;&lt;/code&gt;.  &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;removespike&lt;/span&gt;&lt;/code&gt; работает не всегда
 корректно, поэтому рассмотрим как можно обрезать графики при помощи скрипта на
-&lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;:&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#!/usr/bin/env python&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;shutil&lt;/span&gt;
@@ -89,7 +89,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Для того что бы парсить параметры командной строки воспользуемся модулем
-&lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/optparse.html#module-optparse&quot; title=&quot;(в Python v3.6)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;optparse&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/optparse.html#module-optparse&quot; title=&quot;(в Python v3.10)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;optparse&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_configuration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OptionParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;%prog v&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__version__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                           &lt;span class=&quot;n&quot;&gt;usage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;%prog &amp;lt;filename&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -154,7 +154,7 @@
 &lt;/div&gt;
 &lt;p&gt;Полученный результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../../_images/rrd_cut_pick.png&quot; src=&quot;../../../_images/rrd_cut_pick.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/rrd_cut_pick.png&quot; src=&quot;_static/2011/rrd_cut_pick.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;rrd график без пиков&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Скрипт на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;bash&lt;/span&gt;&lt;/code&gt; для удаления пиков во всей директории:&lt;/p&gt;

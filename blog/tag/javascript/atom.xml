@@ -209,7 +209,7 @@ html файл:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Выглядит это как-то так:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/triple_select.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/triple_select.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/triple_select.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/triple_select.png&quot; /&gt;
 &lt;p&gt;Думаю понятно, что функции должны быть доступны по адресам
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/ajax/get_ajax_street&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/ajax/get_ajax_build&lt;/span&gt;&lt;/code&gt; соответственно.&lt;/p&gt;
 &lt;p&gt;Пользуйтесь )&lt;/p&gt;
@@ -342,7 +342,7 @@ HTTP-протоколу ответ может быть сформирован л
 &lt;/div&gt;
 &lt;p&gt;Результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id8&quot;&gt;
-&lt;img alt=&quot;../../../_images/osm_geotagging.png&quot; src=&quot;../../../_images/osm_geotagging.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm_geotagging.png&quot; src=&quot;_static/2012/osm_geotagging.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Яндекс Карты автодополнение через геокодинг&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -437,7 +437,7 @@ HTTP-протоколу ответ может быть сформирован л
 &lt;p&gt;И в тег &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;&lt;/code&gt; добавляем &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;onload=&amp;quot;GetMap();&amp;quot;&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../../_images/osm.png&quot; src=&quot;../../../_images/osm.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/osm.png&quot; src=&quot;_static/2012/osm.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;OpenStreeMap пример&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://habrahabr.ru/post/145117/&quot;&gt;Хорошая статья на Хабре&lt;/a&gt;&lt;/p&gt;
@@ -458,7 +458,7 @@ HTTP-протоколу ответ может быть сформирован л
 &lt;p&gt;В продолжение статьи &lt;a class=&quot;reference internal&quot; href=&quot;../../../articles/2011/rrdtool_ds18b20/#py-rrdtool-temp&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;Python + Tornado + RRDTool: температура на улице и в серверной&lt;/span&gt;&lt;/a&gt;: температура на улице и в
 серверной рассмотрим как можно рисовать &lt;a class=&quot;reference external&quot; href=&quot;http://oss.oetiker.ch/rrdtool/&quot;&gt;RRD&lt;/a&gt; используя только
 javascript на стороне клиента. Результат будет такой:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/js_rrd.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/js_rrd.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/js_rrd.png&quot; class=&quot;align-center&quot; src=&quot;_static/2011/js_rrd.png&quot; /&gt;
 &lt;p&gt;Используем библиотеку &lt;a class=&quot;reference external&quot; href=&quot;http://sourceforge.net/projects/javascriptrrd/&quot;&gt;javascriptrrd&lt;/a&gt;. Качаем и добавляем
 следующие файлы из нее в наш шаблон в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-html&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;media/js/lib/binaryXHR.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt;

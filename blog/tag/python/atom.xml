@@ -104,13 +104,13 @@
 &lt;/div&gt;
 &lt;p&gt;Редактор имеет возможность расширения функционала за счет плагинов и удобный
 интерфейс их установки, доступный по нажатию кнопки:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/extension-gallery_extensions-view-icon.png&quot; src=&quot;../../../_images/extension-gallery_extensions-view-icon.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/extension-gallery_extensions-view-icon.png&quot; src=&quot;_static/999.additions/texteditor/extension-gallery_extensions-view-icon.png&quot; /&gt;
 &lt;p&gt;Из списка можно выбрать любой плагин и установить, после чего он применит свои
 настройки к редактору.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/extension-gallery_extensions-popular.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/extension-gallery_extensions-popular.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/extension-gallery_extensions-popular.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/extension-gallery_extensions-popular.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;p&gt;Расширения можно искать введя название или ключевые слова в строке поиска,
 например &lt;cite&gt;Python&lt;/cite&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/extension-gallery_extensions-python.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/extension-gallery_extensions-python.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/extension-gallery_extensions-python.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/extension-gallery_extensions-python.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;p&gt;Существует огромное количество расширений для &lt;cite&gt;Go&lt;/cite&gt;, &lt;cite&gt;C#&lt;/cite&gt;, &lt;cite&gt;C/C++&lt;/cite&gt;, &lt;cite&gt;Nix&lt;/cite&gt;,
 &lt;cite&gt;Haskell&lt;/cite&gt;, &lt;cite&gt;Python&lt;/cite&gt;, &lt;cite&gt;JS&lt;/cite&gt;, &lt;cite&gt;TypeScript&lt;/cite&gt; и др.&lt;/p&gt;
 &lt;/div&gt;
@@ -210,10 +210,10 @@ pdb;pdb.set_trace();&lt;/cite&gt;.&lt;/p&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;Открываем командную строку &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctrl&lt;/span&gt;&lt;/code&gt; + &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Shift&lt;/span&gt;&lt;/code&gt; + &lt;code class=&quot;kbd docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;P&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;Вводим команду &lt;cite&gt;Configure Language&lt;/cite&gt;&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/locales_configure-language-command.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/locales_configure-language-command.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/locales_configure-language-command.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/locales_configure-language-command.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;Меняем локаль на нужную, например &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ru&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/locales_locale-intellisense.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/locales_locale-intellisense.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/locales_locale-intellisense.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/locales_locale-intellisense.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;{
     // Defines VS Code&amp;#39;s display language.
     &amp;quot;locale&amp;quot;: &amp;quot;ru&amp;quot;
@@ -236,7 +236,7 @@ pdb;pdb.set_trace();&lt;/cite&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Умеет подсвечивать изменения в файлах с предыдущего коммита, выполнять команды
 &lt;cite&gt;git&lt;/cite&gt; и отслеживать состояние, например какая текущая ветка.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/versioncontrol_merge.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/versioncontrol_merge.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/versioncontrol_merge.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/versioncontrol_merge.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;id10&quot;&gt;
 &lt;h3&gt;Python скрипты&lt;/h3&gt;
@@ -250,7 +250,7 @@ pdb;pdb.set_trace();&lt;/cite&gt;.&lt;/p&gt;
 &lt;p&gt;Для примера, создадим директорию &lt;cite&gt;hello1&lt;/cite&gt; и откроем в редакторе &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;File-&amp;gt;Open&lt;/span&gt;
 &lt;span class=&quot;pre&quot;&gt;Folder...&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Создадим в этой директории файл &lt;cite&gt;myapp.py&lt;/cite&gt;:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_add_file.png&quot; src=&quot;../../../_images/vscode_add_file.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_add_file.png&quot; src=&quot;_static/999.additions/texteditor/vscode_add_file.png&quot; /&gt;
 &lt;p&gt;Добавим в файл пример с сайта &lt;a class=&quot;reference external&quot; href=&quot;http://trypyramid.com&quot;&gt;http://trypyramid.com&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;wsgiref.simple_server&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_server&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.config&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configurator&lt;/span&gt;
@@ -268,12 +268,12 @@ pdb;pdb.set_trace();&lt;/cite&gt;.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Для запуска приложения, заходим в режим отладки по нажатию на кнопку:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_debugicon.png&quot; src=&quot;../../../_images/vscode_debugicon.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_debugicon.png&quot; src=&quot;_static/999.additions/texteditor/vscode_debugicon.png&quot; /&gt;
 &lt;p&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_debug_noconfig.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_debug_noconfig.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_debug_noconfig.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_debug_noconfig.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;p&gt;Пока у нас нет никаких настроек отладки/запуска проекта, но при первом
 запуске редактор предложит их выбрать из существующих шаблонов.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_chose_dbg_template.png&quot; src=&quot;../../../_images/vscode_chose_dbg_template.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_chose_dbg_template.png&quot; src=&quot;_static/999.additions/texteditor/vscode_chose_dbg_template.png&quot; /&gt;
 &lt;p&gt;Шаблон &lt;cite&gt;Python&lt;/cite&gt; создает настройки в файле &lt;cite&gt;launch.json&lt;/cite&gt; в локальной директории,
 которые выглядят примерно так:&lt;/p&gt;
 &lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -358,14 +358,14 @@ pdb;pdb.set_trace();&lt;/cite&gt;.&lt;/p&gt;
 &lt;p&gt;Это универсальный шаблон, который добавляет несколько вариантов запуска
 приложений. Нас будет интересовать первый вариант &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Python&lt;/span&gt;&lt;/code&gt;, просто
 запускающий python файл.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_python_dbg.png&quot; src=&quot;../../../_images/vscode_python_dbg.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_python_dbg.png&quot; src=&quot;_static/999.additions/texteditor/vscode_python_dbg.png&quot; /&gt;
 &lt;p&gt;Запущенное приложение останавливается на первой строчке, что позволяет нам
 продолжать выполнение программы по шагам.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_python_run.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_python_run.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_python_run.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_python_run.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;p&gt;После выполнения второй строки, интерпретатор выдаст ошибку &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ImportError:&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;No&lt;/span&gt;
 &lt;span class=&quot;pre&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;named&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;pyramid.config&lt;/span&gt;&lt;/code&gt;. Это происходит из-за того что в нашем &lt;cite&gt;Python&lt;/cite&gt;
 окружении не установлен модуль &lt;cite&gt;pyramid&lt;/cite&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_python_dbg_import_error.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_python_dbg_import_error.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_python_dbg_import_error.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_python_dbg_import_error.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;p&gt;Решить эту проблему можно двумя способами:&lt;/p&gt;
 &lt;ol class=&quot;arabic&quot;&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;Установить &lt;cite&gt;Pyramid&lt;/cite&gt; в глобальное окружение.&lt;/p&gt;
@@ -394,7 +394,7 @@ $ &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ./hello1_env/bin/activate
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;Прописываем путь до виртуального окружения в настройках проекта
 &lt;a class=&quot;reference external&quot; href=&quot;https://code.visualstudio.com/&quot;&gt;Visual Studio Code&lt;/a&gt; (файл &lt;cite&gt;launch.json&lt;/cite&gt;):&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_python_venv.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_python_venv.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_python_venv.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_python_venv.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;div class=&quot;highlight-json&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 &lt;span class=&quot;hll&quot;&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;PythonVenv&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
 &lt;/span&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;python&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -417,27 +417,27 @@ $ &lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ./hello1_env/bin/activate
 &lt;p&gt;После этого появится возможность запускать наш скрипт в локальном виртуальном
 окружении. Запущенная программа будет доступна по адресу
 &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/hello/foo&quot;&gt;http://localhost:8080/hello/foo&lt;/a&gt;. В консоле отладчика можно наблюдать ее вывод.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_pyramid_run.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_pyramid_run.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_pyramid_run.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_pyramid_run.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;p&gt;Поставим точку останова внутри функции &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello_world&lt;/span&gt;&lt;/code&gt;, в строке 6. Это
 позволит нам остановить программу при запуске этой функции. После запуска,
 программа будет нормально работать, пока мы не зайдем по адресу
 &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:8080/hello/foo&quot;&gt;http://localhost:8080/hello/foo&lt;/a&gt;, в этом случае запустится функция
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello_world&lt;/span&gt;&lt;/code&gt; и выполнение программы прервется, до тех пор пока мы ее не
 продолжим вручную.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_pyramid_breakpoint.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_pyramid_breakpoint.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_pyramid_breakpoint.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_pyramid_breakpoint.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;p&gt;Примерно так выглядит процесс разработки и отладки программ на &lt;cite&gt;Python&lt;/cite&gt;.
 Осталось только инициализировать &lt;cite&gt;git&lt;/cite&gt; репозиторий и выложить проект на
 &lt;a class=&quot;reference external&quot; href=&quot;https://github.com&quot;&gt;https://github.com&lt;/a&gt;.&lt;/p&gt;
 &lt;ol class=&quot;arabic&quot;&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;Инициализируем репозиторий:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_git_init.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_git_init.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_git_init.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_git_init.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;Добавим файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.gitignore&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;p&gt;Для этого нам потребуется скопировать содержимое
 &lt;a class=&quot;reference external&quot; href=&quot;https://www.gitignore.io/api/visualstudiocode,python&quot;&gt;https://www.gitignore.io/api/visualstudiocode,python&lt;/a&gt; в файл &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.gitignore&lt;/span&gt;&lt;/code&gt;
 и добавить туда директорию &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello1_env&lt;/span&gt;&lt;/code&gt;, что бы она не участвовала в
 процессе создания версий.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_gitignore.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_gitignore.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_gitignore.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_gitignore.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# Created by https://www.gitignore.io/api/visualstudiocode,python
 
 &lt;span class=&quot;hll&quot;&gt;hello1_env
@@ -461,31 +461,31 @@ __pycache__/
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;Создаем первый коммит&lt;/p&gt;
 &lt;p&gt;Для создания коммита требуется ввести комментарий и нажать на кнопку в виде
 галочки.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_git_commit.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_git_commit.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_git_commit.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_git_commit.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;Отправляем изменения на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com&quot;&gt;https://github.com&lt;/a&gt;&lt;/p&gt;
 &lt;ul class=&quot;simple&quot;&gt;
 &lt;li&gt;Добавляем плагин &lt;cite&gt;Git Easy&lt;/cite&gt; в проект&lt;/li&gt;
 &lt;li&gt;Создаем репозиторий на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img alt=&quot;../../../_images/github_create_repo.png&quot; src=&quot;../../../_images/github_create_repo.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/github_create_repo.png&quot; src=&quot;_static/999.additions/texteditor/github_create_repo.png&quot; /&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;Прописываем путь до гитхаба в нашем проекте, при помощи команды &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Git&lt;/span&gt;
 &lt;span class=&quot;pre&quot;&gt;Easy:Add&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Orign&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_giteasy_add_orign.png&quot; src=&quot;../../../_images/vscode_giteasy_add_orign.png&quot; /&gt;
-&lt;img alt=&quot;../../../_images/vscode_git_origin.png&quot; src=&quot;../../../_images/vscode_git_origin.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_giteasy_add_orign.png&quot; src=&quot;_static/999.additions/texteditor/vscode_giteasy_add_orign.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_git_origin.png&quot; src=&quot;_static/999.additions/texteditor/vscode_git_origin.png&quot; /&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;Отправляем изменения на &lt;cite&gt;GitHub&lt;/cite&gt;, при помощи команды
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Git&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Easy:Push&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Current&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Branch&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Origin&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_git_push.png&quot; src=&quot;../../../_images/vscode_git_push.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_git_push.png&quot; src=&quot;_static/999.additions/texteditor/vscode_git_push.png&quot; /&gt;
 &lt;p&gt;При успешном выполнении команды, мы должны увидеть сообщение типа:&lt;/p&gt;
 &lt;div class=&quot;highlight-text&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;To github.com:uralbash/hello1.git
 * [new branch]      master -&amp;gt; master
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;img alt=&quot;../../../_images/vscode_git_push_ok.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_git_push_ok.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_git_push_ok.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_git_push_ok.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;p&gt;Файлы будут доступны по адресу &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/hello1&quot;&gt;https://github.com/uralbash/hello1&lt;/a&gt;&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/github_hello1.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/github_hello1.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/github_hello1.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/github_hello1.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -547,14 +547,14 @@ Serving on http://localhost:6543
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;После запуска, становится доступен адрес &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543&quot;&gt;http://localhost:6543&lt;/a&gt;&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/pyramid_home.png&quot; src=&quot;../../../_images/pyramid_home.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/pyramid_home.png&quot; src=&quot;_static/999.additions/texteditor/pyramid_home.png&quot; /&gt;
 &lt;p&gt;Но так-как БД еще не создана, отображается страница с подсказкой как ее
 инициализировать:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ initialize_hello2_db development.ini
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Теперь мы увидим стартовую страницу шаблона &lt;cite&gt;alchemy&lt;/cite&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/pyramid_home2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/pyramid_home2.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/pyramid_home2.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/pyramid_home2.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;p&gt;Проект на пирамиде запускается при помощи утилиты &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pserve&lt;/span&gt;&lt;/code&gt;. Добавим
 конфигурацию для &lt;cite&gt;Pyramid&lt;/cite&gt; в файл настроек &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;launch.json&lt;/span&gt;&lt;/code&gt;, что бы можно было
 запускать/отлаживать приложение из редактора:&lt;/p&gt;
@@ -577,17 +577,17 @@ Serving on http://localhost:6543
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Попробуем запустить:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_pserve_run.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_pserve_run.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_pserve_run.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_pserve_run.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;p&gt;Поставим точку останова в функции &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;my_view&lt;/span&gt;&lt;/code&gt; в файле
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello2/views/default.py&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/vscode_pyramid_dbg.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_pyramid_dbg.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_pyramid_dbg.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_pyramid_dbg.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;p&gt;После обновления страницы &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543&quot;&gt;http://localhost:6543&lt;/a&gt; в браузере, программа остановит
 свое выполнение в этой точке, а браузер будет ждать пока мы не закончим отладку
 и не продолжим выполнение вручную.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;javascript&quot;&gt;
 &lt;h3&gt;JavaScript&lt;/h3&gt;
-&lt;img alt=&quot;../../../_images/vscode_js.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/vscode_js.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/texteditor/vscode_js.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/texteditor/vscode_js.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;id11&quot;&gt;
@@ -814,7 +814,7 @@ Serving on http://localhost:6543
 определять необходимый доступ по ключам (метод &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__getitem__&lt;/span&gt;&lt;/code&gt; помогает
 организовать такой доступ). В коде также присутствует корневая фабрика, с
 которой собственно и начинается обход узлов (node) дерева ресурсов.
-Вид-для-вызова (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-view-callable&quot; title=&quot;(в The Pyramid Web Framework v1.9.1)&quot;&gt;&lt;span class=&quot;xref std std-term&quot;&gt;view callable&lt;/span&gt;&lt;/a&gt;) представлен функцией
+Вид-для-вызова (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/glossary.html#term-view-callable&quot; title=&quot;(в The Pyramid Web Framework v2.0)&quot;&gt;&lt;span class=&quot;xref std std-term&quot;&gt;view callable&lt;/span&gt;&lt;/a&gt;) представлен функцией
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hello_world_of_resources&lt;/span&gt;&lt;/code&gt;. Говоря несколько упрощённо, на основе URL запроса
 в результате обхода иерархии Pyramid находит ресурс и применяет к нему
 «наилучший» вид-для-вызова (в нашем примере — он единственный).&lt;/p&gt;
@@ -1275,7 +1275,7 @@ Serving on http://localhost:6543
    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;World&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Класс &lt;a class=&quot;reference external&quot; href=&quot;http://aiohttp.readthedocs.io/en/stable/web_reference.html#aiohttp.web.Response&quot; title=&quot;(в aiohttp v2.2)&quot;&gt;&lt;code class=&quot;xref py py-class docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;aiohttp.web.Response&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; позволяет задавать различные параметры типа
+&lt;p&gt;Класс &lt;a class=&quot;reference external&quot; href=&quot;https://docs.aiohttp.org/en/stable/web_reference.html#aiohttp.web.Response&quot; title=&quot;(в aiohttp v3.8)&quot;&gt;&lt;code class=&quot;xref py py-class docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;aiohttp.web.Response&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; позволяет задавать различные параметры типа
 заголовков и статуса ответа. Перепишем наш декоратор таким образом что бы он
 умел принимать эти параметры:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;json_view_arg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -1292,7 +1292,7 @@ Serving on http://localhost:6543
    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;World&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;img alt=&quot;../../../_images/header-server-nginx.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/header-server-nginx.png&quot; /&gt;
+&lt;img alt=&quot;_static/999.additions/python/header-server-nginx.png&quot; class=&quot;align-center&quot; src=&quot;_static/999.additions/python/header-server-nginx.png&quot; /&gt;
 &lt;p&gt;И в заключение то же в виде класса-декоратора:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JsonView&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
 
@@ -1398,7 +1398,7 @@ Installing setuptools, pip, wheel...done.
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;continuous-integration&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/ci1.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ci1.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;img alt=&quot;_static/2014/ci1.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2014/ci1.jpg&quot; style=&quot;width: 400px;&quot; /&gt;
 &lt;p&gt;Идея непрерывной интеграции заключается в том, что при любом изменении проекта
 он пересобирается в условиях приближенных к реальной эксплуатации и каждый раз
 запускает тесты. Это позволяет моментально отловить баги и исправить их не
@@ -1429,17 +1429,17 @@ Installing setuptools, pip, wheel...done.
 &lt;p&gt;Облачный &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CI&lt;/span&gt;&lt;/code&gt; отлично подойдет для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;OpenSource&lt;/span&gt;&lt;/code&gt; проектов, а остальное можно
 тестировать на локальном сервере.&lt;/p&gt;
 &lt;p&gt;Посмотрим как это работает на примере python + pyramid приложения.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/ci2.JPG&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ci2.JPG&quot; style=&quot;width: 400px;&quot; /&gt;
+&lt;img alt=&quot;_static/2014/ci2.JPG&quot; class=&quot;align-center&quot; src=&quot;_static/2014/ci2.JPG&quot; style=&quot;width: 400px;&quot; /&gt;
 &lt;div class=&quot;section&quot; id=&quot;id1&quot;&gt;
 &lt;h2&gt;Начнём с Travis-ci&lt;/h2&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;https://travis-ci.org/&quot;&gt;&lt;img alt=&quot;../../../_images/travis.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/travis.png&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;https://travis-ci.org/&quot;&gt;&lt;img alt=&quot;_static/2014/travis.png&quot; class=&quot;align-left&quot; src=&quot;_static/2014/travis.png&quot; /&gt;&lt;/a&gt;
 &lt;p&gt;Следит за вашими репозитариями на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt;, выкачивает при каждом коммите,
 собирает окружение в индивидуальном контейнере каждый раз, имеет простой
 конфиг. Работает только с &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt;, закрытые репы за деньги.&lt;/p&gt;
 &lt;br clear=&quot;both&quot;/&gt;&lt;p&gt;Авторизация через гитхаб аккаунт, дальше указываем что будем тестировать&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/travis1.png&quot; src=&quot;../../../_images/travis1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/travis1.png&quot; src=&quot;_static/2014/travis1.png&quot; /&gt;
 &lt;p&gt;Теперь положим в корень репы на гитхабе файл с настройками &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;.travis.yml&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/travis3.png&quot; src=&quot;../../../_images/travis3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/travis3.png&quot; src=&quot;_static/2014/travis3.png&quot; /&gt;
 &lt;p&gt;В этом файле находятся инструкции, какое окружение нужно для вашего проекта,
 как его собирать, запускать тесты и куда слать уведомления.&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id3&quot;&gt;
@@ -1479,7 +1479,7 @@ Installing setuptools, pip, wheel...done.
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;drone-io&quot;&gt;
 &lt;h2&gt;drone.io&lt;/h2&gt;
-&lt;img alt=&quot;../../../_images/drone.io.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone.io.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/drone.io.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/drone.io.png&quot; /&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Drone&lt;/span&gt;&lt;/code&gt; похож на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;travis-ci&lt;/span&gt;&lt;/code&gt; но он дешевле, умеет &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;bitbucket&lt;/span&gt;&lt;/code&gt; и исходный
 код &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/drone/drone&quot;&gt;https://github.com/drone/drone&lt;/a&gt;. Очень удобно &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;OpenSource&lt;/span&gt;&lt;/code&gt; в облаке,
 приватные репы на локальном сервере и все это имеет одинаковый конфиг. Конфиг
@@ -1513,18 +1513,18 @@ upstart (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre
 &lt;p&gt;Для того что бы github или bitbucket слал уведомление вашему drone серверу
 нужен статический IP. Пробросим порты к виртуалке на роутере :) и укажем IP в
 настройках:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/drone1.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/drone1.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/drone1.png&quot; /&gt;
 &lt;p&gt;добавим репу:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/drone2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/drone2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/drone2.png&quot; /&gt;
 &lt;p&gt;После добавления в гитхаб появится новый аппликайшин:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/drone3.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/drone3.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/drone3.png&quot; /&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Client&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;ID&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Client&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;Secret&lt;/span&gt;&lt;/code&gt; нужно указать в настройках drone. Теперь
 комитим и чиним.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/drone4.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone4.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/drone4.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/drone4.png&quot; /&gt;
 &lt;p&gt;Для приватных реп drone автоматически  прописывает RSA ключ. Его можно
 посмотреть в настройках репы и скопировать вручную например или поменять.&lt;/p&gt;
 &lt;p&gt;Вывод похож на travis:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/drone5.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/drone5.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/drone5.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/drone5.png&quot; /&gt;
 &lt;p&gt;Пару слов почему не другие системы. Во первых &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;drone&lt;/span&gt;&lt;/code&gt; это и облако и локалхост,
 дальше bitbucket+github, контейнеры docker из коробки, иконка-статус сборки в
 Markdown, написан на Go как и Docker. Из недостатков пока мало свистелок и
@@ -1543,11 +1543,11 @@ slave в контейнеры, но написан на старой верси�
 &lt;div class=&quot;section&quot; id=&quot;coveralls&quot;&gt;
 &lt;h2&gt;Coveralls&lt;/h2&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id5&quot;&gt;
-&lt;img alt=&quot;../../../_images/coverrals1.png&quot; src=&quot;../../../_images/coverrals1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/coverrals1.png&quot; src=&quot;_static/2014/coverrals1.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://coveralls.io/r/ITCase/sacrud&quot;&gt;https://coveralls.io/r/ITCase/sacrud&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot;&gt;
-&lt;img alt=&quot;../../../_images/coverrals2.png&quot; src=&quot;../../../_images/coverrals2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/coverrals2.png&quot; src=&quot;_static/2014/coverrals2.png&quot; /&gt;
 &lt;/div&gt;
 &lt;p&gt;Coveralls отличное дополнение, в котором можно визуально отследить что ещё не
 покрыто тестами. Из минусов, нет bitbucket, мне показался он дороговатым для
@@ -1566,7 +1566,7 @@ slave в контейнеры, но написан на старой верси�
 &lt;p&gt;В этом обзоре показан простой пример как можно настроить непрерывную интеграцию
 проекта на python и pyramid. Но по аналогии можно поднять любой другой проект.
 Думаю вам эта статья поможет, хотя бы начать писать тесты :)&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/ci_end.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ci_end.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2014/ci_end.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2014/ci_end.jpg&quot; /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </content>
@@ -1583,7 +1583,7 @@ slave в контейнеры, но написан на старой верси�
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-sqlalchemy-session&quot;&gt;
 
 &lt;p&gt;Для простых &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; действий с БД, можно воспользоваться модулем
-&lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
+&lt;a class=&quot;reference external&quot; href=&quot;https://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
 некоторой универсальности в ПО со сложной логикой.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sacrud&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
@@ -1633,9 +1633,9 @@ slave в контейнеры, но написан на старой верси�
 добавлены &lt;span class=&quot;strike&quot;&gt;нескучные обои&lt;/span&gt; элементы дизайна в расширении для
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Pyramid&lt;/span&gt;&lt;/code&gt; и создан отдельный репозитарий с примерами работы разных типов
 полей (pyramid_sacrud_example). Pyramid_sacrud_example работает только с
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
+&lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
 БД (таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hstore&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sacrud_0_0_3.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sacrud_0_0_3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_0_0_3.png&quot; class=&quot;align-center&quot; src=&quot;_static/2013/sacrud_0_0_3.png&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -1682,7 +1682,7 @@ slave в контейнеры, но написан на старой верси�
 &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; админки или &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;, но ОЧЕНЬ сильно упрощенный, ничего
 лишнего. Есть поддержка большинства полей + кастомные поля типа файл (для
 загрузки файлов, изображений) и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;GUID&lt;/span&gt;&lt;/code&gt;. Довольно просто подключить к
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
+&lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
 &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543/sacrud&quot;&gt;http://localhost:6543/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Проект доступен на github &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;В след. релизах планирую добавить новые типы полей, кастомные поля типа
@@ -1722,15 +1722,15 @@ slave в контейнеры, но написан на старой верси�
 &lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
 &lt;h2&gt;Скриншоты&lt;/h2&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id5&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_index.png&quot; src=&quot;../../../_images/sacrud_index.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_index.png&quot; src=&quot;_static/2013/sacrud_index.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;список таблиц&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id6&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_rows.png&quot; src=&quot;../../../_images/sacrud_rows.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_rows.png&quot; src=&quot;_static/2013/sacrud_rows.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;список записей в таблице&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id7&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_edit.png&quot; src=&quot;../../../_images/sacrud_edit.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_edit.png&quot; src=&quot;_static/2013/sacrud_edit.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;редактирование записи&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1828,7 +1828,7 @@ Cursus non morbi non proin, porttitor consequat eget ac eget netus penatibus, eg
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sqlalchemy-pyramid&quot;&gt;
 
 &lt;p&gt;У меня есть дополнение к pyramid которое я включаю почти в каждый проект при
-помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;includeme&lt;/span&gt;&lt;/code&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html#pyramid.config.Configurator.include&quot; title=&quot;(в The Pyramid Web Framework v1.9.1)&quot;&gt;&lt;code class=&quot;xref py py-meth docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;include()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;). Приложение
+помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;includeme&lt;/span&gt;&lt;/code&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html#pyramid.config.Configurator.include&quot; title=&quot;(в The Pyramid Web Framework v2.0)&quot;&gt;&lt;code class=&quot;xref py py-meth docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;include()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;). Приложение
 это дает мне простой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; интерфейс с &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;Jinja&lt;/a&gt; шаблонами малой кровью.
 Что позволяет избавиться от монстра &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;.  Естественно каждый
 проект имеет свое название поэтому пришлось применить немного магии что бы
@@ -1897,7 +1897,7 @@ Cursus non morbi non proin, porttitor consequat eget ac eget netus penatibus, eg
 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;471&lt;/span&gt;,504&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;И запустим следующий скрипт на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;И запустим следующий скрипт на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Orientation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -2327,7 +2327,7 @@ Storing &lt;span class=&quot;nb&quot;&gt;complete&lt;/span&gt; log in /home/ural
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Это возникает из-за утилиты &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; которая требуется для установки &lt;a class=&quot;reference external&quot; href=&quot;http://initd.org/psycopg/&quot;&gt;psycopg&lt;/a&gt;.
-В случае если у Вас &lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; 8.4 нужно добавить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH&lt;/span&gt;&lt;/code&gt; (как то
+В случае если у Вас &lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; 8.4 нужно добавить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH&lt;/span&gt;&lt;/code&gt; (как то
 так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PATH=$PATH:/usr/bin/&lt;/span&gt;&lt;/code&gt;). Путь до &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pg_config&lt;/span&gt;&lt;/code&gt; можно узнать:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ whereis pg_config
 pg_config: /usr/bin/pg_config
@@ -2391,7 +2391,7 @@ E: Broken packages
 &lt;p&gt;В некоторых случаях на &lt;a class=&quot;reference external&quot; href=&quot;http://oss.oetiker.ch/rrdtool/&quot;&gt;rrd&lt;/a&gt; графиках появляются пики, как например после
 перезагрузки сетевой карты:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../../_images/rrd_pick.png&quot; src=&quot;../../../_images/rrd_pick.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/rrd_pick.png&quot; src=&quot;_static/2011/rrd_pick.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;пики в rrd&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Для их удаления нам нужно воспользоваться утилитой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;dump&lt;/span&gt;&lt;/code&gt; из &lt;a class=&quot;reference external&quot; href=&quot;http://oss.oetiker.ch/rrdtool/&quot;&gt;rrdtool&lt;/a&gt;,
@@ -2400,7 +2400,7 @@ E: Broken packages
 сайте &lt;a class=&quot;reference external&quot; href=&quot;http://oss.oetiker.ch/rrdtool/&quot;&gt;rrdtool&lt;/a&gt; можно найти скрипт на &lt;a class=&quot;reference external&quot; href=&quot;http://perl.org/&quot;&gt;perl&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;removespikes&lt;/span&gt;&lt;/code&gt; и на
 &lt;a class=&quot;reference external&quot; href=&quot;http://php.net/&quot;&gt;php&lt;/a&gt; для &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;cacti&lt;/span&gt;&lt;/code&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;spikekill&lt;/span&gt;&lt;/code&gt;.  &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;removespike&lt;/span&gt;&lt;/code&gt; работает не всегда
 корректно, поэтому рассмотрим как можно обрезать графики при помощи скрипта на
-&lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;:&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;ch&quot;&gt;#!/usr/bin/env python&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;shutil&lt;/span&gt;
@@ -2460,7 +2460,7 @@ E: Broken packages
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Для того что бы парсить параметры командной строки воспользуемся модулем
-&lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/optparse.html#module-optparse&quot; title=&quot;(в Python v3.6)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;optparse&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/optparse.html#module-optparse&quot; title=&quot;(в Python v3.10)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;optparse&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_configuration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OptionParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;%prog v&amp;quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__version__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                           &lt;span class=&quot;n&quot;&gt;usage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;%prog &amp;lt;filename&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -2525,7 +2525,7 @@ E: Broken packages
 &lt;/div&gt;
 &lt;p&gt;Полученный результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../../_images/rrd_cut_pick.png&quot; src=&quot;../../../_images/rrd_cut_pick.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/rrd_cut_pick.png&quot; src=&quot;_static/2011/rrd_cut_pick.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;rrd график без пиков&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Скрипт на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;bash&lt;/span&gt;&lt;/code&gt; для удаления пиков во всей директории:&lt;/p&gt;
@@ -2644,7 +2644,7 @@ MAC адреса.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../../_images/wtforms_validation.png&quot; src=&quot;../../../_images/wtforms_validation.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/wtforms_validation.png&quot; src=&quot;_static/2011/wtforms_validation.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;WTForm валидация&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2662,11 +2662,11 @@ MAC адреса.&lt;/p&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;peyote&quot;&gt;
 
 &lt;p&gt;Плеер который в Линуксе нормально отображает кодировки и читает на ура
-&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lossless&lt;/span&gt;&lt;/code&gt;, написан на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;, работает в консоле. Интерфейс как в
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lossless&lt;/span&gt;&lt;/code&gt;, написан на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;, работает в консоле. Интерфейс как в
 &lt;a class=&quot;reference external&quot; href=&quot;http://www.midnight-commander.org/&quot;&gt;mc&lt;/a&gt; - очень удобно музыку перемещать + поддержка мышки.
 &lt;a class=&quot;reference external&quot; href=&quot;http://peyote.sourceforge.net/about.rus.html&quot;&gt;http://peyote.sourceforge.net/about.rus.html&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../../_images/peyote.png&quot; src=&quot;../../../_images/peyote.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/peyote.png&quot; src=&quot;_static/2011/peyote.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Peyote плеер для Linux&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Плюшки:&lt;/p&gt;
@@ -2702,11 +2702,11 @@ MAC адреса.&lt;/p&gt;
 довольно простой: подключаем датчик температуры к компу, пишем скрипт который
 снимает данные с датчика, записываем данные и отдаем по запросу пользователю.
 Результат будет выглядеть так:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/rrdtool_example.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/rrdtool_example.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/rrdtool_example.png&quot; class=&quot;align-center&quot; src=&quot;_static/2011/rrdtool_example.png&quot; /&gt;
 &lt;p&gt;Датчик температуры можно выбрать любой. Я сделал для COM порта по схеме
 &lt;a class=&quot;reference external&quot; href=&quot;http://msevm.com/main/therm/ds18b20t.htm&quot;&gt;&amp;#8220;Электронный термометр на DS-18B20&amp;#8221;&lt;/a&gt;. Стоимось вышла около 450р., без
 кожуха и разъемов раза в 2 дешевле.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/rs232.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/rs232.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/rs232.png&quot; class=&quot;align-center&quot; src=&quot;_static/2011/rs232.png&quot; /&gt;
 &lt;p&gt;Сам датчик температуры (&lt;a class=&quot;reference external&quot; href=&quot;http://www.maximintegrated.com/en/products/analog/sensors-and-sensor-interface/DS18B20.html&quot;&gt;DS-18B20&lt;/a&gt;) можно соединять параллельно с другими (до
 100шт.) и он будет нормально работать на одной шине длиной до 300м. После
 подключения скорей всего он определится на последовательном порту &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;/dev/ttyS0&lt;/span&gt;&lt;/code&gt;.

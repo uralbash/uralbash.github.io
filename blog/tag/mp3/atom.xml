@@ -18,11 +18,11 @@
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;peyote&quot;&gt;
 
 &lt;p&gt;Плеер который в Линуксе нормально отображает кодировки и читает на ура
-&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lossless&lt;/span&gt;&lt;/code&gt;, написан на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;, работает в консоле. Интерфейс как в
+&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lossless&lt;/span&gt;&lt;/code&gt;, написан на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;, работает в консоле. Интерфейс как в
 &lt;a class=&quot;reference external&quot; href=&quot;http://www.midnight-commander.org/&quot;&gt;mc&lt;/a&gt; - очень удобно музыку перемещать + поддержка мышки.
 &lt;a class=&quot;reference external&quot; href=&quot;http://peyote.sourceforge.net/about.rus.html&quot;&gt;http://peyote.sourceforge.net/about.rus.html&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../../_images/peyote.png&quot; src=&quot;../../../_images/peyote.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/peyote.png&quot; src=&quot;_static/2011/peyote.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Peyote плеер для Linux&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Плюшки:&lt;/p&gt;

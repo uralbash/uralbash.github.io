@@ -39,9 +39,9 @@ ER-модели рисовать и делать diff между двух баз
 Windows, поэтому рассмотрим вариант запуска сего продукта в &lt;cite&gt;Wine&lt;/cite&gt;.&lt;/p&gt;
 &lt;p&gt;Запускаем команду &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;winecfg&lt;/span&gt;&lt;/code&gt; и устанавливаем совместимость с &lt;cite&gt;Windows 98&lt;/cite&gt; (и
 это в 2016 году!):&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/wine_ibexpert.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/wine_ibexpert.png&quot; /&gt;
+&lt;img alt=&quot;_static/2016/wine_ibexpert.png&quot; class=&quot;align-center&quot; src=&quot;_static/2016/wine_ibexpert.png&quot; /&gt;
 &lt;p&gt;Затем прописываем нужные &lt;cite&gt;dll&lt;/cite&gt;-ки:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/wine_ibexpert_lib.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/wine_ibexpert_lib.png&quot; /&gt;
+&lt;img alt=&quot;_static/2016/wine_ibexpert_lib.png&quot; class=&quot;align-center&quot; src=&quot;_static/2016/wine_ibexpert_lib.png&quot; /&gt;
 &lt;p&gt;Теперь ВАЖНЫЙ момент, если у вас не &lt;cite&gt;ru_RU.cp1251&lt;/cite&gt; локаль. Именно по локале
 софт определяет, что вы из СНГ и делает его бесплатным. Поэтому, прежде чем
 запустить установщик нужно эту локаль добавить:&lt;/p&gt;
@@ -65,7 +65,7 @@ Windows, поэтому рассмотрим вариант запуска се�
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;После чего вы увидите интерфейс программы на русском языке.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/ibexpert_main.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ibexpert_main.png&quot; /&gt;
+&lt;img alt=&quot;_static/2016/ibexpert_main.png&quot; class=&quot;align-center&quot; src=&quot;_static/2016/ibexpert_main.png&quot; /&gt;
 &lt;p&gt;Но это ещё не всё, что бы программа заработала ей нужна библиотеке &lt;cite&gt;gds32.dll&lt;/cite&gt;,
 ее необходимо подложить в директорию &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;~/.wine/drive_c/windows/system32/&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;div class=&quot;admonition note&quot;&gt;
@@ -82,7 +82,7 @@ Windows, поэтому рассмотрим вариант запуска се�
 виндовая и будет прописывать путь типа &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Z:\opt\firebird\alembic_test.fdb&lt;/span&gt;&lt;/code&gt;,
 что естественно не верно если вы сервер запустили на Линуксе, поэтому нужно его
 поменять вручную на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;localhost:/opt/firebird/alembic_test.fdb&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/ibexpert_db_path.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/ibexpert_db_path.png&quot; /&gt;
+&lt;img alt=&quot;_static/2016/ibexpert_db_path.png&quot; class=&quot;align-center&quot; src=&quot;_static/2016/ibexpert_db_path.png&quot; /&gt;
 &lt;p&gt;На этом считаю наше собрание закрытым, всем спасибо, расходимся.&lt;/p&gt;
 &lt;/div&gt;
 </content>

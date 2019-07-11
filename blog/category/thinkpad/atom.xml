@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;x220-tablet-linux&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/x220t.jpg&quot; class=&quot;align-left&quot; src=&quot;../../../_images/x220t.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2012/x220t.jpg&quot; class=&quot;align-left&quot; src=&quot;_static/2012/x220t.jpg&quot; /&gt;
 &lt;p&gt;В принципе мой &lt;a class=&quot;reference external&quot; href=&quot;https://www.debian.org/&quot;&gt;Debian&lt;/a&gt; Wheezy определил почти все системные клавиши кроме 2х
 справа на картинке (&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctr+Alt+Del&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;поворот&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;экрана&lt;/span&gt;&lt;/code&gt;), микрофон и zoom по
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Fn+пробел&lt;/span&gt;&lt;/code&gt;. &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Ctr+Alt+Del&lt;/span&gt;&lt;/code&gt; не нужен, микрофон и зум это повод написать

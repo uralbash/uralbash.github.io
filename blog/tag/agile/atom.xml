@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;scrum-xp&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/scrum.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/scrum.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/scrum.png&quot; class=&quot;align-left&quot; src=&quot;_static/2014/scrum.png&quot; /&gt;
 &lt;p&gt;Старая, но очень полезная книга по &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Agile&lt;/span&gt;&lt;/code&gt;. Довольно редкий случай когда вся
 книга описывает рабочие процессы реальной организации, никакой воды, никакой
 зауми и вялой теории. Очень рекомендую. Тем более книга в свободном доступе и
@@ -39,9 +39,9 @@
 представляет ценность для product owner’а, а задачи либо нельзя
 продемонстрировать, либо они не представляют ценности для product owner’a.&lt;/p&gt;
 &lt;p&gt;Пример разбиения истории на более мелкие:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/scrum2.png&quot; src=&quot;../../../_images/scrum2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/scrum2.png&quot; src=&quot;_static/2014/scrum2.png&quot; /&gt;
 &lt;p&gt;Пример разбиения истории на задачи:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/scrum3.png&quot; src=&quot;../../../_images/scrum3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/scrum3.png&quot; src=&quot;_static/2014/scrum3.png&quot; /&gt;
 &lt;p&gt;Мы попробовали различные варианты работы с техническими историями. Мы пробовали
 считать их самыми обычными user story. Это была неудачная идея: для product
 owner&amp;#8217;а приоритезировать их в product backlog&amp;#8217;е было всё равно, что сравнить
@@ -50,23 +50,23 @@ owner&amp;#8217;а приоритезировать их в product backlog&amp;
 интеграции – очень важная штука, но давайте сперва реализуем кое-какие
 прибыльные функции? После этого вы можете прикрутить вашу техническую конфетку,
 окей?&amp;#8221;&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/scrum4.png&quot; src=&quot;../../../_images/scrum4.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/scrum4.png&quot; src=&quot;_static/2014/scrum4.png&quot; /&gt;
 &lt;p&gt;если вы пользуетесь стикерами для задач, не забудьте прикрепить их скотчем, или
 же в один &amp;#8220;прекрасный&amp;#8221; день вы найдете их аккуратной кучкой на полу.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/scrum5.png&quot; src=&quot;../../../_images/scrum5.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/scrum5.png&quot; src=&quot;_static/2014/scrum5.png&quot; /&gt;
 &lt;p&gt;Как быть с опоздавшими?&lt;/p&gt;
 &lt;p&gt;Некоторые команды заводят специальную копилку. Если вы опоздали, даже на
 минуту, вы кидаете в копилку определённую сумму. Без вариантов. Даже если вы
 позвонили перед началом ежедневного Scrum&amp;#8217;а и предупредили, заплатить всё равно
 придётся :o)&lt;/p&gt;
 &lt;p&gt;Деньги из копилки используются на общественные нужды. Например, на них можно заказать пиццу&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/scrum6.png&quot; src=&quot;../../../_images/scrum6.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/scrum6.png&quot; src=&quot;_static/2014/scrum6.png&quot; /&gt;
 &lt;p&gt;Если вы действительно хотите разобраться, как планировать релиз, советую
 пропустить эту главу и купить книгу Майка Кона &amp;#8220;Agile Estimating and Planning&amp;#8221;.
 Эх, прочитать бы мне эту книгу раньше... (она попалась мне уже после того, как
 мы на собственном опыте поняли, что к чему...). Мой способ планирования
 простой, как угол дома, но может послужить вам хорошей отправной точкой.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/scrum-gibkaya-razrabotka-po-signature-series-3643772/?show=1&amp;amp;bkrand=1ncaafgaia8ck1qvpo5u9nklk0/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/scrum_book.jpg&quot; class=&quot;align-left&quot; src=&quot;../../../_images/scrum_book.jpg&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/scrum-gibkaya-razrabotka-po-signature-series-3643772/?show=1&amp;amp;bkrand=1ncaafgaia8ck1qvpo5u9nklk0/?partner=490327&quot;&gt;&lt;img alt=&quot;_static/2014/scrum_book.jpg&quot; class=&quot;align-left&quot; src=&quot;_static/2014/scrum_book.jpg&quot; /&gt;&lt;/a&gt;
 &lt;p&gt;Вот эта книга, кстати тоже переведена на русский&lt;/p&gt;
 &lt;br clear=&quot;both&quot;/&gt;&lt;p&gt;Scrum решает вопросы управления и организации, тогда как XP специализируется на
 инженерных практиках. Вот почему эти две технологии хорошо работают вместе,

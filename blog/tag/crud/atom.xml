@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-0-1-2&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/sacrud_0_1_2.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/sacrud_0_1_2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sacrud_0_1_2.png&quot; class=&quot;align-left&quot; src=&quot;_static/2014/sacrud_0_1_2.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;Код: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;Описание: &lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.org/&quot;&gt;http://sacrud.readthedocs.org/&lt;/a&gt;&lt;/div&gt;
@@ -134,7 +134,7 @@
 &lt;/div&gt;
 &lt;p&gt;Результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id3&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_0.1.2_example.png&quot; src=&quot;../../../_images/sacrud_0.1.2_example.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sacrud_0.1.2_example.png&quot; src=&quot;_static/2014/sacrud_0.1.2_example.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Пример кастомного CRUD интерфейса для SQLAlchemy&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Демо приложение: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/pyramid_sacrud_example&quot;&gt;https://github.com/uralbash/pyramid_sacrud_example&lt;/a&gt;&lt;/p&gt;
@@ -152,7 +152,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-0-1-1&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/sacrud_0_1_1.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/sacrud_0_1_1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sacrud_0_1_1.png&quot; class=&quot;align-left&quot; src=&quot;_static/2014/sacrud_0_1_1.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;Код: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;Описание: &lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.org/&quot;&gt;http://sacrud.readthedocs.org/&lt;/a&gt;&lt;/div&gt;
@@ -176,7 +176,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;в словаре можно поделить модели на группы&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class=&quot;first&quot;&gt;тесты исправлены для &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;1.5&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;тесты исправлены для &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;1.5&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;deprecated&quot;&gt;
 &lt;p&gt;&lt;span class=&quot;versionmodified&quot;&gt;Не рекомендуется, начиная с версии pyramid: &lt;/span&gt;1.5&lt;/p&gt;
 &lt;p&gt;Removed the ability to influence and query a pyramid.request.Request object as
@@ -205,7 +205,7 @@ methods of request.environ (a real dictionary) instead.&lt;/p&gt;
 &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; админки или &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;, но ОЧЕНЬ сильно упрощенный, ничего
 лишнего. Есть поддержка большинства полей + кастомные поля типа файл (для
 загрузки файлов, изображений) и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;GUID&lt;/span&gt;&lt;/code&gt;. Довольно просто подключить к
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
+&lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
 &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543/sacrud&quot;&gt;http://localhost:6543/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Проект доступен на github &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;В след. релизах планирую добавить новые типы полей, кастомные поля типа
@@ -245,15 +245,15 @@ methods of request.environ (a real dictionary) instead.&lt;/p&gt;
 &lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
 &lt;h2&gt;Скриншоты&lt;/h2&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id5&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_index.png&quot; src=&quot;../../../_images/sacrud_index.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_index.png&quot; src=&quot;_static/2013/sacrud_index.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;список таблиц&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id6&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_rows.png&quot; src=&quot;../../../_images/sacrud_rows.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_rows.png&quot; src=&quot;_static/2013/sacrud_rows.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;список записей в таблице&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id7&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_edit.png&quot; src=&quot;../../../_images/sacrud_edit.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_edit.png&quot; src=&quot;_static/2013/sacrud_edit.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;редактирование записи&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;

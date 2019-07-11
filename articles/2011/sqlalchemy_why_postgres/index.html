@@ -280,7 +280,7 @@
 </div>
 <p>Здесь если GET переменная <code class="docutils literal"><span class="pre">ip_type=4</span></code> то выбираются все строки где <code class="docutils literal"><span class="pre">cidr</span></code>
 IPv4, если 6 то все стоки где <code class="docutils literal"><span class="pre">cidr</span></code> IPv6, иначе просто отдается все. Для
-фильтрации используется стандартная функция <a class="reference external" href="http://www.postgresql.org/">Postgres</a> <code class="docutils literal"><span class="pre">family</span></code>. Пример
+фильтрации используется стандартная функция <a class="reference external" href="http://postgresql.org">Postgres</a> <code class="docutils literal"><span class="pre">family</span></code>. Пример
 был так расписан для наглядности, теперь сократим:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">nets</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">Net</span><span class="p">)</span>
 <span class="n">ip_type</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;ip_type&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
@@ -355,7 +355,7 @@ IPv4, если 6 то все стоки где <code class="docutils literal"><s
                         
     <div class="footer__copyright">
             
-                &copy; Copyright 2015, uralbash.
+                &copy; Copyright 2022, uralbash.
             
     </div>
 <div class="footer__theme">
@@ -368,7 +368,7 @@ IPv4, если 6 то все стоки где <code class="docutils literal"><s
 </div>
                       
   <div class="footer__theme">
-      <a href="https://github.com/abakan/ablog" class="footer__theme-link">
+      <a href="https://github.com/sunpy/ablog" class="footer__theme-link">
         Ablog powered.
       </a>
   </div>

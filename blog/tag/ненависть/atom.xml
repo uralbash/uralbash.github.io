@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;django&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/wat.jpg&quot; class=&quot;align-right&quot; src=&quot;../../../_images/wat.jpg&quot; style=&quot;width: 420px;&quot; /&gt;
+&lt;img alt=&quot;_static/2014/wat.jpg&quot; class=&quot;align-right&quot; src=&quot;_static/2014/wat.jpg&quot; style=&quot;width: 420px;&quot; /&gt;
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; это фреймворк, при помощи которого быстро пишутся сайты. Так ли это?&lt;/p&gt;
 &lt;p&gt;Фичи джанги:&lt;/p&gt;
 &lt;ul class=&quot;simple&quot;&gt;
@@ -77,7 +77,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;нельзя сделать так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;dir(foo)&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class=&quot;first&quot;&gt;как узнать длину &lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/itertools.html#module-itertools&quot; title=&quot;(в Python v3.6)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;itertools&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;? в &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;jinja&lt;/a&gt; делается так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;list(foo).length&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;как узнать длину &lt;a class=&quot;reference external&quot; href=&quot;https://docs.python.org/3/library/itertools.html#module-itertools&quot; title=&quot;(в Python v3.10)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;itertools&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;? в &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;jinja&lt;/a&gt; делается так &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;list(foo).length&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;}}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -141,7 +141,7 @@ gallery.galleryimage: &amp;#8216;gallery&amp;#8217; has a relation with model &a
 &lt;li&gt;тыкаю по дереву (вложенность 2го уровня) что бы развернуть список и получаю:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Error&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;loading&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;server.&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/pages_tree.png&quot; src=&quot;../../../_images/pages_tree.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/pages_tree.png&quot; src=&quot;_static/2014/pages_tree.png&quot; /&gt;
 &lt;p&gt;и трэйс:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Internal Server Error: /admin/pages/page/tree_json/
 Traceback &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;most recent call last&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
@@ -196,9 +196,9 @@ DoesNotExist: Page matching query does not exist.
 
 &lt;p&gt;В последнее время мне кажется что я пользователь &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Интернета&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Северной&lt;/span&gt;
 &lt;span class=&quot;pre&quot;&gt;Корее&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sran1.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sran1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/sran1.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/sran1.png&quot; /&gt;
 &lt;p&gt;UPD:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sran2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sran2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/sran2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/sran2.png&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>

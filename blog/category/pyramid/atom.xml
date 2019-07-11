@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;rest-api-pyramid-cornice-sacrud&quot;&gt;
 
-&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Mozilla&quot;&gt;Mozilla&lt;/a&gt; использует в своих проектах &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; и у них есть
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Mozilla&quot;&gt;Mozilla&lt;/a&gt; использует в своих проектах &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; и у них есть
 отличный модуль для создания &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;REST&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;API&lt;/span&gt;&lt;/code&gt;
 &lt;a class=&quot;reference external&quot; href=&quot;https://cornice.readthedocs.org/en/latest/&quot;&gt;https://cornice.readthedocs.org/en/latest/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;REST&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;API&lt;/span&gt;&lt;/code&gt; обычно меняет, создает и удаляет записи, которые хранятся в БД.
@@ -41,7 +41,7 @@
                 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Создадим отдельную папку в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; проекте с названием &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rest&lt;/span&gt;&lt;/code&gt;, где будут
+&lt;p&gt;Создадим отдельную папку в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; проекте с названием &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;rest&lt;/span&gt;&lt;/code&gt;, где будут
 храниться функции api, и пропишем это в основном конфиге.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;# REST API&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;cornice&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -248,7 +248,7 @@ Cornice делает много за вас, создает вьюхи, пути
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-0-1-2&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/sacrud_0_1_2.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/sacrud_0_1_2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sacrud_0_1_2.png&quot; class=&quot;align-left&quot; src=&quot;_static/2014/sacrud_0_1_2.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;Код: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;Описание: &lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.org/&quot;&gt;http://sacrud.readthedocs.org/&lt;/a&gt;&lt;/div&gt;
@@ -365,7 +365,7 @@ Cornice делает много за вас, создает вьюхи, пути
 &lt;/div&gt;
 &lt;p&gt;Результат:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id3&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_0.1.2_example.png&quot; src=&quot;../../../_images/sacrud_0.1.2_example.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sacrud_0.1.2_example.png&quot; src=&quot;_static/2014/sacrud_0.1.2_example.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Пример кастомного CRUD интерфейса для SQLAlchemy&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Демо приложение: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/pyramid_sacrud_example&quot;&gt;https://github.com/uralbash/pyramid_sacrud_example&lt;/a&gt;&lt;/p&gt;
@@ -390,7 +390,7 @@ Cornice делает много за вас, создает вьюхи, пути
 &lt;p&gt;Я создал небольшой пример, как это сделать на примере &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sadisplay&quot;&gt;sadisplay&lt;/a&gt;.
 &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sadisplay&quot;&gt;sadisplay&lt;/a&gt; - это модуль который отображает модели &lt;a class=&quot;reference external&quot; href=&quot;http://sqlalchemy.org/&quot;&gt;SQLAlchemy&lt;/a&gt; в виде
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;UML&lt;/span&gt;&lt;/code&gt; диаграммы.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sadisplay.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sadisplay.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sadisplay.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/sadisplay.png&quot; /&gt;
 &lt;p&gt;Было бы удобно видеть схему БД проекта в дебаг панеле. Для этого создадим папку
 проекта &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pyramid_debugtoolbar_sadisplay&lt;/span&gt;&lt;/code&gt; со структурой:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;├── __init__.py
@@ -496,8 +496,8 @@ link: &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Результат:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/dt_sadisplay1.png&quot; src=&quot;../../../_images/dt_sadisplay1.png&quot; /&gt;
-&lt;img alt=&quot;../../../_images/dt_sadisplay2.png&quot; src=&quot;../../../_images/dt_sadisplay2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/dt_sadisplay1.png&quot; src=&quot;_static/2014/dt_sadisplay1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/dt_sadisplay2.png&quot; src=&quot;_static/2014/dt_sadisplay2.png&quot; /&gt;
 &lt;p&gt;Код примера здесь: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/pyramid_debugtoolbar_sadisplay&quot;&gt;https://github.com/uralbash/pyramid_debugtoolbar_sadisplay&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </content>
@@ -513,7 +513,7 @@ link: &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-0-1-1&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/sacrud_0_1_1.png&quot; class=&quot;align-left&quot; src=&quot;../../../_images/sacrud_0_1_1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2014/sacrud_0_1_1.png&quot; class=&quot;align-left&quot; src=&quot;_static/2014/sacrud_0_1_1.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;Код: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;Описание: &lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.org/&quot;&gt;http://sacrud.readthedocs.org/&lt;/a&gt;&lt;/div&gt;
@@ -537,7 +537,7 @@ link: &lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;в словаре можно поделить модели на группы&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class=&quot;first&quot;&gt;тесты исправлены для &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;1.5&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;тесты исправлены для &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;1.5&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;deprecated&quot;&gt;
 &lt;p&gt;&lt;span class=&quot;versionmodified&quot;&gt;Не рекомендуется, начиная с версии pyramid: &lt;/span&gt;1.5&lt;/p&gt;
 &lt;p&gt;Removed the ability to influence and query a pyramid.request.Request object as
@@ -563,7 +563,7 @@ methods of request.environ (a real dictionary) instead.&lt;/p&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid&quot;&gt;
 
 &lt;p&gt;Пример миграций в пирамиде:&lt;/p&gt;
-&lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/south&quot;&gt;south&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/alembic&quot;&gt;alembic&lt;/a&gt;. Создаём файл
+&lt;p&gt;В &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/south&quot;&gt;south&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/alembic&quot;&gt;alembic&lt;/a&gt;. Создаём файл
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;alembic.ini&lt;/span&gt;&lt;/code&gt; и указываем путь до настроек :, т.е. &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;имя&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;проекта&amp;gt;:&amp;lt;название&lt;/span&gt;
 &lt;span class=&quot;pre&quot;&gt;папки&amp;gt;&lt;/span&gt;&lt;/code&gt; например &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hlp:alembic&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
@@ -738,9 +738,9 @@ $ alembic current
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid-sacrud&quot;&gt;
 
-&lt;p&gt;pyramid_sacrud_example - пример работы &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; вместе с
+&lt;p&gt;pyramid_sacrud_example - пример работы &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; вместе с
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PostgreSQL&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sacrud_demo.png&quot; src=&quot;../../../_images/sacrud_demo.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_demo.png&quot; src=&quot;_static/2013/sacrud_demo.png&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -756,7 +756,7 @@ $ alembic current
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-sqlalchemy-session&quot;&gt;
 
 &lt;p&gt;Для простых &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; действий с БД, можно воспользоваться модулем
-&lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
+&lt;a class=&quot;reference external&quot; href=&quot;https://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
 некоторой универсальности в ПО со сложной логикой.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sacrud&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
@@ -806,9 +806,9 @@ $ alembic current
 добавлены &lt;span class=&quot;strike&quot;&gt;нескучные обои&lt;/span&gt; элементы дизайна в расширении для
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Pyramid&lt;/span&gt;&lt;/code&gt; и создан отдельный репозитарий с примерами работы разных типов
 полей (pyramid_sacrud_example). Pyramid_sacrud_example работает только с
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
+&lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
 БД (таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hstore&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/sacrud_0_0_3.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/sacrud_0_0_3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_0_0_3.png&quot; class=&quot;align-center&quot; src=&quot;_static/2013/sacrud_0_0_3.png&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -827,7 +827,7 @@ $ alembic current
 &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; админки или &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;, но ОЧЕНЬ сильно упрощенный, ничего
 лишнего. Есть поддержка большинства полей + кастомные поля типа файл (для
 загрузки файлов, изображений) и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;GUID&lt;/span&gt;&lt;/code&gt;. Довольно просто подключить к
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
+&lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
 &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543/sacrud&quot;&gt;http://localhost:6543/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Проект доступен на github &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;В след. релизах планирую добавить новые типы полей, кастомные поля типа
@@ -867,15 +867,15 @@ $ alembic current
 &lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
 &lt;h2&gt;Скриншоты&lt;/h2&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id5&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_index.png&quot; src=&quot;../../../_images/sacrud_index.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_index.png&quot; src=&quot;_static/2013/sacrud_index.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;список таблиц&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id6&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_rows.png&quot; src=&quot;../../../_images/sacrud_rows.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_rows.png&quot; src=&quot;_static/2013/sacrud_rows.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;список записей в таблице&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id7&quot;&gt;
-&lt;img alt=&quot;../../../_images/sacrud_edit.png&quot; src=&quot;../../../_images/sacrud_edit.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_edit.png&quot; src=&quot;_static/2013/sacrud_edit.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;редактирование записи&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -894,7 +894,7 @@ $ alembic current
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sqlalchemy-pyramid&quot;&gt;
 
 &lt;p&gt;У меня есть дополнение к pyramid которое я включаю почти в каждый проект при
-помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;includeme&lt;/span&gt;&lt;/code&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html#pyramid.config.Configurator.include&quot; title=&quot;(в The Pyramid Web Framework v1.9.1)&quot;&gt;&lt;code class=&quot;xref py py-meth docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;include()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;). Приложение
+помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;includeme&lt;/span&gt;&lt;/code&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html#pyramid.config.Configurator.include&quot; title=&quot;(в The Pyramid Web Framework v2.0)&quot;&gt;&lt;code class=&quot;xref py py-meth docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;include()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;). Приложение
 это дает мне простой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; интерфейс с &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;Jinja&lt;/a&gt; шаблонами малой кровью.
 Что позволяет избавиться от монстра &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;.  Естественно каждый
 проект имеет свое название поэтому пришлось применить немного магии что бы
@@ -975,7 +975,7 @@ Content-Type text/html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span cl
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;environ&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start_response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;Для &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; можно обойтись без &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;WSGI&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Для &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; можно обойтись без &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;WSGI&lt;/span&gt;&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id1&quot;&gt;
 &lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;view.py&lt;/span&gt;&lt;/div&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pyramid.events&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;subscriber&lt;/span&gt;
@@ -1021,7 +1021,7 @@ Content-Type text/html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span cl
 &lt;/ul&gt;
 &lt;p&gt;все...&lt;/p&gt;
 &lt;p&gt;Пример сайта &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/platonaps.ru&quot;&gt;https://github.com/uralbash/platonaps.ru&lt;/a&gt;:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/platon.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/platon.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/platon.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/platon.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;Подробнее на &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/pyramid_promosite&quot;&gt;https://github.com/uralbash/pyramid_promosite&lt;/a&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;Документация в планах, если что то непонятно то отвечу здесь либо в github&amp;#8217;е&lt;/div&gt;
@@ -1042,7 +1042,7 @@ Content-Type text/html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span cl
 
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/dybskiy/redactor-js&quot;&gt;Redactor-js&lt;/a&gt; - это простой вайсвиг с
 возможностью загрузки изображений.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/redactor-js.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/redactor-js.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/redactor-js.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/redactor-js.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;demo: &lt;a class=&quot;reference external&quot; href=&quot;http://imperavi.com/redactor/&quot;&gt;http://imperavi.com/redactor/&lt;/a&gt;&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;github: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/dybskiy/redactor-js&quot;&gt;https://github.com/dybskiy/redactor-js&lt;/a&gt;&lt;/div&gt;
@@ -1050,7 +1050,7 @@ Content-Type text/html&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span cl
 &lt;p&gt;Как сочленить это с &lt;a class=&quot;reference external&quot; href=&quot;http://php.net/&quot;&gt;php&lt;/a&gt; можно прочитать из документации
 &lt;a class=&quot;reference external&quot; href=&quot;http://imperavi.com/redactor/docs/images/&quot;&gt;http://imperavi.com/redactor/docs/images/&lt;/a&gt;. Там же есть ссылка на &lt;a class=&quot;reference external&quot; href=&quot;http://paltman.com/2012/08/15/how-to-setup-upload-handler-for-redactor/&quot;&gt;пример с
 Django от Patrick Altman&lt;/a&gt;. Я
-же постараюсь описать как загружать картинки при помощи &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; фреймворка,
+же постараюсь описать как загружать картинки при помощи &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;pyramid&lt;/a&gt; фреймворка,
 думаю переписать на что то другое не составит труда.&lt;/p&gt;
 &lt;p&gt;js функция redactor&amp;#8217;а у меня выглядит вот так:&lt;/p&gt;
 &lt;div class=&quot;highlight-html&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Redactor is here --&amp;gt;&lt;/span&gt;
@@ -1196,9 +1196,9 @@ Django от Patrick Altman&lt;/a&gt;. Я
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;cms-pyramid&quot;&gt;
 
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://www.nive.co/cms/root.html&quot;&gt;Poolyx CMS&lt;/a&gt; - малоизвестная система
-управления сайтом написанная на Python с применением &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; немецкими
+управления сайтом написанная на Python с применением &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; немецкими
 кодерами.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/poolyx.jpeg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/poolyx.jpeg&quot; /&gt;
+&lt;img alt=&quot;_static/2012/poolyx.jpeg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/poolyx.jpeg&quot; /&gt;
 &lt;p&gt;В будущем будет называться &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/nive&quot;&gt;nive&lt;/a&gt;. Советую попробовать, по крайне мере
 мне показалась намного удобнее &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/Kotti&quot;&gt;Kotti&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -1222,7 +1222,7 @@ Django от Patrick Altman&lt;/a&gt;. Я
 &lt;li&gt;загрузка изображений&lt;/li&gt;
 &lt;li&gt;мобайл фон реди&lt;/li&gt;
 &lt;/ul&gt;
-&lt;img alt=&quot;../../../_images/blog1.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/blog1.png&quot; style=&quot;width: 300px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/blog1.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/blog1.png&quot; style=&quot;width: 300px;&quot; /&gt;
 &lt;p&gt;Туду:&lt;/p&gt;
 &lt;ul class=&quot;simple&quot;&gt;
 &lt;li&gt;коменты&lt;/li&gt;
@@ -1230,7 +1230,7 @@ Django от Patrick Altman&lt;/a&gt;. Я
 &lt;li&gt;удаление изображений (файл менеджер)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;пул реквест реди&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/blog2.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/blog2.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/2012/blog2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/blog2.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -1286,12 +1286,12 @@ Django от Patrick Altman&lt;/a&gt;. Я
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Разработчики не стали менять архитектуру &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt; и создавать Pylons 2.0, а
-начали развивать новый проект &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; с похожей на &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; структурой
+начали развивать новый проект &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; с похожей на &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; структурой
 проекта. При этом &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt; не считается устаревшим, а просто имеет немного
 другой подход к разработке.&lt;/p&gt;
 &lt;p&gt;Стоит ли сейчас выбирать &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt;? Да, если вы его хорошо знаете и не
 планируете создавать слишком масштабное приложение, иначе лучше все таки
-выбрать &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;.&lt;/p&gt;
+выбрать &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Посмотрим как в нем организовать структуру проекта:&lt;/p&gt;
 &lt;p&gt;После создания проект выглядит так:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;MyProject/
@@ -1659,7 +1659,7 @@ Django от Patrick Altman&lt;/a&gt;. Я
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;Заходим в &lt;a class=&quot;reference external&quot; href=&quot;http://0.0.0.0:6543/admin/&quot;&gt;http://0.0.0.0:6543/admin/&lt;/a&gt; и радуемся.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/pyramid_formalchemy.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/pyramid_formalchemy.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/pyramid_formalchemy.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/pyramid_formalchemy.png&quot; /&gt;
 &lt;p&gt;Online демо находится &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/demo/admin/&quot;&gt;здесь&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </content>

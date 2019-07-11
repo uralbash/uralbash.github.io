@@ -41,7 +41,7 @@
 По аналогии с &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/django-mptt&quot;&gt;django-mptt&lt;/a&gt;. Грубо говоря в модель добавляются поля
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;left&lt;/span&gt;&lt;/code&gt; и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;right&lt;/span&gt;&lt;/code&gt; которые при помощи системы эвентов самостоятельно
 пересчитываются при изменении дерева. Ниже пример обхода дерева:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/2_sqlalchemy_mptt_traversal.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/2_sqlalchemy_mptt_traversal.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/2014/2_sqlalchemy_mptt_traversal.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/2_sqlalchemy_mptt_traversal.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;p&gt;Простой пример:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sqlalchemy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Column&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Boolean&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sqlalchemy.ext.declarative&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;declarative_base&lt;/span&gt;
@@ -156,7 +156,7 @@ level               Move &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt; - &amp;g
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;id4&quot;&gt;
 &lt;h2&gt;Перенос ноды по дереву или между деревьев&lt;/h2&gt;
-&lt;img alt=&quot;../../../_images/3_sqlalchemy_mptt_multitree.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/3_sqlalchemy_mptt_multitree.png&quot; style=&quot;width: 600px;&quot; /&gt;
+&lt;img alt=&quot;_static/2014/3_sqlalchemy_mptt_multitree.png&quot; class=&quot;align-center&quot; src=&quot;_static/2014/3_sqlalchemy_mptt_multitree.png&quot; style=&quot;width: 600px;&quot; /&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;move-inside&quot;&gt;
 &lt;h2&gt;Move inside (перемещает ноду на первое место от родителя)&lt;/h2&gt;

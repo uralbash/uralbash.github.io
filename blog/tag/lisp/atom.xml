@@ -18,7 +18,7 @@
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;lisp&quot;&gt;
 
 &lt;p&gt;Внезапно, вышла книга НА РУССКОМ по кошерному, более чем, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Лиспу&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/ansi-common-lisp-827258/?partner=490327&quot;&gt;&lt;img alt=&quot;../../../_images/lisp_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../../_images/lisp_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/ansi-common-lisp-827258/?partner=490327&quot;&gt;&lt;img alt=&quot;_static/2012/lisp_book.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/lisp_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
 &lt;p&gt;Хорошая новость для любителей &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;шыфт90&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </content>
@@ -34,7 +34,7 @@
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;lisp&quot;&gt;
 
-&lt;img alt=&quot;../../../_images/Sicp_cover.png&quot; class=&quot;align-center&quot; src=&quot;../../../_images/Sicp_cover.png&quot; /&gt;
+&lt;img alt=&quot;_static/2012/Sicp_cover.png&quot; class=&quot;align-center&quot; src=&quot;_static/2012/Sicp_cover.png&quot; /&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;На просторах рунета есть добрые люди уважающие &lt;a class=&quot;reference external&quot; href=&quot;http://lurkmore.to/SICP&quot;&gt;SICP&lt;/a&gt; и переводящие лекции.&lt;/div&gt;
 &lt;div class=&quot;line&quot;&gt;За что посылаю им лучи добра и благополучия.&lt;/div&gt;

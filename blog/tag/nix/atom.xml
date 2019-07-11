@@ -445,7 +445,7 @@ stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;mkDerivation &lt;span class=
 структура директорий &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;bin&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;etc&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lib&lt;/span&gt;&lt;/code&gt;, и прочее. Пользователь видит
 это все у себя за счет симлинков, которые прописываются при установке, см.
 рисунок:&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/nix_fs.png&quot; src=&quot;../../../_images/nix_fs.png&quot; /&gt;
+&lt;img alt=&quot;_static/2016/nix_fs.png&quot; src=&quot;_static/2016/nix_fs.png&quot; /&gt;
 &lt;p&gt;Это позволяет избежать конфликта имен, при установке пакетов и иметь в системе
 несколько версий одной и той же программы собранной по разному.&lt;/p&gt;
 &lt;p&gt;Отличительной особенностью &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/&quot;&gt;nix&lt;/a&gt;, является то, что он не зависит от
@@ -496,7 +496,7 @@ stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;mkDerivation &lt;span class=
 &lt;li&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/nix/manual/#chap-package-management&quot;&gt;http://nixos.org/nix/manual/#chap-package-management&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/&quot;&gt;NixOS&lt;/a&gt; удивительный проект с очень хорошей документацией и большим
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt; удивительный проект с очень хорошей документацией и большим
 мега-активным сообществом (&lt;a class=&quot;reference internal&quot; href=&quot;../../../pages/nixos/#nixos&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;NixOS&lt;/span&gt;&lt;/a&gt;). Поэтому нет смысла дублировать
 документацию, опишу лишь некоторые команды в сравнении с пакетным менеджером
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;apt&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
@@ -617,7 +617,7 @@ stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;mkDerivation &lt;span class=
 &lt;/div&gt;
 &lt;p&gt;Я добавил отображение символа снежинки &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;❄&lt;/span&gt;&lt;/code&gt; в &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PS1&lt;/span&gt;&lt;/code&gt;, если &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix-shell&lt;/span&gt;&lt;/code&gt;
 сессия активна.&lt;/p&gt;
-&lt;img alt=&quot;../../../_images/nix_shell.png&quot; src=&quot;../../../_images/nix_shell.png&quot; /&gt;
+&lt;img alt=&quot;_static/2016/nix_shell.png&quot; src=&quot;_static/2016/nix_shell.png&quot; /&gt;
 &lt;p&gt;Очень удобно создавать окружение для скриптов через shebang:&lt;/p&gt;
 &lt;div class=&quot;literal-block-wrapper docutils container&quot; id=&quot;id22&quot;&gt;
 &lt;div class=&quot;code-block-caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;shebang создает окружение для python2 и запускает в нем скрипт&lt;/span&gt;&lt;/div&gt;
@@ -656,7 +656,7 @@ stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;mkDerivation &lt;span class=
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nix&lt;/span&gt;&lt;/code&gt; выражения, например что бы собрать приложение изолированно от общих
 установленных пакетов.&lt;/p&gt;
 &lt;p&gt;Более подробно, что такое язык &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;nixexpr&lt;/span&gt;&lt;/code&gt; и как при помощи его собирать
-пакеты и даже ОС &lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, я постараюсь описать в отдельной статье.&lt;/p&gt;
+пакеты и даже ОС &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt;, я постараюсь описать в отдельной статье.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;home-user&quot;&gt;
 &lt;h2&gt;/home/user Окружение&lt;/h2&gt;
@@ -686,7 +686,7 @@ stdenv&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;mkDerivation &lt;span class=
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;nixos&quot;&gt;
 &lt;span id=&quot;id1&quot;&gt;&lt;/span&gt;
-&lt;p&gt;Здесь я буду собирать разные полезные ресурсы по ОС &lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/&quot;&gt;NixOS&lt;/a&gt; и пакетному
+&lt;p&gt;Здесь я буду собирать разные полезные ресурсы по ОС &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt; и пакетному
 менеджеру &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/nix/&quot;&gt;nix&lt;/a&gt;. Если вы, что то не нашли пишите в комментах.&lt;/p&gt;
 &lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
 &lt;h2&gt;Оф. ресурсы&lt;/h2&gt;
@@ -730,8 +730,10 @@ $ nixpaste &amp;lt; ./myexpr.nix
 &lt;h2&gt;Сообщество&lt;/h2&gt;
 &lt;p&gt;Перечислю источники по степени активности:&lt;/p&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;p class=&quot;first&quot;&gt;Форум &lt;a class=&quot;reference external&quot; href=&quot;https://discourse.nixos.org/&quot;&gt;https://discourse.nixos.org/&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;#nixos&lt;/span&gt;&lt;/code&gt; irc канал на freenode имеет очень высокую активность,
-разработчики &lt;a class=&quot;reference external&quot; href=&quot;http://nixos.org/&quot;&gt;NixOS&lt;/a&gt; и все что с ней связанно в основном общаются здесь.&lt;/p&gt;
+разработчики &lt;a class=&quot;reference external&quot; href=&quot;https://nixos.org/&quot;&gt;NixOS&lt;/a&gt; и все что с ней связанно в основном общаются здесь.&lt;/p&gt;
 &lt;a class=&quot;reference external image-reference&quot; href=&quot;https://webchat.freenode.net/?channels=nixos&quot;&gt;&lt;img alt=&quot;irc freenode&quot; src=&quot;https://img.shields.io/badge/irc-freenode-blue.svg&quot; /&gt;&lt;/a&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p class=&quot;first&quot;&gt;StackOverflow то же весьма активен, много людей из рассылки.&lt;/p&gt;

@@ -19,7 +19,7 @@
 
 &lt;div class=&quot;section&quot; id=&quot;python&quot;&gt;
 &lt;h2&gt;Python&lt;/h2&gt;
-&lt;img alt=&quot;../../_images/200px-Monty_Python's_Flying_Circus.jpg&quot; class=&quot;align-left&quot; src=&quot;../../_images/200px-Monty_Python's_Flying_Circus.jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2013/200px-Monty_Python's_Flying_Circus.jpg&quot; class=&quot;align-left&quot; src=&quot;_static/2013/200px-Monty_Python's_Flying_Circus.jpg&quot; /&gt;
 &lt;p&gt;Название языка произошло вовсе не от вида пресмыкающихся. Автор назвал язык в
 честь популярного британского комедийного телешоу 70x «&lt;a class=&quot;reference external&quot; href=&quot;http://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D1%82%D0%B0%D1%8E%D1%89%D0%B8%D0%B9_%D1%86%D0%B8%D1%80%D0%BA_%D0%9C%D0%BE%D0%BD%D1%82%D0%B8_%D0%9F%D0%B0%D0%B9%D1%82%D0%BE%D0%BD%D0%B0&quot;&gt;Летающий цирк Монти
 Пайтона&lt;/a&gt;».
@@ -28,13 +28,13 @@
 &lt;br clear=&quot;both&quot;/&gt;&lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;django&quot;&gt;
 &lt;h2&gt;Django&lt;/h2&gt;
-&lt;img alt=&quot;../../_images/220px-Django_Reinhardt_(Gottlieb_07301).jpg&quot; class=&quot;align-left&quot; src=&quot;../../_images/220px-Django_Reinhardt_(Gottlieb_07301).jpg&quot; /&gt;
+&lt;img alt=&quot;_static/2013/220px-Django_Reinhardt_(Gottlieb_07301).jpg&quot; class=&quot;align-left&quot; src=&quot;_static/2013/220px-Django_Reinhardt_(Gottlieb_07301).jpg&quot; /&gt;
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;http://ru.wikipedia.org/wiki/%D0%A0%D0%B5%D0%B9%D0%BD%D1%85%D0%B0%D1%80%D0%B4%D1%82,_%D0%96%D0%B0%D0%BD_%D0%91%D0%B0%D1%82%D0%B8%D1%81%D1%82&quot;&gt;Джанго Рейнхардт&lt;/a&gt;
 — музыкант, в честь которого получил название фреймворк&lt;/p&gt;
 &lt;br clear=&quot;both&quot;/&gt;&lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;pyramid&quot;&gt;
 &lt;h2&gt;Pyramid&lt;/h2&gt;
-&lt;img alt=&quot;../../_images/venus-shpinx-pyramid-vegas2.jpg&quot; class=&quot;align-left&quot; src=&quot;../../_images/venus-shpinx-pyramid-vegas2.jpg&quot; style=&quot;width: 300px;&quot; /&gt;
+&lt;img alt=&quot;_static/2013/venus-shpinx-pyramid-vegas2.jpg&quot; class=&quot;align-left&quot; src=&quot;_static/2013/venus-shpinx-pyramid-vegas2.jpg&quot; style=&quot;width: 300px;&quot; /&gt;
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/stevepiercy&quot;&gt;stevepiercy&lt;/a&gt; ответил так :)&lt;/p&gt;
 &lt;div class=&quot;line-block&quot;&gt;
 &lt;div class=&quot;line&quot;&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/stevepiercy&quot;&gt;stevepiercy&lt;/a&gt;: because we have pointy heads&lt;/div&gt;
@@ -61,7 +61,7 @@ pyramid, and the name starts with &amp;#8220;Py&amp;#8221;, so....&lt;/p&gt;
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;python-vim&quot;&gt;
 
-&lt;img alt=&quot;../../_images/vim-cheat-sheet-en.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vim-cheat-sheet-en.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/vim-cheat-sheet-en.png&quot; class=&quot;align-center&quot; src=&quot;_static/2013/vim-cheat-sheet-en.png&quot; /&gt;
 &lt;p&gt;В продолжение статьи о рабочем окружении (&lt;a class=&quot;reference internal&quot; href=&quot;../../articles/2013/where_to_start/#were-to-start&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;С чего начать?©&lt;/span&gt;&lt;/a&gt;), по просьбам
 трудящихся и во благо партии пишу о текстовом редакторе &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Думаю в лишнем представлении &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt; не нуждается, это очень популярный
@@ -180,7 +180,7 @@ pyramid, and the name starts with &amp;#8220;Py&amp;#8221;, so....&lt;/p&gt;
 нажать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;F5&amp;gt;&lt;/span&gt;&lt;/code&gt; или &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;&amp;lt;F8&amp;gt;&lt;/span&gt;&lt;/code&gt;, чем переключаться в другое окно и запускать
 &lt;a class=&quot;reference external&quot; href=&quot;https://www.freebsd.org/cgi/man.cgi?query=mc&quot;&gt;mc&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id15&quot;&gt;
-&lt;img alt=&quot;../../_images/vimcommander.png&quot; src=&quot;../../_images/vimcommander.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/vimcommander.png&quot; src=&quot;_static/2013/vimcommander.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;VimCommander&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Конфиг:&lt;/p&gt;
@@ -331,7 +331,7 @@ pyramid, and the name starts with &amp;#8220;Py&amp;#8221;, so....&lt;/p&gt;
 &lt;h2&gt;Автодополнение кода&lt;/h2&gt;
 &lt;p&gt;для автодополнения я использую &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/davidhalter/jedi-vim&quot;&gt;davidhalter/jedi-vim&lt;/a&gt; и
 &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/Valloric/YouCompleteMe&quot;&gt;Valloric/YouCompleteMe&lt;/a&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/ycm.gif&quot; class=&quot;align-center&quot; src=&quot;../../_images/ycm.gif&quot; /&gt;
+&lt;img alt=&quot;_static/2013/ycm.gif&quot; class=&quot;align-center&quot; src=&quot;_static/2013/ycm.gif&quot; /&gt;
 &lt;p&gt;Конфиг:&lt;/p&gt;
 &lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot; Jedi - autocomplete&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;&amp;quot;&lt;/span&gt;
@@ -360,7 +360,7 @@ pyramid, and the name starts with &amp;#8220;Py&amp;#8221;, so....&lt;/p&gt;
 &lt;div class=&quot;section&quot; id=&quot;tagbar&quot;&gt;
 &lt;h2&gt;TagBar&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/majutsushi/tagbar&quot;&gt;majutsushi/tagbar&lt;/a&gt; это правое окошко на рисунке:&lt;/p&gt;
-&lt;img alt=&quot;../../_images/tagbar.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/tagbar.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/tagbar.png&quot; class=&quot;align-center&quot; src=&quot;_static/2013/tagbar.png&quot; /&gt;
 &lt;p&gt;По сути это навигация по классам и функциям, очень удобно переходить к классу
 просто по нему кликнув. На рисунке видно что он подсвечивает функцию в которой
 я нахожусь.&lt;/p&gt;
@@ -491,7 +491,7 @@ all:
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;powerline&quot;&gt;
 &lt;h2&gt;Powerline&lt;/h2&gt;
-&lt;img alt=&quot;../../_images/powerline.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/powerline.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/powerline.png&quot; class=&quot;align-center&quot; src=&quot;_static/2013/powerline.png&quot; /&gt;
 &lt;p&gt;Божественно красивая статусная строка, как установить &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;powerline&lt;/span&gt;&lt;/code&gt; шыкарно
 &lt;a class=&quot;reference external&quot; href=&quot;http://askubuntu.com/questions/283908/how-can-i-install-and-use-powerline-plugin&quot;&gt;описано здесь&lt;/a&gt;.
 Но я рекомендую &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/bling/vim-airline&quot;&gt;bling/vim-airline&lt;/a&gt;, в нем больше фич, в частности совместимость с
@@ -526,8 +526,8 @@ all:
 &lt;h2&gt;Git&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/airblade/vim-gitgutter&quot;&gt;airblade/vim-gitgutter&lt;/a&gt; отображает текущую ветку и показывает внесенные
 изменения по сравнению с предыдущим коммитом.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/vim_git1.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vim_git1.png&quot; /&gt;
-&lt;img alt=&quot;../../_images/vim_git2.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/vim_git2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/vim_git1.png&quot; class=&quot;align-center&quot; src=&quot;_static/2013/vim_git1.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/vim_git2.png&quot; class=&quot;align-center&quot; src=&quot;_static/2013/vim_git2.png&quot; /&gt;
 &lt;p&gt;Конфиг:&lt;/p&gt;
 &lt;div class=&quot;highlight-vim&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;c&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;&amp;quot; A Vim plugin which shows a git diff in the &amp;#39;gutter&amp;#39; (sign column).&lt;/span&gt;
@@ -573,8 +573,8 @@ Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-scripts/vim-punto-switcher&
 &lt;div class=&quot;section&quot; id=&quot;id12&quot;&gt;
 &lt;h2&gt;Книги&lt;/h2&gt;
 &lt;p&gt;В этом году вышли аж 2 книги на русском языке:&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-fail-3579382/?show=1&amp;amp;partner=490327&quot;&gt;&lt;img alt=&quot;../../_images/vi_book.jpg&quot; src=&quot;../../_images/vi_book.jpg&quot; style=&quot;width: 200px;&quot; /&gt;&lt;/a&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.дмк.рф/catalog/computer/programming/978-5-94074-972-1/&quot;&gt;&lt;img alt=&quot;../../_images/vim.jpg&quot; src=&quot;../../_images/vim.jpg&quot; style=&quot;width: 200px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-fail-3579382/?show=1&amp;amp;partner=490327&quot;&gt;&lt;img alt=&quot;_static/2012/vi_book.jpg&quot; src=&quot;_static/2012/vi_book.jpg&quot; style=&quot;width: 200px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.дмк.рф/catalog/computer/programming/978-5-94074-972-1/&quot;&gt;&lt;img alt=&quot;_static/2013/vim.jpg&quot; src=&quot;_static/2013/vim.jpg&quot; style=&quot;width: 200px;&quot; /&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;anykey&quot;&gt;
 &lt;h2&gt;AnyKey&lt;/h2&gt;
@@ -624,7 +624,7 @@ Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-scripts/vim-punto-switcher&
 &lt;p&gt;Элементарно же: написать ТЗ, выбрать фреймворк, спроектировать базу, написать
 функцию, написать тест... Ну или какой-нибудь ваш ответ, здесь всё равно что то
 тормозит, а именно окружение, именно про него все забывают. Попробую описать
-один из возможных вариантов для &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;python&lt;/a&gt;.&lt;/p&gt;
+один из возможных вариантов для &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;python&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&quot;section&quot; id=&quot;virtualenv&quot;&gt;
 &lt;h2&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/Virtualenv&quot;&gt;Virtualenv&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;замечательная штука, позволяет под каждый проект создать свое окружение
@@ -733,10 +733,10 @@ Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-scripts/vim-punto-switcher&
 придется лишь дать наставление использовать продвинутый едитор с множеством
 фич, например &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;vim&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;emacs&lt;/span&gt;&lt;/code&gt;, &lt;span class=&quot;strike&quot;&gt;sublime text&lt;/span&gt;. Плохая идея
 использовать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;gedit&lt;/span&gt;&lt;/code&gt; или &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ms&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;notepad&lt;/span&gt;&lt;/code&gt;. Мой выбор определен на &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Vim&lt;/span&gt;&lt;/code&gt;,
-обязательно напишу про него отдельную заметку как использую с &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;, а
+обязательно напишу про него отдельную заметку как использую с &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;, а
 пока скриншот:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id7&quot;&gt;
-&lt;img alt=&quot;../../_images/vim.png&quot; src=&quot;../../_images/vim.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/vim.png&quot; src=&quot;_static/2013/vim.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Vim + Python&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;здесь видно что я могу перемещаться по файлам, видеть изменения по сравнению с
@@ -751,7 +751,7 @@ Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-scripts/vim-punto-switcher&
 &lt;p&gt;это эмулятор терминалов, он позволяет в одной вкладке терминала запустить
 несколько окон виртуальных терминалов.&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id8&quot;&gt;
-&lt;img alt=&quot;../../_images/tmux.png&quot; src=&quot;../../_images/tmux.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/tmux.png&quot; src=&quot;_static/2013/tmux.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;tmux&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Поверьте, это удобно.&lt;/p&gt;
@@ -769,7 +769,7 @@ Bundle &lt;span class=&quot;s1&quot;&gt;&amp;#39;vim-scripts/vim-punto-switcher&
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;здесь он присоединится к существующей сессии или откроет новую. Далее запустим
-сервер &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/waitress&quot;&gt;waitress&lt;/a&gt;):&lt;/p&gt;
+сервер &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/waitress&quot;&gt;waitress&lt;/a&gt;):&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ pserve development.ini.example start --reload
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -843,7 +843,7 @@ set-option -g default-terminal &lt;span class=&quot;s2&quot;&gt;&amp;quot;screen
 &lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;id5&quot;&gt;
 &lt;h2&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://powerline.readthedocs.org/en/latest/index.html&quot;&gt;Powerline&lt;/a&gt;&lt;/h2&gt;
-&lt;img alt=&quot;../../_images/powerline.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/powerline.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/powerline.png&quot; class=&quot;align-center&quot; src=&quot;_static/2013/powerline.png&quot; /&gt;
 &lt;p&gt;На картинке с &lt;a class=&quot;reference external&quot; href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt;, в левом нижнем углу, есть красивая панелька с погодой,
 часами и &lt;a class=&quot;reference external&quot; href=&quot;https://tmux.github.io/&quot;&gt;tmux&lt;/a&gt; окнами. Слева есть запись &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;1&amp;gt;watch&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;2&amp;gt;vim&lt;/span&gt;&lt;/code&gt;, это означает
 что в текущей сессии &lt;a class=&quot;reference external&quot; href=&quot;https://tmux.github.io/&quot;&gt;tmux&lt;/a&gt; в которой я нахожусь создано 2 окна, текущее
@@ -898,7 +898,7 @@ shell:
 &lt;h2&gt;ipython notebook&lt;/h2&gt;
 &lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;notebook&lt;/span&gt;&lt;/code&gt; запускает &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/ipython&quot;&gt;ipython&lt;/a&gt; в браузере, это очень удобно
 если вы работаете с графикой, &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/matplotlib&quot;&gt;matplotlib&lt;/a&gt; например.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/notebook_specgram.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/notebook_specgram.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/notebook_specgram.png&quot; class=&quot;align-center&quot; src=&quot;_static/2013/notebook_specgram.png&quot; /&gt;
 &lt;p&gt;Установка:&lt;/p&gt;
 &lt;div class=&quot;highlight-bash&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo apt-get install ipython-notebook
 &lt;/pre&gt;&lt;/div&gt;
@@ -913,7 +913,7 @@ shell:
 &lt;h2&gt;jsFiddle&lt;/h2&gt;
 &lt;p&gt;jsFiddle это такой сервис который позволяет нахаляву написать js код, тут же
 его отладить, расшарить и дать кому-нибудь ссылку. Про него все знают и многие
-пользуются. Но есть и для &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt; такой сервис, вот &lt;a class=&quot;reference external&quot; href=&quot;http://codebunk.com&quot;&gt;http://codebunk.com&lt;/a&gt;
+пользуются. Но есть и для &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt; такой сервис, вот &lt;a class=&quot;reference external&quot; href=&quot;http://codebunk.com&quot;&gt;http://codebunk.com&lt;/a&gt;
 Можно выбрать &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;python&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;js&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;ruby&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;perl&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;php&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;lua&lt;/span&gt;&lt;/code&gt;, &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C&lt;/span&gt;&lt;/code&gt;,
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;C++&lt;/span&gt;&lt;/code&gt; разве что Лиспа нету, но все равно потрясает.&lt;/p&gt;
 &lt;p&gt;В заключение могу сказать что это только мое видение окружения, у других людей
@@ -935,7 +935,7 @@ shell:
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-0-1-0&quot;&gt;
 
 &lt;p&gt;Обновил &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; до &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;0.1.0&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/crud_java_servlet_freemarker_2.png&quot; src=&quot;../../_images/crud_java_servlet_freemarker_2.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/crud_java_servlet_freemarker_2.png&quot; src=&quot;_static/2013/crud_java_servlet_freemarker_2.png&quot; /&gt;
 &lt;p&gt;Изменения:&lt;/p&gt;
 &lt;ul class=&quot;simple&quot;&gt;
 &lt;li&gt;исправлено куча ошибок&lt;/li&gt;
@@ -972,9 +972,9 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     </author>
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;pyramid-sacrud&quot;&gt;
 
-&lt;p&gt;pyramid_sacrud_example - пример работы &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; вместе с
+&lt;p&gt;pyramid_sacrud_example - пример работы &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt; в &lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; вместе с
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;PostgreSQL&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;img alt=&quot;../../_images/sacrud_demo.png&quot; src=&quot;../../_images/sacrud_demo.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_demo.png&quot; src=&quot;_static/2013/sacrud_demo.png&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -991,7 +991,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 
 &lt;p&gt;Еще одна книга по &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Vim&lt;/span&gt;&lt;/code&gt; на русском языке готовится к выходу. ДМК - это всегда
 прекрасный перевод тех. литературы, но ксожалению  отсутствие эл.форматов.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.дмк.рф/catalog/computer/programming/978-5-94074-972-1/&quot;&gt;&lt;img alt=&quot;../../_images/vim.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/vim.jpg&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.дмк.рф/catalog/computer/programming/978-5-94074-972-1/&quot;&gt;&lt;img alt=&quot;_static/2013/vim.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2013/vim.jpg&quot; /&gt;&lt;/a&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -1035,7 +1035,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;vi-vim-epub-pdf&quot;&gt;
 
 &lt;p&gt;Уже упоминал эту замечательную книгу (&lt;a class=&quot;reference internal&quot; href=&quot;../../articles/2013/vi_book/#vi_book&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;Изучаем редакторы vi и Vim, epub + pdf&lt;/span&gt;&lt;/a&gt;). Теперь в epub&amp;#8217;е, вобщем зачёт.&lt;/p&gt;
-&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-fail-3579382/?show=1&amp;amp;partner=490327&quot;&gt;&lt;img alt=&quot;../../_images/vi_book.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/vi_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
+&lt;a class=&quot;reference external image-reference&quot; href=&quot;http://www.books.ru/books/izuchaem-redaktory-vi-i-vim-7-e-izdanie-fail-3579382/?show=1&amp;amp;partner=490327&quot;&gt;&lt;img alt=&quot;_static/2012/vi_book.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2012/vi_book.jpg&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/a&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -1051,7 +1051,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sacrud-sqlalchemy-session&quot;&gt;
 
 &lt;p&gt;Для простых &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; действий с БД, можно воспользоваться модулем
-&lt;a class=&quot;reference external&quot; href=&quot;http://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
+&lt;a class=&quot;reference external&quot; href=&quot;https://sacrud.readthedocs.io/en/master/api.html#module-sacrud.action&quot; title=&quot;(в sacrud v)&quot;&gt;&lt;code class=&quot;xref py py-mod docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;action&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; из &lt;a class=&quot;reference external&quot; href=&quot;https://pypi.python.org/pypi/sacrud&quot;&gt;sacrud&lt;/a&gt;. Это немного сократит код и добавит
 некоторой универсальности в ПО со сложной логикой.&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sacrud&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;models&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
@@ -1101,9 +1101,9 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 добавлены &lt;span class=&quot;strike&quot;&gt;нескучные обои&lt;/span&gt; элементы дизайна в расширении для
 &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;Pyramid&lt;/span&gt;&lt;/code&gt; и создан отдельный репозитарий с примерами работы разных типов
 полей (pyramid_sacrud_example). Pyramid_sacrud_example работает только с
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.postgresql.org/&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
+&lt;a class=&quot;reference external&quot; href=&quot;http://postgresql.org&quot;&gt;Postgres&lt;/a&gt; потому что включает в себя примеры полей специфичных именно для этой
 БД (таких как &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;hstore&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
-&lt;img alt=&quot;../../_images/sacrud_0_0_3.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/sacrud_0_0_3.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_0_0_3.png&quot; class=&quot;align-center&quot; src=&quot;_static/2013/sacrud_0_0_3.png&quot; /&gt;
 &lt;/div&gt;
 </content>
   </entry>
@@ -1150,7 +1150,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;a class=&quot;reference external&quot; href=&quot;https://www.djangoproject.com/&quot;&gt;Django&lt;/a&gt; админки или &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;, но ОЧЕНЬ сильно упрощенный, ничего
 лишнего. Есть поддержка большинства полей + кастомные поля типа файл (для
 загрузки файлов, изображений) и &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;GUID&lt;/span&gt;&lt;/code&gt;. Довольно просто подключить к
-&lt;a class=&quot;reference external&quot; href=&quot;http://www.pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
+&lt;a class=&quot;reference external&quot; href=&quot;http://pylonsproject.org/&quot;&gt;Pyramid&lt;/a&gt; проекту и сразу начать работать по адресу
 &lt;a class=&quot;reference external&quot; href=&quot;http://localhost:6543/sacrud&quot;&gt;http://localhost:6543/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Проект доступен на github &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/uralbash/sacrud&quot;&gt;https://github.com/uralbash/sacrud&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;В след. релизах планирую добавить новые типы полей, кастомные поля типа
@@ -1190,15 +1190,15 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;
 &lt;div class=&quot;section&quot; id=&quot;id2&quot;&gt;
 &lt;h2&gt;Скриншоты&lt;/h2&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id5&quot;&gt;
-&lt;img alt=&quot;../../_images/sacrud_index.png&quot; src=&quot;../../_images/sacrud_index.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_index.png&quot; src=&quot;_static/2013/sacrud_index.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;список таблиц&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id6&quot;&gt;
-&lt;img alt=&quot;../../_images/sacrud_rows.png&quot; src=&quot;../../_images/sacrud_rows.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_rows.png&quot; src=&quot;_static/2013/sacrud_rows.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;список записей в таблице&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id7&quot;&gt;
-&lt;img alt=&quot;../../_images/sacrud_edit.png&quot; src=&quot;../../_images/sacrud_edit.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/sacrud_edit.png&quot; src=&quot;_static/2013/sacrud_edit.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;редактирование записи&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1296,7 +1296,7 @@ Cursus non morbi non proin, porttitor consequat eget ac eget netus penatibus, eg
     <content type="html">&lt;div class=&quot;section&quot; id=&quot;sqlalchemy-pyramid&quot;&gt;
 
 &lt;p&gt;У меня есть дополнение к pyramid которое я включаю почти в каждый проект при
-помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;includeme&lt;/span&gt;&lt;/code&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html#pyramid.config.Configurator.include&quot; title=&quot;(в The Pyramid Web Framework v1.9.1)&quot;&gt;&lt;code class=&quot;xref py py-meth docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;include()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;). Приложение
+помощи &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;includeme&lt;/span&gt;&lt;/code&gt; (&lt;a class=&quot;reference external&quot; href=&quot;https://docs.pylonsproject.org/projects/pyramid/en/latest/api/config.html#pyramid.config.Configurator.include&quot; title=&quot;(в The Pyramid Web Framework v2.0)&quot;&gt;&lt;code class=&quot;xref py py-meth docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;include()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;). Приложение
 это дает мне простой &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;CRUD&lt;/span&gt;&lt;/code&gt; интерфейс с &lt;a class=&quot;reference external&quot; href=&quot;http://jinja.pocoo.org/&quot;&gt;Jinja&lt;/a&gt; шаблонами малой кровью.
 Что позволяет избавиться от монстра &lt;a class=&quot;reference external&quot; href=&quot;http://docs.formalchemy.org/&quot;&gt;FormAlchemy&lt;/a&gt;.  Естественно каждый
 проект имеет свое название поэтому пришлось применить немного магии что бы
@@ -1365,7 +1365,7 @@ Cursus non morbi non proin, porttitor consequat eget ac eget netus penatibus, eg
 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;471&lt;/span&gt;,504&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;И запустим следующий скрипт на &lt;a class=&quot;reference external&quot; href=&quot;https://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;И запустим следующий скрипт на &lt;a class=&quot;reference external&quot; href=&quot;http://www.python.org/&quot;&gt;Python&lt;/a&gt;:&lt;/p&gt;
 &lt;div class=&quot;highlight-python&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Orientation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -1505,7 +1505,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;Источник: &lt;a class=&quot;r
 
 &lt;p&gt;Программа для консоли в &lt;a class=&quot;reference external&quot; href=&quot;https://www.kernel.org/&quot;&gt;Linux&lt;/a&gt;, которая имитирует поток бинарных цифр из
 фильма матрица. Очень эффектно выглядит, рекомендую попробовать!&lt;/p&gt;
-&lt;img alt=&quot;../../_images/matrix_code.png&quot; class=&quot;align-center&quot; src=&quot;../../_images/matrix_code.png&quot; /&gt;
+&lt;img alt=&quot;_static/2013/matrix_code.png&quot; class=&quot;align-center&quot; src=&quot;_static/2013/matrix_code.png&quot; /&gt;
 &lt;p&gt;Видео:&lt;/p&gt;
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot;
 src=&quot;https://www.youtube.com/embed/96crI0NCbPg&quot; frameborder=&quot;0&quot;
@@ -1618,7 +1618,7 @@ allowfullscreen&gt;&lt;/iframe&gt;&lt;p&gt;Код:&lt;/p&gt;
 src=&quot;http://s0.videopress.com/player.swf?v=1.04&quot; width=&quot;400&quot; height=&quot;224&quot;
 wmode=&quot;direct&quot; seamlesstabbing=&quot;true&quot; allowfullscreen=&quot;true&quot;
 allowscriptaccess=&quot;always&quot; overstretch=&quot;true&quot;
-flashvars=&quot;guid=nH7YRgxB&amp;amp;isDynamicSeeking=true&quot;&gt;&lt;/embed&gt;&lt;img alt=&quot;../../_images/pingviny-zhmut-na-gaz-big.jpg&quot; class=&quot;align-center&quot; src=&quot;../../_images/pingviny-zhmut-na-gaz-big.jpg&quot; /&gt;
+flashvars=&quot;guid=nH7YRgxB&amp;amp;isDynamicSeeking=true&quot;&gt;&lt;/embed&gt;&lt;img alt=&quot;_static/2013/pingviny-zhmut-na-gaz-big.jpg&quot; class=&quot;align-center&quot; src=&quot;_static/2013/pingviny-zhmut-na-gaz-big.jpg&quot; /&gt;
 &lt;p&gt;Подробнее &lt;a class=&quot;reference external&quot; href=&quot;http://juanvelascoblog.com/2012/11/29/emperor-penguins-hit-the-gas/&quot;&gt;http://juanvelascoblog.com/2012/11/29/emperor-penguins-hit-the-gas/&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </content>

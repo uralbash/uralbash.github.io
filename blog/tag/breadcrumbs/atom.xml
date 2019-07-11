@@ -75,7 +75,7 @@ document.title. Это не очень удобно в некоторых слу
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../../_images/breadcrumbs.png&quot; src=&quot;../../../_images/breadcrumbs.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/breadcrumbs.png&quot; src=&quot;_static/2011/breadcrumbs.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;breadcrumbs + javascript&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;

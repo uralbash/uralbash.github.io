@@ -92,7 +92,7 @@ MAC адреса.&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id1&quot;&gt;
-&lt;img alt=&quot;../../../_images/wtforms_validation.png&quot; src=&quot;../../../_images/wtforms_validation.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/wtforms_validation.png&quot; src=&quot;_static/2011/wtforms_validation.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;WTForm валидация&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -222,7 +222,7 @@ MAC адреса.&lt;/p&gt;
 &lt;p&gt;Последние две строки возвращают пользователя обратно на страницу
 редактирования. Выглядит это как-то так:&lt;/p&gt;
 &lt;div class=&quot;figure align-center&quot; id=&quot;id2&quot;&gt;
-&lt;img alt=&quot;../../../_images/wtform_eq.png&quot; src=&quot;../../../_images/wtform_eq.png&quot; /&gt;
+&lt;img alt=&quot;_static/2011/wtform_eq.png&quot; src=&quot;_static/2011/wtform_eq.png&quot; /&gt;
 &lt;p class=&quot;caption&quot;&gt;&lt;span class=&quot;caption-text&quot;&gt;Пример &lt;a class=&quot;reference external&quot; href=&quot;http://wtforms.simplecodes.com/&quot;&gt;WTForm&lt;/a&gt; и &lt;a class=&quot;reference external&quot; href=&quot;http://docs.pylonsproject.org/projects/pylons-webframework/en/latest/&quot;&gt;Pylons&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
